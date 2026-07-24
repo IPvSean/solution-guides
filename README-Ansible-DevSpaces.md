@@ -8,9 +8,9 @@ This guide demonstrates a **tiered image layering strategy** using standard Open
 
 ```mermaid
 graph LR
-    A["<b>Tier 0: Base</b><br/>Red Hat"] -->|layer| B["<b>Tier 1: Org</b><br/>Platform team"]
-    B -->|layer| C["<b>Tier 2: Team</b><br/>Team lead"]
-    C -.->|opt-in| D["<b>Tier 3: Personal</b><br/>Individual"]
+    A["<b>Tier 0</b><br/>Base image<br/><i>Red Hat</i>"] -->|layer| B["<b>Tier 1</b><br/>Org image<br/><i>Platform team</i>"]
+    B -->|layer| C["<b>Tier 2</b><br/>Team image<br/><i>Team lead</i>"]
+    C -.->|opt-in| D["<b>Tier 3</b><br/>Personal image<br/><i>Individual</i>"]
 ```
 
 **Operational Impact:** Low -- creates BuildConfigs and ImageStreams on the cluster. Reversible configuration changes. No production system mutation.
@@ -97,19 +97,7 @@ The walkthrough uses the Red Hat supported image. A community alternative is ava
 
 ## Image Rebuild Workflow
 
-The tiered strategy uses OpenShift ImageStreams to track upstream image changes and BuildConfig triggers to cascade rebuilds automatically:
-
-```mermaid
-graph LR
-    U["<b>Upstream release</b><br/>New base image tag"] -->|scheduled import| IS0["<b>Tier 0 ImageStream</b><br/>ansible-devspaces-base"]
-    IS0 -->|ImageChange trigger| BC1["<b>Tier 1 BuildConfig</b><br/>ansible-devspaces-org"]
-    BC1 -->|pushes to| IS1["<b>Tier 1 ImageStream</b><br/>ansible-devspaces-org"]
-    IS1 -->|ImageChange trigger| BC2["<b>Tier 2 BuildConfig</b><br/>devspaces-network-team"]
-    BC2 -->|pushes to| IS2["<b>Tier 2 ImageStream</b><br/>devspaces-network-team"]
-    IS2 -.->|opt-in| BC3["<b>Tier 3 BuildConfig</b><br/>devspaces-personal"]
-```
-
-When the upstream Ansible DevTools project publishes a new image version, the Tier 0 ImageStream detects the change through scheduled polling (`importPolicy.scheduled: true`). This triggers the Tier 1 BuildConfig, which layers org-wide packages and pushes the result to the Tier 1 ImageStream. The Tier 2 BuildConfig watches the Tier 1 ImageStream and rebuilds the team image automatically. If a developer has opted into a personal layer (Tier 3), that rebuilds as well. The entire cascade completes in minutes with zero manual intervention.
+The tiered strategy uses OpenShift ImageStreams to track upstream image changes and BuildConfig triggers to cascade rebuilds automatically. When the upstream Ansible DevTools project publishes a new image version, the Tier 0 ImageStream detects the change through scheduled polling (`importPolicy.scheduled: true`). This triggers the Tier 1 BuildConfig, which layers org-wide packages and pushes the result to the Tier 1 ImageStream. The Tier 2 BuildConfig watches the Tier 1 ImageStream and rebuilds the team image automatically. If a developer has opted into a personal layer (Tier 3), that rebuilds as well. The entire cascade completes in minutes with zero manual intervention.
 
 When a BuildConfig itself changes (for example, a team lead adds a new package to their Containerfile and pushes to Git), a `ConfigChange` trigger fires a rebuild of that tier and everything downstream.
 
