@@ -203,7 +203,7 @@ pass short before the table is fully cleaned.
 
 > Autovacuum running 300+ times/hour while dead tuples persist is not a trigger problem. Rather, each pass is being cut short before the table is fully vacuumed. This diagnostic confirms whether the I/O throttle is actually the bottleneck before you apply the change.
 
-**Compute the correct `cost_limit`** Run this diagnostic step when `n_dead_tup` is elevated on the target table. Watching `pg_stat_user_tables` for a few minutes will catch a high point:
+**Estimate a starting `cost_limit`** Run this diagnostic step when `n_dead_tup` is elevated on the target table. Watching `pg_stat_user_tables` for a few minutes will catch a high point:
 
 ```sql
 SELECT relname,
@@ -214,9 +214,9 @@ FROM pg_stat_user_tables
 WHERE relname = 'your_table_name';
 ```
 
-Small tables (a few thousand rows or fewer) are almost always in memory. Use the
-`cost_limit_cached` value from the query result as your target for the `ALTER TABLE`
-command below. Add a safety margin: if the formula yields 987, set 1,000.
+Small tables (a few thousand rows or fewer) are almost always in memory. Use `cost_limit_cached` as your starting value, rounding up to a clean number. It estimates the budget needed to scan all heap pages once without interruption. Apply it, then use the three-outcome check below to decide whether to adjust upward or remove the override.
+
+The formula covers heap pages only; index cleanup and the visibility map mean real behavior may differ, which is why the empirical check follows.
 
 **Apply per-table** This does not touch global settings:
 
