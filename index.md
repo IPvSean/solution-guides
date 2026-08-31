@@ -284,6 +284,28 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="infrastructure,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AAP HA/DR on OpenShift with CloudNativePG</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Two-site active-passive disaster recovery for Ansible Automation Platform 2.7 on OpenShift using CloudNativePG cross-cluster replication, shared secrets, and controlled switchover procedures.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation Guide</span></span>
+          </div>
+        </div>
+      </a>
+
     </div>
 
     <div class="cards-wip-section">
@@ -307,28 +329,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Foundational</span></span>
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="infrastructure,published">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-blue">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                  Implementation Guide
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">AAP HA/DR on OpenShift with CloudNativePG</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Two-site active-passive disaster recovery for Ansible Automation Platform 2.7 on OpenShift using CloudNativePG cross-cluster replication, shared secrets, and controlled switchover procedures.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation Guide</span></span>
             </div>
           </div>
         </a>
