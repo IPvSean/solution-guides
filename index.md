@@ -311,13 +311,13 @@ patternfly: true
           </div>
         </a>
 
-        <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="infrastructure,wip">
+        <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="infrastructure,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label pf-m-blue">
                 <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
+                  <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                  Implementation Guide
                 </span>
               </span>
             </div>
