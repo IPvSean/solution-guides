@@ -33,7 +33,7 @@ It is written for the engineer who builds and maintains these workflows, not a b
   - [Stage 3: Context-Aware Routing](#stage-3-context-aware-routing)
   - [Stage 4: AI-Driven Triage for Novel Incidents](#stage-4-ai-driven-triage-for-novel-incidents)
   - [Stage 5: Full Orchestration Workflows](#stage-5-full-orchestration-workflows)
-- [Decision Framework: AAP vs Automation Orchestrator](#decision-framework-aap-vs-automation-orchestrator)
+- [Decision Framework: When to Add Automation Orchestrator](#decision-framework-when-to-add-automation-orchestrator)
 - [Reference: Which Node Type for Which Problem](#reference-which-node-type-for-which-problem)
 - [Where to Start](#where-to-start)
 - [Validation](#validation)
@@ -260,7 +260,7 @@ Any OpenAI-compatible API endpoint works with this pattern: <a target="_blank" h
 
 > **Design principle:** AI enrichment without AO
 >
-> This pattern requires only AAP and an LLM API endpoint. It is the right starting point for teams that want to test AI integration before committing to a full orchestration platform. The signal to advance is when you want the enrichment output to drive automated routing or remediation — that is when AO's switch nodes and AI agent nodes become relevant.
+> This pattern requires only AAP and an LLM API endpoint. It is the right starting point for teams that want to demonstrate AI value before adding AO's workflow layer. The signal to advance is when you want the enrichment output to drive automated routing or remediation — that is when AO's switch nodes and AI agent nodes become relevant.
 
 **The signal you have outgrown Stage 2:**
 
@@ -436,15 +436,15 @@ The approval node is not a bureaucratic gate here. It is what makes an on-call e
 
 ---
 
-## Decision Framework: AAP vs Automation Orchestrator
+## Decision Framework: When to Add Automation Orchestrator
 
-Use this to locate your requirements:
+Automation Orchestrator runs on top of AAP — it is not a replacement. The question is when the additional workflow capabilities it adds are worth the complexity. Use this to locate your requirements.
 
-**AAP + EDA is the right answer when:**
+**EDA + AAP job templates are sufficient when:**
 
 - The alert type is well understood and the fix is deterministic
 - The response is the same regardless of which host, environment, or time of day triggered the alert
-- Volume is high and per-incident latency matters (AO adds workflow overhead vs. direct EDA trigger)
+- Existing rulebooks handle the response well and intelligent routing or multi-step orchestration is not needed
 - You are building initial operator confidence in automation before adding AI nodes
 
 **Add LLM enrichment via AAP playbook when (no AO needed):**
