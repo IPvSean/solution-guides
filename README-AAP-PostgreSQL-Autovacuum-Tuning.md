@@ -32,7 +32,9 @@ they are needed.
 - Operational impact: **Low** as all changes are reversible; `scale_factor` and `naptime`
   take effect on reload with no restart required
 
-> **OpenShift / CNPG deployments:** Set parameters in the Cluster custom resource under
+> **OpenShift / CNPG deployments:**
+>
+> Set parameters in the Cluster custom resource under
 > `.spec.postgresql.parameters`, then apply with `oc apply`. A `pg_reload_conf()` call is
 > not needed — CNPG handles the reload. Per-table `ALTER TABLE` commands (Rung 3) are
 > applied the same way via `psql`.
@@ -64,6 +66,8 @@ threshold is crossed every ~6 hours. *The table never stays clean.*
 times per day, or `dead_pct` stays above 10% for hours. If you're running AAP with
 thousands of jobs per day, assume you need this.
 
+> **Tip:** Enterprise scale factor impact
+>
 > In an enterprise AAP environment managing ~70,000 hosts and running ~40,000 jobs per day,
 > decreasing `scale_factor` from its default setting of 0.2 to 0.02 reduced total database execution time by 96.7%.
 
@@ -138,6 +142,8 @@ ORDER BY n_tup_upd DESC;
 Any table showing `hot_ratio` well below 100% has HOT disabled and is generating a dead
 tuple on every UPDATE.
 
+> **Tip:** Why naptime matters for OAuth2 tables
+>
 > OAuth2 and session tables receive an update on every API request. At 82 dead tuples/second, a 60-second check interval allows nearly 5,000 dead tuples accumulate between inspections. naptime=10s reduces the backlog to about 820 dead tuples and produces a 6× increase in vacuuming.
 
 
@@ -201,6 +207,8 @@ WHERE p.phase != 'initializing';
 If `pct_done` is consistently below 100% when passes end, the I/O throttle is cutting each
 pass short before the table is fully cleaned.
 
+> **Tip:** High fire rate with persistent dead tuples
+>
 > Autovacuum running 300+ times/hour while dead tuples persist is not a trigger problem. Rather, each pass is being cut short before the table is fully vacuumed. This diagnostic confirms whether the I/O throttle is actually the bottleneck before you apply the change.
 
 **Estimate a starting `cost_limit`** Run this diagnostic step when `n_dead_tup` is elevated on the target table. Watching `pg_stat_user_tables` for a few minutes will catch a high point:
