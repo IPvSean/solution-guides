@@ -2490,6 +2490,15 @@ b {
     border-color: var(--border-color);
   }
 
+  details summary {
+    background: var(--bg-surface-alt);
+    color: var(--text-primary);
+  }
+
+  details[open] summary {
+    border-bottom-color: var(--border-color);
+  }
+
   .key-terms-group {
     background: var(--bg-surface);
     border-color: var(--border-color);
