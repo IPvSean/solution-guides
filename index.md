@@ -77,9 +77,6 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
-          </div>
         </div>
       </a>
 
@@ -101,7 +98,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
           </div>
         </div>
       </a>
@@ -121,9 +117,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
           </div>
         </div>
       </a>
@@ -146,7 +139,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -169,7 +161,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -192,7 +183,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -215,7 +205,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -238,7 +227,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -261,7 +249,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <img src="{{ '/assets/images/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
           </div>
         </div>
       </a>
@@ -282,9 +269,6 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Standardize your automation developer experience across the organization using Ansible Development Tools, from individual uv/pip installs to enterprise-governed Dev Spaces with 5-minute onboarding.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
-          </div>
         </div>
       </a>
 
@@ -303,9 +287,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Two-site active-passive disaster recovery for Ansible Automation Platform 2.7 on OpenShift using CloudNativePG cross-cluster replication, shared secrets, and controlled switchover procedures.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
           </div>
         </div>
       </a>
@@ -331,9 +312,6 @@ patternfly: true
             <div class="pf-v6-c-card__body">
               Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
             </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
-            </div>
           </div>
         </a>
 
@@ -352,9 +330,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__body">
               Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
             </div>
           </div>
         </a>
@@ -377,7 +352,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <img src="{{ '/assets/images/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
             </div>
           </div>
         </a>
@@ -400,7 +374,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <img src="{{ '/assets/images/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
             </div>
           </div>
         </a>
@@ -423,7 +396,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
             </div>
           </div>
         </a>
@@ -445,9 +417,6 @@ patternfly: true
             <div class="pf-v6-c-card__body">
               Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
             </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
-            </div>
           </div>
         </a>
 
@@ -466,9 +435,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__body">
               Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
             </div>
           </div>
         </a>
@@ -491,7 +457,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <img src="{{ '/assets/images/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation</span></span>
             </div>
           </div>
         </a>
@@ -511,9 +476,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__body">
               A journey guide for operations teams: when EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution</span></span>
             </div>
           </div>
         </a>
