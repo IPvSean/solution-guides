@@ -2,19 +2,19 @@
 
 ## Overview
 
-AAP at enterprise scale writes incessantly to large tables in its PostgreSQL database, keeping track of: job execution records, authorization tokens, and host health checks. PostgreSQL's default autovacuum settings were designed for smaller, less write-intensive databases and do not keep pace with this workload.
-
-Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row - rather than modifying the row in place. On large, frequently-written tables these accumulate quickly: at production AAP scale, a single high-churn table can generate ~27,000 dead tuples per hour. With default autovacuum settings, these dead tuples can wait around for more than 6 hours before autovacuum clears them. While they wait, queries must still scan over dead tuples even though they are invisible to them, degrading performance and, at scale, producing user-visible slowdowns.
-
-This guide documents three targeted parameter changes, tested in order of impact, to correct this problem and keep large tables continuously clean.
-
-> **Tip:** Parameter glossary
->
-> See [Key Terms](#key-terms) for definitions of metrics, settings, and failure modes used throughout this guide.
+**Three `postgresql.conf` changes, applied in order, keep high-churn AAP tables continuously clean.**
 
 ![Decision Card: Which autovacuum tuning applies to your tables?](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Decision-Card.png)
 
 <p class="guide-image-caption">Use this card to pick your starting rung, then follow the <a href="#tuning-path">tuning path</a> below.</p>
+
+AAP at enterprise scale writes incessantly to large tables in its PostgreSQL database, keeping track of: job execution records, authorization tokens, and host health checks. PostgreSQL's default autovacuum settings were designed for smaller, less write-intensive databases and do not keep pace with this workload.
+
+Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row - rather than modifying the row in place. On large, frequently-written tables these accumulate quickly: at production AAP scale, a single high-churn table can generate ~27,000 dead tuples per hour. With default autovacuum settings, these dead tuples can wait around for more than 6 hours before autovacuum clears them. While they wait, queries must still scan over dead tuples even though they are invisible to them, degrading performance and, at scale, producing user-visible slowdowns.
+
+> **Tip:** Parameter glossary
+>
+> See [Key Terms](#key-terms) at the end for definitions of metrics, settings, and failure modes used throughout this guide.
 
 ## Prerequisites
 - Superuser access to the AAP PostgreSQL instance
@@ -31,7 +31,7 @@ This guide documents three targeted parameter changes, tested in order of impact
 
 ---
 
-## The Baseline: What Default Settings Look Like at Scale
+## Baseline at scale
 
 In a large AAP deployment, the database receives a continuous stream of writes: every executed job creates and updates records in `main_unifiedjob`; every API call touches the OAuth2 token table; every automation run updates host metrics. Tables grow to hundreds of thousands of rows and are updated thousands of times per hour. In this environment, PostgreSQL's default setting `scale_factor=0.2` falls short.
 
@@ -45,6 +45,8 @@ The chart in Rung 1 (left panel) shows `main_unifiedjob` under default settings:
 The root cause: `scale_factor=0.2` means that, at this scale, autovacuum waits for 160,000 dead
 tuples on an 800K-row table before acting. At ~27,000 dead tuples/hour, that
 threshold is crossed every ~6 hours. *The table never stays clean.*
+
+**Ready to tune?** See the [tuning path](#tuning-path) below, then [Rung 1](#rung-1-lower-the-trigger).
 
 ---
 
@@ -323,6 +325,8 @@ reach 100% before the pass ends. If it does not, increase `cost_limit` and re-ch
 
 ## Troubleshooting
 
+Same rung mapping as the [tuning path](#tuning-path) table. Use this section when you see the symptom in production.
+
 | Symptom | Likely Cause | Fix |
 |---|---|---|
 | `dead_pct` climbs for hours; autovacuum fires only a few times per day | Trigger-limited: `scale_factor` too high; threshold rarely crossed | Lower `scale_factor` → [Rung 1](#rung-1-lower-the-trigger) |
@@ -424,18 +428,11 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group key-terms-group--table" markdown="1">
+<div class="key-terms-group">
 
 <h3 id="key-terms-failure-modes">Failure modes</h3>
 
-| | trigger-limited | throttle-limited |
-|---|---|---|
-| **Symptom** | `dead_pct` climbs for hours; autovacuum fires only a few times per day | `autovacuum_count` rising fast but `n_dead_tup` stays elevated after each fire |
-| **Root cause** | `scale_factor` too high; threshold rarely crossed | Each pass cut short by `cost_limit` before the table is fully cleaned |
-| **Metric signal** | Few passes per day; `dead_pct` high for hours, then drops sharply when vacuum finally runs | High `autovacuum_count` delta AND persistently elevated `n_dead_tup` at the same time |
-| **Fix** | Lower `scale_factor` → [Rung 1](#rung-1-lower-the-trigger) | Per-table `cost_limit` → [Rung 3](#rung-3-ensure-each-pass-completes) |
-
-<p class="key-terms-table-note">See <a href="#troubleshooting">Troubleshooting</a> for symptom-to-fix mapping in production.</p>
+<p class="key-terms-table-note"><strong>trigger-limited</strong> and <strong>throttle-limited</strong> describe why autovacuum falls behind despite different symptoms. See the <a href="#tuning-path">tuning path</a> for which rung to apply and <a href="#troubleshooting">Troubleshooting</a> for symptom-to-fix mapping in production.</p>
 
 </div>
 
