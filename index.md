@@ -215,7 +215,10 @@ patternfly: true
             Cut incident MTTR from hours to minutes: LEAP identifies remediation opportunities, the Ansible MCP server surfaces approved playbooks, and governed execution closes incidents with full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
@@ -528,7 +531,10 @@ patternfly: true
               Automate ServiceNow ticket creation and enrich incidents with CVE data from Red Hat Insights.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
             </div>
           </div>
         </a>

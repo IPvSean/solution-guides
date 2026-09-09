@@ -1527,10 +1527,17 @@ b {
   display: inline-flex;
   align-items: center;
   line-height: 0;
-}
 
-.card-partner-logo--dark {
-  display: none;
+  .card-partner-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .card-partner-logo--dark {
+    display: none;
+  }
 }
 
 .card-partner-logo {
