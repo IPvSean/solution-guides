@@ -68,7 +68,7 @@ section > ul, section > ol {
 
 section > blockquote {
   background: #F0EDFA;
-  border-top: 30px solid rgb(94 64 190);
+  border-top: 30px solid #5e40be;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
@@ -1116,7 +1116,7 @@ b {
   gap: 6px;
   font-size: 14px;
   font-weight: 600;
-  color: rgb(94 64 190);
+  color: #5e40be;
   text-decoration: none;
   margin-bottom: 20px;
   padding-bottom: 12px;
@@ -1125,7 +1125,7 @@ b {
 }
 
 .guide-sidebar__back:hover {
-  color: rgb(70 48 145);
+  color: #463091;
   text-decoration: underline;
 }
 
@@ -1162,13 +1162,13 @@ b {
 }
 
 .guide-sidebar__link:hover {
-  color: rgb(94 64 190);
+  color: #5e40be;
 }
 
 .guide-sidebar__link--active {
-  color: rgb(94 64 190);
+  color: #5e40be;
   font-weight: 600;
-  border-left-color: rgb(94 64 190);
+  border-left-color: #5e40be;
 }
 
 @media screen and (max-width: 900px) {
