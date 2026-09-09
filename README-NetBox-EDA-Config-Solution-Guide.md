@@ -15,32 +15,6 @@ This guide demonstrates how to **automatically push configuration changes to net
 > - **Use Case B: Event-driven NTP and login banner configuration.** Update a config context in NetBox, watch EDA push the change to devices automatically.
 > - **Use Case C: Event-driven device provisioning.** Add a new device to NetBox, trigger a workflow that configures NTP, banner, and VLANs in parallel.
 
-### Table of Contents
-
-- [Background](#background)
-- [Solution](#solution)
-  - [Components](#components)
-  - [Who Benefits](#who-benefits)
-  - [Demos, Videos, and Labs](#demos-videos-and-labs)
-- [Prerequisites](#prerequisites)
-  - [AAP Version](#aap-version)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-- [Workflow and Architecture](#workflow-and-architecture)
-  - [Use Case A: Dynamic Inventory](#use-case-a-dynamic-inventory-workflow)
-  - [Use Case B: Event-Driven Config Updates](#use-case-b-event-driven-config-updates-workflow)
-  - [Use Case C: New Device Provisioning](#use-case-c-new-device-provisioning-workflow)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Use Case A: NetBox Dynamic Inventory](#use-case-a-netbox-dynamic-inventory)
-  - [Use Case B: Event-Driven NTP and Banner Configuration](#use-case-b-event-driven-ntp-and-banner-configuration)
-  - [Use Case C: Event-Driven Device Provisioning Workflow](#use-case-c-event-driven-device-provisioning-workflow)
-- [Validation](#validation)
-  - [Testing Dynamic Inventory](#testing-dynamic-inventory)
-  - [Testing Event-Driven Config Updates](#testing-event-driven-config-updates)
-  - [Troubleshooting Common Failures](#troubleshooting-common-failures)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-
 ---
 
 ## Background

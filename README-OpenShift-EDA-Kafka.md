@@ -19,32 +19,6 @@ This guide demonstrates how to build a push-based event pipeline that captures O
 >
 > The walkthrough captures and logs namespace activity as it flows through each stage. For adding automated response actions (applying quotas, enforcing policies, triggering remediation), see the [Maturity Path](#maturity-path) section.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [OpenShift](#openshift)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-- [OpenShift API Event Pipeline Workflow](#openshift-api-event-pipeline-workflow)
-  - [Operational Impact per Stage](#operational-impact-per-stage)
-  - [CloudEvents Captured](#cloudevents-captured)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [1. Deploy Kafka with Streams for Apache Kafka](#1-deploy-kafka-with-streams-for-apache-kafka)
-  - [2. Install OpenShift Serverless and KnativeKafka](#2-install-openshift-serverless-and-knativekafka)
-  - [3. Create Namespace and RBAC for APIServerSource](#3-create-namespace-and-rbac-for-apiserversource)
-  - [4. Configure KafkaSink to Publish to Kafka](#4-configure-kafkasink-to-publish-to-kafka)
-  - [5. Create APIServerSource to Watch Namespaces](#5-create-apiserversource-to-watch-namespaces)
-  - [6. Configure EDA Resources](#6-configure-eda-resources)
-  - [7. Configure Automation Controller Resources](#7-configure-automation-controller-resources)
-- [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Summary](#summary)
-
 <h2 id="background"></h2>
 
 ## Background

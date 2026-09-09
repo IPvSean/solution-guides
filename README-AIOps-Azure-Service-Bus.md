@@ -17,28 +17,6 @@ This guide demonstrates how to connect **Azure Service Bus Queues** directly to 
 >
 > For the full end-to-end AIOps pipeline -- including AI inference, Lightspeed playbook generation, and the Crawl/Walk/Run maturity model -- see [AIOps automation with Ansible](README-AIOps.md). This guide focuses specifically on using **Azure Service Bus** as the event transport layer.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-- [Azure Service Bus to Ansible Workflow](#azure-service-bus-to-ansible-workflow)
-  - [Operational Impact per Stage](#operational-impact-per-stage)
-  - [Workflow Diagram](#workflow-diagram)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [1. Configure Azure Service Bus Queue](#1-configure-azure-service-bus-queue)
-  - [2. EDA Rulebook for Azure Service Bus Events](#2-eda-rulebook-for-azure-service-bus-events)
-  - [3. Enrichment Workflow -- Gather Context and Analyze with AI](#3-enrichment-workflow--gather-context-and-analyze-with-ai)
-  - [4. Notify and Remediate](#4-notify-and-remediate)
-- [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Summary](#summary)
-
 <h2 id="background"></h2>
 
 ## Background

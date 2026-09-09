@@ -18,18 +18,6 @@ This guide documents three targeted parameter changes, tested in order of impact
 deployment. Rungs 2 and 3 are conditional; apply them when diagnostic tests confirm
 they are needed.
 
-## Table of Contents
-
-- [The Baseline: What Default Settings Look Like at Scale](#the-baseline-what-default-settings-look-like-at-scale)
-- [Rung 1: Lower the Trigger](#rung-1-lower-the-trigger)
-- [Rung 2: Increase Check Frequency](#rung-2-increase-check-frequency)
-- [Rung 3: Ensure Each Pass Completes](#rung-3-ensure-each-pass-completes)
-- [Key Terms](#key-terms)
-- [Validation](#validation)
-- [Troubleshooting](#troubleshooting)
-- [Where to Start](#where-to-start)
-- [Related Guides](#related-guides)
-
 ## Prerequisites
 - Superuser access to the AAP PostgreSQL instance
 - Ability to edit `postgresql.conf` and run `SELECT pg_reload_conf()`

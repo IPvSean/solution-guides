@@ -20,24 +20,6 @@ This implementation guide shows how to deploy **AAP 2.7 (operator-based) on two 
 
 **Related published guide:** For VM-based Active-Passive DR with EDB Postgres Advanced Server (not OpenShift/CNPG), see [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md).
 
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [HA/DR Architecture](#hadr-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Install the Operators](#1-install-the-operators)
-  - [Configure External Secrets](#2-configure-external-secrets)
-  - [Deploy the CloudNativePG Cluster](#3-deploy-the-cloudnativepg-cluster)
-  - [Deploy AAP](#4-deploy-aap)
-  - [Failover Procedures](#6-failover-procedures)
-- [Validation](#validation)
-- [Verified Test Scenarios](#verified-test-scenarios)
-- [Day 2 Operations](#8-day-2-operations)
-- [Known Issues](#known-issues)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Appendix A: ODF RGW Multisite Storage](#appendix-a-odf-rgw-multisite-storage)
-
 ---
 
 ## Background

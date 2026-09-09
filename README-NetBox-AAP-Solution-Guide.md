@@ -14,30 +14,6 @@ This guide demonstrates how to **eliminate manual intervention in WAN circuit fa
 > - **Use Case A: Event-driven circuit failover.** A NetBox status change triggers automatic backup discovery, router reconfiguration, CMDB update, and bidirectional failback.
 > - **Use Case B: Automated incident reporting.** Failover events generate and publish timestamped HTML reports with topology diagrams and audit trails.
 
-### Table of Contents
-
-- [Background](#background)
-- [Solution](#solution)
-  - [Components](#components)
-  - [Who Benefits](#who-benefits)
-  - [Demos, Videos, and Labs](#demos-videos-and-labs)
-- [Prerequisites](#prerequisites)
-  - [AAP Version](#aap-version)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-- [Workflow and Architecture](#workflow-and-architecture)
-  - [Workflow Diagram](#workflow-diagram)
-  - [Narrative Walkthrough](#narrative-walkthrough)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Use Case A: Event-Driven Circuit Failover](#use-case-a-event-driven-circuit-failover)
-  - [Use Case B: Automated Incident Reporting](#use-case-b-automated-incident-reporting)
-- [Validation](#validation)
-  - [Testing the End-to-End Pipeline](#testing-the-end-to-end-pipeline)
-  - [Expected Results](#expected-results)
-  - [Troubleshooting Common Failures](#troubleshooting-common-failures)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-
 ---
 
 ## Background

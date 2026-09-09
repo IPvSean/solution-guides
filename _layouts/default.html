@@ -221,7 +221,25 @@
           || document.querySelector('.cards-layout');
         if (isIndex) return;
 
-        var headings = section.querySelectorAll('h2[id]');
+        var skipHeadingIds = {
+          'overview': true,
+          'table-of-contents': true,
+          'next-steps': true,
+          'summary': true
+        };
+
+        function includeInSidebar(h) {
+          if (h.textContent.trim() === '') return false;
+          if (skipHeadingIds[h.id.toLowerCase()]) return false;
+          var label = h.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+          return label !== 'overview'
+            && label !== 'table of contents'
+            && label !== 'next steps'
+            && label !== 'summary';
+        }
+
+        var allHeadings = section.querySelectorAll('h2[id]');
+        var headings = Array.prototype.filter.call(allHeadings, includeInSidebar);
         if (headings.length < 2) return;
 
         var sidebar = document.createElement('aside');
