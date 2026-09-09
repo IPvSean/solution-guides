@@ -1,6 +1,6 @@
 <div class="guide-header">
 
-<h1>PostgreSQL Autovacuum Tuning for Ansible Automation Platform</h1>
+<h1>PostgreSQL Autovacuum Tuning Guide for Ansible Automation Platform</h1>
 
 <span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation guide</span>
 
@@ -12,7 +12,7 @@
 Three <code>postgresql.conf</code> changes, applied in order, keep high-churn AAP tables continuously clean.
 </div>
 
-AAP at enterprise scale writes incessantly to large tables in its PostgreSQL database, keeping track of: job execution records, authorization tokens, and host health checks. PostgreSQL's default autovacuum settings were designed for smaller, less write-intensive databases and do not keep pace with this workload.
+AAP at enterprise scale writes incessantly to large tables in its PostgreSQL database, continuously keeping track of job execution records, authorization tokens, and host health checks. PostgreSQL's default autovacuum settings were designed for smaller, less write-intensive databases and do not keep pace with this workload.
 
 Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row - rather than modifying the row in place. On large, frequently-written tables these accumulate quickly: at production AAP scale, a single high-churn table can generate ~27,000 dead tuples per hour. With default autovacuum settings, these dead tuples can wait around for more than 6 hours before autovacuum clears them. While they wait, queries must still scan over dead tuples even though they are invisible to them, degrading performance and, at scale, producing user-visible slowdowns.
 
@@ -23,6 +23,12 @@ Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row
 > **Tip:** Parameter glossary
 >
 > See [Key Terms](#key-terms) at the end for definitions of metrics, settings, and failure modes used throughout this guide.
+
+## Background
+
+This guide was developed and validated in summer 2026 on a Red Hat Scale Lab cluster running AAP 2.6 (Controller 4.7.15) on OpenShift 4.21.19 with a two-node CloudNativePG PostgreSQL 15.10 database. Sized to represent a large enterprise deployment, the environment included approximately 37,000 managed hosts, 40,000 job templates, and a sustained workload of more than 3,000 jobs per hour (~75,000 per day). Database memory configuration matched a tuned production cluster with </code>shared_buffers=16 GB`</code> and `</code>effective_cache_size=48 GB.</code> 
+
+To simulate what a customer environment looks like without autovacuum tuning, the two highest-churn tables (</code>main_unifiedjob</code> and </code>main_job</code>) had autovacuum deliberately disabled for four days before measurement began, driving </code>main_unifiedjob</code> to 39% dead tuples at the start of the baseline rung. Each of the three tuning rungs ran for approximately 10 hours with bloat state carried forward. Since there were no table resets between rungs, each set of parameters had to recover from real accumulated bloat rather than a freshly vacuumed starting point. Measurements were taken at T=0, 2 hr, 5 hr, 8 hr, and 10 hr within each rung.
 
 ## Prerequisites
 - Superuser access to the AAP PostgreSQL instance
@@ -68,7 +74,7 @@ threshold is crossed every ~6 hours. *The table never stays clean.*
 
 ---
 
-## Rung 1: Lower the Trigger
+## Rung 1: Lower the trigger
 
 ![Rung 1: scale_factor=0.02 keeps the table continuously clean](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Rung1.png)
 
@@ -96,18 +102,25 @@ autovacuum_max_workers = 6
 SELECT pg_reload_conf();
 ```
 
+**How to choose your target dead_pct:** Dead tuples impose wasted I/O proportional to their share of tables. For example, a sequential scan at 20% `dead_pct` (PostgreSQL's default trigger) traverses 20% more pages than needed. For AAP's write-intensive tables (`main_unifiedjob`, `main_job`, and gateway's OAuth2 table), an answer has been validated: **2%.** These high-churn tables are consistent across large deployments, and 2% is the validated choice for target `dead_pct`.
+
+If you need to evaluate tables outside of this set, start with `pg_stat_user_table`: find tables where both `n_dead_tup` is elevated and `seq_scan` is high. Those are the tables where a tight `scale_factor` pages off. Us the same 2% ceiling on these. For small tables where absolute dead tuple counts stay low regardless of percentage, the `vacuum_threshold` setting in Rung 2 is the better lever than `scale_factor.`
+
 **How to tune `scale_factor`:** Work backwards from the maximum `dead_pct` you want to
 allow before autovacuum fires. At large table sizes, `scale_factor ≈ target_dead_pct ÷ 100`:
 
+<div style="width: fit-content;">
 | Target max dead_pct | scale_factor |
 |---|---|
 | ~10% | 0.10 |
 | ~5% | 0.05 |
 | ~2% | 0.02 ← used in this study |
 | ~1% | 0.01 |
+</div>
 
-For query-performance-sensitive tables (large sequential scans, join targets), 2% is a
-reasonable ceiling. After choosing a `scale_factor` value, estimate the expected autovacuum
+This study observed `dead_pct` staying below 0.8% with `scale_factor=0.02.` Autovacuum fires and clears the table before `dead_pct` reaches the 2% ceiling. 
+
+After choosing a `scale_factor` value, estimate the expected autovacuum
 fire rate to flag any table where each pass must complete efficiently:
 
 <p class="code-lead code-lead--reference">Reference formula:</p>
@@ -133,7 +146,7 @@ require it.
 
 ---
 
-## Rung 2: Increase Check Frequency
+## Rung 2: Increase check frequency
 
 ![Rung 2: naptime=10s on indexed table (HOT disabled) drives a 6× surge in vacuum rate](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Rung2.png)
 
@@ -142,7 +155,7 @@ this is the case, HOT (Heap Only Tuple) optimization is disabled on that table. 
 PostgreSQL to handle an UPDATE entirely within the same page without creating a dead tuple —
 but only when the updated column has no index. When the column is indexed, PostgreSQL must
 update the index too, so every UPDATE produces a dead tuple that autovacuum must clean.
-The following query returns `hot_ratio` — the percentage of updates handled by HOT — for
+The following query returns the percentage of updates handled by HOT, `hot_ratio`, for
 each table, ordered by update volume:
 
 <p class="code-lead">Run this diagnostic:</p>
@@ -157,8 +170,14 @@ WHERE n_tup_upd > 0
 ORDER BY n_tup_upd DESC;
 ```
 
-Any table showing `hot_ratio` well below 100% has HOT disabled and is generating a dead
-tuple on every UPDATE.
+Any table showing `hot_ratio` well below 100% has HOT disabled and is generating a dead tuple on every UPDATE.
+
+**Default settings and why they fall short:** With the default naptime at 60 seconds, autovacuum wakes up to inspect each table once per minute. The default absolute minimum dead-tuple count required before autovacuum considers vacuuming is 50, regardless of `scale_factor.`  
+
+At 60-second intervals, a HOT-disabled table receiving 82 dead tuples per second accumulates nearly 5,000 dead tuples between inspections.
+Even when the trigger threshold is crossed within seconds of a cleanup, autovacuum doesn't notice for up to another 60 seconds. On small
+tables, the vacuum_threshold of 50 compounds this: when scale_factor × n_live_rows is small, the absolute threshold dominates and can
+block autovacuum entirely.
 
 > **Tip:** Why naptime matters for OAuth2 tables
 >
@@ -170,8 +189,8 @@ tuple on every UPDATE.
 <p class="code-lead">Apply in postgresql.conf:</p>
 
 ```
-autovacuum_naptime = 10s
-autovacuum_vacuum_threshold = 20
+autovacuum_naptime = 10s           # default: 60s
+autovacuum_vacuum_threshold = 20   # default: 50
 ```
 
 <p class="code-lead">Run this:</p>
@@ -181,6 +200,13 @@ SELECT pg_reload_conf();
 ```
 
 Lowering `vacuum_threshold` from 50 to 20 dead tuples ensures small, high-churn tables are not ignored. A table with only a few thousand rows may never accumulate 50 dead tuples between checks, but at high update rates, 20 is crossed almost immediately.
+
+<p class="code-lead code-lead--reference">Reference formula:</p>
+
+```
+naptime ≈ (vacuum_threshold + scale_factor × n_live_rows ) ÷ (dead_tuple_rate_per_second)
+```
+For gateway.dab_oauth2 in this study: (20 + 0.02 × ~50,000) ÷ 82 ≈ 13s — rounded to 10s for a tighter response window. For most HOT-disabled tables in an active AAP deployment, 10–15s is appropriate.
 
 **Result:** On `gateway.dab_oauth2`, vacuuming fires averaged 530 per 10-hour rung before
 naptime changed (461 fires in rung 0; 600 in rung 1) and 3,571 after (3,574 in rung 2;
@@ -196,7 +222,7 @@ naptime alone.
 
 ---
 
-## Rung 3: Ensure Each Pass Completes
+## Rung 3: Ensure each pass completes
 
 ![Rung 3: cost_limit=1000 lets each vacuum pass finish the table](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Rung3.png)
 
