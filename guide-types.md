@@ -53,7 +53,22 @@ permalink: /guide-types/
       <p class="guide-type-track__body">Partner integrations where <strong>Event-Driven Ansible</strong> closes the loop from partner events to automated action -- without an AI enrichment layer. Use these when webhooks, queues, or CMDB state changes should trigger governed Ansible execution in real time.</p>
       <p class="guide-type-track__examples"><strong>Examples:</strong> Automated WAN circuit failover with NetBox and AAP, event-driven network configuration with NetBox and AAP.</p>
     </article>
+
+    <article class="guide-type-track guide-type-track--journey">
+      <div class="guide-type-track__header">
+        <span class="guide-type-track__badge">Journey</span>
+        <h3 id="journey-guides" class="guide-type-track__title">Journey Guides</h3>
+      </div>
+      <p class="guide-type-track__body">Cross-cutting adoption guides with <strong>explicit decision points</strong> for when to add the next capability. Use these when you need stage-by-stage guidance rather than a single partner reference architecture.</p>
+      <p class="guide-type-track__examples"><strong>Example:</strong> Ticket Enrichment Automation: From EDA to AI-Driven Orchestration.</p>
+    </article>
   </div>
+
+  <p class="guide-type-panel__modifiers-intro">Some Solution Guides carry an optional modifier badge:</p>
+  <ul class="guide-type-modifiers">
+    <li><strong>Foundational</strong> -- start here for the reference architecture in a domain (for example, AIOps automation with Ansible).</li>
+    <li><strong>Journey Guide</strong> -- adoption path with signals for when EDA, AAP, AI enrichment, or Automation Orchestrator is the right next step.</li>
+  </ul>
 
   <a href="{{ '/' | relative_url }}" class="guide-type-panel__cta">Browse Solution Guides</a>
 </section>
