@@ -44,7 +44,7 @@ patternfly: true
         <input type="checkbox" value="published" checked> Published
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
-        <input type="checkbox" value="wip"> Work in Progress
+        <input type="checkbox" value="wip" checked> Work in Progress
       </label>
     </div>
     <div class="cards-sidebar__section">
@@ -794,7 +794,7 @@ patternfly: true
   }
 
   function isDefaultStatusFilter() {
-    return publishedCheckbox && publishedCheckbox.checked && wipCheckbox && !wipCheckbox.checked;
+    return publishedCheckbox && publishedCheckbox.checked && wipCheckbox && wipCheckbox.checked;
   }
 
   function hasActiveFilters(query, activePartners, activeTracks) {
@@ -917,7 +917,7 @@ patternfly: true
     trackCheckboxes.forEach(function (cb) { cb.checked = false; });
     partnerCheckboxes.forEach(function (cb) { cb.checked = false; });
     if (publishedCheckbox) publishedCheckbox.checked = true;
-    if (wipCheckbox) wipCheckbox.checked = false;
+    if (wipCheckbox) wipCheckbox.checked = true;
     headerInput.value = '';
     filterCards();
   });
