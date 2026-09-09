@@ -1497,7 +1497,7 @@ b {
 .cards-sidebar {
   width: 232px;
   flex-shrink: 0;
-  padding-top: 14px;
+  padding-top: 0;
   position: sticky;
   top: 20px;
   align-self: flex-start;
@@ -1567,6 +1567,39 @@ b {
 .cards-main {
   flex: 1;
   min-width: 0;
+  padding-top: 0;
+}
+
+.cards-layout .cards-guide-section__heading {
+  margin: 0 0 8px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.cards-layout .cards-guide-section__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6a6e73;
+}
+
+.cards-track-subsection__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4d4d4d;
+  margin: 4px 0 12px;
+}
+
+.cards-sidebar__jump-note {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #6a6e73;
+  margin: 2px 0 8px 22px;
+  max-width: 200px;
 }
 
 @media screen and (max-width: 768px) {
@@ -1867,12 +1900,13 @@ b {
 @media screen and (min-width: 768px) {
   .card-foundational--hero__main {
     flex-direction: row;
-    align-items: center;
-    gap: 24px;
+    align-items: flex-start;
+    gap: 16px;
   }
 
   .card-foundational--hero .pf-v6-c-card__title {
-    flex: 0 0 38%;
+    flex: 0 0 32%;
+    max-width: 32%;
     margin: 0;
     padding-right: 0;
   }
@@ -1880,6 +1914,7 @@ b {
   .card-foundational--hero .pf-v6-c-card__body {
     flex: 1;
     margin: 0;
+    padding-top: 2px;
   }
 
   .card-foundational--hero .pf-v6-c-card__title-text {
@@ -2685,6 +2720,18 @@ b {
 
   .cards-guide-section__title {
     color: #ffffff;
+  }
+
+  .cards-layout .cards-guide-section__title {
+    color: var(--text-muted);
+  }
+
+  .cards-track-subsection__title {
+    color: var(--text-secondary);
+  }
+
+  .cards-sidebar__jump-note {
+    color: var(--text-muted);
   }
 
   .cards-track-section__title {

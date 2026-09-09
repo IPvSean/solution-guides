@@ -29,6 +29,7 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Journey Guides
         </a>
+        <p id="journey-sidebar-note" class="cards-sidebar__jump-note" hidden>No published guides yet. Enable Work in Progress to preview.</p>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
@@ -104,6 +105,7 @@ patternfly: true
     </div>
     <p class="cards-intro">
       Solution guides by track (AIOps, Event-Driven, Journey) and production implementation guides for Ansible Automation Platform.
+      Journey guides are in preview -- enable Work in Progress to view them.
       Learn the difference in <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
     </p>
     <p id="guide-search-count" class="cards-search__count"></p>
@@ -147,6 +149,7 @@ patternfly: true
             </div>
           </div>
         </a>
+        <h4 class="cards-track-subsection__title">Partner integrations</h4>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
         <div class="pf-v6-c-card">
@@ -741,6 +744,7 @@ patternfly: true
   var solutionGuidesSection = document.getElementById('solution-guides');
   var aiopsFoundationalHero = document.getElementById('aiops-foundational-hero');
   var journeyEmptyEl = document.getElementById('journey-empty');
+  var journeySidebarNote = document.getElementById('journey-sidebar-note');
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
@@ -821,6 +825,7 @@ patternfly: true
       if (cfg.emptyState) {
         var showEmpty = visibleInGallery === 0 && totalInGallery > 0 && onlyPublishedDefault && !hasOtherFilters;
         cfg.emptyState.hidden = !showEmpty;
+        if (journeySidebarNote) journeySidebarNote.hidden = !showEmpty;
         cfg.gallery.style.display = showEmpty ? 'none' : '';
         cfg.section.style.display = sectionVisible > 0 || showEmpty ? '' : 'none';
         return;
