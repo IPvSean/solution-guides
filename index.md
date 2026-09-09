@@ -172,7 +172,10 @@ patternfly: true
             Automate Windows certificate rotation end-to-end: Event-Driven Ansible detects expiring certs, AI evaluates risk and timing, Ansible performs the rotation, and ITSM documents the full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/logos/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/windows-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
