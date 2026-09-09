@@ -315,6 +315,284 @@ img {
   }
 }
 
+// Guide types page
+
+.guide-types-lead {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: #4d4d4d;
+  margin: 0 0 28px;
+  max-width: 720px;
+}
+
+.guide-types-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.guide-type-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  &--solution {
+    border-top: 4px solid #3e8635;
+  }
+
+  &--implementation {
+    border-top: 4px solid #0066cc;
+  }
+}
+
+.guide-type-panel__header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.guide-type-panel__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: #151515;
+}
+
+.guide-type-facts {
+  margin: 0 0 20px;
+  padding: 0;
+}
+
+.guide-type-fact {
+  margin: 0 0 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ececec;
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  dt {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #6a6e73;
+    margin: 0 0 4px;
+  }
+
+  dd {
+    margin: 0;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #2d3039;
+  }
+}
+
+.guide-type-panel__tracks-intro {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4d4d4d;
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  background: #f3f0fa;
+  border: 1px solid #e8e0f5;
+  border-radius: 8px;
+}
+
+.guide-type-tracks {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.guide-type-track {
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: #ffffff;
+}
+
+.guide-type-track__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.guide-type-track__badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.guide-type-track--aiops .guide-type-track__badge {
+  color: #5e40be;
+  background: #f3f0fa;
+  border: 1px solid #e8e0f5;
+}
+
+.guide-type-track--event-driven .guide-type-track__badge {
+  color: #0f6e82;
+  background: #e7f6f8;
+  border: 1px solid #b8dde5;
+}
+
+.guide-type-track__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #151515;
+  scroll-margin-top: 24px;
+}
+
+.guide-type-track__body,
+.guide-type-track__examples {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4d4d4d;
+  margin: 0;
+}
+
+.guide-type-track__examples {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #6a6e73;
+}
+
+.guide-type-panel__cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none !important;
+  color: #5e40be;
+  background: #f3f0fa;
+  border: 1px solid #e8e0f5;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: #463091;
+    background: #ebe4f7;
+    border-color: #c4b5e8;
+    text-decoration: none !important;
+  }
+}
+
+.guide-type-panel--implementation .guide-type-panel__cta {
+  color: #0066cc;
+  background: #f5f9ff;
+  border-color: #b8d4f0;
+
+  &:hover,
+  &:focus {
+    color: #004080;
+    background: #e8f2fc;
+    border-color: #8ab4e8;
+  }
+}
+
+.guide-types-together {
+  margin: 0 0 40px;
+  padding: 24px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #faf9fd 0%, #f5f5f5 100%);
+}
+
+.guide-types-together h2 {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: #151515;
+}
+
+.guide-types-together__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.guide-types-together__item {
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #ececec;
+
+  p {
+    margin: 8px 0 0;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #4d4d4d;
+  }
+}
+
+.guide-types-together__label {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+
+  &--solution {
+    color: #1e4f18;
+    background: #e9f5e9;
+    border: 1px solid #b7d9b4;
+  }
+
+  &--implementation {
+    color: #004080;
+    background: #e8f2fc;
+    border: 1px solid #b8d4f0;
+  }
+}
+
+.guide-types-together__closing {
+  margin: 0;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #6a6e73;
+}
+
+@media screen and (max-width: 900px) {
+  .guide-types-grid,
+  .guide-types-together__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 body.image-lightbox-open {
   overflow: hidden;
 }
@@ -2148,6 +2426,115 @@ b {
       background: linear-gradient(180deg, #1e3d1e 0%, #1a331a 100%);
       border-color: #3d7a3d;
     }
+  }
+
+  .guide-types-lead,
+  .guide-type-track__examples,
+  .guide-types-together__closing {
+    color: var(--text-muted);
+  }
+
+  .guide-type-panel {
+    background: var(--bg-surface);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 8px var(--shadow-sm);
+  }
+
+  .guide-type-panel__title,
+  .guide-type-track__title,
+  .guide-types-together h2 {
+    color: var(--text-primary);
+  }
+
+  .guide-type-fact {
+    border-bottom-color: var(--border-color);
+
+    dt {
+      color: var(--text-muted);
+    }
+
+    dd {
+      color: var(--text-secondary);
+    }
+  }
+
+  .guide-type-panel__tracks-intro {
+    color: var(--text-secondary);
+    background: #2a2540;
+    border-color: #4a3d7a;
+  }
+
+  .guide-type-track {
+    background: var(--bg-surface-alt);
+    border-color: var(--border-color);
+  }
+
+  .guide-type-track__body {
+    color: var(--text-secondary);
+  }
+
+  .guide-type-track--aiops .guide-type-track__badge {
+    color: #c4b5e8;
+    background: #2a2540;
+    border-color: #4a3d7a;
+  }
+
+  .guide-type-track--event-driven .guide-type-track__badge {
+    color: #9edbe8;
+    background: #1a3a42;
+    border-color: #2d6a78;
+  }
+
+  .guide-type-panel__cta {
+    color: #c4b5e8;
+    background: #2a2540;
+    border-color: #4a3d7a;
+
+    &:hover,
+    &:focus {
+      color: #e8e0f5;
+      background: #342d4d;
+      border-color: #5e40be;
+    }
+  }
+
+  .guide-type-panel--implementation .guide-type-panel__cta {
+    color: #9ec5fe;
+    background: #1e3a5f;
+    border-color: #3d6a9e;
+
+    &:hover,
+    &:focus {
+      color: #c4d9f8;
+      background: #254a70;
+      border-color: #5a8fc4;
+    }
+  }
+
+  .guide-types-together {
+    background: linear-gradient(135deg, #2a2540 0%, #24262b 100%);
+    border-color: var(--border-color);
+  }
+
+  .guide-types-together__item {
+    background: var(--bg-surface-alt);
+    border-color: var(--border-color);
+
+    p {
+      color: var(--text-secondary);
+    }
+  }
+
+  .guide-types-together__label--solution {
+    color: #b7e4b7;
+    background: #1e3d1e;
+    border-color: #3d7a3d;
+  }
+
+  .guide-types-together__label--implementation {
+    color: #9ec5fe;
+    background: #1e3a5f;
+    border-color: #3d6a9e;
   }
 
   .edit-link {
