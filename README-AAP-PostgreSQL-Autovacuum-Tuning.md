@@ -1,4 +1,6 @@
-# PostgreSQL Autovacuum Tuning for Ansible Automation Platform — Solution Guide
+# PostgreSQL Autovacuum Tuning for Ansible Automation Platform
+
+<p class="guide-type-badge guide-type-badge--implementation">Implementation Guide</p>
 
 ## Overview
 
