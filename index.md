@@ -13,24 +13,14 @@ patternfly: true
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Browse</h4>
       <nav class="cards-sidebar__nav" aria-label="Guide sections">
-        <div class="cards-sidebar__jump-row">
-          <a href="#solution-guides" class="cards-sidebar__jump">
-            <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-            Solution Guides
-          </a>
-          <a href="{{ '/guide-types' | relative_url }}#solution-guides" class="cards-sidebar__info" data-tooltip="Partner-focused guides that show how AAP solves business problems with integrated technologies." aria-label="Learn about Solution Guides">
-            <i class="fas fa-info-circle" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="cards-sidebar__jump-row">
-          <a href="#implementation-guides" class="cards-sidebar__jump">
-            <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-            Implementation Guides
-          </a>
-          <a href="{{ '/guide-types' | relative_url }}#implementation-guides" class="cards-sidebar__info" data-tooltip="How to deploy and configure AAP for reliability, performance, and production outcomes." aria-label="Learn about Implementation Guides">
-            <i class="fas fa-info-circle" aria-hidden="true"></i>
-          </a>
-        </div>
+        <a href="#solution-guides" class="cards-sidebar__jump">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          Solution Guides
+        </a>
+        <a href="#implementation-guides" class="cards-sidebar__jump">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          Implementation Guides
+        </a>
       </nav>
       <p class="cards-sidebar__learn-more">
         <a href="{{ '/guide-types' | relative_url }}">About guide types</a>
@@ -91,21 +81,20 @@ patternfly: true
     <p id="guide-search-count" class="cards-search__count"></p>
 
     <section id="solution-guides" class="cards-guide-section">
-      <h2 class="cards-guide-section__title">Solution Guides</h2>
+      <div class="cards-guide-section__heading">
+        <h2 class="cards-guide-section__title">Solution Guides</h2>
+        <a href="{{ '/guide-types' | relative_url }}#solution-guides" class="guide-section__info" data-tooltip="Partner-focused guides that show how AAP solves business problems with integrated technologies." aria-label="Learn about Solution Guides">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </div>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="solution-gallery">
       <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header card-header--labels">
+          <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-start-here">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-star pf-v6-c-label__icon"></i>
-                Start here
               </span>
             </span>
           </div>
@@ -221,7 +210,12 @@ patternfly: true
     </section>
 
     <section id="implementation-guides" class="cards-guide-section">
-      <h2 class="cards-guide-section__title">Implementation Guides</h2>
+      <div class="cards-guide-section__heading">
+        <h2 class="cards-guide-section__title">Implementation Guides</h2>
+        <a href="{{ '/guide-types' | relative_url }}#implementation-guides" class="guide-section__info" data-tooltip="How to deploy and configure AAP for reliability, performance, and production outcomes." aria-label="Learn about Implementation Guides">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </div>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
       <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,implementation,published">
         <div class="pf-v6-c-card">
@@ -250,17 +244,11 @@ patternfly: true
 
       <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
         <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header card-header--labels">
+          <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-cogs pf-v6-c-label__icon"></i>
                 Implementation Guide
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-start-here">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-star pf-v6-c-label__icon"></i>
-                Start here
               </span>
             </span>
           </div>
