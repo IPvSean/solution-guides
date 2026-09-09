@@ -1,5 +1,4 @@
 (function () {
-  var REFERENCE_PATTERN = /your_table_name|schema\.tablename|<computed_value>|YOUR_|estimated fires|÷/i;
   var OUTPUT_PATTERN = /^\s*\|[-+]+\|/m;
 
   function getLanguage(codeEl) {
@@ -19,16 +18,6 @@
     return 'Code';
   }
 
-  function classifyBlock(text, lang) {
-    if (REFERENCE_PATTERN.test(text)) return 'reference';
-    if (OUTPUT_PATTERN.test(text) && !/^\s*SELECT/m.test(text)) return 'reference';
-    if (/pg_reload_conf\s*\(\s*\)/i.test(text)) return 'runnable';
-    if (/^\s*(SELECT|ALTER TABLE|CREATE |DROP |INSERT |UPDATE |DELETE )/im.test(text)) return 'runnable';
-    if (/autovacuum_|^[a-z_]+ =/m.test(text) && lang !== 'sql') return 'runnable';
-    if (lang === 'sql') return 'runnable';
-    return 'reference';
-  }
-
   function enhanceBlock(pre) {
     if (pre.closest('.cards-layout') || pre.closest('.key-terms-glossary')) return;
     if (!pre.closest('section')) return;
@@ -36,13 +25,6 @@
     var code = pre.querySelector('code');
     var text = code ? code.textContent : pre.textContent;
     var lang = code ? getLanguage(code) : '';
-    var blockType = classifyBlock(text, lang);
-
-    if (pre.classList.contains('code-runnable') || pre.classList.contains('code-reference')) {
-      blockType = pre.classList.contains('code-reference') ? 'reference' : 'runnable';
-    } else {
-      pre.classList.add(blockType === 'reference' ? 'code-reference' : 'code-runnable');
-    }
 
     var wrapper = pre.parentElement;
     if (!wrapper.classList.contains('code-block-wrapper')) {
@@ -50,25 +32,13 @@
       wrapper.className = 'code-block-wrapper';
       pre.parentNode.insertBefore(wrapper, pre);
       wrapper.appendChild(pre);
-    } else {
-      wrapper.classList.add('code-block-wrapper');
     }
-
-    wrapper.classList.remove('code-block-wrapper--runnable', 'code-block-wrapper--reference');
-    wrapper.classList.add(blockType === 'reference' ? 'code-block-wrapper--reference' : 'code-block-wrapper--runnable');
 
     if (!wrapper.querySelector('.code-block-lang')) {
       var langLabel = document.createElement('span');
       langLabel.className = 'code-block-lang';
       langLabel.textContent = getLanguageLabel(lang, text);
       wrapper.insertBefore(langLabel, pre);
-    }
-
-    if (!wrapper.querySelector('.code-block-type')) {
-      var typeLabel = document.createElement('span');
-      typeLabel.className = 'code-block-type';
-      typeLabel.textContent = blockType === 'reference' ? 'Adapt' : 'Run';
-      wrapper.insertBefore(typeLabel, pre);
     }
 
     if (!wrapper.querySelector('.copy-btn')) {

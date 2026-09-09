@@ -350,10 +350,10 @@ td {
   margin: 1.25rem auto;
 }
 
-.code-block-lang,
-.code-block-type {
+.code-block-lang {
   position: absolute;
   top: 8px;
+  left: 10px;
   padding: 2px 8px;
   font-family: 'Red Hat Display', sans-serif;
   font-size: 10px;
@@ -363,27 +363,9 @@ td {
   border-radius: 4px;
   z-index: 2;
   line-height: 1.4;
-}
-
-.code-block-lang {
-  left: 10px;
   color: #2d3039;
   background: #fff;
   border: 1px solid #c0c4ca;
-}
-
-.code-block-type {
-  left: auto;
-  right: 72px;
-  color: #fff;
-  background: #5e40be;
-  border: 1px solid #5e40be;
-}
-
-.code-block-wrapper--reference .code-block-type {
-  color: #2d3039;
-  background: #f0f1f3;
-  border-color: #c0c4ca;
 }
 
 .code-block-wrapper pre {
@@ -394,14 +376,6 @@ td {
   background: #f5f2f0 !important;
   overflow-x: auto;
   padding-top: 2.25rem !important;
-}
-
-.code-block-wrapper--runnable pre {
-  border-left: 4px solid #5e40be !important;
-}
-
-.code-block-wrapper--reference pre {
-  border-left: 4px solid #c0c4ca !important;
 }
 
 .code-block-wrapper pre code {
