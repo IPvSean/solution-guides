@@ -368,7 +368,10 @@ patternfly: true
               Connect Amazon SQS to Event-Driven Ansible so CloudWatch, EventBridge, and other AWS events trigger AI diagnosis and automated remediation without custom polling or Lambda glue code.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+                <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo card-partner-logo--light">
+                <img src="{{ '/assets/images/logos/aws-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              </span>
             </div>
           </div>
         </a>
