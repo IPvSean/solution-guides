@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Ansible Guides
+title: AAP Guides
 patternfly: true
 ---
 
