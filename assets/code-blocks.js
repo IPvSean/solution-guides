@@ -19,12 +19,14 @@
     return 'Code';
   }
 
-  function leadToLabel(leadEl) {
-    var text = leadEl.textContent.replace(/:\s*$/, '').trim();
-    if (/formula/i.test(text)) return 'Formula';
-    if (/expected output/i.test(text)) return 'Output';
-    if (/adapt/i.test(text)) return 'SQL';
-    return text;
+  function leadToLabel(leadEl, lang, text) {
+    var label = leadEl.textContent.replace(/:\s*$/, '').trim();
+    if (/formula/i.test(label)) return 'Formula';
+    if (/expected output/i.test(label)) return 'Output';
+    if (/apply in postgresql/i.test(label)) return 'CONF';
+    if (/adapt/i.test(label)) return 'SQL';
+    if (/run this/i.test(label)) return getLanguageLabel(lang, text);
+    return getLanguageLabel(lang, text);
   }
 
   function getPrecedingLead(node) {
@@ -56,8 +58,8 @@
       langLabel.className = 'code-block-lang';
       var lead = getPrecedingLead(wrapper);
       var labelText = getLanguageLabel(lang, text);
-      if (lead && lead.classList.contains('code-lead--reference')) {
-        labelText = leadToLabel(lead);
+      if (lead) {
+        labelText = leadToLabel(lead, lang, text);
         lead.classList.add('code-lead--absorbed');
       }
       langLabel.textContent = labelText;

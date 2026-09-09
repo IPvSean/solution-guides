@@ -14,9 +14,7 @@ This guide documents three targeted parameter changes, tested in order of impact
 
 ![Decision Card: Which autovacuum tuning applies to your tables?](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Decision-Card.png)
 
-**Work through the rungs in order.** Rung 1 is universal, applying to every large AAP
-deployment. Rungs 2 and 3 are conditional; apply them when diagnostic tests confirm
-they are needed.
+<p class="guide-image-caption">Use this card to pick your starting rung, then follow the <a href="#tuning-path">tuning path</a> below.</p>
 
 ## Prerequisites
 - Superuser access to the AAP PostgreSQL instance
@@ -272,6 +270,67 @@ In this study with `cost_limit=1000` on `main_hostmetric`, the table reached 0.0
 
 ---
 
+## Validation
+
+Allow at least 2 hours of steady-state operation after each rung before evaluating.
+
+**Rung 1** -- confirm `scale_factor` is working:
+
+<p class="code-lead">Run this validation query:</p>
+
+```sql
+SELECT relname,
+       autovacuum_count,
+       n_dead_tup,
+       round(100.0 * n_dead_tup / nullif(n_dead_tup + n_live_tup, 0), 1) AS dead_pct,
+       last_autovacuum
+FROM pg_stat_user_tables
+WHERE relname IN ('main_unifiedjob', 'main_jobhostmetric')
+ORDER BY relname;
+```
+
+Expected: `dead_pct` consistently below 2%; `autovacuum_count` incrementing multiple times
+per hour. Take two snapshots 30 minutes apart and compare `autovacuum_count`.
+
+A healthy snapshot with Rung 1 applied (from the study environment):
+
+<p class="code-lead code-lead--reference">Expected output:</p>
+
+```
+      relname       | autovacuum_count | n_dead_tup | dead_pct |      last_autovacuum
+--------------------+------------------+------------+----------+----------------------------
+ main_jobhostmetric |              214 |        480 |      0.1 | 2026-08-15 14:22:14+00
+ main_unifiedjob    |              381 |          0 |      0.0 | 2026-08-15 14:23:17+00
+(2 rows)
+```
+
+`dead_pct` near zero; `last_autovacuum` within the past few minutes on both tables.
+
+**Rung 2** — confirm `naptime` is working:
+
+Run the same query against your HOT-disabled tables. Expected: `autovacuum_count`
+incrementing far faster than Rung 1 tables. Two snapshots 10 minutes apart should show
+a meaningful delta.
+
+If your environment has Prometheus instrumentation, `db_cpu_throttle` should remain flat after applying all three rungs. In the study it stayed in the 0.02–0.05 range throughout. UI job latency (p75) should show no increase; the study measured 754–762ms across all rungs with no degradation.
+
+**Rung 3** — confirm `cost_limit` is working:
+
+Watch `pg_stat_progress_vacuum` during a live pass on the target table. `pct_done` should
+reach 100% before the pass ends. If it does not, increase `cost_limit` and re-check.
+
+---
+
+## Troubleshooting
+
+| Symptom | Likely Cause | Fix |
+|---|---|---|
+| `dead_pct` climbs for hours; autovacuum fires only a few times per day | Trigger-limited: `scale_factor` too high; threshold rarely crossed | Lower `scale_factor` → [Rung 1](#rung-1-lower-the-trigger) |
+| `autovacuum_count` rising fast but `n_dead_tup` stays elevated after each fire | Throttle-limited: each pass cut short by `cost_limit` before the table is fully cleaned | Set per-table `cost_limit` → [Rung 3](#rung-3-ensure-each-pass-completes) |
+| `autovacuum_count` rising very fast; `dead_pct` spikes sharply between fires | HOT disabled on a high-churn table: every UPDATE creates a dead tuple | Lower `naptime` → [Rung 2](#rung-2-increase-check-frequency) |
+
+---
+
 ## Key Terms
 
 Quick reference for metrics, settings, and diagnostic views. Settings show the short name used in this guide, followed by the `postgresql.conf` parameter in parentheses.
@@ -379,67 +438,6 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 <p class="key-terms-table-note">See <a href="#troubleshooting">Troubleshooting</a> for symptom-to-fix mapping in production.</p>
 
 </div>
-
----
-
-## Validation
-
-Allow at least 2 hours of steady-state operation after each rung before evaluating.
-
-**Rung 1** -- confirm `scale_factor` is working:
-
-<p class="code-lead">Run this validation query:</p>
-
-```sql
-SELECT relname,
-       autovacuum_count,
-       n_dead_tup,
-       round(100.0 * n_dead_tup / nullif(n_dead_tup + n_live_tup, 0), 1) AS dead_pct,
-       last_autovacuum
-FROM pg_stat_user_tables
-WHERE relname IN ('main_unifiedjob', 'main_jobhostmetric')
-ORDER BY relname;
-```
-
-Expected: `dead_pct` consistently below 2%; `autovacuum_count` incrementing multiple times
-per hour. Take two snapshots 30 minutes apart and compare `autovacuum_count`.
-
-A healthy snapshot with Rung 1 applied (from the study environment):
-
-<p class="code-lead code-lead--reference">Expected output:</p>
-
-```
-      relname       | autovacuum_count | n_dead_tup | dead_pct |      last_autovacuum
---------------------+------------------+------------+----------+----------------------------
- main_jobhostmetric |              214 |        480 |      0.1 | 2026-08-15 14:22:14+00
- main_unifiedjob    |              381 |          0 |      0.0 | 2026-08-15 14:23:17+00
-(2 rows)
-```
-
-`dead_pct` near zero; `last_autovacuum` within the past few minutes on both tables.
-
-**Rung 2** — confirm `naptime` is working:
-
-Run the same query against your HOT-disabled tables. Expected: `autovacuum_count`
-incrementing far faster than Rung 1 tables. Two snapshots 10 minutes apart should show
-a meaningful delta.
-
-If your environment has Prometheus instrumentation, `db_cpu_throttle` should remain flat after applying all three rungs. In the study it stayed in the 0.02–0.05 range throughout. UI job latency (p75) should show no increase; the study measured 754–762ms across all rungs with no degradation.
-
-**Rung 3** — confirm `cost_limit` is working:
-
-Watch `pg_stat_progress_vacuum` during a live pass on the target table. `pct_done` should
-reach 100% before the pass ends. If it does not, increase `cost_limit` and re-check.
-
----
-
-## Troubleshooting
-
-| Symptom | Likely Cause | Fix |
-|---|---|---|
-| `dead_pct` climbs for hours; autovacuum fires only a few times per day | Trigger-limited: `scale_factor` too high; threshold rarely crossed | Lower `scale_factor` → [Rung 1](#rung-1-lower-the-trigger) |
-| `autovacuum_count` rising fast but `n_dead_tup` stays elevated after each fire | Throttle-limited: each pass cut short by `cost_limit` before the table is fully cleaned | Set per-table `cost_limit` → [Rung 3](#rung-3-ensure-each-pass-completes) |
-| `autovacuum_count` rising very fast; `dead_pct` spikes sharply between fires | HOT disabled on a high-churn table: every UPDATE creates a dead tuple | Lower `naptime` → [Rung 2](#rung-2-increase-check-frequency) |
 
 ---
 

@@ -179,6 +179,14 @@ img {
   }
 }
 
+.guide-image-caption {
+  max-width: 720px;
+  margin: -0.5rem auto 1.5rem;
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.45;
+}
+
 body.image-lightbox-open {
   overflow: hidden;
 }
