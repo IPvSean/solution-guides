@@ -1832,6 +1832,61 @@ b {
   max-width: 720px;
 }
 
+.cards-track-section__empty {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6a6e73;
+  margin: 0 0 14px;
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border: 1px dashed #d2d2d2;
+  border-radius: 8px;
+  max-width: 720px;
+}
+
+.card-link--foundational-hero {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.card-foundational--hero.pf-v6-c-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.card-foundational--hero__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .card-foundational--hero__main {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .card-foundational--hero .pf-v6-c-card__title {
+    flex: 0 0 38%;
+    margin: 0;
+    padding-right: 0;
+  }
+
+  .card-foundational--hero .pf-v6-c-card__body {
+    flex: 1;
+    margin: 0;
+  }
+
+  .card-foundational--hero .pf-v6-c-card__title-text {
+    font-size: 20px;
+  }
+}
+
 .guide-section__info {
   position: relative;
   display: inline-flex;
@@ -2631,8 +2686,14 @@ b {
     color: var(--text-primary);
   }
 
-  .cards-track-section__intro {
+  .cards-track-section__intro,
+  .cards-track-section__empty {
     color: var(--text-muted);
+  }
+
+  .cards-track-section__empty {
+    background-color: #2a2a2a;
+    border-color: #4f4f4f;
   }
 
   .card-label-track--aiops {

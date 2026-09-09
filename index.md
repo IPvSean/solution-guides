@@ -96,7 +96,7 @@ patternfly: true
 
   <div class="cards-main">
     <p class="cards-intro">
-      Partner-focused solution guides (AIOps and event-driven tracks) and production implementation guides for Ansible Automation Platform.
+      Solution guides by track (AIOps, Event-Driven, Journey) and production implementation guides for Ansible Automation Platform.
       Learn the difference in <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
     </p>
     <p id="guide-search-count" class="cards-search__count"></p>
@@ -116,33 +116,31 @@ patternfly: true
             <i class="fas fa-info-circle" aria-hidden="true"></i>
           </a>
         </div>
-        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. <strong>Start here:</strong> <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a> (Foundational) for the reference architecture, then explore partner integrations below.</p>
-        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
-      <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-tags="aiops,solution,published">
-        <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-green">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. Start with the Foundational reference architecture, then explore partner integrations below.</p>
+        <a href="{{ '/README-AIOps' | relative_url }}" id="aiops-foundational-hero" class="card-link card-link--foundational-hero" data-tags="aiops,solution,published">
+          <div class="pf-v6-c-card card-foundational card-foundational--hero">
+            <div class="pf-v6-c-card__header card-header--labels">
+              <span class="pf-v6-c-label pf-m-green">
+                <span class="pf-v6-c-label__content">
+                  <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                  Solution Guide
+                </span>
               </span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
-              <span class="pf-v6-c-label__content">AIOps</span>
-            </span>
-            <span class="pf-v6-c-label card-label-style card-label-style--foundational">
-              <span class="pf-v6-c-label__content">Foundational</span>
-            </span>
+              <span class="pf-v6-c-label card-label-style card-label-style--foundational">
+                <span class="pf-v6-c-label__content">Foundational</span>
+              </span>
+            </div>
+            <div class="pf-v6-c-card__main card-foundational--hero__main">
+              <div class="pf-v6-c-card__title">
+                <h3 class="pf-v6-c-card__title-text">AIOps automation with Ansible</h3>
+              </div>
+              <div class="pf-v6-c-card__body">
+                Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
+              </div>
+            </div>
           </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">AIOps automation with Ansible</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
-          </div>
-        </div>
-      </a>
-
+        </a>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
@@ -406,6 +404,7 @@ patternfly: true
           </a>
         </div>
         <p class="cards-track-section__intro">Not sure what to build first or when Automation Orchestrator earns its place? Start here for stage-by-stage adoption guidance.</p>
+        <p id="journey-empty" class="cards-track-section__empty" hidden>No published Journey guides yet -- enable Work in Progress to preview.</p>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="journey-gallery">
 
       <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-tags="journey,solution,wip">
@@ -733,10 +732,12 @@ patternfly: true
   var publishedCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="published"]');
   var wipCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="wip"]');
   var solutionGuidesSection = document.getElementById('solution-guides');
+  var aiopsFoundationalHero = document.getElementById('aiops-foundational-hero');
+  var journeyEmptyEl = document.getElementById('journey-empty');
   var sectionConfigs = [
-    { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery') },
+    { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
-    { section: document.getElementById('journey-guides'), gallery: document.getElementById('journey-gallery') },
+    { section: document.getElementById('journey-guides'), gallery: document.getElementById('journey-gallery'), emptyState: journeyEmptyEl },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') },
     { section: document.querySelector('.cards-wip-section'), gallery: document.getElementById('wip-gallery') }
   ];
@@ -790,14 +791,40 @@ patternfly: true
     return query || activePartners.length || activeTracks.length || !isDefaultStatusFilter();
   }
 
-  function updateSectionVisibility() {
+  function countVisibleCards(container) {
+    var count = 0;
+    if (!container) return 0;
+    container.querySelectorAll('.card-link').forEach(function (card) {
+      if (card.style.display !== 'none') count++;
+    });
+    return count;
+  }
+
+  function updateSectionVisibility(filterContext) {
+    var onlyPublishedDefault = filterContext && filterContext.onlyPublishedDefault;
+    var hasOtherFilters = filterContext && filterContext.hasOtherFilters;
+
     sectionConfigs.forEach(function (cfg) {
       if (!cfg.section || !cfg.gallery) return;
-      var visibleInSection = 0;
-      cfg.gallery.querySelectorAll('.card-link').forEach(function (card) {
-        if (card.style.display !== 'none') visibleInSection++;
-      });
-      cfg.section.style.display = visibleInSection === 0 ? 'none' : '';
+      var visibleInGallery = countVisibleCards(cfg.gallery);
+      var totalInGallery = cfg.gallery.querySelectorAll('.card-link').length;
+      var heroVisible = cfg.hero && cfg.hero.style.display !== 'none' ? 1 : 0;
+      var sectionVisible = visibleInGallery + heroVisible;
+
+      if (cfg.emptyState) {
+        var showEmpty = visibleInGallery === 0 && totalInGallery > 0 && onlyPublishedDefault && !hasOtherFilters;
+        cfg.emptyState.hidden = !showEmpty;
+        cfg.gallery.style.display = showEmpty ? 'none' : '';
+        cfg.section.style.display = sectionVisible > 0 || showEmpty ? '' : 'none';
+        return;
+      }
+
+      if (cfg.hero) {
+        cfg.section.style.display = sectionVisible === 0 ? 'none' : '';
+        return;
+      }
+
+      cfg.section.style.display = visibleInGallery === 0 ? 'none' : '';
     });
 
     if (solutionGuidesSection) {
@@ -838,7 +865,10 @@ patternfly: true
       }
     });
 
-    updateSectionVisibility();
+    updateSectionVisibility({
+      onlyPublishedDefault: isDefaultStatusFilter(),
+      hasOtherFilters: !!(query || activePartners.length || activeTracks.length)
+    });
 
     if (legacyDetails) {
       var legacyVisible = 0;
