@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Solution Guides
+title: Ansible Guides
 patternfly: true
 ---
 
