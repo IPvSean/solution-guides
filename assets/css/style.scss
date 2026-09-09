@@ -161,8 +161,9 @@ img {
 // Guide content images (border + click-to-expand lightbox)
 .guide-image {
   display: block;
-  width: 100%;
+  width: auto;
   max-width: 720px;
+  height: auto;
   margin: 1.25rem auto;
   border: 1px solid #c0c4ca;
   border-radius: 8px;

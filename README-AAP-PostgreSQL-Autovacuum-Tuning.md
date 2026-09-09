@@ -273,7 +273,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
   <a href="#key-terms-failure-modes">Failure modes</a>
 </nav>
 
-<div class="key-terms-group">
+<div class="key-terms-group" markdown="1">
 
 ### Core concepts {: #key-terms-core}
 
@@ -293,7 +293,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group">
+<div class="key-terms-group" markdown="1">
 
 ### Metrics and views {: #key-terms-metrics}
 
@@ -327,7 +327,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group">
+<div class="key-terms-group" markdown="1">
 
 ### Settings (`postgresql.conf`){: #key-terms-settings}
 
@@ -355,7 +355,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group key-terms-group--table">
+<div class="key-terms-group key-terms-group--table" markdown="1">
 
 ### Failure modes {: #key-terms-failure-modes}
 
