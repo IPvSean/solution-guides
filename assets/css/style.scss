@@ -316,20 +316,9 @@ td {
   border: 1px solid #c0c4ca;
   border-radius: 4px;
   cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
-  z-index: 2;
-}
-
-.code-block-wrapper:hover > .copy-btn,
-.code-block-wrapper--tall > .copy-btn {
   opacity: 1;
-}
-
-@media screen and (max-width: 768px) {
-  .code-block-wrapper > .copy-btn {
-    opacity: 1;
-  }
+  transition: background 0.2s ease, color 0.2s ease;
+  z-index: 2;
 }
 
 .copy-btn:hover {

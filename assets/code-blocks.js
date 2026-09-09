@@ -62,9 +62,6 @@
       });
     }
 
-    if (pre.offsetHeight > 120) {
-      wrapper.classList.add('code-block-wrapper--tall');
-    }
   }
 
   function init() {
