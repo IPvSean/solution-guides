@@ -336,7 +336,7 @@ div:hover > .copy-btn {
   border-color: #5cb85c !important;
 }
 
-// Glossary sections (lighter inline code than walkthrough blocks)
+// Glossary sections
 .key-terms-glossary {
   margin: 1rem 0 2rem;
 
@@ -359,14 +359,6 @@ div:hover > .copy-btn {
     border-left: 3px solid #e8e0f5;
     color: #444;
     line-height: 1.55;
-  }
-
-  code {
-    background-color: #f0f1f3;
-    color: #2d3039;
-    padding: 2px 5px;
-    border-radius: 3px;
-    font-size: 0.9em;
   }
 
   .key-terms-detail {
@@ -396,9 +388,12 @@ div:hover > .copy-btn {
 }
 
 code {
-  background-color: #000000;
-  padding: 3px;
-  color: #ffffff;
+  background-color: #f0f1f3;
+  color: #2d3039;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  border: 1px solid #d0d3d8;
 }
 
 code.language-yaml {
@@ -423,6 +418,9 @@ pre code {
   display: block;
   padding: 1em;
   overflow-x: auto;
+  border: none;
+  border-radius: 0;
+  font-size: inherit;
 }
 
 // custom header
