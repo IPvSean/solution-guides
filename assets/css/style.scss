@@ -333,11 +333,13 @@ td {
   border-color: #5e40be !important;
 }
 
-// Guide code blocks: light theme, framed, max-width
+// Guide code blocks: light theme, framed, full content width
 .code-block-wrapper {
   position: relative;
-  max-width: 720px;
-  margin: 1.25rem auto;
+  max-width: 100%;
+  width: 100%;
+  margin: 1.25rem 0;
+  box-sizing: border-box;
 }
 
 .code-block-lang {
