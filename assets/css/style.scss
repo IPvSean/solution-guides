@@ -187,6 +187,25 @@ img {
   line-height: 1.45;
 }
 
+.guide-outcome {
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.25rem 1rem 1.5rem;
+  background: linear-gradient(135deg, #faf9fd 0%, #f0edfa 100%);
+  border: 1px solid #e8e0f5;
+  border-left: 4px solid #5e40be;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(94, 64, 190, 0.08);
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 1.05em;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #2d3039;
+
+  code {
+    font-weight: 600;
+  }
+}
+
 body.image-lightbox-open {
   overflow: hidden;
 }

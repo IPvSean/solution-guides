@@ -2,15 +2,17 @@
 
 ## Overview
 
-**Three `postgresql.conf` changes, applied in order, keep high-churn AAP tables continuously clean.**
-
-![Decision Card: Which autovacuum tuning applies to your tables?](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Decision-Card.png)
-
-<p class="guide-image-caption">Use this card to pick your starting rung, then follow the <a href="#tuning-path">tuning path</a> below.</p>
+<div class="guide-outcome">
+Three <code>postgresql.conf</code> changes, applied in order, keep high-churn AAP tables continuously clean.
+</div>
 
 AAP at enterprise scale writes incessantly to large tables in its PostgreSQL database, keeping track of: job execution records, authorization tokens, and host health checks. PostgreSQL's default autovacuum settings were designed for smaller, less write-intensive databases and do not keep pace with this workload.
 
 Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row - rather than modifying the row in place. On large, frequently-written tables these accumulate quickly: at production AAP scale, a single high-churn table can generate ~27,000 dead tuples per hour. With default autovacuum settings, these dead tuples can wait around for more than 6 hours before autovacuum clears them. While they wait, queries must still scan over dead tuples even though they are invisible to them, degrading performance and, at scale, producing user-visible slowdowns.
+
+![Decision Card: Which autovacuum tuning applies to your tables?](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Decision-Card.png)
+
+<p class="guide-image-caption">Decision diagram: use this to pick your starting rung, then follow the <a href="#tuning-path">tuning path</a> below.</p>
 
 > **Tip:** Parameter glossary
 >
@@ -449,7 +451,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 <div class="key-terms-closing">
 
-- [Review the decision card in Overview](#overview)
+- [Review the decision diagram in Overview](#overview)
 - [Follow the tuning path](#tuning-path) for rung order
 - [Jump to Key Terms](#key-terms) for a parameter lookup
 - [Back to Ansible Guides](/)
