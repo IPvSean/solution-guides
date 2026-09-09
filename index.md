@@ -13,9 +13,28 @@ patternfly: true
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Browse</h4>
       <nav class="cards-sidebar__nav" aria-label="Guide sections">
-        <a href="#solution-guides" class="cards-sidebar__jump">Solution Guides</a>
-        <a href="#implementation-guides" class="cards-sidebar__jump">Implementation Guides</a>
+        <div class="cards-sidebar__jump-row">
+          <a href="#solution-guides" class="cards-sidebar__jump">
+            <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+            Solution Guides
+          </a>
+          <a href="{{ '/guide-types' | relative_url }}#solution-guides" class="cards-sidebar__info" data-tooltip="Partner-focused guides that show how AAP solves business problems with integrated technologies." aria-label="Learn about Solution Guides">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="cards-sidebar__jump-row">
+          <a href="#implementation-guides" class="cards-sidebar__jump">
+            <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+            Implementation Guides
+          </a>
+          <a href="{{ '/guide-types' | relative_url }}#implementation-guides" class="cards-sidebar__info" data-tooltip="How to deploy and configure AAP for reliability, performance, and production outcomes." aria-label="Learn about Implementation Guides">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
       </nav>
+      <p class="cards-sidebar__learn-more">
+        <a href="{{ '/guide-types' | relative_url }}">About guide types</a>
+      </p>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Status</h4>
