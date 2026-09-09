@@ -26,7 +26,10 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 
 | Resource | Description |
 |----------|-------------|
-| [Best Practices for Writing Solution Guides](README-best-practices.md) | Framework, checklists, and quality scoring model for creating enterprise-grade solution guides. |
+| [Best Practices hub](best-practices.md) | Choose the Solution Guide or Implementation Guide framework and rubric for your content type. |
+| [Best Practices for Writing Solution Guides](README-best-practices.md) | Framework, checklists, and track-aware quality scoring for solution guides. |
+| [Best Practices for Writing Implementation Guides](README-best-practices-implementation.md) | Framework, checklists, and quality scoring for implementation guides. |
+| [Guide Reviews](reviews.md) | Scored reviews for published solution and implementation guides. |
 
 ## License
 

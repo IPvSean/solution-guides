@@ -79,6 +79,8 @@ When reviewing or grading solution guides, use the weighted rubric from `README-
 
 Score each category 1-5. Multiply by weight for a final score out of 10. Any category below 3 means revise before publishing.
 
+Apply track-aware adjustments for AIOps, Event-Driven, and Journey guides (see "Scoring by Solution Track" in `README-best-practices.md`). Do not penalize Event-Driven guides for lacking AI components.
+
 When writing a review:
 1. List **Strengths** (what the guide does well).
 2. List **Weaknesses** (specific gaps, not vague complaints).
@@ -86,7 +88,9 @@ When writing a review:
 4. Provide an overall score and a one-line verdict.
 5. If reconciling with another reviewer, document the reasoning for any score changes.
 
-Reviews are stored in `opus-review.md` with a scorecard table at the top.
+Solution guide reviews are stored in `opus-review-solution.md`. Implementation guide reviews are in `opus-review-implementation.md`. The [Reviews hub](reviews.md) links to both.
+
+Implementation guides follow `README-best-practices-implementation.md` -- a separate framework and rubric from solution guides. The [Best Practices hub](best-practices.md) explains when to use each.
 
 ## Mermaid Diagrams
 
@@ -112,5 +116,9 @@ Use `graph LR` for workflows (left-to-right) and `graph TD` for architecture (to
 
 - Solution guides: `README-[topic].md` (e.g., `README-AIOps.md`, `README-IA.md`)
 - Main entry point: `README.md` (table of contents only)
-- Best practices: `README-best-practices.md`
-- Reviews: `opus-review.md`
+- Best practices hub: `best-practices.md`
+- Solution guide best practices: `README-best-practices.md`
+- Implementation guide best practices: `README-best-practices-implementation.md`
+- Reviews hub: `reviews.md`
+- Solution guide reviews: `opus-review-solution.md`
+- Implementation guide reviews: `opus-review-implementation.md`

@@ -54,7 +54,7 @@ Tracking is currently via GitHub Pages analytics (page views, time on page), KB 
 
 ## Common Sections / Document Outline
 
-All solution guides follow a standardized framework defined in the [Best Practices for Writing Solution Guides](README-best-practices.md). The section names map 1:1 across every guide:
+All solution guides follow a standardized framework defined in the [Best Practices for Writing Solution Guides](README-best-practices.md). Implementation guides use a separate framework in [Best Practices for Writing Implementation Guides](README-best-practices-implementation.md). The [Best Practices hub](best-practices.md) explains when to use each. Solution guide section names map 1:1 across every guide:
 
 | Section | Purpose | Key Elements |
 |---------|---------|-------------|

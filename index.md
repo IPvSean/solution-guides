@@ -575,6 +575,25 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-tags="implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">PostgreSQL Autovacuum Tuning for AAP</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
+          </div>
+        </div>
+      </a>
       </div>
     </section>
 
@@ -596,25 +615,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__body">
               Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-tags="implementation,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">PostgreSQL Autovacuum Tuning for AAP</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
             </div>
           </div>
         </a>
@@ -646,7 +646,7 @@ patternfly: true
 
     <div class="cards-contributing">
       <h2>Contributing</h2>
-      <p>Writing a new solution guide? Start with the <a href="{{ '/README-best-practices' | relative_url }}">Best Practices for Writing Solution Guides</a> -- it includes the framework, quality scoring rubric, and a starter template.</p>
+      <p>Writing a new guide? Start with the <a href="{{ '/best-practices/' | relative_url }}">Best Practices hub</a> -- choose the Solution Guide or Implementation Guide framework, scoring rubric, and starter template for your content type.</p>
     </div>
 
     <details class="legacy-guides">

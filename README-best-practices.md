@@ -3,6 +3,8 @@
 
 A framework for creating enterprise-grade solution guides for Ansible Automation Platform.
 
+> **Two guide types:** This document is for **Solution Guides** only. Implementation Guides use a separate framework and rubric on the [Best Practices hub](best-practices.md).
+
 > **Quick start:** Jump to the [Starter Template](#appendix-starter-template).
 >
 > Copy the ready-made skeleton, fill in the placeholders, and score your draft against the [Quality Scoring Rubric](#reference) before publishing.
@@ -510,6 +512,20 @@ Grade guides against this rubric before publishing:
 | Business Framing | 10% |
 
 Score each 1-5. Anything below 3 in any category -- revise before publish.
+
+### Scoring by Solution Track
+
+Apply the base rubric above, then adjust expectations by track. Do not penalize a guide for capabilities outside its track.
+
+| Track | Rubric adjustments |
+|-------|-------------------|
+| **AIOps** | Full rubric. Technical Executability should include AI enrichment, inference endpoints, MCP/Lightspeed integration, or governed playbook selection where the guide claims an AI outcome. |
+| **Event-Driven** | Do not penalize absence of AI. Weight EDA rulebooks, webhook or queue integration, and closed-loop automation without inference. Business Framing should cite operational response time, not AI accuracy. |
+| **Journey** | Lighter on YAML depth and single-partner executability. Weight decision paths, adoption narrative, explicit signals for when to add the next capability, and cross-links to reference architectures. Validation may be scenario-based rather than a single runnable pipeline. |
+
+**N/A rules:**
+- Event-Driven guides: skip AI-specific executability checks unless the guide adds an optional AI enrichment section.
+- Journey guides: Architecture Clarity may emphasize decision flow over deployment topology; Production Readiness Info may be advisory rather than a full runbook.
 
 </details>
 
