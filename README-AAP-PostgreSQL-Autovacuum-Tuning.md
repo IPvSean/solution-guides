@@ -50,6 +50,16 @@ threshold is crossed every ~6 hours. *The table never stays clean.*
 
 ---
 
+## Tuning path
+
+| | Apply | When |
+|---|---|---|
+| **Start here** | [Rung 1](#rung-1-lower-the-trigger) — `scale_factor`, `max_workers` | Every large AAP deployment. |
+| **Add next** | [Rung 2](#rung-2-increase-check-frequency) — `naptime` | When the `hot_ratio` query confirms that HOT is disabled on high-churn tables. |
+| **Add if needed** | [Rung 3](#rung-3-ensure-each-pass-completes) — per-table `cost_limit` | Only after the Rung 3 diagnostic tests confirm incomplete vacuuming. |
+
+---
+
 ## Rung 1: Lower the Trigger
 
 ![Rung 1: scale_factor=0.02 keeps the table continuously clean](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Rung1.png)
@@ -433,14 +443,6 @@ reach 100% before the pass ends. If it does not, increase `cost_limit` and re-ch
 
 ---
 
-## Where to Start
-
-| | Apply | When |
-|---|---|---|
-| **Start here** | Rung 1 — `scale_factor`, `max_workers` | Every large AAP deployment. |
-| **Add next** | Rung 2 — `naptime` | When the `hot_ratio` query confirms that HOT is disabled on high-churn tables. |
-| **Add if needed** | Rung 3 — per-table `cost_limit` | Only after the Rung 3 diagnostic tests confirm incomplete vacuuming. |
-
 ## Related Guides
 
 - [AAP HA/DR on OpenShift with CloudNativePG](https://ansible-tmm.github.io/solution-guides/README-AAP-HA-DR-OpenShift) — the deployment topology this autovacuum tuning applies to
@@ -453,7 +455,7 @@ reach 100% before the pass ends. If it does not, increase `cost_limit` and re-ch
 <div class="key-terms-closing">
 
 - [Review the decision card in Overview](#overview)
-- [Start with Rung 1](#rung-1-lower-the-trigger) if you have not applied tuning yet
+- [Follow the tuning path](#tuning-path) for rung order
 - [Jump to Key Terms](#key-terms) for a parameter lookup
 - [Back to Ansible Guides](/)
 
