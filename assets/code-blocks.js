@@ -12,10 +12,27 @@
     if (lang === 'yaml' || lang === 'yml') return 'YAML';
     if (lang === 'bash' || lang === 'shell') return 'Bash';
     if (lang === 'ini' || lang === 'conf') return 'CONF';
+    if (/≈|\/hr\b/i.test(text)) return 'Formula';
     if (/autovacuum_|^[a-z_]+ =/m.test(text)) return 'CONF';
     if (OUTPUT_PATTERN.test(text)) return 'Output';
     if (lang) return lang.toUpperCase();
     return 'Code';
+  }
+
+  function leadToLabel(leadEl) {
+    var text = leadEl.textContent.replace(/:\s*$/, '').trim();
+    if (/formula/i.test(text)) return 'Formula';
+    if (/expected output/i.test(text)) return 'Output';
+    if (/adapt/i.test(text)) return 'SQL';
+    return text;
+  }
+
+  function getPrecedingLead(node) {
+    var prev = node.previousElementSibling;
+    if (prev && prev.classList && prev.classList.contains('code-lead')) {
+      return prev;
+    }
+    return null;
   }
 
   function enhanceBlock(pre) {
@@ -37,7 +54,13 @@
     if (!wrapper.querySelector('.code-block-lang')) {
       var langLabel = document.createElement('span');
       langLabel.className = 'code-block-lang';
-      langLabel.textContent = getLanguageLabel(lang, text);
+      var lead = getPrecedingLead(wrapper);
+      var labelText = getLanguageLabel(lang, text);
+      if (lead && lead.classList.contains('code-lead--reference')) {
+        labelText = leadToLabel(lead);
+        lead.classList.add('code-lead--absorbed');
+      }
+      langLabel.textContent = labelText;
       wrapper.insertBefore(langLabel, pre);
     }
 
