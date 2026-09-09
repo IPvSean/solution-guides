@@ -333,12 +333,13 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-bottom: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .guide-type-panel {
   display: flex;
   flex-direction: column;
+  height: 100%;
   padding: 24px;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
