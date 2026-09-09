@@ -1186,13 +1186,14 @@ b {
 }
 
 .cards-sidebar {
-  width: 200px;
+  width: 232px;
   flex-shrink: 0;
   padding-top: 14px;
   position: sticky;
   top: 20px;
   align-self: flex-start;
   max-height: calc(100vh - 40px);
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -1412,7 +1413,7 @@ b {
   font-size: 16px;
   line-height: 1.55;
   color: #4d4d4d;
-  margin: 0 0 20px;
+  margin: 0 0 8px;
   max-width: 720px;
 
   a {
@@ -1429,8 +1430,13 @@ b {
 .cards-search__count {
   font-size: 13px;
   color: #6a6e73;
-  margin: 8px 0 0;
-  min-height: 20px;
+  margin: 0 0 12px;
+  min-height: 0;
+
+  &:empty {
+    display: none;
+    margin: 0;
+  }
 }
 
 .cards-gallery {
@@ -1696,19 +1702,6 @@ b {
   min-height: 44px;
   margin-top: auto;
   flex-shrink: 0;
-}
-
-.card-header--labels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-}
-
-.card-label-start-here {
-  --pf-v6-c-label--BackgroundColor: #e7f1fa;
-  --pf-v6-c-label--Color: #0066cc;
-  border: 1px solid #b8d4f0;
 }
 
 .card-link .pf-v6-c-label__icon {
@@ -2180,12 +2173,6 @@ b {
   .card-foundational {
     background-color: #1e2a38 !important;
     border-left-color: #4a9fd8 !important;
-  }
-
-  .card-label-start-here {
-    --pf-v6-c-label--BackgroundColor: #1e3a5f;
-    --pf-v6-c-label--Color: #9ec5fe;
-    border-color: #2d5a8a;
   }
 
   .cards-layout {
