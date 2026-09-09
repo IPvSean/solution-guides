@@ -25,6 +25,10 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Event-Driven Solutions
         </a>
+        <a href="#journey-guides" class="cards-sidebar__jump cards-sidebar__jump--nested">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          Journey Guides
+        </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
@@ -125,6 +129,9 @@ patternfly: true
             </span>
             <span class="pf-v6-c-label card-label-track card-label-track--aiops">
               <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+            <span class="pf-v6-c-label card-label-style card-label-style--foundational">
+              <span class="pf-v6-c-label__content">Foundational</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -332,27 +339,6 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-tags="aiops,solution,wip">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-orange">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                Work in Progress
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
-              <span class="pf-v6-c-label__content">AIOps</span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            A journey guide for operations teams: when EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
-          </div>
-        </div>
-      </a>
       </div>
       </div>
 
@@ -406,6 +392,43 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
+          </div>
+        </div>
+      </a>
+      </div>
+      </div>
+
+      <div id="journey-guides" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">Journey Guides</h3>
+          <a href="{{ '/guide-types' | relative_url }}#journey-guides" class="guide-section__info" data-tooltip="Cross-cutting adoption guides with explicit decision points for when to add the next capability." aria-label="Learn about Journey Guides">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Not sure what to build first or when Automation Orchestrator earns its place? Start here for stage-by-stage adoption guidance.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="journey-gallery">
+
+      <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-tags="journey,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-style card-label-style--journey">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-route pf-v6-c-label__icon"></i>
+                Journey Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            When EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
           </div>
         </div>
       </a>
@@ -713,6 +736,7 @@ patternfly: true
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery') },
     { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
+    { section: document.getElementById('journey-guides'), gallery: document.getElementById('journey-gallery') },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') },
     { section: document.querySelector('.cards-wip-section'), gallery: document.getElementById('wip-gallery') }
   ];
@@ -779,8 +803,10 @@ patternfly: true
     if (solutionGuidesSection) {
       var aiopsSection = document.getElementById('aiops-solutions');
       var eventDrivenSection = document.getElementById('event-driven-solutions');
+      var journeySection = document.getElementById('journey-guides');
       var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
-        || (eventDrivenSection && eventDrivenSection.style.display !== 'none');
+        || (eventDrivenSection && eventDrivenSection.style.display !== 'none')
+        || (journeySection && journeySection.style.display !== 'none');
       solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
     }
   }
@@ -799,10 +825,11 @@ patternfly: true
     allCards.forEach(function (card) {
       var cardTags = getCardTags(card);
       var isSolutionGuide = cardTags.indexOf('solution') !== -1;
+      var isJourneyGuide = cardTags.indexOf('journey') !== -1;
       var textMatch = !query || getCardText(card).indexOf(query) !== -1;
       var statusMatch = !activeStatus.length || activeStatus.some(function (s) { return cardTags.indexOf(s) !== -1; });
       var partnerMatch = !activePartners.length || activePartners.some(function (p) { return cardTags.indexOf(p) !== -1; });
-      var trackMatch = !activeTracks.length || !isSolutionGuide || activeTracks.some(function (t) { return cardTags.indexOf(t) !== -1; });
+      var trackMatch = !activeTracks.length || !isSolutionGuide || isJourneyGuide || activeTracks.some(function (t) { return cardTags.indexOf(t) !== -1; });
       var show = textMatch && statusMatch && partnerMatch && trackMatch;
       card.style.display = show ? '' : 'none';
       if (show) {

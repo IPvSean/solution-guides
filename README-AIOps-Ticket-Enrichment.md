@@ -541,7 +541,7 @@ Trigger a test P1 with multiple simultaneous alerts. Confirm the agent produces 
 
 ## Related Guides
 
-- [AIOps automation with Ansible](README-AIOps.md) — Crawl/Walk/Run framing for AIOps maturity across EDA, enrichment, and remediation
+- [AIOps automation with Ansible](README-AIOps.md) — the foundational reference architecture for AIOps with Ansible; use this guide for the deep dive on ticket enrichment adoption from Crawl through Automation Orchestrator
 - [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) — ServiceNow as the AIOps intelligence layer driving AAP via MCP
 - [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md) — Splunk ITSI integration for predictive and reactive automation
 {% endraw %}

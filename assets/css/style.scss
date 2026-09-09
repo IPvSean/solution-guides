@@ -457,6 +457,37 @@ img {
   border: 1px solid #b8dde5;
 }
 
+.guide-type-track--journey .guide-type-track__badge {
+  color: #9a6700;
+  background: #faf3e8;
+  border: 1px solid #e8d4a8;
+}
+
+.guide-type-panel__modifiers-intro {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4d4d4d;
+  margin: 0 0 10px;
+}
+
+.guide-type-modifiers {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #4d4d4d;
+
+  li {
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .guide-type-track__title {
   font-family: 'Red Hat Display', sans-serif;
   font-size: 16px;
@@ -1710,6 +1741,7 @@ b {
 @media screen and (max-width: 1100px) {
   #aiops-gallery,
   #event-driven-gallery,
+  #journey-gallery,
   #implementation-gallery,
   #wip-gallery {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1723,6 +1755,7 @@ b {
 
   #aiops-gallery,
   #event-driven-gallery,
+  #journey-gallery,
   #implementation-gallery,
   #wip-gallery {
     grid-template-columns: 1fr !important;
@@ -2026,6 +2059,18 @@ b {
   --pf-v6-c-label--BackgroundColor: #e7f6f8;
   --pf-v6-c-label--Color: #0f6e82;
   border: 1px solid #b8dde5;
+}
+
+.card-label-style--foundational {
+  --pf-v6-c-label--BackgroundColor: #e7f1fa;
+  --pf-v6-c-label--Color: #0066cc;
+  border: 1px solid #b8d4f0;
+}
+
+.card-label-style--journey {
+  --pf-v6-c-label--BackgroundColor: #faf3e8;
+  --pf-v6-c-label--Color: #9a6700;
+  border: 1px solid #e8d4a8;
 }
 
 .card-link .pf-v6-c-label__icon {
@@ -2486,6 +2531,17 @@ b {
     border-color: #2d6a78;
   }
 
+  .guide-type-track--journey .guide-type-track__badge {
+    color: #e8c87a;
+    background: #3d3018;
+    border-color: #6a5528;
+  }
+
+  .guide-type-panel__modifiers-intro,
+  .guide-type-modifiers {
+    color: var(--text-secondary);
+  }
+
   .guide-type-panel__cta {
     color: #c4b5e8;
     background: #2a2540;
@@ -2589,6 +2645,18 @@ b {
     --pf-v6-c-label--BackgroundColor: #1a3a42;
     --pf-v6-c-label--Color: #9edbe8;
     border-color: #2d6a78;
+  }
+
+  .card-label-style--foundational {
+    --pf-v6-c-label--BackgroundColor: #1e3a5f;
+    --pf-v6-c-label--Color: #9ec5fe;
+    border-color: #2d5a8a;
+  }
+
+  .card-label-style--journey {
+    --pf-v6-c-label--BackgroundColor: #3d3018;
+    --pf-v6-c-label--Color: #e8c87a;
+    border-color: #6a5528;
   }
 
   .guide-section__info {
