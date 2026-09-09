@@ -38,43 +38,56 @@ patternfly: true
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Status</h4>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="published"> Published
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
+        <input type="checkbox" value="published" checked> Published
       </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
         <input type="checkbox" value="wip"> Work in Progress
       </label>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Partners</h4>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="aws"> AWS
       </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="azure"> Azure
       </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="cisco"> Cisco
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="edb"> EDB PostgreSQL
       </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="instana"> IBM Instana
       </label>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="redhat-ai"> Red Hat AI
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="kafka"> Kafka
       </label>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="servicenow"> ServiceNow
-      </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="netbox"> NetBox
       </label>
-      <label class="cards-sidebar__checkbox">
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="redhat-ai"> Red Hat AI
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="servicenow"> ServiceNow
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="splunk"> Splunk
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="windows"> Windows
       </label>
     </div>
   </aside>
 
   <div class="cards-main">
+    <p class="cards-intro">
+      Partner-focused solution guides and production implementation guides for Ansible Automation Platform.
+      Learn the difference in <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
+    </p>
     <p id="guide-search-count" class="cards-search__count"></p>
 
     <section id="solution-guides" class="cards-guide-section">
@@ -82,11 +95,17 @@ patternfly: true
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="solution-gallery">
       <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-start-here">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-star pf-v6-c-label__icon"></i>
+                Start here
               </span>
             </span>
           </div>
@@ -231,11 +250,17 @@ patternfly: true
 
       <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
         <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-cogs pf-v6-c-label__icon"></i>
                 Implementation Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-start-here">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-star pf-v6-c-label__icon"></i>
+                Start here
               </span>
             </span>
           </div>
@@ -493,7 +518,7 @@ patternfly: true
           </div>
         </a>
 
-        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-partners="implementation,wip">
+        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-partners="kafka,implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -620,7 +645,15 @@ patternfly: true
   var countEl = document.getElementById('guide-search-count');
   var allCards = document.querySelectorAll('.card-link');
   var legacyDetails = document.querySelector('details.legacy-guides');
-  var checkboxes = document.querySelectorAll('.cards-sidebar__checkbox input');
+  var statusCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--status input');
+  var partnerCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--partner input');
+  var publishedCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="published"]');
+  var wipCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="wip"]');
+  var sectionConfigs = [
+    { section: document.getElementById('solution-guides'), gallery: document.getElementById('solution-gallery') },
+    { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') },
+    { section: document.querySelector('.cards-wip-section'), gallery: document.getElementById('wip-gallery') }
+  ];
 
   if (!headerInput) return;
 
@@ -635,30 +668,61 @@ patternfly: true
     return text.toLowerCase();
   }
 
-  function getActivePartners() {
+  function getCardTags(card) {
+    return (card.getAttribute('data-partners') || '').split(',').map(function (s) { return s.trim(); });
+  }
+
+  function getActiveStatus() {
     var active = [];
-    checkboxes.forEach(function (cb) {
+    statusCheckboxes.forEach(function (cb) {
       if (cb.checked) active.push(cb.value);
     });
     return active;
   }
 
+  function getActivePartners() {
+    var active = [];
+    partnerCheckboxes.forEach(function (cb) {
+      if (cb.checked) active.push(cb.value);
+    });
+    return active;
+  }
+
+  function isDefaultStatusFilter() {
+    return publishedCheckbox && publishedCheckbox.checked && wipCheckbox && !wipCheckbox.checked;
+  }
+
+  function hasActiveFilters(query, activePartners) {
+    return query || activePartners.length || !isDefaultStatusFilter();
+  }
+
+  function updateSectionVisibility() {
+    sectionConfigs.forEach(function (cfg) {
+      if (!cfg.section || !cfg.gallery) return;
+      var visibleInSection = 0;
+      cfg.gallery.querySelectorAll('.card-link').forEach(function (card) {
+        if (card.style.display !== 'none') visibleInSection++;
+      });
+      cfg.section.style.display = visibleInSection === 0 ? 'none' : '';
+    });
+  }
+
   function filterCards() {
     var query = headerInput.value.toLowerCase().trim();
+    var activeStatus = getActiveStatus();
     var activePartners = getActivePartners();
-    filterClearBtn.style.display = (activePartners.length || query) ? 'inline' : 'none';
+    var showClear = hasActiveFilters(query, activePartners);
+    filterClearBtn.style.display = showClear ? 'inline' : 'none';
 
     var visible = 0;
     var legacyHasMatch = false;
 
     allCards.forEach(function (card) {
+      var cardTags = getCardTags(card);
       var textMatch = !query || getCardText(card).indexOf(query) !== -1;
-      var partnerMatch = true;
-      if (activePartners.length) {
-        var cardPartners = (card.getAttribute('data-partners') || '').split(',').map(function (s) { return s.trim(); });
-        partnerMatch = activePartners.some(function (p) { return cardPartners.indexOf(p) !== -1; });
-      }
-      var show = textMatch && partnerMatch;
+      var statusMatch = !activeStatus.length || activeStatus.some(function (s) { return cardTags.indexOf(s) !== -1; });
+      var partnerMatch = !activePartners.length || activePartners.some(function (p) { return cardTags.indexOf(p) !== -1; });
+      var show = textMatch && statusMatch && partnerMatch;
       card.style.display = show ? '' : 'none';
       if (show) {
         visible++;
@@ -666,12 +730,19 @@ patternfly: true
       }
     });
 
+    updateSectionVisibility();
+
     if (legacyDetails) {
+      var legacyVisible = 0;
+      legacyDetails.querySelectorAll('.card-link').forEach(function (card) {
+        if (card.style.display !== 'none') legacyVisible++;
+      });
+      legacyDetails.style.display = legacyVisible === 0 ? 'none' : '';
       if (legacyHasMatch) legacyDetails.setAttribute('open', '');
-      else if (activePartners.length || query) legacyDetails.removeAttribute('open');
+      else if (hasActiveFilters(query, activePartners)) legacyDetails.removeAttribute('open');
     }
 
-    if (query || activePartners.length) {
+    if (hasActiveFilters(query, activePartners)) {
       countEl.textContent = visible === 0
         ? 'No guides match your filters.'
         : visible + ' guide' + (visible !== 1 ? 's' : '') + ' found.';
@@ -682,16 +753,23 @@ patternfly: true
 
   headerInput.addEventListener('input', filterCards);
 
-  checkboxes.forEach(function (cb) {
+  statusCheckboxes.forEach(function (cb) {
+    cb.addEventListener('change', filterCards);
+  });
+
+  partnerCheckboxes.forEach(function (cb) {
     cb.addEventListener('change', filterCards);
   });
 
   filterClearBtn.addEventListener('click', function () {
-    checkboxes.forEach(function (cb) { cb.checked = false; });
+    partnerCheckboxes.forEach(function (cb) { cb.checked = false; });
+    if (publishedCheckbox) publishedCheckbox.checked = true;
+    if (wipCheckbox) wipCheckbox.checked = false;
     headerInput.value = '';
     filterCards();
   });
 
   filterClearBtn.style.display = 'none';
+  filterCards();
 })();
 </script>
