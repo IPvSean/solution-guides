@@ -4,7 +4,7 @@ title: Guide Types
 permalink: /guide-types/
 ---
 
-<p class="guide-types-lead">Ansible Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform.</p>
+<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform.</p>
 
 <div class="guide-types-grid">
 

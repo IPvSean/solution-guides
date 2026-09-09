@@ -4,7 +4,7 @@ title: Best Practices
 permalink: /best-practices/
 ---
 
-<p class="guide-types-lead">Ansible Guides use two authoring frameworks. Pick the one that matches your content type before you start writing or scoring a draft.</p>
+<p class="guide-types-lead">AAP Guides use two authoring frameworks. Pick the one that matches your content type before you start writing or scoring a draft.</p>
 
 <div class="guide-types-grid">
 
