@@ -402,7 +402,10 @@ patternfly: true
               Connect Azure Service Bus Queues to Event-Driven Ansible for real-time event consumption, AI-driven diagnosis, and automated remediation across hybrid Azure infrastructure.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+                <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo card-partner-logo--light">
+                <img src="{{ '/assets/images/logos/azure-logo-darkmode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              </span>
             </div>
           </div>
         </a>
