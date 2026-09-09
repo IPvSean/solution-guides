@@ -95,6 +95,13 @@ patternfly: true
   </aside>
 
   <div class="cards-main">
+    <div class="edit-link-wrap edit-link-wrap--catalog">
+      <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
+         target="_blank" class="edit-link">
+        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+        Edit on GitHub
+      </a>
+    </div>
     <p class="cards-intro">
       Solution guides by track (AIOps, Event-Driven, Journey) and production implementation guides for Ansible Automation Platform.
       Learn the difference in <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
