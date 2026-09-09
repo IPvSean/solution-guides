@@ -273,9 +273,9 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
   <a href="#key-terms-failure-modes">Failure modes</a>
 </nav>
 
-<div class="key-terms-group" markdown="1">
+<div class="key-terms-group">
 
-### Core concepts {: #key-terms-core}
+<h3 id="key-terms-core">Core concepts</h3>
 
 <dl class="key-terms-glossary">
 <dt>autovacuum</dt>
@@ -293,9 +293,9 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group" markdown="1">
+<div class="key-terms-group">
 
-### Metrics and views {: #key-terms-metrics}
+<h3 id="key-terms-metrics">Metrics and views</h3>
 
 <dl class="key-terms-glossary">
 <dt>autovacuum_count</dt>
@@ -327,9 +327,9 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 </div>
 
-<div class="key-terms-group" markdown="1">
+<div class="key-terms-group">
 
-### Settings (`postgresql.conf`){: #key-terms-settings}
+<h3 id="key-terms-settings">Settings (<code>postgresql.conf</code>)</h3>
 
 <dl class="key-terms-glossary">
 <dt>scale_factor (<code>autovacuum_vacuum_scale_factor</code>)</dt>
@@ -357,7 +357,7 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 <div class="key-terms-group key-terms-group--table" markdown="1">
 
-### Failure modes {: #key-terms-failure-modes}
+<h3 id="key-terms-failure-modes">Failure modes</h3>
 
 | | trigger-limited | throttle-limited |
 |---|---|---|
