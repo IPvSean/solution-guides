@@ -1,6 +1,10 @@
-# PostgreSQL Autovacuum Tuning for Ansible Automation Platform
+<div class="guide-header">
 
-<p class="guide-type-badge guide-type-badge--implementation">Implementation Guide</p>
+<h1>PostgreSQL Autovacuum Tuning for Ansible Automation Platform</h1>
+
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation guide</span>
+
+</div>
 
 ## Overview
 
