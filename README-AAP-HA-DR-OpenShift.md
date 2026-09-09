@@ -7,7 +7,7 @@
 </style>
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%">
 </a>
 
 ## Overview
@@ -19,24 +19,6 @@ This implementation guide shows how to deploy **AAP 2.7 (operator-based) on two 
 **DR model:** Two-site active-passive. The standby cluster runs the AAP CR with `idle_aap: true` so operators stay installed while component replicas remain at zero until promotion.
 
 **Related published guide:** For VM-based Active-Passive DR with EDB Postgres Advanced Server (not OpenShift/CNPG), see [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md).
-
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [HA/DR Architecture](#hadr-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Install the Operators](#1-install-the-operators)
-  - [Configure External Secrets](#2-configure-external-secrets)
-  - [Deploy the CloudNativePG Cluster](#3-deploy-the-cloudnativepg-cluster)
-  - [Deploy AAP](#4-deploy-aap)
-  - [Failover Procedures](#6-failover-procedures)
-- [Validation](#validation)
-- [Verified Test Scenarios](#verified-test-scenarios)
-- [Day 2 Operations](#8-day-2-operations)
-- [Known Issues](#known-issues)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Appendix A: ODF RGW Multisite Storage](#appendix-a-odf-rgw-multisite-storage)
 
 ---
 
@@ -195,7 +177,7 @@ High availability mechanisms and failover are only as reliable as the last time 
 ## HA/DR Architecture
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%">
 </a>
 
 ```mermaid

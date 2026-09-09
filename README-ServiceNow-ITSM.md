@@ -2,24 +2,6 @@
 
 <img src="assets/images/servicenow-hero.png" alt="Ansible + ServiceNow" style="max-width:400px">
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [ServiceNow](#servicenow)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-- [ServiceNow ITSM Workflow](#servicenow-itsm-workflow)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Step 1: Gather data from your ITSM](#step-1-gather-data-from-your-itsm)
-  - [Step 2: Create a service ticket](#step-2-create-a-service-ticket)
-  - [Step 3: Enrich a ServiceNow ticket with CVE data](#step-3-enrich-a-servicenow-ticket-with-cve-data)
-- [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-
 ## Overview
 
 ServiceNow is one of the most common ITSM solutions in the market. Organizations spend significant time manually creating, triaging, and enriching service tickets -- context that already exists in systems like Red Hat Insights but requires manual lookup and copy-paste into ITSM fields. This guide walks through a practical automation use case: creating a ServiceNow incident and enriching it with CVE advisory data from Red Hat Insights, all driven by Ansible Automation Platform.

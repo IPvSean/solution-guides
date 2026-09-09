@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Solution Guides
+title: Ansible Guides
 patternfly: true
 ---
 
@@ -11,15 +11,12 @@ patternfly: true
       <button id="filter-clear" class="cards-sidebar__clear">Clear filters</button>
     </div>
     <div class="cards-sidebar__section">
-      <h4 class="cards-sidebar__title">Type</h4>
+      <h4 class="cards-sidebar__title">Guide type</h4>
       <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="aiops"> AIOps
+        <input type="checkbox" value="solution"> Solution
       </label>
       <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="foundational"> Foundational
-      </label>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="infrastructure"> Infrastructure
+        <input type="checkbox" value="implementation"> Implementation
       </label>
     </div>
     <div class="cards-sidebar__section">
@@ -64,7 +61,7 @@ patternfly: true
     <p id="guide-search-count" class="cards-search__count"></p>
 
     <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="main-gallery">
-      <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,foundational,published">
+      <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -80,19 +77,16 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Foundational</span></span>
-          </div>
         </div>
       </a>
 
-      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,infrastructure,published">
+      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
+            <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
               </span>
             </span>
           </div>
@@ -103,18 +97,21 @@ patternfly: true
             Multi-datacenter Active-Passive disaster recovery for Ansible Automation Platform using EDB Postgres Advanced Server and EDB Failover Manager with sub-5-minute RTO.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/edb-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="foundational,infrastructure,netbox,published">
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
         <div class="pf-v6-c-card card-foundational">
           <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
+            <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
               </span>
             </span>
           </div>
@@ -124,13 +121,10 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Foundational</span></span>
-          </div>
         </div>
       </a>
 
-      <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-partners="instana,aiops,published">
+      <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-partners="instana,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -147,12 +141,14 @@ patternfly: true
             Closed-loop incident remediation integrating IBM Instana observability with Event-Driven Ansible for automatic detection, AI-driven job template routing, and self-healing infrastructure.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
+            <span class="card-partner-logo-well">
+              <img src="{{ '/assets/images/logos/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,published">
+      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -169,12 +165,15 @@ patternfly: true
             Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,published">
+      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -191,12 +190,15 @@ patternfly: true
             Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}" class="card-link" data-partners="servicenow,aiops,published">
+      <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}" class="card-link" data-partners="servicenow,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -213,12 +215,15 @@ patternfly: true
             Cut incident MTTR from hours to minutes: LEAP identifies remediation opportunities, the Ansible MCP server surfaces approved playbooks, and governed execution closes incidents with full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}" class="card-link" data-partners="splunk,aiops,published">
+      <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}" class="card-link" data-partners="splunk,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -235,12 +240,15 @@ patternfly: true
             Three use cases for closed-loop AIOps: ITSI predictive anomaly detection with MLTK, RHEL server remediation with AI-enriched diagnostics, and network OSPF remediation with Lightspeed-generated playbooks.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/splunk-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-Windows-Cert-Rotation' | relative_url }}" class="card-link" data-partners="windows,aiops,published">
+      <a href="{{ '/README-AIOps-Windows-Cert-Rotation' | relative_url }}" class="card-link" data-partners="windows,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-green">
@@ -257,18 +265,18 @@ patternfly: true
             Automate Windows certificate rotation end-to-end: Event-Driven Ansible detects expiring certs, AI evaluates risk and timing, Ansible performs the rotation, and ITSM documents the full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
           </div>
         </div>
       </a>
 
-      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-partners="foundational,published">
+      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-partners="implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
+            <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
               </span>
             </span>
           </div>
@@ -278,13 +286,10 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Standardize your automation developer experience across the organization using Ansible Development Tools, from individual uv/pip installs to enterprise-governed Dev Spaces with 5-minute onboarding.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Foundational</span></span>
-          </div>
         </div>
       </a>
 
-      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="infrastructure,published">
+      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -300,9 +305,6 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Two-site active-passive disaster recovery for Ansible Automation Platform 2.7 on OpenShift using CloudNativePG cross-cluster replication, shared secrets, and controlled switchover procedures.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Implementation Guide</span></span>
-          </div>
         </div>
       </a>
 
@@ -311,7 +313,7 @@ patternfly: true
     <div class="cards-wip-section">
       <h2>Work in Progress</h2>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="wip-gallery">
-        <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-partners="foundational,wip">
+        <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-partners="implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -327,13 +329,10 @@ patternfly: true
             <div class="pf-v6-c-card__body">
               Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
             </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Foundational</span></span>
-            </div>
           </div>
         </a>
 
-        <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-partners="infrastructure,wip">
+        <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-partners="implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -347,15 +346,12 @@ patternfly: true
               <h3 class="pf-v6-c-card__title-text">PostgreSQL Autovacuum Tuning for AAP</h3>
             </div>
             <div class="pf-v6-c-card__body">
-              Three targeted autovacuum parameter changes — tested in order of impact — to keep large AAP tables continuously clean at enterprise scale.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Solution Guide</span></span>
+              Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
             </div>
           </div>
         </a>
 
-        <a href="{{ '/README-SQS' | relative_url }}" class="card-link" data-partners="aws,aiops,wip">
+        <a href="{{ '/README-SQS' | relative_url }}" class="card-link" data-partners="aws,aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -372,12 +368,15 @@ patternfly: true
               Connect Amazon SQS to Event-Driven Ansible so CloudWatch, EventBridge, and other AWS events trigger AI diagnosis and automated remediation without custom polling or Lambda glue code.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+                <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo card-partner-logo--light">
+                <img src="{{ '/assets/images/logos/aws-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              </span>
             </div>
           </div>
         </a>
 
-        <a href="{{ '/README-AIOps-Azure-Service-Bus' | relative_url }}" class="card-link" data-partners="azure,aiops,wip">
+        <a href="{{ '/README-AIOps-Azure-Service-Bus' | relative_url }}" class="card-link" data-partners="azure,aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -394,12 +393,12 @@ patternfly: true
               Connect Azure Service Bus Queues to Event-Driven Ansible for real-time event consumption, AI-driven diagnosis, and automated remediation across hybrid Azure infrastructure.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
             </div>
           </div>
         </a>
 
-        <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,wip">
+        <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -416,13 +415,16 @@ patternfly: true
               Collapse CVE patching from days to minutes: Red Hat Lightspeed MCP identifies vulnerable RHEL VMs on OpenShift Virtualization, the AAP MCP server surfaces approved remediation, and governed execution patches the fleet with full audit trail.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+              <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
             </div>
           </div>
         </a>
 
 
-        <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,wip">
+        <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -438,13 +440,10 @@ patternfly: true
             <div class="pf-v6-c-card__body">
               Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
             </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
-            </div>
           </div>
         </a>
 
-        <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,wip">
+        <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -460,13 +459,10 @@ patternfly: true
             <div class="pf-v6-c-card__body">
               Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
             </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
-            </div>
           </div>
         </a>
 
-        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-partners="infrastructure,wip">
+        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-partners="implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -483,12 +479,12 @@ patternfly: true
               Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
             </div>
           </div>
         </a>
 
-        <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-partners="aiops,wip">
+        <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-partners="aiops,solution,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -503,9 +499,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__body">
               A journey guide for operations teams: when EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Automation Journey Guide</span></span>
             </div>
           </div>
         </a>
@@ -532,7 +525,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-partners="servicenow,published">
+        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-partners="servicenow,solution,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">ServiceNow ITSM Ticket Enrichment</h3>
@@ -541,7 +534,10 @@ patternfly: true
               Automate ServiceNow ticket creation and enrich incidents with CVE data from Red Hat Insights.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
             </div>
           </div>
         </a>

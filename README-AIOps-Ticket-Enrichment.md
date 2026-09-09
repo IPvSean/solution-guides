@@ -21,24 +21,6 @@ It is written for the engineer who builds and maintains these workflows, not a b
 >
 > Examples in this guide use ServiceNow and the `servicenow.itsm` collection. The patterns apply equally to any ITSM or ticketing platform — Jira Service Management, BMC Helix, Freshservice, or a custom webhook endpoint. Swap the ticket-creation and work-note steps for your platform's Ansible collection or API.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-- [The Ticket Enrichment Journey](#the-ticket-enrichment-journey)
-  - [Where are you today?](#where-are-you-today)
-  - [Stage 1: Known Incident, Known Fix](#stage-1-known-incident-known-fix)
-  - [Stage 2: AI-Enriched Tickets with AAP Only](#stage-2-ai-enriched-tickets-with-aap-only)
-  - [Stage 3: Context-Aware Routing](#stage-3-context-aware-routing)
-  - [Stage 4: AI-Driven Triage for Novel Incidents](#stage-4-ai-driven-triage-for-novel-incidents)
-  - [Stage 5: Full Orchestration Workflows](#stage-5-full-orchestration-workflows)
-- [Decision Framework: When to Add Automation Orchestrator](#decision-framework-when-to-add-automation-orchestrator)
-- [Reference: Which Node Type for Which Problem](#reference-which-node-type-for-which-problem)
-- [Where to Start](#where-to-start)
-- [Validation](#validation)
-- [Related Guides](#related-guides)
-
 <h2 id="background"></h2>
 
 ## Background

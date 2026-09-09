@@ -17,6 +17,14 @@
     <link rel="apple-touch-icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="color-scheme" content="light dark">
+    <script>
+      (function () {
+        var stored = localStorage.getItem('ansible-guides-theme');
+        var dark = stored === 'dark' || (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      })();
+    </script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -32,8 +40,12 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: false, theme: 'default' });
-      document.addEventListener('DOMContentLoaded', function () {
+
+      function getMermaidTheme() {
+        return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+      }
+
+      function renderMermaid() {
         document.querySelectorAll('pre > code.language-mermaid').forEach(function (codeEl) {
           var pre = codeEl.parentElement;
           var div = document.createElement('div');
@@ -41,8 +53,17 @@
           div.textContent = codeEl.textContent;
           pre.parentNode.replaceChild(div, pre);
         });
-        mermaid.run();
-      });
+
+        document.querySelectorAll('.mermaid').forEach(function (el) {
+          el.removeAttribute('data-processed');
+        });
+
+        mermaid.initialize({ startOnLoad: false, theme: getMermaidTheme() });
+        mermaid.run({ querySelector: '.mermaid' });
+      }
+
+      document.addEventListener('DOMContentLoaded', renderMermaid);
+      document.addEventListener('ansible-guides-theme-change', renderMermaid);
     </script>
   </head>
   <body>
@@ -84,6 +105,10 @@
       };
     </script>
     <script src="{{ '/assets/tablelink.js' | relative_url }}"></script>
+    <script src="{{ '/assets/image-lightbox.js' | relative_url }}"></script>
+    <script src="{{ '/assets/code-blocks.js' | relative_url }}"></script>
+
+    <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 
     <div class="wrapper">
       <header>
@@ -91,11 +116,11 @@
           <a href="{{ '/' | relative_url }}" class="header-brand">
             <img
               class="header-logo"
-              src="{{ '/assets/images/redhat-ansible-logo.svg' | relative_url }}"
+              src="{{ '/assets/images/logos/redhat-ansible-logo.svg' | relative_url }}"
               title="Red Hat Ansible"
               alt="Red Hat Ansible"
             />
-            <span class="header-title">Solution Guides</span>
+            <span class="header-title">Ansible Guides</span>
           </a>
           <button class="header-hamburger" id="header-hamburger" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
@@ -113,6 +138,9 @@
             <a class="header-link" target="_new" href="https://github.com/ansible-tmm/solution-guides/issues/new">
               Open an issue
             </a>
+            <button type="button" class="header-theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <div class="header-search">
               <i class="fas fa-search header-search__icon"></i>
               <input type="text" id="header-search" class="header-search__input" placeholder="Search..." autocomplete="off">
@@ -136,7 +164,7 @@
           <a href="https://redhat.com">
             <img
               class="footer-logo"
-              src="{{ '/assets/images/redhat-logo.svg' | relative_url}}"
+              src="{{ '/assets/images/logos/redhat-logo.svg' | relative_url}}"
               title="Red Hat"
               alt="Red Hat"
             />
@@ -160,36 +188,7 @@
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
-    <!-- Copy-to-clipboard buttons for code blocks -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('pre').forEach(function(pre) {
-          var wrapper = document.createElement('div');
-          wrapper.style.position = 'relative';
-          pre.parentNode.insertBefore(wrapper, pre);
-          wrapper.appendChild(pre);
-
-          var btn = document.createElement('button');
-          btn.className = 'copy-btn';
-          btn.textContent = 'Copy';
-          btn.setAttribute('aria-label', 'Copy code to clipboard');
-          wrapper.appendChild(btn);
-
-          btn.addEventListener('click', function() {
-            var code = pre.querySelector('code');
-            var text = code ? code.textContent : pre.textContent;
-            navigator.clipboard.writeText(text).then(function() {
-              btn.textContent = 'Copied!';
-              btn.classList.add('copy-btn--success');
-              setTimeout(function() {
-                btn.textContent = 'Copy';
-                btn.classList.remove('copy-btn--success');
-              }, 2000);
-            });
-          });
-        });
-      });
-    </script>
+    <!-- Code block enhancements (copy, labels, light theme) handled by code-blocks.js -->
 
     <!-- Hamburger menu toggle -->
     <script>
@@ -248,8 +247,35 @@
           || document.querySelector('.cards-layout');
         if (isIndex) return;
 
-        var headings = section.querySelectorAll('h2[id]');
+        var skipHeadingIds = {
+          'overview': true,
+          'table-of-contents': true,
+          'next-steps': true,
+          'summary': true
+        };
+
+        function includeInSidebar(h) {
+          if (h.textContent.trim() === '') return false;
+          if (skipHeadingIds[h.id.toLowerCase()]) return false;
+          var label = h.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+          return label !== 'overview'
+            && label !== 'table of contents'
+            && label !== 'next steps'
+            && label !== 'summary';
+        }
+
+        var allHeadings = section.querySelectorAll('h2[id]');
+        var headings = Array.prototype.filter.call(allHeadings, includeInSidebar);
         if (headings.length < 2) return;
+
+        var overviewHeading = section.querySelector('h2#overview');
+        if (!overviewHeading) {
+          Array.prototype.forEach.call(allHeadings, function(h) {
+            if (!overviewHeading && h.textContent.replace(/\s+/g, ' ').trim().toLowerCase() === 'overview') {
+              overviewHeading = h;
+            }
+          });
+        }
 
         var sidebar = document.createElement('aside');
         sidebar.className = 'guide-sidebar';
@@ -257,7 +283,7 @@
         var backLink = document.createElement('a');
         backLink.href = '{{ "/" | relative_url }}';
         backLink.className = 'guide-sidebar__back';
-        backLink.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Solution Guides';
+        backLink.innerHTML = '<i class="fas fa-arrow-left"></i> Back to Ansible Guides';
         sidebar.appendChild(backLink);
 
         var nav = document.createElement('nav');
@@ -269,6 +295,17 @@
 
         var ul = document.createElement('ul');
         ul.className = 'guide-sidebar__list';
+
+        if (overviewHeading && overviewHeading.id) {
+          var overviewLi = document.createElement('li');
+          var overviewLink = document.createElement('a');
+          overviewLink.href = '#' + overviewHeading.id;
+          overviewLink.className = 'guide-sidebar__link guide-sidebar__link--overview';
+          overviewLink.textContent = 'Overview';
+          overviewLi.appendChild(overviewLink);
+          ul.appendChild(overviewLi);
+        }
+
         headings.forEach(function(h) {
           if (h.textContent.trim() === '') return;
           var li = document.createElement('li');
@@ -296,6 +333,10 @@
           headings.forEach(function(h) {
             if (h.offsetTop <= scrollPos) current = h.id;
           });
+          if (overviewHeading && overviewHeading.id) {
+            var firstSectionTop = headings.length ? headings[0].offsetTop : overviewHeading.offsetTop + 1;
+            if (scrollPos < firstSectionTop) current = overviewHeading.id;
+          }
           sidebarLinks.forEach(function(link) {
             if (link.getAttribute('href') === '#' + current) {
               link.classList.add('guide-sidebar__link--active');

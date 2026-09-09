@@ -25,33 +25,6 @@ This guide describes a practical AIOps pattern that bridges those teams using **
 
 **Interactive walkthrough (source narrative for this guide):** [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](https://app.arcade.software/share/UAt0jBV2NHwrV3rgaTQr?ref=share-link)
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Workflow](#workflow)
-  - [Architecture diagram (reference)](#architecture-diagram-reference)
-  - [Operational impact by stage](#operational-impact-by-stage)
-  - [MCP deployment topology and trust boundaries](#mcp-deployment-topology-and-trust-boundaries)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [ServiceNow](#servicenow)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [1. Create an AAP API token for the MCP integration](#1-create-an-aap-api-token-for-the-mcp-integration)
-  - [2. Connect ServiceNow to the Ansible Automation Platform MCP server](#2-connect-servicenow-to-the-ansible-automation-platform-mcp-server)
-  - [3. Map a LEAP opportunity to an AAP remediation playbook](#3-map-a-leap-opportunity-to-an-aap-remediation-playbook)
-  - [4. Remediate an incident via LEAP (“Execute Ansible playbooks”)](#4-remediate-an-incident-via-leap-execute-ansible-playbooks)
-- [Executable artifacts (YAML examples)](#executable-artifacts-yaml-examples)
-- [Validation](#validation)
-  - [Sample verification artifacts](#sample-verification-artifacts)
-  - [Troubleshooting](#troubleshooting)
-- [Security, Governance, and Operational Risk](#security-governance-and-operational-risk)
-- [Maturity Path](#maturity-path)
-- [Measuring success](#measuring-success)
-- [Related Guides](#related-guides)
-- [Summary](#summary)
-
 <h2 id="background"></h2>
 
 ## Background

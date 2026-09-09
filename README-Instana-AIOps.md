@@ -19,22 +19,6 @@ Most organizations already have proven Ansible automation for service restarts, 
 
 **Technical value:** Governed remediation with RBAC-scoped job templates -- only authorized teams can trigger remediation within their scope. Credential isolation -- secrets stored in automation controller and injected at runtime, never exposed in playbooks or logs. Bidirectional observability-automation feedback loop via Host Agent REST API annotations, linking remediation actions to Incidents on the Instana timeline.
 
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [Integration Architecture](#integration-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Part 1: Shared Setup](#part-1-shared-setup)
-  - [Part 2: Path A -- Event-Driven Ansible Integration](#part-2-path-a--event-driven-ansible-integration)
-  - [Part 3: Path B -- Instana Automation Framework](#part-3-path-b--instana-automation-framework)
-  - [Part 4: Use Case Walkthroughs](#part-4-use-case-walkthroughs)
-  - [Part 5: Optional AI-Assisted Routing](#part-5-optional-ai-assisted-routing)
-- [Validation](#validation)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [ROI Recap](#roi-recap)
-  - [Measuring Success](#measuring-success)
-
 ---
 
 ## Background
