@@ -1540,6 +1540,11 @@ b {
   }
 }
 
+// Red Hat AI dark asset is 2000x408 vs light 638x193; remove when dark PNG matches light canvas
+.card-partner-logo-set--redhat-ai .card-partner-logo--dark {
+  height: 19px;
+}
+
 .card-partner-logo {
   height: 28px;
   width: auto;

@@ -165,7 +165,7 @@ patternfly: true
             Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
               <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
@@ -190,7 +190,7 @@ patternfly: true
             Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
               <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
@@ -415,7 +415,7 @@ patternfly: true
               Collapse CVE patching from days to minutes: Red Hat Lightspeed MCP identifies vulnerable RHEL VMs on OpenShift Virtualization, the AAP MCP server surfaces approved remediation, and governed execution patches the fleet with full audit trail.
             </div>
             <div class="pf-v6-c-card__footer">
-              <span class="card-partner-logo-set">
+              <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
               <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
