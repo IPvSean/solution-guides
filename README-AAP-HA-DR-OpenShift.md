@@ -7,7 +7,7 @@
 </style>
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%">
 </a>
 
 ## Overview
@@ -195,7 +195,7 @@ High availability mechanisms and failover are only as reliable as the last time 
 ## HA/DR Architecture
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%">
 </a>
 
 ```mermaid
