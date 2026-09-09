@@ -23,7 +23,7 @@
   --table-header-bg: #2d3039;
   --table-header-text: #ffffff;
   --table-row-odd: #ffffff;
-  --table-row-even: #f0f1f3;
+  --table-row-even: #e8eaed;
   --table-border: #c0c4ca;
   --table-cell-border: #d0d3d8;
   --shadow-sm: rgba(0, 0, 0, 0.06);
@@ -1430,7 +1430,8 @@ b {
 }
 
 @media screen and (max-width: 1100px) {
-  #solution-gallery,
+  #aiops-gallery,
+  #event-driven-gallery,
   #implementation-gallery,
   #wip-gallery {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -1442,7 +1443,8 @@ b {
     grid-template-columns: 1fr !important;
   }
 
-  #solution-gallery,
+  #aiops-gallery,
+  #event-driven-gallery,
   #implementation-gallery,
   #wip-gallery {
     grid-template-columns: 1fr !important;
@@ -1484,6 +1486,39 @@ b {
 
 .cards-guide-section:first-of-type .cards-guide-section__heading {
   margin-top: 0;
+}
+
+.cards-track-section {
+  margin-top: 28px;
+  scroll-margin-top: 24px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.cards-track-section__heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+}
+
+.cards-track-section__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #151515;
+}
+
+.cards-track-section__intro {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6a6e73;
+  margin: 0 0 14px;
+  max-width: 720px;
 }
 
 .guide-section__info {
@@ -1584,6 +1619,13 @@ b {
     box-shadow: 0 1px 4px rgba(94, 64, 190, 0.12);
     text-decoration: none !important;
   }
+}
+
+.cards-sidebar__jump--nested {
+  margin-left: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
 }
 
 .cards-sidebar__jump-icon {
@@ -1689,6 +1731,25 @@ b {
   flex-shrink: 0;
 }
 
+.card-header--labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.card-label-track--aiops {
+  --pf-v6-c-label--BackgroundColor: #f3f0fa;
+  --pf-v6-c-label--Color: #5e40be;
+  border: 1px solid #e8e0f5;
+}
+
+.card-label-track--event-driven {
+  --pf-v6-c-label--BackgroundColor: #e7f6f8;
+  --pf-v6-c-label--Color: #0f6e82;
+  border: 1px solid #b8dde5;
+}
+
 .card-link .pf-v6-c-label__icon {
   margin-right: 4px;
 }
@@ -1762,6 +1823,7 @@ b {
 
 .cards-guide-section__heading + .cards-gallery,
 .cards-guide-section__title + .cards-gallery,
+.cards-track-section .cards-gallery,
 .cards-wip-section h2 + .cards-gallery {
   align-items: stretch;
 }
@@ -1861,19 +1923,37 @@ b {
   }
 }
 
-.edit-link {
-  font-size: 13px;
-  color: #6a6e73;
-  text-decoration: none;
-  transition: color 0.2s ease;
+.edit-link-wrap {
+  text-align: right;
+  margin-bottom: 0.75rem;
+}
 
-  &:hover {
+.edit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4d4d4d;
+  text-decoration: none !important;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #d0d3d8;
+  background: #f5f5f5;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus {
     color: #0066cc;
-    text-decoration: underline;
+    border-color: #b8c4d0;
+    background: #eef3f8;
+    text-decoration: none !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 
   i {
-    margin-right: 2px;
+    font-size: 12px;
   }
 }
 
@@ -2071,10 +2151,16 @@ b {
   }
 
   .edit-link {
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+    background: var(--bg-surface-alt);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: var(--link-color);
+      border-color: #4a5568;
+      background: var(--bg-surface);
+      box-shadow: 0 1px 4px var(--shadow-sm);
     }
   }
 
@@ -2095,6 +2181,26 @@ b {
 
   .cards-guide-section__title {
     color: #ffffff;
+  }
+
+  .cards-track-section__title {
+    color: var(--text-primary);
+  }
+
+  .cards-track-section__intro {
+    color: var(--text-muted);
+  }
+
+  .card-label-track--aiops {
+    --pf-v6-c-label--BackgroundColor: #2a2540;
+    --pf-v6-c-label--Color: #c4b5e8;
+    border-color: #4a3d7a;
+  }
+
+  .card-label-track--event-driven {
+    --pf-v6-c-label--BackgroundColor: #1a3a42;
+    --pf-v6-c-label--Color: #9edbe8;
+    border-color: #2d6a78;
   }
 
   .guide-section__info {

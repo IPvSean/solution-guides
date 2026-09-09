@@ -18,6 +18,20 @@ Ansible Guides are organized into two types. Each answers a different question f
 
 **Examples:** AIOps automation with Ansible, automated incident remediation with IBM Instana, AIOps with Splunk and Event-Driven Ansible.
 
+Solution Guides are organized into **tracks** by automation pattern. Both tracks use the same guide framework, validation expectations, and maturity path structure.
+
+### AIOps Solutions {#aiops-solutions}
+
+Partner integrations where **AI inference, Ansible Lightspeed, or MCP** augments detection, diagnosis, and remediation. Use these when the outcome depends on intelligent triage, enrichment, or governed playbook selection.
+
+**Examples:** AIOps automation with Ansible, AIOps with Splunk and Event-Driven Ansible, Unlock AIOps with ServiceNow LEAP and Ansible MCP server.
+
+### Event-Driven Solutions {#event-driven-solutions}
+
+Partner integrations where **Event-Driven Ansible** closes the loop from partner events to automated action -- without an AI enrichment layer. Use these when webhooks, queues, or CMDB state changes should trigger governed Ansible execution in real time.
+
+**Examples:** Automated WAN circuit failover with NetBox and AAP, event-driven network configuration with NetBox and AAP.
+
 [Browse Solution Guides on the homepage](/)
 
 ---
