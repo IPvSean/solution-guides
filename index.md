@@ -138,7 +138,9 @@ patternfly: true
             Closed-loop incident remediation integrating IBM Instana observability with Event-Driven Ansible for automatic detection, AI-driven job template routing, and self-healing infrastructure.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
+            <span class="card-partner-logo-well">
+              <img src="{{ '/assets/images/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
+            </span>
           </div>
         </div>
       </a>

@@ -1517,6 +1517,12 @@ b {
   padding: 16px 0 0;
 }
 
+.card-partner-logo-well {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
 .card-partner-logo {
   height: 28px;
   width: auto;
@@ -1855,6 +1861,13 @@ b {
 
   .card-link .pf-v6-c-card__body {
     color: var(--text-secondary) !important;
+  }
+
+  .card-partner-logo-well {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .card-foundational {
