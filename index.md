@@ -182,8 +182,6 @@ patternfly: true
       </div>
     </section>
 
-    <hr class="cards-guide-divider">
-
     <section id="implementation-guides" class="cards-guide-section">
       <h2 class="cards-guide-section__title">Implementation Guides</h2>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
