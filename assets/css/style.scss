@@ -161,7 +161,8 @@ img {
 // Guide content images (border + click-to-expand lightbox)
 .guide-image {
   display: block;
-  max-width: 92%;
+  width: 100%;
+  max-width: 720px;
   margin: 1.25rem auto;
   border: 1px solid #c0c4ca;
   border-radius: 8px;
@@ -172,7 +173,7 @@ img {
   &:hover,
   &:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    outline: 2px solid #337ab7;
+    outline: 2px solid #5e40be;
     outline-offset: 2px;
   }
 }
@@ -209,10 +210,17 @@ body.image-lightbox-open {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
-    font-size: 1.5rem;
-    line-height: 1;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     transition: background 0.2s ease;
+
+    i {
+      font-size: 1rem;
+      line-height: 1;
+    }
 
     &:hover,
     &:focus {

@@ -38,7 +38,7 @@
     closeBtn.type = 'button';
     closeBtn.className = 'image-lightbox__close';
     closeBtn.setAttribute('aria-label', 'Close full size image');
-    closeBtn.innerHTML = '&times;';
+    closeBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
 
     overlayImg = document.createElement('img');
     overlayImg.className = 'image-lightbox__img';
