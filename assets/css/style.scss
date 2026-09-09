@@ -1523,6 +1523,16 @@ b {
   line-height: 0;
 }
 
+.card-partner-logo-set {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.card-partner-logo--dark {
+  display: none;
+}
+
 .card-partner-logo {
   height: 28px;
   width: auto;
@@ -1868,6 +1878,14 @@ b {
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .card-partner-logo-set .card-partner-logo--light {
+    display: none;
+  }
+
+  .card-partner-logo-set .card-partner-logo--dark {
+    display: block;
   }
 
   .card-foundational {
