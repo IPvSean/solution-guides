@@ -17,6 +17,14 @@
     <link rel="apple-touch-icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="color-scheme" content="light dark">
+    <script>
+      (function () {
+        var stored = localStorage.getItem('ansible-guides-theme');
+        var dark = stored === 'dark' || (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      })();
+    </script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -32,8 +40,12 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-      mermaid.initialize({ startOnLoad: false, theme: 'default' });
-      document.addEventListener('DOMContentLoaded', function () {
+
+      function getMermaidTheme() {
+        return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+      }
+
+      function renderMermaid() {
         document.querySelectorAll('pre > code.language-mermaid').forEach(function (codeEl) {
           var pre = codeEl.parentElement;
           var div = document.createElement('div');
@@ -41,8 +53,17 @@
           div.textContent = codeEl.textContent;
           pre.parentNode.replaceChild(div, pre);
         });
-        mermaid.run();
-      });
+
+        document.querySelectorAll('.mermaid').forEach(function (el) {
+          el.removeAttribute('data-processed');
+        });
+
+        mermaid.initialize({ startOnLoad: false, theme: getMermaidTheme() });
+        mermaid.run({ querySelector: '.mermaid' });
+      }
+
+      document.addEventListener('DOMContentLoaded', renderMermaid);
+      document.addEventListener('ansible-guides-theme-change', renderMermaid);
     </script>
   </head>
   <body>
@@ -87,6 +108,8 @@
     <script src="{{ '/assets/image-lightbox.js' | relative_url }}"></script>
     <script src="{{ '/assets/code-blocks.js' | relative_url }}"></script>
 
+    <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+
     <div class="wrapper">
       <header>
         <div class="header-container">
@@ -115,6 +138,9 @@
             <a class="header-link" target="_new" href="https://github.com/ansible-tmm/solution-guides/issues/new">
               Open an issue
             </a>
+            <button type="button" class="header-theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
             <div class="header-search">
               <i class="fas fa-search header-search__icon"></i>
               <input type="text" id="header-search" class="header-search__input" placeholder="Search..." autocomplete="off">
