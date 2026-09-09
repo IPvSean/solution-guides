@@ -17,6 +17,14 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Solution Guides
         </a>
+        <a href="#aiops-solutions" class="cards-sidebar__jump cards-sidebar__jump--nested">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          AIOps Solutions
+        </a>
+        <a href="#event-driven-solutions" class="cards-sidebar__jump cards-sidebar__jump--nested">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          Event-Driven Solutions
+        </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
@@ -33,6 +41,15 @@ patternfly: true
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
         <input type="checkbox" value="wip"> Work in Progress
+      </label>
+    </div>
+    <div class="cards-sidebar__section">
+      <h4 class="cards-sidebar__title">Solution track</h4>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
+        <input type="checkbox" value="aiops"> AIOps
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
+        <input type="checkbox" value="event-driven"> Event-Driven
       </label>
     </div>
     <div class="cards-sidebar__section">
@@ -75,7 +92,7 @@ patternfly: true
 
   <div class="cards-main">
     <p class="cards-intro">
-      Partner-focused solution guides and production implementation guides for Ansible Automation Platform.
+      Partner-focused solution guides (AIOps and event-driven tracks) and production implementation guides for Ansible Automation Platform.
       Learn the difference in <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
     </p>
     <p id="guide-search-count" class="cards-search__count"></p>
@@ -87,15 +104,27 @@ patternfly: true
           <i class="fas fa-info-circle" aria-hidden="true"></i>
         </a>
       </div>
-      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="solution-gallery">
-      <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,solution,published">
+
+      <div id="aiops-solutions" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">AIOps Solutions</h3>
+          <a href="{{ '/guide-types' | relative_url }}#aiops-solutions" class="guide-section__info" data-tooltip="Partner integrations where AI inference, Lightspeed, or MCP augments detection, diagnosis, and remediation." aria-label="Learn about AIOps Solutions">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
+      <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-tags="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -107,14 +136,17 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-partners="instana,aiops,solution,published">
+      <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
         <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -132,14 +164,17 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}" class="card-link" data-partners="servicenow,aiops,solution,published">
+      <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}" class="card-link" data-tags="servicenow,aiops,solution,published">
         <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -157,14 +192,17 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}" class="card-link" data-partners="splunk,aiops,solution,published">
+      <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}" class="card-link" data-tags="splunk,aiops,solution,published">
         <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -182,14 +220,17 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AIOps-Windows-Cert-Rotation' | relative_url }}" class="card-link" data-partners="windows,aiops,solution,published">
+      <a href="{{ '/README-AIOps-Windows-Cert-Rotation' | relative_url }}" class="card-link" data-tags="windows,aiops,solution,published">
         <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
+          <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
                 <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
                 Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -206,6 +247,169 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-SQS' | relative_url }}" class="card-link" data-tags="aws,aiops,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AIOps with AWS SQS and Event-Driven Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Connect Amazon SQS to Event-Driven Ansible so CloudWatch, EventBridge, and other AWS events trigger AI diagnosis and automated remediation without custom polling or Lambda glue code.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/aws-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-AIOps-Azure-Service-Bus' | relative_url }}" class="card-link" data-tags="azure,aiops,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Event-Driven Remediation with Azure Service Bus</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Connect Azure Service Bus Queues to Event-Driven Ansible for real-time event consumption, AI-driven diagnosis, and automated remediation across hybrid Azure infrastructure.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/azure-logo-darkmode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">RHEL Patching with Red Hat Lightspeed and Ansible MCP Server</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Collapse CVE patching from days to minutes: Red Hat Lightspeed MCP identifies vulnerable RHEL VMs on OpenShift Virtualization, the AAP MCP server surfaces approved remediation, and governed execution patches the fleet with full audit trail.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-tags="aiops,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            A journey guide for operations teams: when EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
+          </div>
+        </div>
+      </a>
+      </div>
+      </div>
+
+      <div id="event-driven-solutions" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">Event-Driven Solutions</h3>
+          <a href="{{ '/guide-types' | relative_url }}#event-driven-solutions" class="guide-section__info" data-tooltip="Partner integrations where Event-Driven Ansible closes the loop from partner events to automated action." aria-label="Learn about Event-Driven Solutions">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Closed-loop automation from partner webhooks and events through EDA rulebooks to governed Ansible execution.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="event-driven-gallery">
+
+      <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,event-driven,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
+              <span class="pf-v6-c-label__content">Event-Driven</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Event-Driven Network Configuration with NetBox and AAP</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,event-driven,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
+              <span class="pf-v6-c-label__content">Event-Driven</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated WAN Circuit Failover with NetBox and AAP</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
+          </div>
+        </div>
+      </a>
+      </div>
       </div>
     </section>
 
@@ -217,7 +421,7 @@ patternfly: true
         </a>
       </div>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
-      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,implementation,published">
+      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-tags="edb,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -242,7 +446,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,netbox,published">
         <div class="pf-v6-c-card card-foundational">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -261,7 +465,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,implementation,published">
+      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -286,7 +490,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,implementation,published">
+      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -311,7 +515,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-partners="implementation,published">
+      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-tags="implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -330,7 +534,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-partners="implementation,published">
+      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-tags="implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -354,7 +558,7 @@ patternfly: true
     <div class="cards-wip-section">
       <h2>Work in Progress</h2>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="wip-gallery">
-        <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-partners="implementation,wip">
+        <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-tags="implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -373,7 +577,7 @@ patternfly: true
           </div>
         </a>
 
-        <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-partners="implementation,wip">
+        <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}" class="card-link" data-tags="implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -392,121 +596,7 @@ patternfly: true
           </div>
         </a>
 
-        <a href="{{ '/README-SQS' | relative_url }}" class="card-link" data-partners="aws,aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">AIOps with AWS SQS and Event-Driven Ansible</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Connect Amazon SQS to Event-Driven Ansible so CloudWatch, EventBridge, and other AWS events trigger AI diagnosis and automated remediation without custom polling or Lambda glue code.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-logo-set">
-                <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo card-partner-logo--light">
-                <img src="{{ '/assets/images/logos/aws-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-AIOps-Azure-Service-Bus' | relative_url }}" class="card-link" data-partners="azure,aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Event-Driven Remediation with Azure Service Bus</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Connect Azure Service Bus Queues to Event-Driven Ansible for real-time event consumption, AI-driven diagnosis, and automated remediation across hybrid Azure infrastructure.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-logo-set">
-                <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo card-partner-logo--light">
-                <img src="{{ '/assets/images/logos/azure-logo-darkmode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-              </span>
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">RHEL Patching with Red Hat Lightspeed and Ansible MCP Server</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Collapse CVE patching from days to minutes: Red Hat Lightspeed MCP identifies vulnerable RHEL VMs on OpenShift Virtualization, the AAP MCP server surfaces approved remediation, and governed execution patches the fleet with full audit trail.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-            </div>
-          </div>
-        </a>
-
-
-        <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Event-Driven Network Configuration with NetBox and AAP</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Automated WAN Circuit Failover with NetBox and AAP</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-partners="kafka,implementation,wip">
+        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-tags="kafka,implementation,wip">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__header">
               <span class="pf-v6-c-label pf-m-orange">
@@ -528,25 +618,6 @@ patternfly: true
           </div>
         </a>
 
-        <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-partners="aiops,solution,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              A journey guide for operations teams: when EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
-            </div>
-          </div>
-        </a>
-
       </div>
     </div>
 
@@ -559,7 +630,7 @@ patternfly: true
       <summary>Legacy Solution Guides (Under Review)</summary>
       <p>These solution guides were published on access.redhat.com before this repository existed. They are being reviewed and will be migrated to the new format as full markdown guides.</p>
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery">
-        <a href="https://access.redhat.com/articles/7136383" class="card-link" target="_blank" data-partners="published">
+        <a href="https://access.redhat.com/articles/7136383" class="card-link" target="_blank" data-tags="published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Automation Dashboard and Analytics</h3>
@@ -569,7 +640,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-partners="servicenow,solution,published">
+        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-tags="servicenow,event-driven,solution,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">ServiceNow ITSM Ticket Enrichment</h3>
@@ -585,7 +656,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7136720" class="card-link" target="_blank" data-partners="published">
+        <a href="https://access.redhat.com/articles/7136720" class="card-link" target="_blank" data-tags="published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Get started with EDA (Ansible Rulebook)</h3>
@@ -595,7 +666,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7123366" class="card-link" target="_blank" data-partners="cisco,published">
+        <a href="https://access.redhat.com/articles/7123366" class="card-link" target="_blank" data-tags="cisco,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Network Back Up and Configuration</h3>
@@ -608,7 +679,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7123361" class="card-link" target="_blank" data-partners="cisco,published">
+        <a href="https://access.redhat.com/articles/7123361" class="card-link" target="_blank" data-tags="cisco,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Network Fact Gathering & Reporting</h3>
@@ -634,11 +705,14 @@ patternfly: true
   var allCards = document.querySelectorAll('.card-link');
   var legacyDetails = document.querySelector('details.legacy-guides');
   var statusCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--status input');
+  var trackCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--track input');
   var partnerCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--partner input');
   var publishedCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="published"]');
   var wipCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="wip"]');
+  var solutionGuidesSection = document.getElementById('solution-guides');
   var sectionConfigs = [
-    { section: document.getElementById('solution-guides'), gallery: document.getElementById('solution-gallery') },
+    { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery') },
+    { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') },
     { section: document.querySelector('.cards-wip-section'), gallery: document.getElementById('wip-gallery') }
   ];
@@ -657,7 +731,7 @@ patternfly: true
   }
 
   function getCardTags(card) {
-    return (card.getAttribute('data-partners') || '').split(',').map(function (s) { return s.trim(); });
+    return (card.getAttribute('data-tags') || '').split(',').map(function (s) { return s.trim(); });
   }
 
   function getActiveStatus() {
@@ -676,12 +750,20 @@ patternfly: true
     return active;
   }
 
+  function getActiveTracks() {
+    var active = [];
+    trackCheckboxes.forEach(function (cb) {
+      if (cb.checked) active.push(cb.value);
+    });
+    return active;
+  }
+
   function isDefaultStatusFilter() {
     return publishedCheckbox && publishedCheckbox.checked && wipCheckbox && !wipCheckbox.checked;
   }
 
-  function hasActiveFilters(query, activePartners) {
-    return query || activePartners.length || !isDefaultStatusFilter();
+  function hasActiveFilters(query, activePartners, activeTracks) {
+    return query || activePartners.length || activeTracks.length || !isDefaultStatusFilter();
   }
 
   function updateSectionVisibility() {
@@ -693,13 +775,22 @@ patternfly: true
       });
       cfg.section.style.display = visibleInSection === 0 ? 'none' : '';
     });
+
+    if (solutionGuidesSection) {
+      var aiopsSection = document.getElementById('aiops-solutions');
+      var eventDrivenSection = document.getElementById('event-driven-solutions');
+      var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
+        || (eventDrivenSection && eventDrivenSection.style.display !== 'none');
+      solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
+    }
   }
 
   function filterCards() {
     var query = headerInput.value.toLowerCase().trim();
     var activeStatus = getActiveStatus();
     var activePartners = getActivePartners();
-    var showClear = hasActiveFilters(query, activePartners);
+    var activeTracks = getActiveTracks();
+    var showClear = hasActiveFilters(query, activePartners, activeTracks);
     filterClearBtn.style.display = showClear ? 'inline' : 'none';
 
     var visible = 0;
@@ -707,10 +798,12 @@ patternfly: true
 
     allCards.forEach(function (card) {
       var cardTags = getCardTags(card);
+      var isSolutionGuide = cardTags.indexOf('solution') !== -1;
       var textMatch = !query || getCardText(card).indexOf(query) !== -1;
       var statusMatch = !activeStatus.length || activeStatus.some(function (s) { return cardTags.indexOf(s) !== -1; });
       var partnerMatch = !activePartners.length || activePartners.some(function (p) { return cardTags.indexOf(p) !== -1; });
-      var show = textMatch && statusMatch && partnerMatch;
+      var trackMatch = !activeTracks.length || !isSolutionGuide || activeTracks.some(function (t) { return cardTags.indexOf(t) !== -1; });
+      var show = textMatch && statusMatch && partnerMatch && trackMatch;
       card.style.display = show ? '' : 'none';
       if (show) {
         visible++;
@@ -727,10 +820,10 @@ patternfly: true
       });
       legacyDetails.style.display = legacyVisible === 0 ? 'none' : '';
       if (legacyHasMatch) legacyDetails.setAttribute('open', '');
-      else if (hasActiveFilters(query, activePartners)) legacyDetails.removeAttribute('open');
+      else if (hasActiveFilters(query, activePartners, activeTracks)) legacyDetails.removeAttribute('open');
     }
 
-    if (hasActiveFilters(query, activePartners)) {
+    if (hasActiveFilters(query, activePartners, activeTracks)) {
       countEl.textContent = visible === 0
         ? 'No guides match your filters.'
         : visible + ' guide' + (visible !== 1 ? 's' : '') + ' found.';
@@ -745,11 +838,16 @@ patternfly: true
     cb.addEventListener('change', filterCards);
   });
 
+  trackCheckboxes.forEach(function (cb) {
+    cb.addEventListener('change', filterCards);
+  });
+
   partnerCheckboxes.forEach(function (cb) {
     cb.addEventListener('change', filterCards);
   });
 
   filterClearBtn.addEventListener('click', function () {
+    trackCheckboxes.forEach(function (cb) { cb.checked = false; });
     partnerCheckboxes.forEach(function (cb) { cb.checked = false; });
     if (publishedCheckbox) publishedCheckbox.checked = true;
     if (wipCheckbox) wipCheckbox.checked = false;
