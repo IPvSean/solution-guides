@@ -4,7 +4,7 @@ title: Guide Types
 permalink: /guide-types/
 ---
 
-<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform. <strong>Solution Guides define the outcome; Implementation Guides make the platform ready to run it.</strong></p>
+<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform. <strong>Solution Guides show AAP working with a partner to solve a problem; Implementation Guides make the platform ready to run it.</strong></p>
 
 <div class="guide-types-grid">
 
@@ -79,7 +79,7 @@ permalink: /guide-types/
 <div class="guide-types-synthesis">
   <div class="guide-types-synthesis__item">
     <span class="guide-types-synthesis__label guide-types-synthesis__label--solution">Solution Guides</span>
-    <p>Show <strong>why and what</strong> -- the business problem and the integrated outcome.</p>
+    <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
   </div>
   <div class="guide-types-synthesis__item">
     <span class="guide-types-synthesis__label guide-types-synthesis__label--implementation">Implementation Guides</span>
@@ -126,7 +126,7 @@ permalink: /guide-types/
   <div class="guide-types-together__grid">
     <div class="guide-types-together__item">
       <span class="guide-types-together__label guide-types-together__label--solution">Solution Guides</span>
-      <p>Show <strong>why and what</strong> -- the business problem and the integrated outcome.</p>
+      <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
     </div>
     <div class="guide-types-together__item">
       <span class="guide-types-together__label guide-types-together__label--implementation">Implementation Guides</span>

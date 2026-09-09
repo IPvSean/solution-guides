@@ -21,7 +21,7 @@ This framework is for **platform owners, infrastructure leads, and senior automa
 
 ### Where Implementation Guides Fit
 
-Implementation guides answer **how** to configure AAP for production. They complement [Solution Guides](guide-types.md), which answer **why and what** for partner-focused operational outcomes.
+Implementation guides answer **how** to configure AAP for production. They complement [Solution Guides](guide-types.md), which show **AAP working with a partner** to solve a specific operational problem.
 
 | Content Type | Purpose |
 |-------------|---------|
