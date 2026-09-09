@@ -11,13 +11,11 @@ patternfly: true
       <button id="filter-clear" class="cards-sidebar__clear">Clear filters</button>
     </div>
     <div class="cards-sidebar__section">
-      <h4 class="cards-sidebar__title">Guide type</h4>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="solution"> Solution
-      </label>
-      <label class="cards-sidebar__checkbox">
-        <input type="checkbox" value="implementation"> Implementation
-      </label>
+      <h4 class="cards-sidebar__title">Browse</h4>
+      <nav class="cards-sidebar__nav" aria-label="Guide sections">
+        <a href="#solution-guides" class="cards-sidebar__jump">Solution Guides</a>
+        <a href="#implementation-guides" class="cards-sidebar__jump">Implementation Guides</a>
+      </nav>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Status</h4>
@@ -60,7 +58,9 @@ patternfly: true
   <div class="cards-main">
     <p id="guide-search-count" class="cards-search__count"></p>
 
-    <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="main-gallery">
+    <section id="solution-guides" class="cards-guide-section">
+      <h2 class="cards-guide-section__title">Solution Guides</h2>
+      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="solution-gallery">
       <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-partners="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
           <div class="pf-v6-c-card__header">
@@ -76,50 +76,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,implementation,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">High-Availability AAP with EDB PostgreSQL DR</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Multi-datacenter Active-Passive disaster recovery for Ansible Automation Platform using EDB Postgres Advanced Server and EDB Failover Manager with sub-5-minute RTO.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
-              <img src="{{ '/assets/images/logos/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/edb-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
-        <div class="pf-v6-c-card card-foundational">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture with Ansible Automation Platform</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
         </div>
       </a>
@@ -141,58 +97,9 @@ patternfly: true
             Closed-loop incident remediation integrating IBM Instana observability with Event-Driven Ansible for automatic detection, AI-driven job template routing, and self-healing infrastructure.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-well">
-              <img src="{{ '/assets/images/logos/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">AI Infrastructure automation with Ansible</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,solution,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Intelligent Assistant with Red Hat AI Inference Server</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/instana-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
           </div>
         </div>
@@ -269,6 +176,107 @@ patternfly: true
           </div>
         </div>
       </a>
+      </div>
+    </section>
+
+    <hr class="cards-guide-divider">
+
+    <section id="implementation-guides" class="cards-guide-section">
+      <h2 class="cards-guide-section__title">Implementation Guides</h2>
+      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
+      <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-partners="edb,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">High-Availability AAP with EDB PostgreSQL DR</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Multi-datacenter Active-Passive disaster recovery for Ansible Automation Platform using EDB Postgres Advanced Server and EDB Failover Manager with sub-5-minute RTO.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/edb-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-partners="implementation,netbox,published">
+        <div class="pf-v6-c-card card-foundational">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture with Ansible Automation Platform</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AI Infrastructure automation with Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-partners="redhat-ai,aiops,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Intelligent Assistant with Red Hat AI Inference Server</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
 
       <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-partners="implementation,published">
         <div class="pf-v6-c-card">
@@ -307,8 +315,8 @@ patternfly: true
           </div>
         </div>
       </a>
-
-    </div>
+      </div>
+    </section>
 
     <div class="cards-wip-section">
       <h2>Work in Progress</h2>
