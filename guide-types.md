@@ -4,7 +4,18 @@ title: Guide Types
 permalink: /guide-types/
 ---
 
-<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform. <strong>Solution Guides show AAP working with a partner to solve a problem; Implementation Guides make the platform ready to run it.</strong></p>
+<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform.</p>
+
+<div class="guide-types-synthesis">
+  <div class="guide-types-synthesis__item">
+    <span class="guide-types-synthesis__label guide-types-synthesis__label--solution">Solution Guides</span>
+    <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
+  </div>
+  <div class="guide-types-synthesis__item">
+    <span class="guide-types-synthesis__label guide-types-synthesis__label--implementation">Implementation Guides</span>
+    <p>Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
+  </div>
+</div>
 
 <div class="guide-types-grid">
 
@@ -76,17 +87,6 @@ permalink: /guide-types/
 
 </div>
 
-<div class="guide-types-synthesis">
-  <div class="guide-types-synthesis__item">
-    <span class="guide-types-synthesis__label guide-types-synthesis__label--solution">Solution Guides</span>
-    <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
-  </div>
-  <div class="guide-types-synthesis__item">
-    <span class="guide-types-synthesis__label guide-types-synthesis__label--implementation">Implementation Guides</span>
-    <p>Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
-  </div>
-</div>
-
 <section class="guide-types-tracks">
   <h2 id="solution-guide-tracks" class="guide-types-tracks__title">Solution Guide tracks</h2>
   <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern. AIOps and Event-Driven are partner integration patterns; Journey guides are cross-cutting adoption paths. All tracks use the same guide framework, validation expectations, and maturity path structure. Within AIOps and Event-Driven, one guide per domain may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>).</p>
@@ -123,15 +123,5 @@ permalink: /guide-types/
 
 <section class="guide-types-together">
   <h2 id="how-they-work-together">How they work together</h2>
-  <div class="guide-types-together__grid">
-    <div class="guide-types-together__item">
-      <span class="guide-types-together__label guide-types-together__label--solution">Solution Guides</span>
-      <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
-    </div>
-    <div class="guide-types-together__item">
-      <span class="guide-types-together__label guide-types-together__label--implementation">Implementation Guides</span>
-      <p>Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
-    </div>
-  </div>
   <p class="guide-types-together__closing">Many teams start with a Solution Guide to align on the problem, then use Implementation Guides to build the foundation their automation will run on.</p>
 </section>
