@@ -336,6 +336,59 @@ div:hover > .copy-btn {
   border-color: #5cb85c !important;
 }
 
+// Glossary sections (lighter inline code than walkthrough blocks)
+.key-terms-glossary {
+  margin: 1rem 0 2rem;
+
+  dt {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #2d3039;
+    margin-top: 1.25rem;
+    margin-bottom: 0.35rem;
+
+    &:first-of-type {
+      margin-top: 0.5rem;
+    }
+  }
+
+  dd {
+    margin: 0 0 0.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #e8e0f5;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  code {
+    background-color: #f0f1f3;
+    color: #2d3039;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .key-terms-detail {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.95em;
+    color: #555;
+  }
+}
+
+.key-terms-closing {
+  margin: 2.5rem 0 3rem;
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  background: #fafafa;
+  border-radius: 8px;
+
+  ul {
+    margin-bottom: 0;
+  }
+}
+
 // codeblock tweaks
 
 .highlighter-rouge pre.highlight {

@@ -6,7 +6,11 @@ AAP at enterprise scale writes incessantly to large tables in its PostgreSQL dat
 
 Every UPDATE and DELETE in PostgreSQL leaves behind a "dead tuple" - the old row - rather than modifying the row in place. On large, frequently-written tables these accumulate quickly: at production AAP scale, a single high-churn table can generate ~27,000 dead tuples per hour. With default autovacuum settings, these dead tuples can wait around for more than 6 hours before autovacuum clears them. While they wait, queries must still scan over dead tuples even though they are invisible to them, degrading performance and, at scale, producing user-visible slowdowns.
 
-This guide documents three targeted parameter changes, tested in order of impact, to correct this problem and keep large tables continuously clean. See **Key Terms** at the end for definitions.
+This guide documents three targeted parameter changes, tested in order of impact, to correct this problem and keep large tables continuously clean.
+
+> **Tip:** Parameter glossary
+>
+> See [Key Terms](#key-terms) for definitions of metrics, settings, and failure modes used throughout this guide.
 
 ![Decision Card: Which autovacuum tuning applies to your tables?](assets/images/AAP-PostgreSQL-Autovacuum-Tuning-Decision-Card.png)
 
@@ -20,11 +24,11 @@ they are needed.
 - [Rung 1: Lower the Trigger](#rung-1-lower-the-trigger)
 - [Rung 2: Increase Check Frequency](#rung-2-increase-check-frequency)
 - [Rung 3: Ensure Each Pass Completes](#rung-3-ensure-each-pass-completes)
+- [Key Terms](#key-terms)
 - [Validation](#validation)
 - [Troubleshooting](#troubleshooting)
 - [Where to Start](#where-to-start)
 - [Related Guides](#related-guides)
-- [Key Terms](#key-terms)
 
 ## Prerequisites
 - Superuser access to the AAP PostgreSQL instance
@@ -250,6 +254,105 @@ In this study with `cost_limit=1000` on `main_hostmetric`, the table reached 0.0
 
 ---
 
+## Key Terms
+
+Quick reference for metrics, settings, and diagnostic views. Settings show the short name used in this guide, followed by the `postgresql.conf` parameter in parentheses.
+
+### Core concepts
+
+<dl class="key-terms-glossary">
+<dt>autovacuum</dt>
+<dd>PostgreSQL background process that removes dead tuples when configurable thresholds are met; it does not run continuously.
+<span class="key-terms-detail"><strong>Details:</strong> Tuned via multiple <code>autovacuum_*</code> settings in <code>postgresql.conf</code>. See <a href="#settings-postgresqlconf">Settings</a> below.</span></dd>
+
+<dt>dead tuple</dt>
+<dd>Old row copy left behind after an UPDATE or DELETE; vacuum removes it and reclaims space.
+<span class="key-terms-detail"><strong>Details:</strong> PostgreSQL writes a new row rather than modifying in place. Queries must scan past dead tuples even though they are invisible to them.</span></dd>
+
+<dt>HOT (Heap Only Tuple)</dt>
+<dd>In-page update optimization: when the changed column is not indexed, PostgreSQL can update the row without creating a dead tuple visible to autovacuum.
+<span class="key-terms-detail"><strong>Details:</strong> Disabled when the updated column is indexed -- every UPDATE then produces a dead tuple. Diagnose with the <code>hot_ratio</code> query in <a href="#rung-2-increase-check-frequency">Rung 2</a>.</span></dd>
+</dl>
+
+### Metrics and views
+
+<dl class="key-terms-glossary">
+<dt>autovacuum_count</dt>
+<dd>Running total of completed vacuum passes on a table (column in <code>pg_stat_user_tables</code>); subtract two snapshots to get passes in an interval.
+<span class="key-terms-detail"><strong>Details:</strong> Unlike <code>n_dead_tup</code>, this counter never resets -- a low reading always means vacuum has not run, not that you checked right after a cleanup. Used in <a href="#validation">Validation</a> for all three rungs.</span></dd>
+
+<dt>dead_pct</dt>
+<dd>Dead rows as a percentage of total rows (live + dead). At 30%+, queries scan significant dead data on every read.
+<span class="key-terms-detail"><strong>Formula</strong> (from <code>pg_stat_user_tables</code>):</span></dd>
+</dl>
+
+```
+dead_pct = 100.0 * n_dead_tup / (n_live_tup + n_dead_tup)
+```
+
+<dl class="key-terms-glossary">
+<dt>n_dead_tup</dt>
+<dd>Raw dead-tuple count on a table (column in <code>pg_stat_user_tables</code>).
+<span class="key-terms-detail"><strong>Details:</strong> Useful for spotting throttle-limited tables, but can read zero right after a pass fires on high-churn tables. Prefer <code>autovacuum_count</code> delta as the primary signal.</span></dd>
+
+<dt>n_tup_hot_upd / n_tup_upd</dt>
+<dd>Update counters in <code>pg_stat_user_tables</code>; <code>hot_ratio = n_tup_hot_upd / n_tup_upd</code>.
+<span class="key-terms-detail"><strong>Details:</strong> A ratio well below 100% on a high-write table means HOT is disabled -- typically because the updated column is indexed. See <a href="#rung-2-increase-check-frequency">Rung 2</a>.</span></dd>
+
+<dt>pg_stat_user_tables</dt>
+<dd>Per-table vacuum statistics view: <code>autovacuum_count</code>, <code>n_dead_tup</code>, <code>n_live_tup</code>, <code>n_tup_upd</code>, <code>n_tup_hot_upd</code>, <code>last_autovacuum</code>.
+<span class="key-terms-detail"><strong>Details:</strong> Primary diagnostic source for all three rungs and the <a href="#validation">Validation</a> queries.</span></dd>
+
+<dt>pg_stat_progress_vacuum</dt>
+<dd>Real-time view of active vacuum passes; key columns are <code>heap_blks_total</code> and <code>heap_blks_vacuumed</code>.
+<span class="key-terms-detail"><strong>Details:</strong> Confirm <code>pct_done</code> reaches 100% before a pass ends. Used in <a href="#rung-3-ensure-each-pass-completes">Rung 3</a> and <a href="#validation">Validation</a>.</span></dd>
+</dl>
+
+### Settings (`postgresql.conf`){: #settings-postgresqlconf}
+
+<dl class="key-terms-glossary">
+<dt>scale_factor (<code>autovacuum_vacuum_scale_factor</code>)</dt>
+<dd>Fraction of live rows that must be dead before autovacuum fires; default 0.2 (20%).
+<span class="key-terms-detail"><strong>Details:</strong> On an 800K-row table, 0.2 waits for 160,000 dead tuples; 0.02 fires at 16,000. At large tables, target <code>dead_pct</code> ≈ <code>scale_factor</code> × 100. Apply in <a href="#rung-1-lower-the-trigger">Rung 1</a>.</span></dd>
+
+<dt>max_workers (<code>autovacuum_max_workers</code>)</dt>
+<dd>Maximum tables vacuumed simultaneously; default 3.
+<span class="key-terms-detail"><strong>Details:</strong> Increase when multiple high-churn tables compete for vacuum attention. Set alongside <code>scale_factor</code> in <a href="#rung-1-lower-the-trigger">Rung 1</a>.</span></dd>
+
+<dt>naptime (<code>autovacuum_naptime</code>)</dt>
+<dd>Interval between autovacuum wake-ups to check each table; default 60 seconds.
+<span class="key-terms-detail"><strong>Details:</strong> At 60s on a table receiving thousands of updates per minute, nearly 5,000 dead tuples can accumulate between checks. Lower to 10s in <a href="#rung-2-increase-check-frequency">Rung 2</a>.</span></dd>
+
+<dt>vacuum_threshold (<code>autovacuum_vacuum_threshold</code>)</dt>
+<dd>Minimum absolute dead-tuple count before autovacuum considers a table, regardless of <code>scale_factor</code>; default 50.
+<span class="key-terms-detail"><strong>Details:</strong> Lowering to 20 ensures small, high-churn tables are not ignored. Set in <a href="#rung-2-increase-check-frequency">Rung 2</a>.</span></dd>
+
+<dt>cost_limit (<code>autovacuum_vacuum_cost_limit</code>)</dt>
+<dd>I/O budget for a single autovacuum pass before pausing; default 200 (~9 pages per pass).
+<span class="key-terms-detail"><strong>Details:</strong> At 1,000, autovacuum cleans ~47 pages per pass. Set per-table with <code>ALTER TABLE ... SET (autovacuum_vacuum_cost_limit = N)</code> in <a href="#rung-3-ensure-each-pass-completes">Rung 3</a> without changing the global default.</span></dd>
+</dl>
+
+### Failure modes
+
+| | trigger-limited | throttle-limited |
+|---|---|---|
+| **Symptom** | `dead_pct` climbs for hours; autovacuum fires only a few times per day | `autovacuum_count` rising fast but `n_dead_tup` stays elevated after each fire |
+| **Root cause** | `scale_factor` too high; threshold rarely crossed | Each pass cut short by `cost_limit` before the table is fully cleaned |
+| **Metric signal** | Few passes per day; `dead_pct` high for hours, then drops sharply when vacuum finally runs | High `autovacuum_count` delta AND persistently elevated `n_dead_tup` at the same time |
+| **Fix** | Lower `scale_factor` → [Rung 1](#rung-1-lower-the-trigger) | Per-table `cost_limit` → [Rung 3](#rung-3-ensure-each-pass-completes) |
+
+<dl class="key-terms-glossary">
+<dt>trigger-limited</dt>
+<dd>Autovacuum runs too infrequently because the dead-tuple threshold is set too high.
+<span class="key-terms-detail"><strong>Details:</strong> Each pass may clear the table fully, but cleanup is rare. See the comparison table above and <a href="#troubleshooting">Troubleshooting</a>.</span></dd>
+
+<dt>throttle-limited</dt>
+<dd>Autovacuum runs frequently but each pass is cut short before the full table is cleaned.
+<span class="key-terms-detail"><strong>Details:</strong> High <code>autovacuum_count</code> delta with persistently elevated <code>n_dead_tup</code> is the fingerprint. See the comparison table above and <a href="#troubleshooting">Troubleshooting</a>.</span></dd>
+</dl>
+
+---
+
 ## Validation
 
 Allow at least 2 hours of steady-state operation after each rung before evaluating.
@@ -322,79 +425,13 @@ reach 100% before the pass ends. If it does not, increase `cost_limit` and re-ch
 
 ---
 
-## Key Terms
+## Next Steps
 
-**autovacuum** — PostgreSQL's background process that removes dead tuples. Fires when
-configurable thresholds are met; does not run continuously.
+<div class="key-terms-closing">
 
-**autovacuum_count** — A running total of completed vacuum passes on a table, available in
-`pg_stat_user_tables`. It only increases. Subtract two snapshot readings to get the number
-of passes in that interval. Unlike `n_dead_tup`, which can read zero right after a pass
-fires, `autovacuum_count` never resets — a low reading always means vacuum hasn't run, not
-that you happened to check right after a cleanup.
+- [Review the decision card in Overview](#overview)
+- [Start with Rung 1](#rung-1-lower-the-trigger) if you have not applied tuning yet
+- [Jump to Key Terms](#key-terms) for a parameter lookup
+- [Back to Ansible Guides](/)
 
-**cost_limit** (`autovacuum_vacuum_cost_limit`) — Controls how much I/O work autovacuum
-is allowed to do in a single pass before pausing. The default of 200 allows cleaning
-approximately 9 pages per pass. At 1,000, autovacuum can clean approximately 47 pages per
-pass. It can be set per-table with `ALTER TABLE … SET (autovacuum_vacuum_cost_limit = N)`
-without changing the global default.
-
-**dead tuple** — The old copy of a row left behind after an UPDATE or DELETE. PostgreSQL
-does not modify rows in place — it writes a new copy and marks the old one dead. Queries
-must scan past dead tuples even though they are invisible to them. Vacuum removes them and
-reclaims the space.
-
-**dead_pct** — Dead rows as a percentage of total rows (live + dead). Computed from
-`pg_stat_user_tables` as `n_dead_tup / (n_live_tup + n_dead_tup) × 100`. At 30%+, queries
-scan a significant amount of dead data during every read.
-
-**HOT (Heap Only Tuple)** — PostgreSQL's in-page update optimization. When a row is updated
-and the changed column is not indexed, PostgreSQL can resolve the update within the page
-without creating a dead tuple visible to autovacuum. HOT is disabled when the updated column
-is indexed — in that case every UPDATE produces a dead tuple that autovacuum must clean.
-
-**max_workers** (`autovacuum_max_workers`) — The maximum number of tables that can be
-vacuumed simultaneously. Default: 3. Increase when multiple high-churn tables compete for
-vacuum attention at the same time.
-
-**naptime** (`autovacuum_naptime`) — How often autovacuum wakes up to check each table for
-dead tuples. Default: 60 seconds. At 60s, a table receiving thousands of updates per minute
-can accumulate nearly 5,000 dead tuples between checks even if the trigger threshold is met
-within seconds of each cleanup.
-
-**n_dead_tup** — Raw count of dead tuples on a table. Available in `pg_stat_user_tables`.
-Useful for spotting the throttle-limited fingerprint but can be misleading as a snapshot
-metric on very high-churn tables (vacuum may have just fired). Use `autovacuum_count` delta
-as the primary signal.
-
-**n_tup_hot_upd / n_tup_upd** — Counters in `pg_stat_user_tables`. `n_tup_upd` is total
-updates; `n_tup_hot_upd` is updates resolved via HOT without creating a dead tuple.
-`hot_ratio = n_tup_hot_upd / n_tup_upd`. A ratio significantly below 100% on a high-write
-table means HOT is disabled — typically because the updated column is indexed.
-
-**pg_stat_progress_vacuum** — PostgreSQL system view showing active vacuum passes in real
-time. Key columns: `heap_blks_total` (total pages in the table), `heap_blks_vacuumed`
-(pages cleaned so far). Use to confirm whether a pass reaches `pct_done = 100%`.
-
-**pg_stat_user_tables** — PostgreSQL system view with per-table vacuum statistics including
-`autovacuum_count`, `n_dead_tup`, `n_live_tup`, `n_tup_upd`, `n_tup_hot_upd`, and
-`last_autovacuum`. Primary diagnostic source for all three rungs.
-
-**scale_factor** (`autovacuum_vacuum_scale_factor`) — The fraction of a table's live rows
-that must be dead before autovacuum fires. Default: 0.2 (20%). On an 800K-row table,
-`scale_factor=0.2` waits for 160,000 dead tuples; `scale_factor=0.02` fires at 16,000.
-At large tables, target dead_pct ≈ scale_factor × 100.
-
-**throttle-limited** — A condition where autovacuum runs frequently but each pass is cut
-short by `cost_limit` before the full table is cleaned. The sign: high `autovacuum_count`
-delta AND persistently elevated `n_dead_tup` simultaneously.
-
-**trigger-limited** — A condition where autovacuum runs too infrequently because
-`scale_factor` is set too high. The sign: few vacuum passes per day; `dead_pct` climbs for hours
-before a pass runs; each pass clears the table fully but the threshold is set so high that
-cleanup is rare.
-
-**vacuum_threshold** (`autovacuum_vacuum_threshold`) — The minimum absolute count of dead
-tuples required before autovacuum considers vacuuming a table, regardless of `scale_factor`.
-Default: 50. Lowering to 20 ensures small, high-churn tables are not ignored when their
-total row count is too low to produce a meaningful percentage-based trigger.
+</div>
