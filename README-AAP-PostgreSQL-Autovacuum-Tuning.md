@@ -77,10 +77,14 @@ thousands of jobs per day, assume you need this.
 
 **The change** using `postgresql.conf`:
 
+<p class="code-lead">Apply in postgresql.conf:</p>
+
 ```
 autovacuum_vacuum_scale_factor = 0.02
 autovacuum_max_workers = 6
 ```
+
+<p class="code-lead">Run this:</p>
 
 ```sql
 SELECT pg_reload_conf();
@@ -99,6 +103,8 @@ allow before autovacuum fires. At large table sizes, `scale_factor ≈ target_de
 For query-performance-sensitive tables (large sequential scans, join targets), 2% is a
 reasonable ceiling. After choosing a `scale_factor` value, estimate the expected autovacuum
 fire rate to flag any table where each pass must complete efficiently:
+
+<p class="code-lead code-lead--reference">Reference formula:</p>
 
 ```
 estimated fires/hr ≈ dead_tuple_rate_per_hr ÷ (scale_factor × n_live_rows)
@@ -133,6 +139,8 @@ update the index too, so every UPDATE produces a dead tuple that autovacuum must
 The following query returns `hot_ratio` — the percentage of updates handled by HOT — for
 each table, ordered by update volume:
 
+<p class="code-lead">Run this diagnostic:</p>
+
 ```sql
 SELECT relname,
        n_tup_upd,
@@ -153,10 +161,14 @@ tuple on every UPDATE.
 
 **The change** with `postgresql.conf`:
 
+<p class="code-lead">Apply in postgresql.conf:</p>
+
 ```
 autovacuum_naptime = 10s
 autovacuum_vacuum_threshold = 20
 ```
+
+<p class="code-lead">Run this:</p>
 
 ```sql
 SELECT pg_reload_conf();
@@ -184,6 +196,8 @@ naptime alone.
 
 **Apply this if:** Autovacuum runs frequently on a specific table but dead tuples persist anyway. The sign to look for: `autovacuum_count` is increasing fast AND `n_dead_tup` stays elevated at the same time. To find affected tables:
 
+<p class="code-lead">Run this diagnostic:</p>
+
 ```sql
 SELECT relname,
        n_dead_tup,
@@ -197,6 +211,8 @@ ORDER BY autovacuum_count DESC;
 ```
 
 Confirm the bottleneck by catching a live pass in progress:
+
+<p class="code-lead">Run this diagnostic:</p>
 
 ```sql
 SELECT p.relid::regclass                                          AS table,
@@ -217,6 +233,8 @@ pass short before the table is fully cleaned.
 
 **Estimate a starting `cost_limit`** Run this diagnostic step when `n_dead_tup` is elevated on the target table. Watching `pg_stat_user_tables` for a few minutes will catch a high point:
 
+<p class="code-lead code-lead--reference">Adapt table name:</p>
+
 ```sql
 SELECT relname,
        ceil(pg_relation_size(schemaname||'.'||relname) / 8192.0)      AS pages,
@@ -231,6 +249,8 @@ Small tables (a few thousand rows or fewer) are almost always in memory. Use `co
 The formula covers heap pages only; index cleanup and the visibility map mean real behavior may differ, which is why the empirical check follows.
 
 **Apply per-table** This does not touch global settings:
+
+<p class="code-lead code-lead--reference">Adapt schema and table name:</p>
 
 ```sql
 ALTER TABLE schema.tablename
@@ -285,6 +305,8 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 <dd>Dead rows as a percentage of total rows (live + dead). At 30%+, queries scan significant dead data on every read.
 <span class="key-terms-detail"><strong>Formula</strong> (from <code>pg_stat_user_tables</code>):</span></dd>
 </dl>
+
+<p class="code-lead code-lead--reference">Formula (from <code>pg_stat_user_tables</code>):</p>
 
 ```
 dead_pct = 100.0 * n_dead_tup / (n_live_tup + n_dead_tup)
@@ -357,7 +379,9 @@ dead_pct = 100.0 * n_dead_tup / (n_live_tup + n_dead_tup)
 
 Allow at least 2 hours of steady-state operation after each rung before evaluating.
 
-**Rung 1** — confirm `scale_factor` is working:
+**Rung 1** -- confirm `scale_factor` is working:
+
+<p class="code-lead">Run this validation query:</p>
 
 ```sql
 SELECT relname,
@@ -374,6 +398,8 @@ Expected: `dead_pct` consistently below 2%; `autovacuum_count` incrementing mult
 per hour. Take two snapshots 30 minutes apart and compare `autovacuum_count`.
 
 A healthy snapshot with Rung 1 applied (from the study environment):
+
+<p class="code-lead code-lead--reference">Expected output:</p>
 
 ```
       relname       | autovacuum_count | n_dead_tup | dead_pct |      last_autovacuum

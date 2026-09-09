@@ -85,6 +85,7 @@
     </script>
     <script src="{{ '/assets/tablelink.js' | relative_url }}"></script>
     <script src="{{ '/assets/image-lightbox.js' | relative_url }}"></script>
+    <script src="{{ '/assets/code-blocks.js' | relative_url }}"></script>
 
     <div class="wrapper">
       <header>
@@ -161,36 +162,7 @@
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
-    <!-- Copy-to-clipboard buttons for code blocks -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('pre').forEach(function(pre) {
-          var wrapper = document.createElement('div');
-          wrapper.style.position = 'relative';
-          pre.parentNode.insertBefore(wrapper, pre);
-          wrapper.appendChild(pre);
-
-          var btn = document.createElement('button');
-          btn.className = 'copy-btn';
-          btn.textContent = 'Copy';
-          btn.setAttribute('aria-label', 'Copy code to clipboard');
-          wrapper.appendChild(btn);
-
-          btn.addEventListener('click', function() {
-            var code = pre.querySelector('code');
-            var text = code ? code.textContent : pre.textContent;
-            navigator.clipboard.writeText(text).then(function() {
-              btn.textContent = 'Copied!';
-              btn.classList.add('copy-btn--success');
-              setTimeout(function() {
-                btn.textContent = 'Copy';
-                btn.classList.remove('copy-btn--success');
-              }, 2000);
-            });
-          });
-        });
-      });
-    </script>
+    <!-- Code block enhancements (copy, labels, light theme) handled by code-blocks.js -->
 
     <!-- Hamburger menu toggle -->
     <script>
