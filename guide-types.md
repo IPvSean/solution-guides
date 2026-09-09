@@ -33,7 +33,7 @@ permalink: /guide-types/
     </div>
   </dl>
 
-  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern. Both tracks use the same guide framework, validation expectations, and maturity path structure.</p>
+  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern. AIOps and Event-Driven are partner integration patterns; Journey guides are cross-cutting adoption paths. All tracks use the same guide framework, validation expectations, and maturity path structure.</p>
 
   <div class="guide-type-tracks">
     <article class="guide-type-track guide-type-track--aiops">
@@ -43,6 +43,7 @@ permalink: /guide-types/
       </div>
       <p class="guide-type-track__body">Partner integrations where <strong>AI inference, Ansible Lightspeed, or MCP</strong> augments detection, diagnosis, and remediation. Use these when the outcome depends on intelligent triage, enrichment, or governed playbook selection.</p>
       <p class="guide-type-track__examples"><strong>Examples:</strong> AIOps automation with Ansible, AIOps with Splunk and Event-Driven Ansible, Unlock AIOps with ServiceNow LEAP and Ansible MCP server.</p>
+      <p class="guide-type-track__examples"><strong>Foundational:</strong> One guide per domain may carry a Foundational badge -- start there before partner integrations. Today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>.</p>
     </article>
 
     <article class="guide-type-track guide-type-track--event-driven">
@@ -64,11 +65,7 @@ permalink: /guide-types/
     </article>
   </div>
 
-  <p class="guide-type-panel__modifiers-intro">Some Solution Guides carry an optional modifier badge:</p>
-  <ul class="guide-type-modifiers">
-    <li><strong>Foundational</strong> -- start here for the reference architecture in a domain (for example, AIOps automation with Ansible).</li>
-    <li><strong>Journey Guide</strong> -- adoption path with signals for when EDA, AAP, AI enrichment, or Automation Orchestrator is the right next step.</li>
-  </ul>
+  <p class="guide-type-panel__modifiers-intro">Within AIOps and Event-Driven tracks, one guide per domain may carry a <strong>Foundational</strong> badge on its card -- the reference architecture to read before partner-specific integrations.</p>
 
   <a href="{{ '/' | relative_url }}" class="guide-type-panel__cta">Browse Solution Guides</a>
 </section>

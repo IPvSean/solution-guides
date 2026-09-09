@@ -116,7 +116,7 @@ patternfly: true
             <i class="fas fa-info-circle" aria-hidden="true"></i>
           </a>
         </div>
-        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources.</p>
+        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. <strong>Start here:</strong> <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a> (Foundational) for the reference architecture, then explore partner integrations below.</p>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-AIOps' | relative_url }}" class="card-link" data-tags="aiops,solution,published">
         <div class="pf-v6-c-card card-foundational">
@@ -470,7 +470,7 @@ patternfly: true
       </a>
 
       <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,netbox,published">
-        <div class="pf-v6-c-card card-foundational">
+        <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
