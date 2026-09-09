@@ -43,6 +43,8 @@
   --text-faint: #7a8088;
   --border-color: #32353c;
   --border-subtle: #2c2f35;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-border-hover: rgba(255, 255, 255, 0.12);
   --link-color: #8ab4f8;
   --accent-purple: #a78bfa;
   --accent-purple-hover: #c4b5fd;
@@ -2812,7 +2814,7 @@ b {
   }
 
   .cards-sidebar {
-    border-right-color: var(--border-color);
+    border-right-color: var(--border-subtle);
   }
 
   .cards-sidebar__jump {
@@ -2836,15 +2838,22 @@ b {
     }
   }
 
-  .card-link .pf-v6-c-card {
+  .card-link .pf-v6-c-card,
+  .card-link--foundational-hero .pf-v6-c-card {
+    --pf-v6-c-card--BorderColor: var(--card-border);
+    --pf-v6-c-card--BackgroundColor: var(--bg-surface);
     background: var(--bg-surface) !important;
-    border-color: var(--border-subtle) !important;
     box-shadow: none !important;
   }
 
-  .card-link .pf-v6-c-card:hover {
-    border-color: var(--border-color) !important;
+  .card-link .pf-v6-c-card:hover,
+  .card-link--foundational-hero .pf-v6-c-card:hover {
+    --pf-v6-c-card--BorderColor: var(--card-border-hover);
     box-shadow: 0 2px 8px var(--shadow-sm) !important;
+  }
+
+  .card-link .pf-v6-c-card:hover .pf-v6-c-card__title-text {
+    color: var(--text-primary) !important;
   }
 
   .card-link .pf-v6-c-card__title-text {
