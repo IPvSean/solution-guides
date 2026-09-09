@@ -97,7 +97,7 @@ patternfly: true
             Multi-datacenter Active-Passive disaster recovery for Ansible Automation Platform using EDB Postgres Advanced Server and EDB Failover Manager with sub-5-minute RTO.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -139,7 +139,7 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-well">
-              <img src="{{ '/assets/images/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/instana-logo.png' | relative_url }}" alt="Instana" class="card-partner-logo">
             </span>
           </div>
         </div>
@@ -162,7 +162,7 @@ patternfly: true
             Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -184,7 +184,7 @@ patternfly: true
             Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -206,7 +206,7 @@ patternfly: true
             Cut incident MTTR from hours to minutes: LEAP identifies remediation opportunities, the Ansible MCP server surfaces approved playbooks, and governed execution closes incidents with full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -228,7 +228,7 @@ patternfly: true
             Three use cases for closed-loop AIOps: ITSI predictive anomaly detection with MLTK, RHEL server remediation with AI-enriched diagnostics, and network OSPF remediation with Lightspeed-generated playbooks.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -250,7 +250,7 @@ patternfly: true
             Automate Windows certificate rotation end-to-end: Event-Driven Ansible detects expiring certs, AI evaluates risk and timing, Ansible performs the rotation, and ITSM documents the full audit trail.
           </div>
           <div class="pf-v6-c-card__footer">
-            <img src="{{ '/assets/images/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
+            <img src="{{ '/assets/images/logos/windows-logo.png' | relative_url }}" alt="Windows" class="card-partner-logo">
           </div>
         </div>
       </a>
@@ -353,7 +353,7 @@ patternfly: true
               Connect Amazon SQS to Event-Driven Ansible so CloudWatch, EventBridge, and other AWS events trigger AI diagnosis and automated remediation without custom polling or Lambda glue code.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/aws-logo.png' | relative_url }}" alt="AWS" class="card-partner-logo">
             </div>
           </div>
         </a>
@@ -375,7 +375,7 @@ patternfly: true
               Connect Azure Service Bus Queues to Event-Driven Ansible for real-time event consumption, AI-driven diagnosis, and automated remediation across hybrid Azure infrastructure.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/azure-logo.png' | relative_url }}" alt="Azure" class="card-partner-logo">
             </div>
           </div>
         </a>
@@ -397,7 +397,7 @@ patternfly: true
               Collapse CVE patching from days to minutes: Red Hat Lightspeed MCP identifies vulnerable RHEL VMs on OpenShift Virtualization, the AAP MCP server surfaces approved remediation, and governed execution patches the fleet with full audit trail.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
             </div>
           </div>
         </a>
@@ -458,7 +458,7 @@ patternfly: true
               Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
             </div>
           </div>
         </a>
@@ -513,7 +513,7 @@ patternfly: true
               Automate ServiceNow ticket creation and enrich incidents with CVE data from Red Hat Insights.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
+              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo">
             </div>
           </div>
         </a>
