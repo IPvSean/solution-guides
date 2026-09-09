@@ -457,9 +457,11 @@ Quick reference for metrics, settings, and diagnostic views. Settings show the s
 
 <div class="key-terms-closing">
 
-- [Review the decision diagram in Overview](#overview)
-- [Follow the tuning path](#tuning-path) for rung order
-- [Jump to Key Terms](#key-terms) for a parameter lookup
-- [Back to Ansible Guides](/)
+<ul>
+<li><a href="#overview">Review the decision diagram in Overview</a></li>
+<li><a href="#tuning-path">Follow the tuning path</a> for rung order</li>
+<li><a href="#key-terms">Jump to Key Terms</a> for a parameter lookup</li>
+<li><a href="/">Back to Ansible Guides</a></li>
+</ul>
 
 </div>

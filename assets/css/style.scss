@@ -720,12 +720,22 @@ td {
 .key-terms-closing {
   margin: 2.5rem 0 3rem;
   padding: 1.25rem 1.5rem;
-  border-top: 1px solid #e0e0e0;
-  background: #fafafa;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
   border-radius: 8px;
 
   ul {
     margin-bottom: 0;
+    padding-left: 1.25rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
