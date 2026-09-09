@@ -242,6 +242,15 @@
         var headings = Array.prototype.filter.call(allHeadings, includeInSidebar);
         if (headings.length < 2) return;
 
+        var overviewHeading = section.querySelector('h2#overview');
+        if (!overviewHeading) {
+          Array.prototype.forEach.call(allHeadings, function(h) {
+            if (!overviewHeading && h.textContent.replace(/\s+/g, ' ').trim().toLowerCase() === 'overview') {
+              overviewHeading = h;
+            }
+          });
+        }
+
         var sidebar = document.createElement('aside');
         sidebar.className = 'guide-sidebar';
 
@@ -260,6 +269,18 @@
 
         var ul = document.createElement('ul');
         ul.className = 'guide-sidebar__list';
+
+        if (overviewHeading && overviewHeading.id) {
+          var overviewLi = document.createElement('li');
+          overviewLi.className = 'guide-sidebar__item--overview';
+          var overviewLink = document.createElement('a');
+          overviewLink.href = '#' + overviewHeading.id;
+          overviewLink.className = 'guide-sidebar__link guide-sidebar__link--overview';
+          overviewLink.textContent = 'Overview';
+          overviewLi.appendChild(overviewLink);
+          ul.appendChild(overviewLi);
+        }
+
         headings.forEach(function(h) {
           if (h.textContent.trim() === '') return;
           var li = document.createElement('li');
@@ -287,6 +308,10 @@
           headings.forEach(function(h) {
             if (h.offsetTop <= scrollPos) current = h.id;
           });
+          if (overviewHeading && overviewHeading.id) {
+            var firstSectionTop = headings.length ? headings[0].offsetTop : overviewHeading.offsetTop + 1;
+            if (scrollPos < firstSectionTop) current = overviewHeading.id;
+          }
           sidebarLinks.forEach(function(link) {
             if (link.getAttribute('href') === '#' + current) {
               link.classList.add('guide-sidebar__link--active');
