@@ -95,33 +95,46 @@ permalink: /guide-types/
     <article class="guide-type-track guide-type-track--aiops">
       <div class="guide-type-track__header">
         <span class="guide-type-track__badge">AIOps</span>
-        <h3 id="aiops-solutions" class="guide-type-track__title">AIOps Solutions</h3>
+        <h3 id="aiops-solutions" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#aiops-solutions">AIOps Solutions</a></h3>
       </div>
       <p class="guide-type-track__body">Partner integrations where <strong>AI inference, Ansible Lightspeed, or MCP</strong> augments detection, diagnosis, and remediation. Use these when the outcome depends on intelligent triage, enrichment, or governed playbook selection.</p>
-      <p class="guide-type-track__examples"><strong>Examples:</strong> <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}">AIOps with Splunk and Event-Driven Ansible</a>, <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}">Unlock AIOps with ServiceNow LEAP and Ansible MCP server</a>.</p>
+      <div class="guide-type-track__examples">
+        <span class="guide-type-track__examples-label">Examples</span>
+        <div class="guide-type-track__pills">
+          <a href="{{ '/README-AIOps' | relative_url }}" class="guide-type-example-pill">AIOps automation with Ansible</a>
+          <a href="{{ '/README-AIOps-Splunk-ITSI' | relative_url }}" class="guide-type-example-pill">AIOps with Splunk and Event-Driven Ansible</a>
+          <a href="{{ '/README-AIOps-ServiceNow' | relative_url }}" class="guide-type-example-pill">Unlock AIOps with ServiceNow LEAP and Ansible MCP server</a>
+        </div>
+      </div>
     </article>
 
     <article class="guide-type-track guide-type-track--event-driven">
       <div class="guide-type-track__header">
         <span class="guide-type-track__badge">Event-Driven</span>
-        <h3 id="event-driven-solutions" class="guide-type-track__title">Event-Driven Solutions</h3>
+        <h3 id="event-driven-solutions" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#event-driven-solutions">Event-Driven Solutions</a></h3>
       </div>
       <p class="guide-type-track__body">Partner integrations where <strong>Event-Driven Ansible</strong> closes the loop from partner events to automated action -- without an AI enrichment layer. Use these when webhooks, queues, or CMDB state changes should trigger governed Ansible execution in real time.</p>
-      <p class="guide-type-track__examples"><strong>Examples:</strong> <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}">Automated WAN circuit failover with NetBox and AAP</a>, <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}">Event-driven network configuration with NetBox and AAP</a>.</p>
+      <div class="guide-type-track__examples">
+        <span class="guide-type-track__examples-label">Examples</span>
+        <div class="guide-type-track__pills">
+          <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="guide-type-example-pill">Automated WAN circuit failover with NetBox and AAP</a>
+          <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="guide-type-example-pill">Event-driven network configuration with NetBox and AAP</a>
+        </div>
+      </div>
     </article>
 
     <article class="guide-type-track guide-type-track--journey">
       <div class="guide-type-track__header">
         <span class="guide-type-track__badge">Journey</span>
-        <h3 id="journey-guides" class="guide-type-track__title">Journey Guides</h3>
+        <h3 id="journey-guides" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#journey-guides">Journey Guides</a></h3>
       </div>
       <p class="guide-type-track__body">Cross-cutting adoption guides with <strong>explicit decision points</strong> for when to add the next capability. Use these when you need stage-by-stage guidance rather than a single partner reference architecture.</p>
-      <p class="guide-type-track__examples"><strong>Example:</strong> <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</a>.</p>
+      <div class="guide-type-track__examples">
+        <span class="guide-type-track__examples-label">Example</span>
+        <div class="guide-type-track__pills">
+          <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="guide-type-example-pill">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</a>
+        </div>
+      </div>
     </article>
   </div>
-</section>
-
-<section class="guide-types-together">
-  <h2 id="how-they-work-together">How they work together</h2>
-  <p class="guide-types-together__closing">Many teams start with a Solution Guide to align on the problem, then use Implementation Guides to build the foundation their automation will run on.</p>
 </section>

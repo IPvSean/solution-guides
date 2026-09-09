@@ -608,10 +608,20 @@ img {
   margin: 0;
   color: #151515;
   scroll-margin-top: 24px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: #5e40be;
+      text-decoration: underline;
+    }
+  }
 }
 
-.guide-type-track__body,
-.guide-type-track__examples {
+.guide-type-track__body {
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -620,18 +630,86 @@ img {
 }
 
 .guide-type-track__examples {
-  margin-top: 8px;
-  font-size: 13px;
+  margin-top: 12px;
+}
+
+.guide-type-track__examples-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
   color: #6a6e73;
+}
 
-  a {
-    color: #5e40be;
-    text-decoration: none;
+.guide-type-track__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
+.guide-type-example-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  text-decoration: none !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.guide-type-track--aiops .guide-type-example-pill {
+  color: #5e40be;
+  background: #f3f0fa;
+  border: 1px solid #e8e0f5;
+
+  &:hover,
+  &:focus {
+    color: #463091;
+    background: #ebe4f7;
+    border-color: #c4b5e8;
   }
+}
+
+.guide-type-track--event-driven .guide-type-example-pill {
+  color: #0f6e82;
+  background: #e7f6f8;
+  border: 1px solid #b8dde5;
+
+  &:hover,
+  &:focus {
+    color: #0a5564;
+    background: #d4f0f5;
+    border-color: #8ec9d8;
+  }
+}
+
+.guide-type-track--journey .guide-type-example-pill {
+  color: #9a6700;
+  background: #faf3e8;
+  border: 1px solid #e8d4a8;
+
+  &:hover,
+  &:focus {
+    color: #7a5200;
+    background: #f5e8cc;
+    border-color: #d4b870;
+  }
+}
+
+.guide-type-track--event-driven .guide-type-track__title a:hover,
+.guide-type-track--event-driven .guide-type-track__title a:focus {
+  color: #0f6e82;
+}
+
+.guide-type-track--journey .guide-type-track__title a:hover,
+.guide-type-track--journey .guide-type-track__title a:focus {
+  color: #9a6700;
 }
 
 .guide-type-panel__tracks-intro a {
@@ -683,7 +761,7 @@ img {
 
 .guide-types-together {
   margin: 0 0 40px;
-  padding: 24px;
+  padding: 20px 24px;
   border-radius: 10px;
   border: 1px solid #e0e0e0;
   background: linear-gradient(135deg, #faf9fd 0%, #f5f5f5 100%);
@@ -2729,8 +2807,7 @@ b {
   }
 
   .guide-types-lead,
-  .guide-type-track__examples,
-  .guide-types-together__closing {
+  .guide-type-track__examples-label {
     color: var(--text-muted);
   }
 
@@ -2749,12 +2826,69 @@ b {
 
   .guide-type-fact dd a,
   .guide-type-topics__list a,
-  .guide-type-panel__tracks-intro a,
-  .guide-type-track__examples a {
+  .guide-type-panel__tracks-intro a {
     color: #9ec5fe;
 
     &:hover {
       color: #c4d9ff;
+    }
+  }
+
+  .guide-type-track__title a {
+    color: var(--text-primary);
+
+    &:hover,
+    &:focus {
+      color: #c4b5e8;
+    }
+  }
+
+  .guide-type-track--event-driven .guide-type-track__title a:hover,
+  .guide-type-track--event-driven .guide-type-track__title a:focus {
+    color: #9edbe8;
+  }
+
+  .guide-type-track--journey .guide-type-track__title a:hover,
+  .guide-type-track--journey .guide-type-track__title a:focus {
+    color: #e8c87a;
+  }
+
+  .guide-type-track--aiops .guide-type-example-pill {
+    color: #c4b5e8;
+    background: #2a2540;
+    border-color: #4a3d7a;
+
+    &:hover,
+    &:focus {
+      color: #e8e0f5;
+      background: #342d4d;
+      border-color: #5e40be;
+    }
+  }
+
+  .guide-type-track--event-driven .guide-type-example-pill {
+    color: #9edbe8;
+    background: #1a3a42;
+    border-color: #2d6a78;
+
+    &:hover,
+    &:focus {
+      color: #c8f0f8;
+      background: #234a54;
+      border-color: #3d8a9a;
+    }
+  }
+
+  .guide-type-track--journey .guide-type-example-pill {
+    color: #e8c87a;
+    background: #3d3018;
+    border-color: #6a5528;
+
+    &:hover,
+    &:focus {
+      color: #f5dfa0;
+      background: #4a3c20;
+      border-color: #8a7040;
     }
   }
 
