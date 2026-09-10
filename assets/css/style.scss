@@ -104,8 +104,12 @@ section {
   margin: 0 auto;
   width: 100%;
   max-width: 1170px;
-  padding: 0;
+  padding: 28px 0 0;
   float: initial;
+}
+
+.wrapper > section:has(> .cards-layout) {
+  padding-top: 0;
 }
 
 section * {
