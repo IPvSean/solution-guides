@@ -17,11 +17,11 @@ inline_edit: true
 </div>
 
 <div class="guide-types-synthesis">
-  <div class="guide-types-synthesis__item">
+  <div class="guide-types-synthesis__item guide-types-synthesis__item--solution">
     <span class="guide-types-synthesis__label guide-types-synthesis__label--solution">Solution Guides</span>
     <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
   </div>
-  <div class="guide-types-synthesis__item">
+  <div class="guide-types-synthesis__item guide-types-synthesis__item--implementation">
     <span class="guide-types-synthesis__label guide-types-synthesis__label--implementation">Implementation Guides</span>
     <p>Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
   </div>
@@ -81,16 +81,6 @@ inline_edit: true
       <dd><a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}">AAP HA/DR on OpenShift with CloudNativePG</a>, <a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}">PostgreSQL autovacuum tuning</a>, <a href="{{ '/README-IA' | relative_url }}">AI infrastructure automation with Ansible</a>.</dd>
     </div>
   </dl>
-
-  <div class="guide-type-topics">
-    <p class="guide-type-topics__label">Common topics</p>
-    <ul class="guide-type-topics__list">
-      <li><a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}">High availability and disaster recovery</a></li>
-      <li><a href="{{ '/README-AAP-PostgreSQL-Autovacuum-Tuning' | relative_url }}">Database performance tuning</a></li>
-      <li><a href="{{ '/README-IA' | relative_url }}">AI infrastructure automation</a></li>
-      <li><a href="{{ '/README-Ansible-DevTools' | relative_url }}">Developer tooling and CI/CD integration</a></li>
-    </ul>
-  </div>
 
   <a href="{{ '/' | relative_url }}#implementation-guides" class="guide-type-panel__cta">Browse Implementation Guides</a>
 </section>

@@ -473,6 +473,14 @@ img {
   background: #fafafa;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 
+  // Nested <section> panels inherit global `section > *` side margins; cancel them.
+  > * {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
   &--solution {
     border-top: 4px solid #3e8635;
     background: linear-gradient(165deg, #eef6ee 0%, #f7faf7 42%, #ffffff 100%);
@@ -548,15 +556,22 @@ img {
   }
 }
 
+.guide-types-tracks > * {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
 .guide-type-panel__tracks-intro {
   font-family: 'Red Hat Text', sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #4d4d4d;
-  margin: 0 0 16px;
+  margin-bottom: 16px;
   padding: 12px 14px;
-  background: linear-gradient(135deg, #ebe4f7 0%, #f6f3fc 55%, #faf9fd 100%);
-  border: 1px solid #e8e0f5;
+  background: linear-gradient(135deg, #e9f5e9 0%, #f4faf4 55%, #f7faf7 100%);
+  border: 1px solid #d4e8d4;
   border-radius: 8px;
 }
 
@@ -673,14 +688,27 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 28px;
-  padding: 18px 20px;
-  border-radius: 10px;
-  border: 1px solid #ddd4f0;
-  background: linear-gradient(135deg, #e8e0f5 0%, #f3f0fa 38%, #f8f7fa 72%, #f2f4f6 100%);
-  box-shadow: 0 2px 12px rgba(94, 64, 190, 0.1);
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 .guide-types-synthesis__item {
+  padding: 18px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  &--solution {
+    border: 1px solid #d4e8d4;
+    background: linear-gradient(165deg, #eef6ee 0%, #f7faf7 42%, #ffffff 100%);
+  }
+
+  &--implementation {
+    border: 1px solid #c8ddf5;
+    background: linear-gradient(165deg, #e8f2fc 0%, #f5f9ff 42%, #ffffff 100%);
+  }
+
   p {
     margin: 8px 0 0;
     font-family: 'Red Hat Text', sans-serif;
@@ -853,7 +881,7 @@ img {
 }
 
 .guide-type-panel__tracks-intro a {
-  color: #5e40be;
+  color: #2b6e2b;
   text-decoration: none;
 
   &:hover {
@@ -872,16 +900,19 @@ img {
   font-size: 14px;
   font-weight: 500;
   text-decoration: none !important;
-  color: #5e40be;
-  background: linear-gradient(180deg, #f3f0fa 0%, #ebe4f7 100%);
-  border: 1px solid #e8e0f5;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.guide-type-panel--solution .guide-type-panel__cta {
+  color: #1e4f18;
+  background: linear-gradient(180deg, #f4faf4 0%, #e9f5e9 100%);
+  border: 1px solid #b7d9b4;
 
   &:hover,
   &:focus {
-    color: #463091;
-    background: linear-gradient(180deg, #ebe4f7 0%, #e0d6f5 100%);
-    border-color: #c4b5e8;
+    color: #163d12;
+    background: linear-gradient(180deg, #e9f5e9 0%, #d4ead4 100%);
+    border-color: #8fbf8c;
     text-decoration: none !important;
   }
 }
@@ -3077,9 +3108,18 @@ b {
     color: var(--text-secondary);
   }
 
-  .guide-types-synthesis {
-    background: linear-gradient(135deg, #2a2540 0%, #24262b 100%);
-    border-color: var(--border-color);
+  .guide-types-synthesis__item {
+    box-shadow: 0 2px 8px var(--shadow-sm);
+  }
+
+  .guide-types-synthesis__item--solution {
+    background: linear-gradient(165deg, #1e2d22 0%, #24262b 50%, #24262b 100%);
+    border-color: #2d4a2d;
+  }
+
+  .guide-types-synthesis__item--implementation {
+    background: linear-gradient(165deg, #1a2838 0%, #24262b 50%, #24262b 100%);
+    border-color: #2a3d52;
   }
 
   .guide-types-synthesis__item p {
@@ -3112,8 +3152,16 @@ b {
 
   .guide-type-panel__tracks-intro {
     color: var(--text-secondary);
-    background: linear-gradient(135deg, #2a2540 0%, #242035 100%);
-    border-color: #4a3d7a;
+    background: linear-gradient(135deg, #1e2d22 0%, #24262b 100%);
+    border-color: #2d4a2d;
+  }
+
+  .guide-type-panel__tracks-intro a {
+    color: #b7e4b7;
+
+    &:hover {
+      color: #d4f0d4;
+    }
   }
 
   .guide-type-track {
@@ -3170,16 +3218,16 @@ b {
     }
   }
 
-  .guide-type-panel__cta {
-    color: #c4b5e8;
-    background: linear-gradient(180deg, #342d4d 0%, #2a2540 100%);
-    border-color: #4a3d7a;
+  .guide-type-panel--solution .guide-type-panel__cta {
+    color: #b7e4b7;
+    background: linear-gradient(180deg, #1e3d1e 0%, #1a331a 100%);
+    border-color: #3d7a3d;
 
     &:hover,
     &:focus {
-      color: #e8e0f5;
-      background: linear-gradient(180deg, #3d3560 0%, #342d4d 100%);
-      border-color: #5e40be;
+      color: #d4f0d4;
+      background: linear-gradient(180deg, #254d25 0%, #1e3d1e 100%);
+      border-color: #4d8f4d;
     }
   }
 
