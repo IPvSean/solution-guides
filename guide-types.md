@@ -2,9 +2,19 @@
 layout: default
 title: Guide Types
 permalink: /guide-types/
+inline_edit: true
 ---
 
-<p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform.</p>
+<div class="hub-intro-row">
+  <p class="guide-types-lead">AAP Guides are organized into two types. Each answers a different question for IT leaders and practitioners evaluating or deploying Ansible Automation Platform.</p>
+  <div class="edit-link-wrap edit-link-wrap--catalog">
+    <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
+       target="_blank" class="edit-link">
+      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+      Edit on GitHub
+    </a>
+  </div>
+</div>
 
 <div class="guide-types-synthesis">
   <div class="guide-types-synthesis__item">

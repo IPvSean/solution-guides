@@ -350,6 +350,27 @@ img {
   max-width: 720px;
 }
 
+.hub-intro-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  margin-bottom: 20px;
+
+  .guide-types-lead {
+    margin: 0;
+    flex: 1;
+    min-width: min(100%, 280px);
+    max-width: none;
+  }
+
+  .edit-link-wrap--catalog {
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
+
 .guide-types-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2852,6 +2873,7 @@ b {
   }
 
   .guide-types-lead,
+  .hub-intro-row .guide-types-lead,
   .guide-type-track__examples-label {
     color: var(--text-muted);
   }

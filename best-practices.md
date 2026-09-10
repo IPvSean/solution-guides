@@ -2,9 +2,19 @@
 layout: default
 title: Best Practices
 permalink: /best-practices/
+inline_edit: true
 ---
 
-<p class="guide-types-lead">AAP Guides use two authoring frameworks. Pick the one that matches your content type before you start writing or scoring a draft.</p>
+<div class="hub-intro-row">
+  <p class="guide-types-lead">AAP Guides use two authoring frameworks. Pick the one that matches your content type before you start writing or scoring a draft.</p>
+  <div class="edit-link-wrap edit-link-wrap--catalog">
+    <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
+       target="_blank" class="edit-link">
+      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+      Edit on GitHub
+    </a>
+  </div>
+</div>
 
 <div class="guide-types-grid">
 

@@ -2,9 +2,19 @@
 layout: default
 title: Guide Reviews
 permalink: /reviews/
+inline_edit: true
 ---
 
-<p class="guide-types-lead">Published guides are scored against the rubric for their content type. Choose the review page that matches the guide you are evaluating.</p>
+<div class="hub-intro-row">
+  <p class="guide-types-lead">Published guides are scored against the rubric for their content type. Choose the review page that matches the guide you are evaluating.</p>
+  <div class="edit-link-wrap edit-link-wrap--catalog">
+    <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
+       target="_blank" class="edit-link">
+      <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+      Edit on GitHub
+    </a>
+  </div>
+</div>
 
 <div class="guide-types-grid">
 
