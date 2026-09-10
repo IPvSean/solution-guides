@@ -267,12 +267,8 @@
             && label !== 'summary';
         }
 
-        var tracksSection = section.querySelector('.guide-types-tracks');
         var allHeadings = section.querySelectorAll('h2[id]');
         var headings = Array.prototype.filter.call(allHeadings, includeInSidebar);
-        var trackHeadings = tracksSection
-          ? Array.prototype.slice.call(tracksSection.querySelectorAll('h3[id]'))
-          : [];
         if (headings.length < 2) return;
 
         var overviewHeading = section.querySelector('h2#overview');
@@ -322,19 +318,6 @@
           a.textContent = h.textContent.replace(/\s+/g, ' ').trim();
           li.appendChild(a);
           ul.appendChild(li);
-
-          if (tracksSection && h.id === 'solution-guide-tracks') {
-            trackHeadings.forEach(function(trackHeading) {
-              if (trackHeading.textContent.trim() === '') return;
-              var trackLi = document.createElement('li');
-              var trackLink = document.createElement('a');
-              trackLink.href = '#' + trackHeading.id;
-              trackLink.className = 'guide-sidebar__link guide-sidebar__link--nested';
-              trackLink.textContent = trackHeading.textContent.replace(/\s+/g, ' ').trim();
-              trackLi.appendChild(trackLink);
-              ul.appendChild(trackLi);
-            });
-          }
         });
         nav.appendChild(ul);
         sidebar.appendChild(nav);
@@ -345,7 +328,7 @@
         wrapper.appendChild(sidebar);
         wrapper.appendChild(section);
 
-        var navHeadings = headings.concat(trackHeadings);
+        var navHeadings = headings;
         var sidebarLinks = ul.querySelectorAll('.guide-sidebar__link');
         function updateActive() {
           var scrollPos = window.scrollY + 100;

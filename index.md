@@ -10,24 +10,13 @@ patternfly: true
       <span>Filter by</span>
       <button id="filter-clear" class="cards-sidebar__clear">Clear filters</button>
     </div>
+    <div class="cards-sidebar__body">
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Browse</h4>
       <nav class="cards-sidebar__nav" aria-label="Guide sections">
         <a href="#solution-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Solution Guides
-        </a>
-        <a href="#aiops-solutions" class="cards-sidebar__jump cards-sidebar__jump--nested">
-          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-          AIOps Solutions
-        </a>
-        <a href="#event-driven-solutions" class="cards-sidebar__jump cards-sidebar__jump--nested">
-          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-          Event-Driven Solutions
-        </a>
-        <a href="#journey-guides" class="cards-sidebar__jump cards-sidebar__jump--nested">
-          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-          Journey Guides
         </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
@@ -37,15 +26,6 @@ patternfly: true
       <p class="cards-sidebar__learn-more">
         <a href="{{ '/guide-types' | relative_url }}">About guide types</a>
       </p>
-    </div>
-    <div class="cards-sidebar__section">
-      <h4 class="cards-sidebar__title">Status</h4>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
-        <input type="checkbox" value="published" checked> Published
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
-        <input type="checkbox" value="wip" checked> Work in Progress
-      </label>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Solution track</h4>
@@ -90,6 +70,16 @@ patternfly: true
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="windows"> Windows
+      </label>
+    </div>
+    </div>
+    <div class="cards-sidebar__section cards-sidebar__section--status">
+      <h4 class="cards-sidebar__title">Status</h4>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
+        <input type="checkbox" value="published" checked> Published
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--status">
+        <input type="checkbox" value="wip" checked> Work in Progress
       </label>
     </div>
   </aside>
