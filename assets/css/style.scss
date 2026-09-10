@@ -2135,6 +2135,18 @@ b {
   padding: 12px 16px;
 }
 
+.card-link--foundational-hero .pf-v6-c-card {
+  --pf-v6-c-card--BorderColor: #ddd4f0;
+  background: linear-gradient(135deg, #e8e0f5 0%, #f3f0fa 38%, #faf9fd 72%, #ffffff 100%) !important;
+  box-shadow: 0 2px 12px rgba(94, 64, 190, 0.1) !important;
+  border-left: 3px solid #5e40be;
+}
+
+.card-link--foundational-hero .pf-v6-c-card:hover {
+  --pf-v6-c-card--BorderColor: #c4b5e8;
+  box-shadow: 0 2px 14px rgba(94, 64, 190, 0.14) !important;
+}
+
 .card-foundational--hero .pf-v6-c-card__header {
   padding: 0;
   margin-bottom: 8px;
@@ -2470,7 +2482,7 @@ b {
   display: block;
 }
 
-.card-foundational {
+.card-foundational:not(.card-foundational--hero) {
   background-color: #f0f4f8 !important;
   border-left: 3px solid #0066cc;
 }
@@ -3204,18 +3216,28 @@ b {
     }
   }
 
-  .card-link .pf-v6-c-card,
-  .card-link--foundational-hero .pf-v6-c-card {
+  .card-link .pf-v6-c-card {
     --pf-v6-c-card--BorderColor: var(--card-border);
     --pf-v6-c-card--BackgroundColor: var(--bg-surface);
     background: var(--bg-surface) !important;
     box-shadow: none !important;
   }
 
-  .card-link .pf-v6-c-card:hover,
-  .card-link--foundational-hero .pf-v6-c-card:hover {
+  .card-link .pf-v6-c-card:hover {
     --pf-v6-c-card--BorderColor: var(--card-border-hover);
     box-shadow: 0 2px 8px var(--shadow-sm) !important;
+  }
+
+  .card-link--foundational-hero .pf-v6-c-card {
+    --pf-v6-c-card--BorderColor: #4a3d7a;
+    background: linear-gradient(135deg, #2a2540 0%, #24262b 100%) !important;
+    box-shadow: 0 2px 12px var(--shadow-sm) !important;
+    border-left: 3px solid #5e40be;
+  }
+
+  .card-link--foundational-hero .pf-v6-c-card:hover {
+    --pf-v6-c-card--BorderColor: #5e40be;
+    box-shadow: 0 2px 14px var(--shadow-md) !important;
   }
 
   .card-link .pf-v6-c-card:hover .pf-v6-c-card__title-text {
@@ -3238,7 +3260,7 @@ b {
     display: block;
   }
 
-  .card-foundational {
+  .card-foundational:not(.card-foundational--hero) {
     background-color: #1e2832 !important;
     border-left-color: #3d7fad !important;
   }
