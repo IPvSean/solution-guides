@@ -273,7 +273,7 @@ Now that you have a great understanding of types of events, what are great examp
 
 #### Filebeat
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/beats-logo.webp">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/beats-logo.webp">
 
 Filebeat is a lightweight, open-source log shipper from Elastic that forwards logs from end-systems to a message aggregator. It is not an observability platform on its own -- it requires a message bus like Kafka to transport events to EDA. We use it in the AIOps workshop because it is free, low-overhead, and easy to deploy in lab environments.
 
@@ -281,7 +281,7 @@ Filebeat is a lightweight, open-source log shipper from Elastic that forwards lo
 
 #### IBM Instana
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/ibm_instana.png">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/ibm_instana.png">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ibm/instana/">IBM Instana on Automation hub</a>
 
@@ -291,7 +291,7 @@ IBM Instana provides real-time observability across hybrid and multicloud enviro
 
 #### Splunk
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/splunk-logo.png">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/splunk-logo.png">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/namespaces/splunk/">Splunk on Automation hub</a>
 
@@ -308,7 +308,7 @@ Message queues are optional depending on the observability tool.  For example IB
 
 #### AWS SQS
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aws-logo.png">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aws-logo.png">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/amazon/aws/">AWS on Automation hub</a>
 
@@ -318,7 +318,7 @@ Amazon SQS (Simple Queue Service) is a managed message queuing service that deco
 
 #### Azure Service Bus
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/azure_service_bus.jpg">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/azure_service_bus.jpg">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/azure_service_bus/">Azure Service Bus on Automation hub</a>
 
@@ -328,7 +328,7 @@ Azure Service Bus is a fully managed enterprise messaging service with message q
 
 #### Kafka
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/kafka_logo.webp">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/kafka_logo.webp">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/kafka/">Kafka on Automation hub</a>
 
@@ -513,7 +513,7 @@ This is where we synchronize the output from Red Hat AI to another outside syste
 
 #### Mattermost
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/matter_most_logo.svg">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/matter_most_logo.svg">
 
 <a target="_blank" href="https://docs.ansible.com/ansible/latest/collections/community/general/mattermost_module.html">Mattermost Documentation</a>
 
@@ -523,7 +523,7 @@ This is where we synchronize the output from Red Hat AI to another outside syste
 
 #### ServiceNow
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/servicenow-logo.png">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/servicenow-logo.png">
 
 <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/servicenow/itsm/">ServiceNow on Automation hub</a>
 
@@ -533,7 +533,7 @@ ServiceNow is an enterprise-grade **IT Service Management (ITSM)** platform and 
 
 #### Slack
 
-<img width="200" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/slack_logo.png">
+<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/slack_logo.png">
 
 Slack is an enterprise messaging platform with a rich API and app ecosystem that integrates seamlessly with Ansible, ServiceNow, and monitoring tools. In AIOps workflows, Slack channels serve as a real-time hub where AI-driven alerts, diagnostics, and remediation updates are delivered directly to operations teams.
 

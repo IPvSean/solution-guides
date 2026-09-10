@@ -221,6 +221,22 @@ img {
     border: none;
 }
 
+// Partner / vendor logos inline in guides (not lightbox diagrams)
+.guide-vendor-logo {
+  display: block;
+  width: auto;
+  max-width: 180px;
+  max-height: 52px;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0.5rem 0 0.75rem;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}
+
 // Guide content images (border + click-to-expand lightbox)
 .guide-image {
   display: block;
