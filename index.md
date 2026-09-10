@@ -366,7 +366,7 @@ patternfly: true
             Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--netbox">
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled.png' | relative_url }}" alt="NetBox Labs" class="card-partner-logo">
             </span>
           </div>
@@ -393,7 +393,7 @@ patternfly: true
             Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--netbox">
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled.png' | relative_url }}" alt="NetBox Labs" class="card-partner-logo">
             </span>
           </div>

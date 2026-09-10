@@ -2607,6 +2607,14 @@ b {
   height: 19px;
 }
 
+// Wide wordmark asset (2560x413); cap footprint to ~Red Hat AI card logos
+.card-partner-logo-set--netbox .card-partner-logo {
+  height: auto;
+  max-height: 22px;
+  max-width: 108px;
+  width: auto;
+}
+
 .card-partner-logo {
   height: 28px;
   width: auto;
