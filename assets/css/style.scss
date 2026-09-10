@@ -100,13 +100,17 @@ body {
   overflow: visible;
 }
 
-// Main column top inset (catalog + guides). Catalog horizontal spacing lives on .cards-layout, not here.
 section {
   margin: 0 auto;
   width: 100%;
   max-width: 1170px;
-  padding: 28px 0 0;
+  padding: 0;
   float: initial;
+}
+
+// Only the page shell section (not nested catalog/guide blocks).
+.wrapper > section {
+  padding-top: 28px;
 }
 
 section * {
@@ -1971,7 +1975,7 @@ b {
     gap: 12px;
   }
 
-  section {
+  .wrapper > section {
     padding-top: 20px;
   }
 
