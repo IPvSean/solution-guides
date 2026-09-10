@@ -95,23 +95,23 @@ patternfly: true
   </aside>
 
   <div class="cards-main">
-    <div class="cards-main__top">
-      <div class="edit-link-wrap edit-link-wrap--catalog">
-        <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
-           target="_blank" class="edit-link">
-          <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-          Edit on GitHub
-        </a>
-      </div>
-    </div>
     <p id="guide-search-count" class="cards-search__count"></p>
 
     <section id="solution-guides" class="cards-guide-section">
-      <div class="cards-guide-section__heading">
-        <h2 class="cards-guide-section__title">Solution Guides</h2>
-        <a href="{{ '/guide-types' | relative_url }}#solution-guides" class="guide-section__info" data-tooltip="Partner-focused guides that show how AAP solves business problems with integrated technologies." aria-label="Learn about Solution Guides">
-          <i class="fas fa-info-circle" aria-hidden="true"></i>
-        </a>
+      <div class="cards-guide-section__heading cards-guide-section__heading--catalog-top">
+        <div class="cards-guide-section__heading-group">
+          <h2 class="cards-guide-section__title">Solution Guides</h2>
+          <a href="{{ '/guide-types' | relative_url }}#solution-guides" class="guide-section__info" data-tooltip="Partner-focused guides that show how AAP solves business problems with integrated technologies." aria-label="Learn about Solution Guides">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="edit-link-wrap edit-link-wrap--catalog">
+          <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
+             target="_blank" class="edit-link">
+            <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+            Edit on GitHub
+          </a>
+        </div>
       </div>
 
       <div id="aiops-solutions" class="cards-track-section">

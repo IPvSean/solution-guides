@@ -1815,12 +1815,18 @@ b {
   padding-top: 0;
 }
 
-.cards-main__top {
+.cards-guide-section__heading--catalog-top {
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cards-guide-section__heading-group {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  gap: 16px;
-  margin-bottom: 12px;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 
 .cards-layout .cards-guide-section__heading {
@@ -1861,10 +1867,8 @@ b {
     overflow-y: visible;
   }
 
-  .cards-main__top {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+  .cards-guide-section__heading--catalog-top {
+    align-items: flex-start;
   }
 
   .edit-link-wrap--catalog {
