@@ -8,7 +8,7 @@
 </style>
 
 <div class="guide-hero-callout" role="img" aria-label="Ansible unlocks AIOps">
-  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="72" height="72">
+  <img src="assets/images/aiops-circle.png" alt="" class="guide-hero-callout__icon" width="72" height="72">
   <p class="guide-hero-callout__text">
     <span class="guide-hero-callout__ansible">Ansible</span>
     <span class="guide-hero-callout__unlocks">unlocks</span>
