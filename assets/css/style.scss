@@ -100,16 +100,13 @@ body {
   overflow: visible;
 }
 
+// Main column top inset (catalog + guides). Catalog horizontal spacing lives on .cards-layout, not here.
 section {
   margin: 0 auto;
   width: 100%;
   max-width: 1170px;
   padding: 28px 0 0;
   float: initial;
-}
-
-.wrapper > section:has(> .cards-layout) {
-  padding-top: 0;
 }
 
 section * {
@@ -1835,7 +1832,7 @@ b {
   display: flex;
   max-width: 1170px;
   margin: 0 auto;
-  padding: 24px 20px 0;
+  padding: 0 20px;
   gap: 24px;
   width: calc(100% - 40px) !important;
 }
@@ -1972,6 +1969,10 @@ b {
     flex-direction: column;
     padding: 0 12px;
     gap: 12px;
+  }
+
+  section {
+    padding-top: 20px;
   }
 
   .cards-sidebar {
