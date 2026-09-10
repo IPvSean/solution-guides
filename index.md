@@ -450,6 +450,7 @@ patternfly: true
           <i class="fas fa-info-circle" aria-hidden="true"></i>
         </a>
       </div>
+      <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
       <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-tags="edb,implementation,published">
         <div class="pf-v6-c-card">
@@ -602,6 +603,7 @@ patternfly: true
         </div>
       </a>
       </div>
+      </div>
     </section>
 
     <div class="cards-wip-section">
@@ -739,6 +741,7 @@ patternfly: true
   var partnerCheckboxes = document.querySelectorAll('.cards-sidebar__checkbox--partner input');
   var publishedCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="published"]');
   var wipCheckbox = document.querySelector('.cards-sidebar__checkbox--status input[value="wip"]');
+  var cardsMain = document.querySelector('.cards-main');
   var solutionGuidesSection = document.getElementById('solution-guides');
   var aiopsFoundationalHero = document.getElementById('aiops-foundational-hero');
   var journeyEmptyEl = document.getElementById('journey-empty');
@@ -894,6 +897,10 @@ patternfly: true
         : visible + ' guide' + (visible !== 1 ? 's' : '') + ' found.';
     } else {
       countEl.textContent = '';
+    }
+
+    if (cardsMain) {
+      cardsMain.classList.toggle('cards-main--partner-filter', activePartners.length > 0);
     }
   }
 

@@ -1951,6 +1951,29 @@ b {
   flex: 1;
   min-width: 0;
   padding-top: 0;
+
+  section.cards-guide-section {
+    max-width: none;
+  }
+
+  // Catalog sections are nested inside .cards-main; cancel global `section > *` side inset.
+  section.cards-guide-section > * {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+}
+
+.cards-track-section--flat {
+  margin-top: 0;
+}
+
+// Partner filter: drop track chrome so Solution and Implementation card grids share the same column.
+.cards-main--partner-filter .cards-track-section:not(.cards-track-section--flat) .cards-track-section__heading,
+.cards-main--partner-filter .cards-track-section:not(.cards-track-section--flat) .cards-track-section__intro,
+.cards-main--partner-filter .cards-track-section:not(.cards-track-section--flat) .cards-track-section__empty {
+  display: none;
 }
 
 .cards-guide-section__heading--catalog-top {
