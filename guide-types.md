@@ -15,9 +15,7 @@ inline_edit: true
     </a>
   </div>
 </div>
-
 <div class="guide-types-grid">
-
 <section class="guide-type-panel guide-type-panel--solution">
   <div class="guide-type-panel__header">
     <span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
@@ -77,9 +75,7 @@ inline_edit: true
 
   <a href="{{ '/' | relative_url }}#implementation-guides" class="guide-type-panel__cta">Browse Implementation Guides</a>
 </section>
-
 </div>
-
 <section class="guide-types-tracks">
   <h2 id="solution-guide-tracks" class="guide-types-tracks__title">Solution Guide tracks</h2>
   <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern. AIOps and Event-Driven are partner integration patterns; Journey guides are cross-cutting adoption paths. All tracks use the same guide framework, validation expectations, and maturity path structure. Within AIOps and Event-Driven, one guide per domain may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>).</p>

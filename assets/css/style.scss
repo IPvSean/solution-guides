@@ -108,8 +108,9 @@ section {
   float: initial;
 }
 
-// Only the page shell section (not nested catalog/guide blocks).
-.wrapper > section {
+// Page shell only (not nested catalog/guide blocks). Sidebar pages wrap section in .guide-layout.
+.wrapper > section,
+.guide-layout > section {
   padding-top: 28px;
 }
 
@@ -464,8 +465,29 @@ img {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-top: 0;
   margin-bottom: 24px;
   align-items: stretch;
+
+  // Kramdown inserts empty <p> between HTML blocks inside the grid and breaks the 2-column layout.
+  > p:empty {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.guide-layout > section > p:empty {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.guide-layout > section > section.guide-types-tracks {
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .guide-type-panel {
@@ -1975,7 +1997,8 @@ b {
     gap: 12px;
   }
 
-  .wrapper > section {
+  .wrapper > section,
+  .guide-layout > section {
     padding-top: 20px;
   }
 
