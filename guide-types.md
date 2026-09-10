@@ -97,7 +97,7 @@ permalink: /guide-types/
         <span class="guide-type-track__badge">AIOps</span>
         <h3 id="aiops-solutions" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#aiops-solutions">AIOps Solutions</a></h3>
       </div>
-      <p class="guide-type-track__body">Partner integrations where <strong>AI inference, Ansible Lightspeed, or MCP</strong> augments detection, diagnosis, and remediation. Use these when the outcome depends on intelligent triage, enrichment, or governed playbook selection.</p>
+      <p class="guide-type-track__body">Partner integrations where <strong>AI inference, Automation code assistant, or MCP</strong> augments detection, diagnosis, and remediation. Use these when the outcome depends on intelligent triage, enrichment, or governed playbook selection.</p>
       <div class="guide-type-track__examples">
         <span class="guide-type-track__examples-label">Examples</span>
         <div class="guide-type-track__pills">

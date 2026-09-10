@@ -117,7 +117,7 @@ patternfly: true
       <div id="aiops-solutions" class="cards-track-section">
         <div class="cards-track-section__heading">
           <h3 class="cards-track-section__title">AIOps Solutions</h3>
-          <a href="{{ '/guide-types' | relative_url }}#aiops-solutions" class="guide-section__info" data-tooltip="Partner integrations where AI inference, Lightspeed, or MCP augments detection, diagnosis, and remediation." aria-label="Learn about AIOps Solutions">
+          <a href="{{ '/guide-types' | relative_url }}#aiops-solutions" class="guide-section__info" data-tooltip="Partner integrations where AI inference, Automation code assistant, or MCP augments detection, diagnosis, and remediation." aria-label="Learn about AIOps Solutions">
             <i class="fas fa-info-circle" aria-hidden="true"></i>
           </a>
         </div>
@@ -140,7 +140,7 @@ patternfly: true
                 <h3 class="pf-v6-c-card__title-text">AIOps automation with Ansible</h3>
               </div>
               <div class="pf-v6-c-card__body">
-                Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Ansible Lightspeed to detect, diagnose, and remediate incidents automatically.
+                Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Automation code assistant to detect, diagnose, and remediate incidents automatically.
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">AIOps with Splunk and Event-Driven Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Three use cases for closed-loop AIOps: ITSI predictive anomaly detection with MLTK, RHEL server remediation with AI-enriched diagnostics, and network OSPF remediation with Lightspeed-generated playbooks.
+            Three use cases for closed-loop AIOps: ITSI predictive anomaly detection with MLTK, RHEL server remediation with AI-enriched diagnostics, and network OSPF remediation with Automation code assistant-generated playbooks.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set">
@@ -532,7 +532,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Intelligent Assistant with Red Hat AI Inference Server</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Ansible Lightspeed intelligent assistant in AAP.
+            Deploy and configure a self-hosted LLM using Red Hat AI Inference Server on RHEL with GPU acceleration to power the Automation intelligent assistant in AAP.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">

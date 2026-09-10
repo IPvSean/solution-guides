@@ -63,6 +63,7 @@ Key non-negotiables:
 - **Validation section is mandatory**: Include a concrete test, verbatim expected output, and a troubleshooting table.
 - **Automation Hub links**: Every Ansible collection referenced must link to its Automation Hub page.
 - **KB article link (legacy only)**: If a corresponding article exists on access.redhat.com, include the link in a blockquote under the title. New guides do not require a KB article.
+- **Lightspeed naming**: Follow `.cursor/rules/red-hat-lightspeed-terminology.mdc` for Automation code assistant, Automation intelligent assistant, and Red Hat Lightspeed in new prose and catalog copy.
 
 ## Scoring and Reviewing Guides
 
