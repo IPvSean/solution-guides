@@ -1802,15 +1802,9 @@ b {
 .cards-main__top {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 16px;
   margin-bottom: 12px;
-}
-
-.cards-main__top .cards-intro {
-  margin: 0;
-  max-width: none;
-  flex: 1;
 }
 
 .cards-layout .cards-guide-section__heading {

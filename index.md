@@ -96,10 +96,6 @@ patternfly: true
 
   <div class="cards-main">
     <div class="cards-main__top">
-      <p class="cards-intro">
-        Solution and implementation guides for Ansible Automation Platform.
-        <a href="{{ '/guide-types' | relative_url }}">About guide types</a>.
-      </p>
       <div class="edit-link-wrap edit-link-wrap--catalog">
         <a href="https://github.com/ansible-tmm/solution-guides/edit/main/{{ page.path }}"
            target="_blank" class="edit-link">
