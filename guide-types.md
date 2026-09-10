@@ -16,17 +16,6 @@ inline_edit: true
   </div>
 </div>
 
-<div class="guide-types-synthesis">
-  <div class="guide-types-synthesis__item guide-types-synthesis__item--solution">
-    <span class="guide-types-synthesis__label guide-types-synthesis__label--solution">Solution Guides</span>
-    <p>Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
-  </div>
-  <div class="guide-types-synthesis__item guide-types-synthesis__item--implementation">
-    <span class="guide-types-synthesis__label guide-types-synthesis__label--implementation">Implementation Guides</span>
-    <p>Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
-  </div>
-</div>
-
 <div class="guide-types-grid">
 
 <section class="guide-type-panel guide-type-panel--solution">
@@ -34,6 +23,8 @@ inline_edit: true
     <span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
     <h2 id="solution-guides" class="guide-type-panel__title">Solution Guides</h2>
   </div>
+
+  <p class="guide-type-panel__summary">Show <strong>AAP plus a partner</strong> solving a specific operational problem -- integrated reference architectures, not platform setup alone.</p>
 
   <dl class="guide-type-facts">
     <div class="guide-type-fact">
@@ -62,6 +53,8 @@ inline_edit: true
     <span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
     <h2 id="implementation-guides" class="guide-type-panel__title">Implementation Guides</h2>
   </div>
+
+  <p class="guide-type-panel__summary">Show <strong>how</strong> -- the platform configuration that makes those outcomes reliable in production.</p>
 
   <dl class="guide-type-facts">
     <div class="guide-type-fact">

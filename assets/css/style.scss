@@ -510,6 +510,24 @@ img {
   color: #151515;
 }
 
+.guide-type-panel__summary {
+  margin: 0 0 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ececec;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4d4d4d;
+}
+
+.guide-type-panel--solution .guide-type-panel__summary {
+  border-bottom-color: #d4e8d4;
+}
+
+.guide-type-panel--implementation .guide-type-panel__summary {
+  border-bottom-color: #c8ddf5;
+}
+
 .guide-type-facts {
   margin: 0 0 20px;
   padding: 0;
@@ -680,62 +698,6 @@ img {
     &:hover {
       text-decoration: underline;
     }
-  }
-}
-
-.guide-types-synthesis {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 28px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-}
-
-.guide-types-synthesis__item {
-  padding: 18px 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-
-  &--solution {
-    border: 1px solid #d4e8d4;
-    background: linear-gradient(165deg, #eef6ee 0%, #f7faf7 42%, #ffffff 100%);
-  }
-
-  &--implementation {
-    border: 1px solid #c8ddf5;
-    background: linear-gradient(165deg, #e8f2fc 0%, #f5f9ff 42%, #ffffff 100%);
-  }
-
-  p {
-    margin: 8px 0 0;
-    font-family: 'Red Hat Text', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #4d4d4d;
-  }
-}
-
-.guide-types-synthesis__label {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 999px;
-  font-family: 'Red Hat Display', sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-
-  &--solution {
-    color: #1e4f18;
-    background: #e9f5e9;
-    border: 1px solid #b7d9b4;
-  }
-
-  &--implementation {
-    color: #004080;
-    background: #e8f2fc;
-    border: 1px solid #b8d4f0;
   }
 }
 
@@ -999,8 +961,7 @@ img {
 
 @media screen and (max-width: 900px) {
   .guide-types-grid,
-  .guide-types-together__grid,
-  .guide-types-synthesis {
+  .guide-types-together__grid {
     grid-template-columns: 1fr;
   }
 }
@@ -3120,34 +3081,17 @@ b {
     color: var(--text-secondary);
   }
 
-  .guide-types-synthesis__item {
-    box-shadow: 0 2px 8px var(--shadow-sm);
-  }
-
-  .guide-types-synthesis__item--solution {
-    background: linear-gradient(165deg, #1e2d22 0%, #24262b 50%, #24262b 100%);
-    border-color: #2d4a2d;
-  }
-
-  .guide-types-synthesis__item--implementation {
-    background: linear-gradient(165deg, #1a2838 0%, #24262b 50%, #24262b 100%);
-    border-color: #2a3d52;
-  }
-
-  .guide-types-synthesis__item p {
+  .guide-type-panel__summary {
     color: var(--text-secondary);
+    border-bottom-color: var(--border-color);
   }
 
-  .guide-types-synthesis__label--solution {
-    color: #b7e4b7;
-    background: #1e3d1e;
-    border-color: #3d7a3d;
+  .guide-type-panel--solution .guide-type-panel__summary {
+    border-bottom-color: #2d4a2d;
   }
 
-  .guide-types-synthesis__label--implementation {
-    color: #9ec5fe;
-    background: #1e3a5f;
-    border-color: #3d6a9e;
+  .guide-type-panel--implementation .guide-type-panel__summary {
+    border-bottom-color: #2a3d52;
   }
 
   .guide-type-fact {
