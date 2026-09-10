@@ -285,6 +285,73 @@ img {
   }
 }
 
+.guide-hero-callout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 1.75rem;
+  padding: 20px 24px;
+  border-radius: 10px;
+  border: 1px solid #ddd4f0;
+  background: linear-gradient(135deg, #e8e0f5 0%, #f3f0fa 42%, #f8f7fa 72%, #f2f4f6 100%);
+  box-shadow: 0 2px 12px rgba(94, 64, 190, 0.1);
+}
+
+.guide-hero-callout__icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  cursor: default;
+}
+
+.guide-hero-callout__text {
+  margin: 0;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #151515;
+  letter-spacing: -0.02em;
+}
+
+.guide-hero-callout__ansible {
+  color: #151515;
+}
+
+.guide-hero-callout__unlocks {
+  display: inline-block;
+  margin: 0 0.2em;
+  padding: 0.05em 0.35em;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #ee0000;
+  font-weight: 700;
+  vertical-align: baseline;
+}
+
+.guide-hero-callout__aiops {
+  color: #151515;
+}
+
+@media screen and (max-width: 540px) {
+  .guide-hero-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+  }
+
+  .guide-hero-callout__icon {
+    width: 56px;
+    height: 56px;
+  }
+}
+
 .guide-header {
   margin-bottom: 1.75rem;
   padding-bottom: 1.25rem;
@@ -2697,6 +2764,18 @@ b {
     border-color: #4a3d7a;
     color: var(--text-primary);
     box-shadow: 0 2px 8px var(--shadow-sm);
+  }
+
+  .guide-hero-callout {
+    background: linear-gradient(135deg, #2a2540 0%, #24262b 100%);
+    border-color: #4a3d7a;
+    box-shadow: 0 2px 12px var(--shadow-sm);
+  }
+
+  .guide-hero-callout__text,
+  .guide-hero-callout__ansible,
+  .guide-hero-callout__aiops {
+    color: var(--text-primary);
   }
 
   .guide-image-caption,

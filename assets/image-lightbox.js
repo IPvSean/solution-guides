@@ -1,5 +1,5 @@
 (function () {
-  var EXCLUDED_CLASSES = ['header-logo', 'footer-logo', 'card-partner-logo', 'guide-vendor-logo'];
+  var EXCLUDED_CLASSES = ['header-logo', 'footer-logo', 'card-partner-logo', 'guide-vendor-logo', 'guide-hero-callout__icon'];
   var overlay = null;
   var overlayImg = null;
   var closeBtn = null;

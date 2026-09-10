@@ -7,7 +7,14 @@
   }
 </style>
 
-![aiops](https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aiops.png)
+<div class="guide-hero-callout" role="img" aria-label="Ansible unlocks AIOps">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="72" height="72">
+  <p class="guide-hero-callout__text">
+    <span class="guide-hero-callout__ansible">Ansible</span>
+    <span class="guide-hero-callout__unlocks">unlocks</span>
+    <span class="guide-hero-callout__aiops">AIOps</span>
+  </p>
+</div>
 
 ## Overview
 
