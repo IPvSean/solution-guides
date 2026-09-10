@@ -289,13 +289,15 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 0.875rem;
+  margin-top: 0;
+  margin-bottom: 0.875rem;
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #ddd4f0;
   background: linear-gradient(135deg, #e8e0f5 0%, #f3f0fa 42%, #f8f7fa 72%, #f2f4f6 100%);
   box-shadow: 0 2px 8px rgba(94, 64, 190, 0.08);
   max-width: 28rem;
+  box-sizing: border-box;
 }
 
 .guide-hero-callout__icon {
