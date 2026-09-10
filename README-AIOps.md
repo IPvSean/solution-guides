@@ -8,7 +8,7 @@
 </style>
 
 <div class="guide-hero-callout" role="img" aria-label="Ansible unlocks AIOps">
-  <img src="assets/images/aiops-circle.png" alt="" class="guide-hero-callout__icon" width="72" height="72">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <p class="guide-hero-callout__text">
     <span class="guide-hero-callout__ansible">Ansible</span>
     <span class="guide-hero-callout__unlocks">unlocks</span>
@@ -48,7 +48,7 @@ There are three major parts of AIOps:
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Inference**
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/23e9.png" width="20" style="vertical-align:text-bottom;"> **Automation**
 
-![aiops diagram](https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/aiops-circle.png?raw=true)
+<img src="assets/images/aiops-circle.png" alt="AIOps diagram: Observability, Inference, and Automation" class="guide-aiops-circle">
 
 - **Observability**: Understanding the internal state of a system through logs, metrics, and traces.
    - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d6.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/topics/devops/what-is-observability">What is observability? - redhat.com </a>
