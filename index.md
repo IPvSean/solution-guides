@@ -684,8 +684,9 @@ patternfly: true
 
     <details class="legacy-guides">
       <summary>Legacy Solution Guides (Under Review)</summary>
-      <p>These solution guides were published on access.redhat.com before this repository existed. They are being reviewed and will be migrated to the new format as full markdown guides.</p>
-      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery">
+      <div class="legacy-guides__body">
+      <p class="legacy-guides__intro">These solution guides were published on access.redhat.com before this repository existed. They are being reviewed and will be migrated to the new format as full markdown guides.</p>
+      <div class="pf-v6-l-gallery cards-gallery legacy-guides__gallery">
         <a href="https://access.redhat.com/articles/7136383" class="card-link" target="_blank" data-tags="published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
@@ -706,9 +707,9 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <span class="card-partner-logo-set">
-              <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
+                <img src="{{ '/assets/images/logos/servicenow-logo.png' | relative_url }}" alt="ServiceNow" class="card-partner-logo card-partner-logo--light">
+                <img src="{{ '/assets/images/logos/servicenow-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              </span>
             </div>
           </div>
         </a>
@@ -748,6 +749,7 @@ patternfly: true
             </div>
           </div>
         </a>
+      </div>
       </div>
     </details>
   </div>

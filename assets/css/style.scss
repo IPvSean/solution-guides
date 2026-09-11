@@ -2638,30 +2638,48 @@ b {
   margin: 0 0 40px;
   width: 100% !important;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
-.legacy-guides > p {
+// Single inset wrapper (avoids fighting global details > * padding + PF gallery width)
+details.legacy-guides > .legacy-guides__body {
+  padding: 20px 28px 32px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
+  padding: 0;
+}
+
+.legacy-guides__intro {
   font-size: 14px;
   color: #6a6e73;
-  margin: 0;
-  padding: 16px 0 12px;
+  margin: 0 0 20px;
+  max-width: 72ch;
+  line-height: 1.5;
 }
 
-.legacy-guides .cards-gallery {
+.legacy-guides__gallery {
   width: 100% !important;
-  padding: 8px 0 32px;
   margin: 0 !important;
+  padding: 0 !important;
+  gap: 20px !important;
   box-sizing: border-box;
 }
 
-details.legacy-guides > *:not(summary) {
-  padding-inline: 48px;
-  box-sizing: border-box;
+// Legacy cards skip the badge header row; add top rhythm to match catalog cards
+.legacy-guides .pf-v6-c-card__title {
+  padding-block-start: var(--pf-v6-c-card__title--PaddingBlockStart, 1rem);
+}
+
+.legacy-guides .pf-v6-c-card__footer {
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 768px) {
-  details.legacy-guides > *:not(summary) {
-    padding-inline: 24px;
+  details.legacy-guides > .legacy-guides__body {
+    padding: 16px 20px 24px;
   }
 }
 
@@ -2936,7 +2954,7 @@ details.legacy-guides > *:not(summary) {
   .guide-image-caption,
   .cards-contributing p,
   .cards-hero p,
-  .legacy-guides > p,
+  .legacy-guides__intro,
   .cards-search__count,
   .cards-intro {
     color: var(--text-muted);
