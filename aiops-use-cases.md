@@ -31,6 +31,10 @@ inline_edit: true
 | **Walk** | Orchestrate and automate with intelligence | [Intelligent Capacity Orchestration](README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md), [Curated Automation Remediation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) |
 | **Run** | Autonomous operations and continuous enforcement | [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) |
 
+> **Run includes two patterns.**
+>
+> **System-level drift and policy enforcement** prevents risk from accumulating across the environment. **Self-healing infrastructure** closes the loop when something breaks (detect, decide, act, validate). Customers often need both over time; they are separate conversation topics, not sequential homework.
+
 ## How work starts
 
 Workflows can begin from a human request, an observability event, an ITSM ticket, or a scheduled review. The use case describes the **pattern**; the entry point depends on the customer environment.
@@ -52,40 +56,36 @@ graph LR
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">Incident and Ticket Enrichment</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--published">Published</span>
     <p class="use-case-hub-list__question">How do we stop wasting time just figuring out what happened?</p>
   </li>
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-02-Cost-Resource-Optimization' | relative_url }}">Cost and Resource Optimization</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">How do we identify wasted capacity before it becomes an operational problem?</p>
   </li>
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration' | relative_url }}">Intelligent Capacity Orchestration</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">How do we anticipate capacity needs across hybrid environments?</p>
   </li>
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-04-Curated-Automation-Remediation' | relative_url }}">Curated Automation Remediation</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">How do we remediate faster using automation teams already trust?</p>
   </li>
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">System-Level Drift and Policy Enforcement</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">How do we prevent slow failure and risk accumulation in the first place?</p>
   </li>
   <li class="use-case-hub-list__item">
     <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">Self-healing infrastructure</a></strong>
-    <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">What do we do when something breaks, end to end?</p>
   </li>
 </ol>
+
+<p class="use-case-hub-list__footnote">Use cases 2 through 6 are deck-aligned conversation outlines for field enablement. Use case 1 includes the full EDA-to-Automation Orchestrator adoption path for implementers.</p>
 
 ## How this relates to Solution Guides
 

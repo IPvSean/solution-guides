@@ -149,66 +149,64 @@ patternfly: true
               <i class="fas fa-info-circle" aria-hidden="true"></i>
             </a>
           </div>
-          <p class="cards-track-section__intro">Pattern-level adoption paths (EDA to orchestration). Pick a use case for the customer conversation; use partner cards below for integration depth.</p>
-          <nav class="use-case-strip" aria-label="AIOps use cases">
+          <p class="cards-track-section__intro">Pattern-level adoption paths (EDA to orchestration). For the full stage-by-stage technical depth, start with <a href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">use case 1: Incident and Ticket Enrichment</a>. Use partner cards below for integration depth.</p>
+          <p class="use-case-strip__footer use-case-strip__footer--top">
+            <a href="{{ '/aiops-use-cases' | relative_url }}" class="use-case-strip__hub-link">Common AIOps Use Cases hub (Crawl / Walk / Run map)</a>
+          </p>
+          <details class="use-case-strip-details">
+            <summary class="use-case-strip-details__summary">Browse all six use cases</summary>
+            <nav class="use-case-strip" aria-label="AIOps use cases">
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">
               <span class="use-case-strip__num">1</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">Incident and Ticket Enrichment</span>
-                <span class="use-case-strip__question">Stop wasting time figuring out what happened.</span>
+                <span class="use-case-strip__question">How do we stop wasting time just figuring out what happened?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
-              <span class="use-case-status-pill use-case-status-pill--published">Published</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-02-Cost-Resource-Optimization' | relative_url }}">
               <span class="use-case-strip__num">2</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">Cost and Resource Optimization</span>
-                <span class="use-case-strip__question">Find wasted capacity before it hurts.</span>
+                <span class="use-case-strip__question">How do we identify wasted capacity before it becomes an operational problem?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
-              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration' | relative_url }}">
               <span class="use-case-strip__num">3</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">Intelligent Capacity Orchestration</span>
-                <span class="use-case-strip__question">Anticipate capacity across hybrid environments.</span>
+                <span class="use-case-strip__question">How do we anticipate capacity needs across hybrid environments?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
-              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-04-Curated-Automation-Remediation' | relative_url }}">
               <span class="use-case-strip__num">4</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">Curated Automation Remediation</span>
-                <span class="use-case-strip__question">Remediate with automation teams already trust.</span>
+                <span class="use-case-strip__question">How do we remediate faster using automation teams already trust?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
-              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">
               <span class="use-case-strip__num">5</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
-                <span class="use-case-strip__question">Prevent slow failure before impact.</span>
+                <span class="use-case-strip__question">How do we prevent slow failure and risk accumulation in the first place?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
-              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">
               <span class="use-case-strip__num">6</span>
               <span class="use-case-strip__body">
                 <span class="use-case-strip__title">Self-healing infrastructure</span>
-                <span class="use-case-strip__question">Detect, decide, act, validate end to end.</span>
+                <span class="use-case-strip__question">What do we do when something breaks, end to end?</span>
               </span>
               <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
-              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
-          </nav>
-          <p class="use-case-strip__footer">
-            <a href="{{ '/aiops-use-cases' | relative_url }}" class="use-case-strip__hub-link">View all use cases and Crawl/Walk/Run map</a>
-          </p>
+            </nav>
+            <p class="use-case-strip__note">Use cases 2 through 6 are deck-aligned conversation outlines. Use case 1 includes the full EDA-to-Automation Orchestrator adoption path.</p>
+          </details>
         </div>
         <h4 class="cards-track-subsection__title">Partner integrations</h4>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">

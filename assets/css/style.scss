@@ -2671,7 +2671,7 @@ b {
 
 .use-case-strip__item {
   display: grid;
-  grid-template-columns: 2rem 1fr auto auto;
+  grid-template-columns: 2rem 1fr auto;
   align-items: center;
   gap: 10px 12px;
   padding: 10px 12px;
@@ -2720,6 +2720,51 @@ b {
 .use-case-strip__footer {
   margin: 12px 0 0;
   font-size: 14px;
+
+  &--top {
+    margin: 8px 0 0;
+  }
+}
+
+.use-case-strip__note,
+.use-case-hub-list__footnote {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #6a6e73;
+}
+
+.use-case-strip-details {
+  margin-top: 10px;
+
+  &__summary {
+    cursor: pointer;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #151515;
+    list-style: none;
+    padding: 8px 0;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::before {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      font-size: 11px;
+      margin-right: 8px;
+      color: #9a6700;
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
+  }
+
+  &[open] .use-case-strip-details__summary::before {
+    transform: rotate(90deg);
+  }
 }
 
 .use-case-strip__hub-link {
@@ -2755,27 +2800,6 @@ b {
   }
 }
 
-.use-case-status-pill {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 600;
-  white-space: nowrap;
-
-  &--published {
-    color: #3d7317;
-    background: #e9f4e0;
-    border: 1px solid #b8d4a8;
-  }
-
-  &--wip {
-    color: #8a6100;
-    background: #fff8e6;
-    border: 1px solid #e8d4a8;
-  }
-}
-
 .use-case-hub-list {
   list-style: none;
   padding: 0;
@@ -2784,7 +2808,7 @@ b {
 
 .use-case-hub-list__item {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 8px 12px;
   align-items: start;
   padding: 14px 0;
@@ -2814,8 +2838,7 @@ b {
     grid-template-rows: auto auto;
   }
 
-  .use-case-maturity-chip,
-  .use-case-status-pill {
+  .use-case-maturity-chip {
     grid-column: 2;
   }
 }
