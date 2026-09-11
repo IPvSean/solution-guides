@@ -39,15 +39,14 @@ Ticket enrichment means attaching enough context to an incident that the respons
 
 The four problems that drive teams toward enrichment automation are almost always the same:
 
-**Triage time dominates MTTR.** Once someone decides what playbook to run, AAP runs it in minutes. The 30-45 minutes before that decision represents manual investigation, not a technical bottleneck.
+| Problem | What teams see | Why automation stalls | Typical fix (stage) |
+|---------|----------------|------------------------|---------------------|
+| **Triage dominates MTTR** | 30-45 minutes of investigation before anyone runs a playbook | AAP execution is fast; context assembly is manual | Stages 1-2 (EDA + AAP; LLM work notes) |
+| **Trust gap on automation** | Playbooks exist but on-call still owns every decision | Missing enrichment and approval surface, not missing jobs | Stages 2-3 (AI on ticket; switch routing) |
+| **Rulebook sprawl** | Each new alert variant needs another EDA rule | Context branching lives in rules instead of orchestration | Stage 3 (switch nodes in AO) |
+| **Novel incidents** | No rule match; ticket sits in a queue | Static rules cannot correlate unknown patterns | Stages 4-5 (AI agent; full orchestration) |
 
-**On-call gets paged for automatable incidents, but the team does not trust automation to act without oversight.** The automation exists. The question is what the human approval surface looks like, not whether automation should be involved at all.
-
-**EDA rulebooks grow into a maintenance problem.** Every new alert type needs a new rule. Every variant of an existing alert type needs another rule. The mapping between alert and response becomes something that lives in one person's head.
-
-**Novel incidents go unhandled.** When an alert matches no existing rule, a ticket opens and sits in a queue. The incident either resolves on its own or escalates while someone works to understand what is happening.
-
-These four problems have different solutions at different points on the adoption path. This use case connects them to specific design patterns.
+Stages 1-2 focus on triage and enrichment; stages 3-5 add context-aware routing, novel-incident correlation, and post-remediation validation. The sections below map each stage to concrete design patterns.
 
 <h2 id="solution"></h2>
 
