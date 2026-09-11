@@ -193,7 +193,7 @@ patternfly: true
                 <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
                 <span class="use-case-strip__question">Prevent slow failure before impact.</span>
               </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
               <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
             </a>
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">

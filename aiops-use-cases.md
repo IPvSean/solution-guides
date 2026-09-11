@@ -28,8 +28,8 @@ inline_edit: true
 | Maturity | Focus | Use cases |
 |----------|--------|-----------|
 | **Crawl** | Build visibility and enrich insights | [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [Cost and Resource Optimization](README-AIOps-Use-Case-02-Cost-Resource-Optimization.md) |
-| **Walk** | Orchestrate and automate with intelligence | [Intelligent Capacity Orchestration](README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md), [Curated Automation Remediation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md), [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) |
-| **Run** | Autonomous, self-healing operations | [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) |
+| **Walk** | Orchestrate and automate with intelligence | [Intelligent Capacity Orchestration](README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md), [Curated Automation Remediation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) |
+| **Run** | Autonomous operations and continuous enforcement | [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) |
 
 ## How work starts
 
@@ -74,7 +74,7 @@ graph LR
     <p class="use-case-hub-list__question">How do we remediate faster using automation teams already trust?</p>
   </li>
   <li class="use-case-hub-list__item">
-    <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+    <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
     <strong><a href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">System-Level Drift and Policy Enforcement</a></strong>
     <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
     <p class="use-case-hub-list__question">How do we prevent slow failure and risk accumulation in the first place?</p>

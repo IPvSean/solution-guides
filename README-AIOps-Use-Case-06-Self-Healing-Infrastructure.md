@@ -27,7 +27,7 @@ Known issues with proven fixes still wait in alert queues while someone diagnose
 
 ## Background
 
-This is **Run** maturity in the AIOps use-case map. It builds on Crawl (enrichment, cost visibility) and Walk (curated remediation, drift enforcement). Entry points are primarily **event-initiated** from observability or ITSM.
+This is **Run** maturity in the AIOps use-case map. It builds on Crawl (enrichment, cost visibility) and Walk (curated remediation, capacity orchestration). System-level drift and policy enforcement prevents failures from accumulating; [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) closes the loop when breaks occur. Entry points are primarily **event-initiated** from observability or ITSM.
 
 ```mermaid
 graph LR

@@ -21,6 +21,8 @@ Organizations struggle to identify gradual operational, security, and compliance
 
 **Business outcomes:** Continuous compliance, reduced risk, operational consistency, audit evidence.
 
+This use case sits at **Run** maturity alongside self-healing: continuous correlation, preventative remediation, and policy enforcement at scale rather than one-off orchestration.
+
 > **Buyer question:**
 >
 > How do we prevent slow failure and risk accumulation in the first place?
@@ -47,7 +49,7 @@ Scheduled reviews and compliance scans are natural entry points. The distinguish
 
 - Ansible Automation Platform 2.5 or later
 - Policy and inventory sources integrated with playbooks or MCP
-- Automation Orchestrator for multi-step enforce-and-report workflows
+- Automation Orchestrator for multi-step enforce-and-report workflows (Run maturity)
 
 ## EDA to AO adoption path
 
