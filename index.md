@@ -401,6 +401,34 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-tags="kafka,event-driven,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
+              <span class="pf-v6-c-label__content">Event-Driven</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Consuming OpenShift API Resources with EDA and Kafka</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
       </div>
       </div>
 
@@ -494,7 +522,7 @@ patternfly: true
             Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
@@ -571,6 +599,31 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-tags="implementation,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Ansible Development Workspaces</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
+          </div>
+        </div>
+      </a>
+
       <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-tags="implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
@@ -611,56 +664,6 @@ patternfly: true
       </div>
       </div>
     </section>
-
-    <div class="cards-wip-section">
-      <h2>Work in Progress</h2>
-      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="wip-gallery">
-        <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-tags="implementation,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Ansible Development Workspaces</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-tags="kafka,implementation,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Consuming OpenShift API Resources with EDA and Kafka</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-logo-set">
-                <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
-                <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-              </span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
 
     <div class="cards-contributing">
       <h2>Contributing</h2>
@@ -758,8 +761,7 @@ patternfly: true
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
     { section: document.getElementById('journey-guides'), gallery: document.getElementById('journey-gallery'), emptyState: journeyEmptyEl },
-    { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') },
-    { section: document.querySelector('.cards-wip-section'), gallery: document.getElementById('wip-gallery') }
+    { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') }
   ];
 
   if (!headerInput) return;

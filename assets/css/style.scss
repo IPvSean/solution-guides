@@ -2643,19 +2643,26 @@ b {
 .legacy-guides > p {
   font-size: 14px;
   color: #6a6e73;
-  padding: 12px 24px 0;
+  margin: 0;
+  padding: 16px 0 12px;
 }
 
 .legacy-guides .cards-gallery {
   width: 100% !important;
-  padding: 16px 0 24px;
+  padding: 8px 0 32px;
   margin: 0 !important;
   box-sizing: border-box;
 }
 
 details.legacy-guides > *:not(summary) {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-inline: 48px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  details.legacy-guides > *:not(summary) {
+    padding-inline: 24px;
+  }
 }
 
 // Partner name pill on legacy cards (avoid PF outline label dark-mode contrast issues)
@@ -2701,6 +2708,13 @@ details.legacy-guides > *:not(summary) {
   max-height: 22px;
   max-width: 108px;
   width: auto;
+}
+
+// Icon mark (not a wordmark); nudge above default 28px height for parity with EDB/Red Hat AI footers
+.card-partner-logo-set--zero-trust .card-partner-logo {
+  height: 36px;
+  width: auto;
+  max-width: 56px;
 }
 
 .card-partner-logo {
