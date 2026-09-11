@@ -2637,17 +2637,40 @@ b {
 .legacy-guides {
   margin: 0 0 40px;
   width: 100% !important;
+  box-sizing: border-box;
 }
 
 .legacy-guides > p {
   font-size: 14px;
   color: #6a6e73;
-  padding: 12px 16px 0;
+  padding: 12px 24px 0;
 }
 
 .legacy-guides .cards-gallery {
   width: 100% !important;
-  padding: 16px 0 0;
+  padding: 16px 0 24px;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+details.legacy-guides > *:not(summary) {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+// Partner name pill on legacy cards (avoid PF outline label dark-mode contrast issues)
+.card-partner-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  border-radius: 999px;
+  color: #4d4d4d;
+  background: #f5f5f5;
+  border: 1px solid #d2d2d2;
 }
 
 .card-partner-logo-set {
@@ -2678,6 +2701,13 @@ b {
   max-height: 22px;
   max-width: 108px;
   width: auto;
+}
+
+// Square icon asset has generous canvas padding; size up to match wordmark logos
+.card-partner-logo-set--zero-trust .card-partner-logo {
+  height: 56px;
+  width: 56px;
+  object-fit: contain;
 }
 
 .card-partner-logo {
@@ -2961,6 +2991,12 @@ b {
 
   details[open] summary {
     border-bottom-color: var(--border-color);
+  }
+
+  .card-partner-tag {
+    color: var(--text-primary);
+    background: var(--bg-surface-alt);
+    border-color: var(--border-color);
   }
 
   .key-terms-group {

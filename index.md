@@ -494,7 +494,7 @@ patternfly: true
             Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
@@ -651,7 +651,10 @@ patternfly: true
               Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
             </div>
             <div class="pf-v6-c-card__footer">
-              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo">
+              <span class="card-partner-logo-set">
+                <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
+                <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              </span>
             </div>
           </div>
         </a>
@@ -713,7 +716,7 @@ patternfly: true
               Backup, configure, and restore network devices using the network.backup validated content collection.
             </div>
             <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Cisco</span></span>
+              <span class="card-partner-tag">Cisco</span>
             </div>
           </div>
         </a>
@@ -726,7 +729,7 @@ patternfly: true
               Collect network device facts and export structured data for compliance reporting.
             </div>
             <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">Cisco</span></span>
+              <span class="card-partner-tag">Cisco</span>
             </div>
           </div>
         </a>
