@@ -85,8 +85,6 @@ graph LR
   </li>
 </ol>
 
-<p class="use-case-hub-list__footnote">Use cases 2 through 6 are deck-aligned conversation outlines for field enablement. Use case 1 includes the full EDA-to-Automation Orchestrator adoption path for implementers.</p>
-
 ## How this relates to Solution Guides
 
 1. Read [AIOps automation with Ansible](README-AIOps.md) for the end-to-end reference architecture (EDA, inference, MCP, governed execution).

@@ -205,7 +205,6 @@ patternfly: true
               <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
             </a>
             </nav>
-            <p class="use-case-strip__note">Use cases 2 through 6 are deck-aligned conversation outlines. Use case 1 includes the full EDA-to-Automation Orchestrator adoption path.</p>
           </details>
         </div>
         <h4 class="cards-track-subsection__title">Partner integrations</h4>
