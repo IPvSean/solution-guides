@@ -494,7 +494,7 @@ patternfly: true
             Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
+            <span class="card-partner-logo-set">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>

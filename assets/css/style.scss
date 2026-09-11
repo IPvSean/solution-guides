@@ -2703,13 +2703,6 @@ details.legacy-guides > *:not(summary) {
   width: auto;
 }
 
-// Square icon asset has generous canvas padding; size up to match wordmark logos
-.card-partner-logo-set--zero-trust .card-partner-logo {
-  height: 56px;
-  width: 56px;
-  object-fit: contain;
-}
-
 .card-partner-logo {
   height: 28px;
   width: auto;
