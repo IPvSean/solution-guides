@@ -721,16 +721,6 @@ patternfly: true
       <div class="legacy-guides__body">
       <p class="legacy-guides__intro">These solution guides were published on access.redhat.com before this repository existed. They are being reviewed and will be migrated to the new format as full markdown guides.</p>
       <div class="pf-v6-l-gallery cards-gallery legacy-guides__gallery">
-        <a href="https://access.redhat.com/articles/7136383" class="card-link" target="_blank" data-tags="published">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Automation Dashboard and Analytics</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Visualize automation ROI and operational metrics with the AAP Dashboard and Automation Analytics.
-            </div>
-          </div>
-        </a>
         <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-tags="servicenow,event-driven,solution,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
