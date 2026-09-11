@@ -106,16 +106,7 @@ Six operational patterns for customer conversations. **AI identifies opportuniti
 
 ### How work starts
 
-```mermaid
-graph LR
-  Human[Human-initiated] --> AAP[AAP execution]
-  Event[Event-initiated] --> EDA[EDA rulebooks]
-  Ticket[Ticket-initiated] --> Enrich[Enrichment and routing]
-  Schedule[Scheduled review] --> Collect[Collect and correlate]
-  EDA --> AAP
-  Enrich --> AAP
-  Collect --> AAP
-```
+<img src="assets/images/how-work-starts.png" alt="How work starts: human, event, ticket, and scheduled paths converge on Ansible Automation Platform execution" class="guide-aiops-circle">
 
 ### 1. Incident and ticket enrichment (Crawl)
 
