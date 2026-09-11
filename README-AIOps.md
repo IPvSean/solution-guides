@@ -173,20 +173,18 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 - **Ansible Automation Platform 2.5+** -- Required for enterprise Event-Driven Ansible support.
 
-### Featured Ansible Content Collections
+### Baseline automation content
 
-| Collection | Type | Purpose |
-|-----------|------|---------|
-| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/">ansible.eda</a> | Certified | EDA event sources and filters (Kafka, webhooks, etc.) |
-| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/">ansible.controller</a> | Certified | AAP configuration as code (job templates, workflows, surveys) |
-| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">ansible.scm</a> | Certified | Git operations (used in workshop Run pipeline) |
-| Partner collections | Varies | e.g. `servicenow.itsm`, `ibm.instana`, Splunk/EDA integrations per partner guide |
-| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> | Validated | Optional: provisions RHEL AI infrastructure |
-| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a> | Certified | Optional: configures and serves models for self-hosted inference |
+Most AIOps paths need **Event-Driven Ansible** and **Ansible Automation Platform** job execution only:
 
-> **Red Hat AI only:** Deploy your own inference endpoint?
+- **`ansible.eda`** -- rulebooks, event sources, and filters (see [Automation Hub](https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/))
+- **`ansible.controller`** -- job templates, workflows, surveys, and RBAC as code (see [Automation Hub](https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/))
+
+Partner Solution Guides list additional collections (`servicenow.itsm`, IBM Instana, Splunk, and others). The **workshop Run** walkthrough later in this guide also uses **`ansible.scm`** for Git promotion.
+
+> **Tip:** Collections reference
 >
-> The `infra.ai` and `redhat.ai` collections automate **Red Hat AI** on your infrastructure -- from provisioning a GPU instance to serving a model with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See the companion guide [AI Infrastructure automation with Ansible](README-IA.md) for a complete walkthrough.
+> Hub links, optional self-hosted inference collections, and when to use them are in [Key Terms](#key-terms) at the end of this guide.
 
 ### External Systems
 
@@ -952,7 +950,7 @@ Each source has its place in the AIOps maturity journey. At **Crawl**, Red Hat L
 
 ## Related Guides
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Need to deploy the AI backend?** See [AI Infrastructure automation with Ansible](README-IA.md) for automating Red Hat AI provisioning with the `infra.ai` and `redhat.ai` collections.
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Self-hosted Red Hat AI:** [Key Terms -- Ansible collections](#key-terms-collections) and [AI Infrastructure automation with Ansible](README-IA.md)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Want to try this hands-on?** The [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) walks through the full self-healing pipeline with a live lab -- Part 1 covers Apache remediation, Part 2 extends to network automation with Splunk and Cisco routers.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See [Get started with EDA (Ansible Rulebook)](https://access.redhat.com/articles/7136720) for the fundamentals of rulebooks, event sources, and actions.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Partner integrations:** [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md), [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md), [AIOps with AWS SQS and Event-Driven Ansible](README-SQS.md), [Event-Driven Remediation with Azure Service Bus](README-AIOps-Azure-Service-Bus.md)
@@ -964,6 +962,44 @@ Each source has its place in the AIOps maturity journey. At **Crawl**, Red Hat L
 ## Summary
 
 With this framework, teams move from manual triage toward governed AIOps: enrich signals at **Crawl**, route to **pre-approved automation** at **Walk**, and close the loop at **Run** with policy and validation. Ansible Automation Platform remains the execution layer whether inference comes from a partner tool, Red Hat Lightspeed, or a self-hosted model. The result is lower MTTR, less toil, and automation that scales with complexity without requiring a new playbook for every alert variant.
+
+---
+
+<h2 id="key-terms"></h2>
+
+## Key Terms
+
+Reference for Ansible collections mentioned in this guide. Partner integrations add their own collections on each Solution Guide page.
+
+<div class="key-terms-group">
+
+<h3 id="key-terms-collections">Ansible collections</h3>
+
+<dl class="key-terms-glossary">
+
+<dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/">ansible.eda</a></dt>
+<dd>Certified collection for Event-Driven Ansible rulebooks, event sources, and filters (Kafka, webhooks, and partner plugins).
+<span class="key-terms-detail">Baseline for event-driven AIOps paths in this guide and in partner Solution Guides.</span></dd>
+
+<dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/">ansible.controller</a></dt>
+<dd>Certified collection for Ansible Automation Platform configuration as code: job templates, workflows, surveys, credentials, and RBAC.
+<span class="key-terms-detail">Baseline for governed execution regardless of observability or ITSM partner.</span></dd>
+
+<dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">ansible.scm</a></dt>
+<dd>Certified collection for Git operations against playbook projects.
+<span class="key-terms-detail">Used in the workshop **Run** pipeline later in this guide (promote generated playbooks through Git). Not required for Crawl enrichment or Walk curated remediation.</span></dd>
+
+<dt>Partner collections</dt>
+<dd>Collections named on each partner Solution Guide (for example <code>servicenow.itsm</code>, IBM Instana, Splunk or EDA integrations).
+<span class="key-terms-detail">Install only for the integration you are implementing; the External Systems table above lists pattern-level requirements.</span></dd>
+
+<dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> and <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a></dt>
+<dd>Optional validated and certified collections for **self-hosted Red Hat AI** on your infrastructure.
+<span class="key-terms-detail">Automate provisioning GPU capacity and serving models with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See [AI Infrastructure automation with Ansible](README-IA.md) for a full walkthrough.</span></dd>
+
+</dl>
+
+</div>
 
 ---
 
