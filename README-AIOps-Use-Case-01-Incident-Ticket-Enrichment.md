@@ -9,7 +9,7 @@
 
 > **Pattern guide, not a partner integration.**
 >
-> This page is the **extended adoption path** for [use case 1: Incident and ticket enrichment](README-AIOps.md#1-incident-and-ticket-enrichment-crawl) in the foundational AIOps Solution Guide. ServiceNow and Splunk appear as common examples; swap collections and APIs for your ITSM and observability stack.
+> This page is the **extended adoption path** for [use case 1: Incident and ticket enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) in the [Common AIOps Use Cases hub](aiops-use-cases.md). ServiceNow and Splunk appear as common examples; swap collections and APIs for your ITSM and observability stack.
 
 <img src="assets/images/aiops-circle.png" alt="Incident and Ticket Enrichment" style="max-width:400px">
 

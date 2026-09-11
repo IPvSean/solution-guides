@@ -106,57 +106,62 @@ Six operational patterns for customer conversations. **AI identifies opportuniti
 
 ### How work starts
 
-<img src="assets/images/how-work-starts.png" alt="How work starts: human, event, ticket, and scheduled paths converge on Ansible Automation Platform execution" class="guide-aiops-circle">
+<img src="assets/images/how-work-starts.png" alt="How work starts: human, event, ticket, and scheduled paths converge on Ansible Automation Platform execution" class="guide-how-work-starts">
 
-### 1. Incident and ticket enrichment (Crawl)
+Each pattern has its own **AIOps Use Case** page (adoption path, partner links, validation). Pick a row below or open the [Common AIOps Use Cases hub](aiops-use-cases.md).
 
-**Buyer question:** How do we stop wasting time just figuring out what happened?
-
-Attach context at incident creation so triage is fast and low-risk. Progress from EDA plus AAP through LLM work notes to Automation Orchestrator when routing and novel incidents require it.
-
-**Partner Solution Guides:** [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md)
-
-**Extended adoption path (EDA to Automation Orchestrator):** [Incident and Ticket Enrichment: From EDA to Orchestrated Automation](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md)
-
-### 2. Cost and resource optimization (Crawl)
-
-**Buyer question:** How do we identify wasted capacity before it becomes an operational problem?
-
-Operationalize cloud cost and sizing recommendations through governed collection playbooks and approved rightsizing or reclamation jobs. AI prioritizes recommendations; AAP executes with audit trails.
-
-**Partner Solution Guides:** [AIOps with AWS SQS and Event-Driven Ansible](README-SQS.md), [Event-Driven Remediation with Azure Service Bus](README-AIOps-Azure-Service-Bus.md)
-
-### 3. Intelligent capacity orchestration (Walk)
-
-**Buyer question:** How do we anticipate capacity needs across hybrid environments?
-
-Correlate utilization and performance across systems before saturation. Automation Orchestrator earns its place when capacity plans need approvals, dependencies, and multi-step execution.
-
-**Partner Solution Guides:** [AI Infrastructure automation with Ansible](README-IA.md) (when inference capacity is part of the story)
-
-### 4. Curated automation remediation (Walk)
-
-**Buyer question:** How do we remediate faster using automation teams already trust?
-
-AI **selects** from an approved job template library; it does not invent a new fix on every page. This is the default production pattern for most observability integrations.
-
-**Partner Solution Guides:** [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md), [RHEL Patching with Red Hat Lightspeed and Ansible MCP Server](README-Patching-RHEL.md)
-
-### 5. System-level drift and policy enforcement (Run)
-
-**Buyer question:** How do we prevent slow failure and risk accumulation in the first place?
-
-Detect gradual drift and policy gaps before individual dashboards turn red. Scheduled collection plus correlation; optional automated remediation with approvals.
-
-**Partner Solution Guides:** [Zero Trust Architecture with Ansible Automation Platform](README-ZTA.md)
-
-### 6. Self-healing infrastructure (Run)
-
-**Buyer question:** What do we do when something breaks, end to end?
-
-Closed-loop detect, decide, act, validate using observability, inference, and **curated** remediation with guardrails.
-
-**Partner Solution Guides:** [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md)
+<div class="cards-track-section cards-track-section--use-cases">
+<nav class="use-case-strip" aria-label="AIOps use cases">
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md">
+  <span class="use-case-strip__num">1</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">Incident and Ticket Enrichment</span>
+    <span class="use-case-strip__question">How do we stop wasting time just figuring out what happened?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
+</a>
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-02-Cost-Resource-Optimization.md">
+  <span class="use-case-strip__num">2</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">Cost and Resource Optimization</span>
+    <span class="use-case-strip__question">How do we identify wasted capacity before it becomes an operational problem?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
+</a>
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md">
+  <span class="use-case-strip__num">3</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">Intelligent Capacity Orchestration</span>
+    <span class="use-case-strip__question">How do we anticipate capacity needs across hybrid environments?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+</a>
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-04-Curated-Automation-Remediation.md">
+  <span class="use-case-strip__num">4</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">Curated Automation Remediation</span>
+    <span class="use-case-strip__question">How do we remediate faster using automation teams already trust?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+</a>
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md">
+  <span class="use-case-strip__num">5</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
+    <span class="use-case-strip__question">How do we prevent slow failure and risk accumulation in the first place?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
+</a>
+<a class="use-case-strip__item" href="README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md">
+  <span class="use-case-strip__num">6</span>
+  <span class="use-case-strip__body">
+    <span class="use-case-strip__title">Self-healing infrastructure</span>
+    <span class="use-case-strip__question">What do we do when something breaks, end to end?</span>
+  </span>
+  <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
+</a>
+</nav>
+</div>
 
 ### Who Benefits
 
@@ -896,7 +901,7 @@ Each source has its place in the AIOps maturity journey. At **Crawl**, Red Hat L
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Want to try this hands-on?** The [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) walks through the full self-healing pipeline with a live lab -- Part 1 covers Apache remediation, Part 2 extends to network automation with Splunk and Cisco routers.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See [Get started with EDA (Ansible Rulebook)](https://access.redhat.com/articles/7136720) for the fundamentals of rulebooks, event sources, and actions.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Partner integrations:** [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md), [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md), [AIOps with AWS SQS and Event-Driven Ansible](README-SQS.md), [Event-Driven Remediation with Azure Service Bus](README-AIOps-Azure-Service-Bus.md)
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Ticket enrichment depth:** [Incident and Ticket Enrichment: From EDA to Orchestrated Automation](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) (Automation Orchestrator adoption stages)
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Use case patterns:** [Common AIOps Use Cases](aiops-use-cases.md) hub and six dedicated use case pages (UC01 ticket enrichment is the deepest adoption walkthrough)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **ServiceNow Crawl-stage ITSM:** [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md)
 
 ---
