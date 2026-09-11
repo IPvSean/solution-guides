@@ -446,6 +446,16 @@ img {
       color: #9a6700;
     }
   }
+
+  &--use-case {
+    color: #9a6700;
+    background: linear-gradient(180deg, #faf3e8 0%, #f5ebe0 100%);
+    border: 1px solid #e8d4a8;
+
+    i {
+      color: #9a6700;
+    }
+  }
 }
 
 // Guide types page
@@ -661,6 +671,29 @@ img {
 .guide-type-track--event-driven {
   background: linear-gradient(135deg, #e7f6f8 0%, #f4fbfc 50%, #ffffff 100%);
   border-color: #b8dde5;
+}
+
+.guide-types-use-cases-callout {
+  margin-top: 28px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, #faf3e8 0%, #fdf9f3 50%, #ffffff 100%);
+  border: 1px solid #e8d4a8;
+  border-radius: 8px;
+}
+
+.guide-types-use-cases-callout__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.guide-types-use-cases-callout__body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4d4d4d;
+  margin: 0 0 16px;
+  max-width: 720px;
 }
 
 .guide-type-track--journey {
@@ -1893,20 +1926,28 @@ b {
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 40px);
+  overflow: hidden;
 }
 
 .cards-sidebar__body {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+  margin-right: -4px;
 }
 
 .cards-sidebar__section--status {
-  margin-top: auto;
-  padding-top: 20px;
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 16px;
   border-top: 1px solid #ececec;
+  background: #fff;
 }
 
 .cards-sidebar__header {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2611,6 +2652,172 @@ b {
   --pf-v6-c-label--BackgroundColor: #faf3e8;
   --pf-v6-c-label--Color: #9a6700;
   border: 1px solid #e8d4a8;
+}
+
+.cards-track-section--use-cases {
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, #faf3e8 0%, #fdf9f3 50%, #ffffff 100%);
+  border: 1px solid #e8d4a8;
+  border-radius: 8px;
+}
+
+.use-case-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+
+.use-case-strip__item {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto auto;
+  align-items: center;
+  gap: 10px 12px;
+  padding: 10px 12px;
+  border: 1px solid #e8e0d4;
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus {
+    border-color: #c9a227;
+    box-shadow: 0 2px 6px rgba(154, 103, 0, 0.08);
+    text-decoration: none;
+  }
+}
+
+.use-case-strip__num {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #9a6700;
+}
+
+.use-case-strip__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.use-case-strip__title {
+  font-family: 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #151515;
+}
+
+.use-case-strip__question {
+  font-size: 13px;
+  color: #6a6e73;
+  line-height: 1.35;
+}
+
+.use-case-strip__footer {
+  margin: 12px 0 0;
+  font-size: 14px;
+}
+
+.use-case-strip__hub-link {
+  font-weight: 600;
+}
+
+.use-case-maturity-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &--crawl {
+    color: #0066cc;
+    background: #e7f1fa;
+    border: 1px solid #b8d4f0;
+  }
+
+  &--walk {
+    color: #5e40be;
+    background: #f3f0fa;
+    border: 1px solid #e8e0f5;
+  }
+
+  &--run {
+    color: #3d7317;
+    background: #e9f4e0;
+    border: 1px solid #b8d4a8;
+  }
+}
+
+.use-case-status-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &--published {
+    color: #3d7317;
+    background: #e9f4e0;
+    border: 1px solid #b8d4a8;
+  }
+
+  &--wip {
+    color: #8a6100;
+    background: #fff8e6;
+    border: 1px solid #e8d4a8;
+  }
+}
+
+.use-case-hub-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 32px;
+}
+
+.use-case-hub-list__item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px 12px;
+  align-items: start;
+  padding: 14px 0;
+  border-bottom: 1px solid #e8e8e8;
+
+  strong a {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 17px;
+  }
+}
+
+.use-case-hub-list__question {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-left: 0;
+  font-size: 14px;
+  color: #6a6e73;
+
+  @media (min-width: 640px) {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .use-case-strip__item {
+    grid-template-columns: 2rem 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .use-case-maturity-chip,
+  .use-case-status-pill {
+    grid-column: 2;
+  }
 }
 
 .card-link .pf-v6-c-label__icon {
@@ -3497,6 +3704,7 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 
   .cards-sidebar__section--status {
     border-top-color: var(--border-subtle);
+    background: var(--bg-page);
   }
 
   .cards-sidebar__jump {
