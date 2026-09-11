@@ -13,9 +13,16 @@
   }
 </style>
 
-## Overview
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--aws" role="img" aria-label="Ansible Automation Platform and Amazon Web Services">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/aws-logo.png" alt="Amazon Web Services" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/aws-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
 
-![aiops](https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aiops.png)
+## Overview
 
 AWS-centric organizations generate thousands of infrastructure events daily -- CloudWatch alarms, EC2 state changes, Lambda errors, S3 access anomalies -- all funneling through Amazon SQS queues. Without automation, operations teams manually poll these queues, triage each message, and write one-off fixes. This guide demonstrates how to connect AWS SQS to the AIOps self-healing pipeline using Event-Driven Ansible (EDA), so that events flowing through SQS automatically trigger AI-diagnosed, dynamically remediated incidents via Ansible Automation Platform.
 

@@ -12,6 +12,15 @@
   }
 </style>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--redhat-ai" role="img" aria-label="Ansible Automation Platform and Red Hat AI">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--redhat-ai">
+    <img src="assets/images/logos/redhat-ai-logo.png" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/redhat-ai-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 <h2 id="background"></h2>
 ## Background
 

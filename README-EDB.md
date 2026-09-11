@@ -13,7 +13,14 @@
   }
 </style>
 
-<img src="assets/images/edb-hero.png" alt="Ansible + EDB PostgreSQL" style="max-width:400px">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--edb" role="img" aria-label="Ansible Automation Platform and EDB">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/edb.png" alt="EDB" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/edb-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
 
 ## Overview
 

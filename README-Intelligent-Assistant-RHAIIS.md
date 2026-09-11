@@ -7,6 +7,15 @@
 
 </div>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--redhat-ai" role="img" aria-label="Ansible Automation Platform and Red Hat AI">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--redhat-ai">
+    <img src="assets/images/logos/redhat-ai-logo.png" alt="Red Hat AI" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/redhat-ai-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(56.4263% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/VIH1fhi64QjLKTnOc9ri?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="Plugging Red Hat AI Inference Server into Ansible Lightspeed intelligent assistant" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
 
 The Ansible Lightspeed intelligent assistant is a generative AI service embedded directly into the Ansible Automation Platform UI. It offers on-demand expertise to help you administer and manage your automation, while removing some of the friction associated with onboarding, troubleshooting, and maintaining the platform. It provides direct access to trusted documentation and insights, helping you get up to speed with the platform faster, simplify administration, and resolve issues faster.

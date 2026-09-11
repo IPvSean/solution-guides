@@ -306,6 +306,116 @@ img {
   box-sizing: border-box;
 }
 
+.guide-hero-partner {
+  max-width: min(32rem, 100%);
+  width: fit-content;
+}
+
+.guide-hero-partner__plus {
+  flex-shrink: 0;
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #151515;
+}
+
+.guide-hero-partner__partner.card-partner-logo-set {
+  flex-shrink: 1;
+  min-width: 0;
+
+  .card-partner-logo {
+    height: 36px;
+    max-height: 36px;
+    width: auto;
+    object-fit: contain;
+  }
+}
+
+.guide-hero-partner--netbox .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 128px;
+}
+
+.guide-hero-partner--postgresql .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 112px;
+}
+
+.guide-hero-partner--redhat-ai .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light {
+  height: auto;
+  max-height: 32px;
+  max-width: 140px;
+}
+
+.guide-hero-partner--redhat-ai .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--dark {
+  height: auto;
+  max-height: 22px;
+  max-width: 140px;
+}
+
+.guide-hero-partner--zero-trust .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: 36px;
+  max-height: 36px;
+  max-width: 56px;
+}
+
+.guide-hero-partner--cloud-native .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 120px;
+}
+
+.guide-hero-partner--servicenow .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 132px;
+}
+
+.guide-hero-partner--splunk .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 108px;
+}
+
+.guide-hero-partner--aws .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 72px;
+}
+
+.guide-hero-partner--azure .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 108px;
+}
+
+.guide-hero-partner--edb .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 120px;
+}
+
+.guide-hero-partner--instana .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 128px;
+}
+
+.guide-hero-partner--windows .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 120px;
+}
+
+.guide-hero-partner--redhat .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 32px;
+  max-width: 120px;
+}
+
 .guide-hero-callout__icon {
   flex-shrink: 0;
   width: 36px;
@@ -381,9 +491,17 @@ img {
     max-width: 100%;
   }
 
+  .guide-hero-partner {
+    max-width: 100%;
+  }
+
   .guide-hero-callout__icon {
     width: 32px;
     height: 32px;
+  }
+
+  .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+    max-height: 32px;
   }
 }
 
@@ -3172,6 +3290,18 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   .guide-hero-callout__ansible,
   .guide-hero-callout__aiops {
     color: var(--text-primary);
+  }
+
+  .guide-hero-partner__plus {
+    color: var(--text-primary);
+  }
+
+  .guide-hero-partner .card-partner-logo-set .card-partner-logo--light {
+    display: none;
+  }
+
+  .guide-hero-partner .card-partner-logo-set .card-partner-logo--dark {
+    display: block;
   }
 
   .guide-image-caption,

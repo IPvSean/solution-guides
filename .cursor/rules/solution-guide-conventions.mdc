@@ -46,7 +46,24 @@ See [AIOps automation with Ansible](README-AIOps.md) for the full pipeline.
 All solution guides must follow the framework in `README-best-practices.md`. The framework section names map 1:1 to the section names in every guide:
 
 1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or AIOps Use Case for the ticket enrichment appendix). Do not append the guide type to the `<h1>` text. Operational patterns (six use cases, Crawl/Walk/Run) belong in [README-AIOps.md](README-AIOps.md#common-aiops-use-cases), not separate catalog entries.
-2. **Overview** — Problem statement (2-4 sentences), hero image, table of contents.
+2. **Overview** -- Problem statement (2-4 sentences), hero callout, table of contents.
+
+### Guide hero callout (below `guide-header`)
+
+- **Foundational AIOps** ([README-AIOps.md](README-AIOps.md)): `guide-hero-callout` with AAP icon and **Ansible unlocks AIOps** text (no partner logo).
+- **Partner Solution and Implementation guides**: `guide-hero-callout guide-hero-partner` with AAP icon, `+`, and partner wordmark at **36px** height, left-aligned in the same lavender box. Use light/dark logo pairs from `assets/images/logos/` when available. Add a modifier class (`guide-hero-partner--splunk`, `--netbox`, `--redhat-ai`, etc.) when the wordmark needs sizing tweaks (see `assets/css/style.scss`).
+- **AIOps Use Case** pattern pages: no partner hero unless a single vendor is the focus; link to the foundational guide instead.
+
+```html
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--splunk" role="img" aria-label="Ansible Automation Platform and Splunk">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/splunk-logo.png" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/splunk-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+```
 3. **Background** — Domain context explaining what the topic is and why it matters.
 4. **Solution** — Components list, Who Benefits persona table, demos/videos.
 5. **Prerequisites** — AAP version, collections (with Automation Hub links), external systems.

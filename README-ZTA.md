@@ -13,6 +13,14 @@
   }
 </style>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--zero-trust" role="img" aria-label="Ansible Automation Platform and Zero Trust Architecture">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--zero-trust">
+    <img src="assets/images/logos/zero-trust.png" alt="Zero Trust Architecture" class="card-partner-logo">
+  </span>
+</div>
+
 ## Overview
 
 Traditional network security relies on perimeter defenses, but modern threats require a "never trust, always verify" approach. Organizations spend hours manually coordinating identity, secrets, policy, and network controls across fragmented tools, leading to security gaps and operational overhead. This guide demonstrates how to build and operate a Zero Trust Architecture using Red Hat Ansible Automation Platform as the central orchestration layer, reducing manual security operations by 80% while improving compliance posture.

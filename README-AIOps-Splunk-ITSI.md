@@ -13,7 +13,14 @@
   }
 </style>
 
-<img src="assets/images/splunk-hero.png" alt="Ansible + Splunk" style="max-width:400px">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--splunk" role="img" aria-label="Ansible Automation Platform and Splunk">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/splunk-logo.png" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/splunk-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
 
 ## Overview
 

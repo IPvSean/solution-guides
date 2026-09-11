@@ -13,7 +13,14 @@
   }
 </style>
 
-<img src="assets/images/instana-hero.png" alt="Ansible + Instana" style="max-width:400px">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--instana" role="img" aria-label="Ansible Automation Platform and IBM Instana">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/instana-logo.png" alt="IBM Instana" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/instana-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
 
 ## Overview
 

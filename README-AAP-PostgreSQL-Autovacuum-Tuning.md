@@ -6,6 +6,15 @@
 
 </div>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--postgresql" role="img" aria-label="Ansible Automation Platform and PostgreSQL">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--postgresql">
+    <img src="assets/images/logos/postgresSQL.png" alt="PostgreSQL" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/postgresSQL_dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 ## Overview
 
 <div class="guide-outcome">

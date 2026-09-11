@@ -13,6 +13,15 @@
   }
 </style>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--azure" role="img" aria-label="Ansible Automation Platform and Microsoft Azure">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/azure-logo.png" alt="Microsoft Azure" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/azure-logo-darkmode.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 ## Overview
 
 Organizations running workloads on Microsoft Azure use **Azure Service Bus** as their enterprise messaging backbone -- routing events, alerts, and telemetry between services, monitoring tools, and operational systems. When Azure Monitor, Defender for Cloud, or a custom application publishes a critical event to a Service Bus queue or topic, the response today is manual: an engineer reads the message, investigates the affected resource, and remediates by hand.

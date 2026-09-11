@@ -6,6 +6,15 @@
 
 </div>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--cloud-native" role="img" aria-label="Ansible Automation Platform and Red Hat OpenShift Dev Spaces">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/cloud-native.png" alt="Red Hat OpenShift" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/cloud-native-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 ## Overview
 
 Enterprise teams need consistent, governed development environments for Ansible automation content. A single monolithic container image either bloats with every team's dependencies or satisfies no one. Different automation domains (network, Windows, cloud, config-as-code) each require different system-level packages, and the Ansible DevTools container image has `/var` read-only at runtime by design. Container immutability is a feature, not a limitation: you don't want developers running `dnf install` inside their workspaces, because that creates drift.

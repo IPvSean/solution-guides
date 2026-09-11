@@ -6,6 +6,14 @@
 
 </div>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--redhat" role="img" aria-label="Ansible Automation Platform and Red Hat">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set">
+    <img src="assets/images/logos/redhat-logo.svg" alt="Red Hat" class="card-partner-logo">
+  </span>
+</div>
+
 ## Overview
 
 Onboarding a new automation developer takes anywhere from 1 to 3 months when done manually: waiting for laptop provisioning, requesting access permissions, installing the right Python version, resolving dependency conflicts, configuring linting rules to match the team's standards, and debugging why molecule tests pass on a colleague's machine but fail on theirs. Multiply that across a team of 10 or 15 engineers, and the cost of inconsistent development environments becomes significant: delayed projects, "works on my machine" bugs, and quality standards that exist on paper but not in practice.
