@@ -149,12 +149,12 @@ patternfly: true
               <i class="fas fa-info-circle" aria-hidden="true"></i>
             </a>
           </div>
-          <p class="cards-track-section__intro">Pattern-level adoption paths (EDA to orchestration). For the full stage-by-stage technical depth, start with <a href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">use case 1: Incident and Ticket Enrichment</a>. Use partner cards below for integration depth.</p>
+          <p class="cards-track-section__intro">Pattern-level adoption paths from EDA to orchestration. Partner cards below cover integration depth.</p>
           <p class="use-case-strip__footer use-case-strip__footer--top">
             <a href="{{ '/aiops-use-cases' | relative_url }}" class="use-case-strip__hub-link">Common AIOps Use Cases hub (Crawl / Walk / Run map)</a>
           </p>
           <details class="use-case-strip-details">
-            <summary class="use-case-strip-details__summary">Browse all six use cases</summary>
+            <summary class="use-case-strip-details__summary"><i class="fas fa-chevron-right use-case-strip-details__chevron" aria-hidden="true"></i> Browse all six use cases</summary>
             <nav class="use-case-strip" aria-label="AIOps use cases">
             <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">
               <span class="use-case-strip__num">1</span>

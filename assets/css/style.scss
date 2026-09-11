@@ -2735,35 +2735,53 @@ b {
 }
 
 .use-case-strip-details {
-  margin-top: 10px;
+  margin: 10px 0 0;
+  border: 1px solid rgba(232, 212, 168, 0.75);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.35);
 
-  &__summary {
+  summary.use-case-strip-details__summary {
     cursor: pointer;
     font-family: 'Red Hat Display', sans-serif;
     font-weight: 600;
     font-size: 14px;
     color: #151515;
     list-style: none;
-    padding: 8px 0;
+    padding: 10px 12px;
+    background: transparent;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
     &::-webkit-details-marker {
       display: none;
     }
 
     &::before {
-      content: '\f054';
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      font-size: 11px;
-      margin-right: 8px;
-      color: #9a6700;
-      display: inline-block;
-      transition: transform 0.15s ease;
+      content: none;
     }
   }
 
-  &[open] .use-case-strip-details__summary::before {
+  .use-case-strip-details__chevron {
+    font-size: 11px;
+    color: #9a6700;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  &[open] summary.use-case-strip-details__summary {
+    border-bottom: 1px solid rgba(232, 212, 168, 0.65);
+    border-radius: 6px 6px 0 0;
+  }
+
+  &[open] .use-case-strip-details__chevron {
     transform: rotate(90deg);
+  }
+
+  > *:not(summary) {
+    padding: 0 12px 12px;
   }
 }
 
