@@ -71,26 +71,26 @@ These sections map 1:1 to the section names in every solution guide. When review
 
 **Rule:** Titles must describe an operational outcome, not a product feature.
 
-Solution guides follow the convention `[Topic] - Solution Guide`. Within that convention, the topic portion should still be outcome-oriented whenever possible.
+Solution guide pages use an outcome-oriented **topic** in the `<h1>`, with a **Solution Guide** pill badge beside it (see the starter template). The topic portion should still be outcome-oriented whenever possible.
 
 **Bad:**
 
 - "Using the ServiceNow Collection"
 - "Ansible EDA Overview"
 
-**Good (standard format):**
+**Good (topic in `<h1>`, type in pill badge):**
 
-- "ServiceNow ITSM Ticket Enrichment Automation - Solution Guide"
-- "AIOps automation with Ansible - Solution Guide"
+- "ServiceNow ITSM Ticket Enrichment Automation"
+- "AIOps automation with Ansible"
 
-**Better (outcome-oriented):**
+**Better (outcome-oriented topics):**
 
-- "Unlock AIOps with ServiceNow LEAP and Ansible MCP server - Solution Guide"
-- "Triggering Automated Remediation from Splunk Alerts with Event-Driven Ansible - Solution Guide"
+- "Unlock AIOps with ServiceNow LEAP and Ansible MCP server"
+- "Triggering Automated Remediation from Splunk Alerts with Event-Driven Ansible"
 
-> **Tip:** When in doubt, use the standard format.
+> **Tip:** When in doubt, keep the topic clear and outcome-oriented.
 >
-> Use `[Topic] - Solution Guide` for the title, but lead the guide itself with an outcome-oriented subtitle or problem statement in the Overview section.
+> Put the guide type in the `guide-type-badge` pill, not in the `<h1>`. Lead the guide with a problem statement in the Overview section.
 
 **Solution vs. Tutorial:** A solution guide must solve an operational problem, not teach how to use a tool. If your guide could be titled "Getting started with X" or "How to use Y," it is a tutorial, not a solution. Reframe it around the outcome: what real-world problem does this automation solve?
 
@@ -579,7 +579,13 @@ A truly excellent solution guide:
 Copy this skeleton when creating a new solution guide. Replace all placeholder text.
 
 ````markdown
-# [Topic] - Solution Guide
+<div class="guide-header">
+
+<h1>[Topic]</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 ## Overview
 

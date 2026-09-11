@@ -1,4 +1,10 @@
-# Ansible Development Workspaces - Solution Guide
+<div class="guide-header">
+
+<h1>Ansible Development Workspaces</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 ## Overview
 

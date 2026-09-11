@@ -1,5 +1,11 @@
 {% raw %}
-# Unlock AIOps with ServiceNow LEAP and Ansible MCP server - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>Unlock AIOps with ServiceNow LEAP and Ansible MCP server</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 <img src="assets/images/servicenow-hero.png" alt="Ansible + ServiceNow" style="max-width:400px">
 

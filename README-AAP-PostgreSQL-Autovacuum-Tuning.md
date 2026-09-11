@@ -2,7 +2,7 @@
 
 <h1>PostgreSQL Autovacuum Tuning Guide for Ansible Automation Platform</h1>
 
-<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation guide</span>
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
 
 </div>
 

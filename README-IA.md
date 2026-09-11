@@ -1,6 +1,10 @@
+<div class="guide-header">
 
-# AI Infrastructure Automation with Ansible – Solution Guide
+<h1>AI Infrastructure Automation with Ansible</h1>
 
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
+
+</div>
 
 <style>
   div#toc {

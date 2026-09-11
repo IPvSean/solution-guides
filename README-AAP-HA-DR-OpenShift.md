@@ -1,4 +1,10 @@
-# High Availability and Disaster Recovery for AAP 2.7 on OpenShift - Implementation Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>High Availability and Disaster Recovery for AAP 2.7 on OpenShift</h1>
+
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
+
+</div>
 
 <style>
   div#toc {

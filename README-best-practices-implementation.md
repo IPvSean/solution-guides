@@ -176,7 +176,13 @@ Reject guides that exhibit any of these patterns:
 ## Appendix: Starter Template
 
 ````markdown
-# [Platform Topic] - Implementation Guide
+<div class="guide-header">
+
+<h1>[Platform Topic]</h1>
+
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
+
+</div>
 
 ## Overview
 

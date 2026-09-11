@@ -376,14 +376,23 @@ img {
 }
 
 .guide-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
   margin-bottom: 1.75rem;
   padding-bottom: 1.25rem;
   border-bottom: 1px solid #ececec;
 
   h1 {
     margin-top: 0;
-    margin-bottom: 0.65rem;
+    margin-bottom: 0;
     line-height: 1.2;
+    flex: 0 1 auto;
+  }
+
+  .guide-type-badge {
+    flex-shrink: 0;
   }
 }
 
@@ -425,6 +434,16 @@ img {
 
     i {
       color: #0066cc;
+    }
+  }
+
+  &--journey {
+    color: #9a6700;
+    background: linear-gradient(180deg, #faf3e8 0%, #f5ebe0 100%);
+    border: 1px solid #e8d4a8;
+
+    i {
+      color: #9a6700;
     }
   }
 }
@@ -3032,6 +3051,12 @@ b {
       color: #b7e4b7;
       background: linear-gradient(180deg, #1e3d1e 0%, #1a331a 100%);
       border-color: #3d7a3d;
+    }
+
+    &--journey {
+      color: #e8c87a;
+      background: linear-gradient(180deg, #3d3018 0%, #332818 100%);
+      border-color: #6a5528;
     }
   }
 

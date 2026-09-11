@@ -1,5 +1,11 @@
 {% raw %}
-# Automated WAN Circuit Failover with NetBox and Ansible Automation Platform - Solution Guide
+<div class="guide-header">
+
+<h1>Automated WAN Circuit Failover with NetBox and Ansible Automation Platform</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 ## Overview
 

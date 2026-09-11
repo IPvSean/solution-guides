@@ -45,7 +45,7 @@ See [AIOps automation with Ansible](README-AIOps.md) for the full pipeline.
 
 All solution guides must follow the framework in `README-best-practices.md`. The framework section names map 1:1 to the section names in every guide:
 
-1. **Title** — `[Topic] - Solution Guide` format. Outcome-oriented, not product feature.
+1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or Journey Guide). Do not append the guide type to the `<h1>` text.
 2. **Overview** — Problem statement (2-4 sentences), hero image, table of contents.
 3. **Background** — Domain context explaining what the topic is and why it matters.
 4. **Solution** — Components list, Who Benefits persona table, demos/videos.

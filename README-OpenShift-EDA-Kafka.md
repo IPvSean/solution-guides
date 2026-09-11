@@ -1,5 +1,11 @@
 {% raw %}
-# Using Event-Driven Ansible to Consume OpenShift API Resources With Kafka - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>Using Event-Driven Ansible to Consume OpenShift API Resources With Kafka</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 <img src="assets/images/logos/kafka_logo.webp" alt="OpenShift API events with Kafka and EDA" style="max-width:400px">
 

@@ -1,5 +1,11 @@
 {% raw %}
-# Automated Incident Remediation with IBM Instana and Ansible Automation Platform - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>Automated Incident Remediation with IBM Instana and Ansible Automation Platform</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 <style>
   div#toc {

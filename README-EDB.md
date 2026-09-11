@@ -1,5 +1,11 @@
 {% raw %}
-# High-Availability Ansible Automation Platform with EDB PostgreSQL Active-Passive DR - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>High-Availability Ansible Automation Platform with EDB PostgreSQL Active-Passive DR</h1>
+
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
+
+</div>
 
 <style>
   div#toc {

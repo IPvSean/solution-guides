@@ -1,4 +1,10 @@
-# ServiceNow ITSM Ticket Enrichment Automation - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>ServiceNow ITSM Ticket Enrichment Automation</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 <img src="assets/images/servicenow-hero.png" alt="Ansible + ServiceNow" style="max-width:400px">
 

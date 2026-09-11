@@ -1,5 +1,11 @@
 {% raw %}
-# RHEL Patching with Red Hat Lightspeed and Ansible MCP Server - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>RHEL Patching with Red Hat Lightspeed and Ansible MCP Server</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
 
 > **Work in Progress** -- this guide is actively being developed.
 

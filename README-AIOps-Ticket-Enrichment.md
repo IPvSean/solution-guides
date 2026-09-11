@@ -1,5 +1,11 @@
 {% raw %}
-# Ticket Enrichment Automation: From EDA to AI-Driven Orchestration - Automation Journey Guide <!-- omit in toc -->
+<div class="guide-header">
+
+<h1>Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h1>
+
+<span class="guide-type-badge guide-type-badge--journey"><i class="fas fa-route" aria-hidden="true"></i> Journey Guide</span>
+
+</div>
 
 <img src="assets/images/aiops-circle.png" alt="Ticket Enrichment Automation" style="max-width:400px">
 
