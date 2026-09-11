@@ -78,7 +78,7 @@ inline_edit: true
 </div>
 <section class="guide-types-tracks">
   <h2 id="solution-guide-tracks" class="guide-types-tracks__title">Solution Guide tracks</h2>
-  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern: AIOps and Event-Driven partner integrations. All tracks use the same guide framework, validation expectations, and maturity path structure. Within AIOps and Event-Driven, one guide per domain may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>). For vendor-neutral operational patterns (when EDA, AI, and Automation Orchestrator earn their place), see <a href="{{ '/aiops-use-cases' | relative_url }}">Common AIOps Use Cases</a> -- not a third guide type, but cross-cutting pages linked from the catalog.</p>
+  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern: AIOps and Event-Driven partner integrations. All tracks use the same guide framework, validation expectations, and maturity path structure. Within AIOps and Event-Driven, one guide per domain may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, including <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases">six operational use cases</a> and Crawl/Walk/Run).</p>
 
   <div class="guide-type-tracks">
     <article class="guide-type-track guide-type-track--aiops">
@@ -111,11 +111,5 @@ inline_edit: true
         </div>
       </div>
     </article>
-  </div>
-
-  <div class="guide-types-use-cases-callout">
-    <h3 id="aiops-use-cases" class="guide-types-use-cases-callout__title">AIOps Use Cases</h3>
-    <p class="guide-types-use-cases-callout__body">Six pattern pages for technical customer conversations: Crawl/Walk/Run adoption from EDA through AI enrichment to Automation Orchestrator. Partner Solution Guides implement slices of these patterns; the <a href="{{ '/aiops-use-cases' | relative_url }}">use cases hub</a> links all six in one place.</p>
-    <a href="{{ '/aiops-use-cases' | relative_url }}" class="guide-type-panel__cta">Browse AIOps Use Cases</a>
   </div>
 </section>

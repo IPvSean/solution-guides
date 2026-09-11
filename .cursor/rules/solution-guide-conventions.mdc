@@ -45,7 +45,7 @@ See [AIOps automation with Ansible](README-AIOps.md) for the full pipeline.
 
 All solution guides must follow the framework in `README-best-practices.md`. The framework section names map 1:1 to the section names in every guide:
 
-1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or AIOps Use Case). Do not append the guide type to the `<h1>` text. AIOps Use Cases are cataloged from [aiops-use-cases.md](aiops-use-cases.md); they are not a third top-level guide type on [guide-types.md](guide-types.md).
+1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or AIOps Use Case for the ticket enrichment appendix). Do not append the guide type to the `<h1>` text. Operational patterns (six use cases, Crawl/Walk/Run) belong in [README-AIOps.md](README-AIOps.md#common-aiops-use-cases), not separate catalog entries.
 2. **Overview** — Problem statement (2-4 sentences), hero image, table of contents.
 3. **Background** — Domain context explaining what the topic is and why it matters.
 4. **Solution** — Components list, Who Benefits persona table, demos/videos.

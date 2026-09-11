@@ -9,7 +9,7 @@
 
 > **Pattern guide, not a partner integration.**
 >
-> This page describes a vendor-neutral adoption path (EDA, AAP, Automation Orchestrator). ServiceNow and Splunk appear as common examples; swap collections and APIs for your ITSM and observability stack.
+> This page is the **extended adoption path** for [use case 1: Incident and ticket enrichment](README-AIOps.md#1-incident-and-ticket-enrichment-crawl) in the foundational AIOps Solution Guide. ServiceNow and Splunk appear as common examples; swap collections and APIs for your ITSM and observability stack.
 
 <img src="assets/images/aiops-circle.png" alt="Incident and Ticket Enrichment" style="max-width:400px">
 
@@ -550,8 +550,7 @@ Trigger a test P1 with multiple simultaneous alerts. Confirm the agent produces 
 
 ## Related Guides
 
-- [Common AIOps Use Cases](aiops-use-cases.md) -- hub for all six patterns and Crawl/Walk/Run mapping
-- [AIOps automation with Ansible](README-AIOps.md) -- foundational reference architecture for the full AIOps pipeline; pair with this use case for stage-by-stage ticket enrichment and Automation Orchestrator adoption decisions
+- [AIOps automation with Ansible](README-AIOps.md) -- foundational guide with all six [Common AIOps use cases](README-AIOps.md#common-aiops-use-cases)
 - [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) -- ServiceNow as the AIOps intelligence layer driving AAP via MCP
 - [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md) -- Splunk ITSI integration for predictive and reactive automation
 {% endraw %}

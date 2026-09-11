@@ -11,4 +11,4 @@ The **Incident and Ticket Enrichment** use case now lives here:
 
 **[Incident and Ticket Enrichment: From EDA to Orchestrated Automation](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md)**
 
-See also the [Common AIOps Use Cases](aiops-use-cases.md) hub.
+See also [AIOps automation with Ansible -- Common AIOps use cases](README-AIOps.md#common-aiops-use-cases).

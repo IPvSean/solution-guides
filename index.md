@@ -18,10 +18,6 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Solution Guides
         </a>
-        <a href="#aiops-use-cases" class="cards-sidebar__jump">
-          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-          AIOps Use Cases
-        </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
@@ -119,7 +115,7 @@ patternfly: true
           </a>
         </div>
         <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. Start with the Foundational reference architecture, then explore partner integrations below.</p>
-        <a href="{{ '/README-AIOps' | relative_url }}" id="aiops-foundational-hero" class="card-link card-link--foundational-hero" data-tags="aiops,solution,published">
+        <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases" id="aiops-foundational-hero" class="card-link card-link--foundational-hero" data-tags="aiops,solution,published">
           <div class="pf-v6-c-card card-foundational card-foundational--hero">
             <div class="pf-v6-c-card__header card-header--labels">
               <span class="pf-v6-c-label pf-m-green">
@@ -137,76 +133,11 @@ patternfly: true
                 <h3 class="pf-v6-c-card__title-text">AIOps automation with Ansible</h3>
               </div>
               <div class="pf-v6-c-card__body">
-                Self-healing infrastructure using Event-Driven Ansible, Red Hat AI inference, and Automation code assistant to detect, diagnose, and remediate incidents automatically.
+                Foundational reference for Crawl/Walk/Run, six operational use cases, and governed automation with EDA and partner observability or ITSM. Start here before partner integrations below.
               </div>
             </div>
           </div>
         </a>
-        <div id="aiops-use-cases" class="cards-track-section cards-track-section--use-cases">
-          <div class="cards-track-section__heading">
-            <h3 class="cards-track-section__title">AIOps Use Cases</h3>
-            <a href="{{ '/aiops-use-cases' | relative_url }}" class="guide-section__info" data-tooltip="Vendor-neutral patterns for when EDA, AI, and Automation Orchestrator earn their place. Not partner Solution Guides." aria-label="Learn about AIOps Use Cases">
-              <i class="fas fa-info-circle" aria-hidden="true"></i>
-            </a>
-          </div>
-          <p class="cards-track-section__intro">Pattern-level adoption paths from EDA to orchestration. Partner cards below cover integration depth.</p>
-          <p class="use-case-strip__footer use-case-strip__footer--top">
-            <a href="{{ '/aiops-use-cases' | relative_url }}" class="use-case-strip__hub-link">Common AIOps Use Cases hub (Crawl / Walk / Run map)</a>
-          </p>
-          <details class="use-case-strip-details">
-            <summary class="use-case-strip-details__summary"><i class="fas fa-chevron-right use-case-strip-details__chevron" aria-hidden="true"></i> Browse all six use cases</summary>
-            <nav class="use-case-strip" aria-label="AIOps use cases">
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">
-              <span class="use-case-strip__num">1</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">Incident and Ticket Enrichment</span>
-                <span class="use-case-strip__question">How do we stop wasting time just figuring out what happened?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
-            </a>
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-02-Cost-Resource-Optimization' | relative_url }}">
-              <span class="use-case-strip__num">2</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">Cost and Resource Optimization</span>
-                <span class="use-case-strip__question">How do we identify wasted capacity before it becomes an operational problem?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
-            </a>
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration' | relative_url }}">
-              <span class="use-case-strip__num">3</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">Intelligent Capacity Orchestration</span>
-                <span class="use-case-strip__question">How do we anticipate capacity needs across hybrid environments?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
-            </a>
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-04-Curated-Automation-Remediation' | relative_url }}">
-              <span class="use-case-strip__num">4</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">Curated Automation Remediation</span>
-                <span class="use-case-strip__question">How do we remediate faster using automation teams already trust?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
-            </a>
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">
-              <span class="use-case-strip__num">5</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
-                <span class="use-case-strip__question">How do we prevent slow failure and risk accumulation in the first place?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
-            </a>
-            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">
-              <span class="use-case-strip__num">6</span>
-              <span class="use-case-strip__body">
-                <span class="use-case-strip__title">Self-healing infrastructure</span>
-                <span class="use-case-strip__question">What do we do when something breaks, end to end?</span>
-              </span>
-              <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
-            </a>
-            </nav>
-          </details>
-        </div>
         <h4 class="cards-track-subsection__title">Partner integrations</h4>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
