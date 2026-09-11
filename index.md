@@ -660,7 +660,7 @@ patternfly: true
             Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--postgresql">
               <img src="{{ '/assets/images/logos/postgresSQL.png' | relative_url }}" alt="PostgreSQL" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/postgresSQL_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
