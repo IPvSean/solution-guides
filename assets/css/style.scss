@@ -2718,6 +2718,13 @@ details.legacy-guides > *:not(summary) {
   width: auto;
 }
 
+// Stacked mark (409x488); taller than default 28px wordmark height for visual balance
+.card-partner-logo-set--cloudnativepg .card-partner-logo {
+  height: 44px;
+  width: auto;
+  max-width: 68px;
+}
+
 // Icon mark (not a wordmark); nudge above default 28px height for parity with EDB/Red Hat AI footers
 .card-partner-logo-set--zero-trust .card-partner-logo {
   height: 36px;

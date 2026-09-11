@@ -641,7 +641,7 @@ patternfly: true
             Two-site active-passive disaster recovery for Ansible Automation Platform 2.7 on OpenShift using CloudNativePG cross-cluster replication, shared secrets, and controlled switchover procedures.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
+            <span class="card-partner-logo-set card-partner-logo-set--cloudnativepg">
               <img src="{{ '/assets/images/logos/cloud-native.png' | relative_url }}" alt="CloudNativePG" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/cloud-native-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
