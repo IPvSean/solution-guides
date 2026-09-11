@@ -48,6 +48,9 @@ patternfly: true
         <input type="checkbox" value="cisco"> Cisco
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="cloudnativepg"> CloudNativePG
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="edb"> EDB PostgreSQL
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
@@ -624,7 +627,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-tags="implementation,published">
+      <a href="{{ '/README-AAP-HA-DR-OpenShift' | relative_url }}" class="card-link" data-tags="cloudnativepg,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
