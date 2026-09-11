@@ -18,7 +18,13 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 | Network Fact Gathering & Reporting | | [access.redhat.com](https://access.redhat.com/articles/7123361) |
 | Network Back Up and Configuration | | [access.redhat.com](https://access.redhat.com/articles/7123366) |
 | Unlock AIOps with ServiceNow LEAP and Ansible MCP server | [README-AIOps-ServiceNow.md](README-AIOps-ServiceNow.md) | [access.redhat.com](https://access.redhat.com/articles/7127603) |
-| Ticket Enrichment Automation: From EDA to AI-Driven Orchestration (Automation Journey Guide) | [README-AIOps-Ticket-Enrichment.md](README-AIOps-Ticket-Enrichment.md) | |
+| [Common AIOps Use Cases](aiops-use-cases.md) (hub) | [aiops-use-cases.md](aiops-use-cases.md) | |
+| Use case 1: Incident and Ticket Enrichment | [README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) | |
+| Use case 2: Cost and Resource Optimization | [README-AIOps-Use-Case-02-Cost-Resource-Optimization.md](README-AIOps-Use-Case-02-Cost-Resource-Optimization.md) | |
+| Use case 3: Intelligent Capacity Orchestration | [README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md](README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md) | |
+| Use case 4: Curated Automation Remediation | [README-AIOps-Use-Case-04-Curated-Automation-Remediation.md](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) | |
+| Use case 5: System-Level Drift and Policy Enforcement | [README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) | |
+| Use case 6: Self-healing infrastructure | [README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) | |
 | Consuming OpenShift API Resources with EDA and Kafka | [README-OpenShift-EDA-Kafka.md](README-OpenShift-EDA-Kafka.md) | |
 | AAP HA/DR on OpenShift with CloudNativePG | [README-AAP-HA-DR-OpenShift.md](README-AAP-HA-DR-OpenShift.md) | |
 

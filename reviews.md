@@ -24,7 +24,7 @@ inline_edit: true
     <h2 class="guide-type-panel__title">Solution Guide Reviews</h2>
   </div>
 
-  <p class="guide-type-track__body">Ranked scorecard and per-guide reviews for published Solution Guides -- AIOps, Event-Driven, and Journey tracks. Scored against the <a href="{{ '/README-best-practices' | relative_url }}">Solution Guide rubric</a> with track-aware adjustments.</p>
+  <p class="guide-type-track__body">Ranked scorecard and per-guide reviews for published Solution Guides -- AIOps and Event-Driven tracks. Scored against the <a href="{{ '/README-best-practices' | relative_url }}">Solution Guide rubric</a> with track-aware adjustments.</p>
 
   <a href="{{ '/opus-review-solution' | relative_url }}" class="guide-type-panel__cta">View Solution Guide Reviews</a>
 </section>

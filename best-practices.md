@@ -35,7 +35,7 @@ inline_edit: true
     </div>
     <div class="guide-type-fact">
       <dt>Scoring</dt>
-      <dd>Weighted rubric with track-aware adjustments for AIOps, Event-Driven, and Journey guides.</dd>
+      <dd>Weighted rubric with track-aware adjustments for AIOps and Event-Driven Solution Guides. AIOps Use Cases use a lighter rubric row in the same document.</dd>
     </div>
   </dl>
 

@@ -45,7 +45,7 @@ See [AIOps automation with Ansible](README-AIOps.md) for the full pipeline.
 
 All solution guides must follow the framework in `README-best-practices.md`. The framework section names map 1:1 to the section names in every guide:
 
-1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or Journey Guide). Do not append the guide type to the `<h1>` text.
+1. **Title** -- outcome-oriented topic in `<h1>` with a `guide-type-badge` pill (Solution Guide, Implementation Guide, or AIOps Use Case). Do not append the guide type to the `<h1>` text. AIOps Use Cases are cataloged from [aiops-use-cases.md](aiops-use-cases.md); they are not a third top-level guide type on [guide-types.md](guide-types.md).
 2. **Overview** — Problem statement (2-4 sentences), hero image, table of contents.
 3. **Background** — Domain context explaining what the topic is and why it matters.
 4. **Solution** — Components list, Who Benefits persona table, demos/videos.
@@ -80,7 +80,7 @@ When reviewing or grading solution guides, use the weighted rubric from `README-
 
 Score each category 1-5. Multiply by weight for a final score out of 10. Any category below 3 means revise before publishing.
 
-Apply track-aware adjustments for AIOps, Event-Driven, and Journey guides (see "Scoring by Solution Track" in `README-best-practices.md`). Do not penalize Event-Driven guides for lacking AI components.
+Apply track-aware adjustments for AIOps, Event-Driven, and AIOps Use Case pages (see "Scoring by Solution Track" in `README-best-practices.md`). Do not penalize Event-Driven guides for lacking AI components.
 
 When writing a review:
 1. List **Strengths** (what the guide does well).

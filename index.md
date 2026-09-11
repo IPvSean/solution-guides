@@ -18,6 +18,10 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Solution Guides
         </a>
+        <a href="#aiops-use-cases" class="cards-sidebar__jump">
+          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
+          AIOps Use Cases
+        </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
@@ -138,6 +142,74 @@ patternfly: true
             </div>
           </div>
         </a>
+        <div id="aiops-use-cases" class="cards-track-section cards-track-section--use-cases">
+          <div class="cards-track-section__heading">
+            <h3 class="cards-track-section__title">AIOps Use Cases</h3>
+            <a href="{{ '/aiops-use-cases' | relative_url }}" class="guide-section__info" data-tooltip="Vendor-neutral patterns for when EDA, AI, and Automation Orchestrator earn their place. Not partner Solution Guides." aria-label="Learn about AIOps Use Cases">
+              <i class="fas fa-info-circle" aria-hidden="true"></i>
+            </a>
+          </div>
+          <p class="cards-track-section__intro">Pattern-level adoption paths (EDA to orchestration). Pick a use case for the customer conversation; use partner cards below for integration depth.</p>
+          <nav class="use-case-strip" aria-label="AIOps use cases">
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">
+              <span class="use-case-strip__num">1</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">Incident and Ticket Enrichment</span>
+                <span class="use-case-strip__question">Stop wasting time figuring out what happened.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
+              <span class="use-case-status-pill use-case-status-pill--published">Published</span>
+            </a>
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-02-Cost-Resource-Optimization' | relative_url }}">
+              <span class="use-case-strip__num">2</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">Cost and Resource Optimization</span>
+                <span class="use-case-strip__question">Find wasted capacity before it hurts.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
+              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
+            </a>
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration' | relative_url }}">
+              <span class="use-case-strip__num">3</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">Intelligent Capacity Orchestration</span>
+                <span class="use-case-strip__question">Anticipate capacity across hybrid environments.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
+            </a>
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-04-Curated-Automation-Remediation' | relative_url }}">
+              <span class="use-case-strip__num">4</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">Curated Automation Remediation</span>
+                <span class="use-case-strip__question">Remediate with automation teams already trust.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
+            </a>
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">
+              <span class="use-case-strip__num">5</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
+                <span class="use-case-strip__question">Prevent slow failure before impact.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
+              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
+            </a>
+            <a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">
+              <span class="use-case-strip__num">6</span>
+              <span class="use-case-strip__body">
+                <span class="use-case-strip__title">Self-healing infrastructure</span>
+                <span class="use-case-strip__question">Detect, decide, act, validate end to end.</span>
+              </span>
+              <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
+              <span class="use-case-status-pill use-case-status-pill--wip">Outline</span>
+            </a>
+          </nav>
+          <p class="use-case-strip__footer">
+            <a href="{{ '/aiops-use-cases' | relative_url }}" class="use-case-strip__hub-link">View all use cases and Crawl/Walk/Run map</a>
+          </p>
+        </div>
         <h4 class="cards-track-subsection__title">Partner integrations</h4>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
@@ -429,44 +501,6 @@ patternfly: true
               <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
-          </div>
-        </div>
-      </a>
-      </div>
-      </div>
-
-      <div id="journey-guides" class="cards-track-section">
-        <div class="cards-track-section__heading">
-          <h3 class="cards-track-section__title">Journey Guides</h3>
-          <a href="{{ '/guide-types' | relative_url }}#journey-guides" class="guide-section__info" data-tooltip="Cross-cutting adoption guides with explicit decision points for when to add the next capability." aria-label="Learn about Journey Guides">
-            <i class="fas fa-info-circle" aria-hidden="true"></i>
-          </a>
-        </div>
-        <p class="cards-track-section__intro">Not sure what to build first or when Automation Orchestrator earns its place? Start here for stage-by-stage adoption guidance.</p>
-        <p id="journey-empty" class="cards-track-section__empty" hidden>No published Journey guides yet.</p>
-        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="journey-gallery">
-
-      <a href="{{ '/README-AIOps-Ticket-Enrichment' | relative_url }}" class="card-link" data-tags="journey,solution,wip">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-orange">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                Work in Progress
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-style card-label-style--journey">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-route pf-v6-c-label__icon"></i>
-                Journey Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Ticket Enrichment Automation: From EDA to AI-Driven Orchestration</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            When EDA and AAP are enough, when to add LLM-based ticket enrichment, and when Automation Orchestrator's switch, approval, and AI agent nodes become the right tools.
           </div>
         </div>
       </a>
@@ -773,11 +807,9 @@ patternfly: true
   var cardsMain = document.querySelector('.cards-main');
   var solutionGuidesSection = document.getElementById('solution-guides');
   var aiopsFoundationalHero = document.getElementById('aiops-foundational-hero');
-  var journeyEmptyEl = document.getElementById('journey-empty');
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
-    { section: document.getElementById('journey-guides'), gallery: document.getElementById('journey-gallery'), emptyState: journeyEmptyEl },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') }
   ];
 
@@ -869,10 +901,8 @@ patternfly: true
     if (solutionGuidesSection) {
       var aiopsSection = document.getElementById('aiops-solutions');
       var eventDrivenSection = document.getElementById('event-driven-solutions');
-      var journeySection = document.getElementById('journey-guides');
       var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
-        || (eventDrivenSection && eventDrivenSection.style.display !== 'none')
-        || (journeySection && journeySection.style.display !== 'none');
+        || (eventDrivenSection && eventDrivenSection.style.display !== 'none');
       solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
     }
   }
@@ -891,11 +921,10 @@ patternfly: true
     allCards.forEach(function (card) {
       var cardTags = getCardTags(card);
       var isSolutionGuide = cardTags.indexOf('solution') !== -1;
-      var isJourneyGuide = cardTags.indexOf('journey') !== -1;
       var textMatch = !query || getCardText(card).indexOf(query) !== -1;
       var statusMatch = !activeStatus.length || activeStatus.some(function (s) { return cardTags.indexOf(s) !== -1; });
       var partnerMatch = !activePartners.length || activePartners.some(function (p) { return cardTags.indexOf(p) !== -1; });
-      var trackMatch = !activeTracks.length || !isSolutionGuide || isJourneyGuide || activeTracks.some(function (t) { return cardTags.indexOf(t) !== -1; });
+      var trackMatch = !activeTracks.length || !isSolutionGuide || activeTracks.some(function (t) { return cardTags.indexOf(t) !== -1; });
       var show = textMatch && statusMatch && partnerMatch && trackMatch;
       card.style.display = show ? '' : 'none';
       if (show) {

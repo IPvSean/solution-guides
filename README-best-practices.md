@@ -521,11 +521,11 @@ Apply the base rubric above, then adjust expectations by track. Do not penalize 
 |-------|-------------------|
 | **AIOps** | Full rubric. Technical Executability should include AI enrichment, inference endpoints, MCP/Lightspeed integration, or governed playbook selection where the guide claims an AI outcome. |
 | **Event-Driven** | Do not penalize absence of AI. Weight EDA rulebooks, webhook or queue integration, and closed-loop automation without inference. Business Framing should cite operational response time, not AI accuracy. |
-| **Journey** | Lighter on YAML depth and single-partner executability. Weight decision paths, adoption narrative, explicit signals for when to add the next capability, and cross-links to reference architectures. Validation may be scenario-based rather than a single runnable pipeline. |
+| **AIOps Use Case** | Lighter on YAML depth and single-partner executability. Weight decision paths, adoption narrative, explicit signals for when to add the next capability, and cross-links to reference architectures. Validation may be scenario-based rather than a single runnable pipeline. Link from the [Common AIOps Use Cases](aiops-use-cases.md) hub. |
 
 **N/A rules:**
 - Event-Driven guides: skip AI-specific executability checks unless the guide adds an optional AI enrichment section.
-- Journey guides: Architecture Clarity may emphasize decision flow over deployment topology; Production Readiness Info may be advisory rather than a full runbook.
+- AIOps Use Case pages: Architecture Clarity may emphasize decision flow over deployment topology; Production Readiness Info may be advisory rather than a full runbook.
 
 </details>
 
