@@ -81,6 +81,8 @@ Ansible Automation Platform is the **trusted execution and orchestration layer**
 | **Common** | Customer observability or ITSM (Splunk, Instana, ServiceNow, Azure, AWS, and others), inference or MCP as needed | Events, tickets, enrichment context |
 | **Optional** | Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation Orchestrator, AAP MCP server | Deeper AI, multi-step orchestration, ITSM intelligence |
 
+{: .guide-table-capability-layers}
+
 Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation Orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them.
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
@@ -90,15 +92,7 @@ Capabilities compose by **maturity and use case**, not as one preset bundle. The
 
 ## Common AIOps use cases
 
-Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Partner Solution Guides below implement each pattern with specific integrations.
-
-### Crawl, Walk, Run
-
-| Maturity | Focus | Use cases |
-|----------|--------|-----------|
-| **Crawl** | Build visibility and enrich insights | Incident and ticket enrichment; cost and resource optimization |
-| **Walk** | Orchestrate with intelligence | Intelligent capacity orchestration; curated automation remediation |
-| **Run** | Continuous enforcement and closed-loop operations | System-level drift and policy enforcement; self-healing infrastructure |
+Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips). Partner Solution Guides on each use case page implement the pattern with specific integrations.
 
 > **Run includes two patterns.**
 >

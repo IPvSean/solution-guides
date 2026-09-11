@@ -1255,6 +1255,12 @@ td, th {
   color: var(--text-primary);
 }
 
+.guide-table-capability-layers td:first-child,
+.guide-table-capability-layers th:first-child {
+  white-space: nowrap;
+  width: 1%;
+}
+
 td:last-child,
 th:last-child {
   border-right: none;
