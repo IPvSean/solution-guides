@@ -63,11 +63,11 @@ There are three major parts of AIOps:
 - **Automation**: Automatically detect, respond to, and resolve IT issues.
    - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d6.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/blog/aiops-and-ansible-automation-platform-where-ai-intelligence-meets-trusted-execution">AIOps and Ansible Automation Platform: Where AI intelligence meets trusted execution</a>
 
-**Ansible Automation Platform** connects **observability** and **inference** to build **self-healing infrastructure.**
+**Ansible Automation Platform** connects **observability** and **inference** to build **self-healing infrastructure.** Adoption is incremental: start with the loop that matches your maturity stage, then add inference, orchestration, and deeper Red Hat AI capabilities when a use case benefits from them.
 
-> **AIOps adoption can be incremental.**
+> **Terminology update -- Lightspeed rebranding.**
 >
-> You don’t need full automation on Day One. *Start small, think big!*
+> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
 
 <h2 id="solution"></h2>
 
@@ -81,17 +81,7 @@ Ansible Automation Platform is the **trusted execution and orchestration layer**
 | **Common** | Customer observability or ITSM (Splunk, Instana, ServiceNow, Azure, AWS, and others), inference or MCP as needed | Events, tickets, enrichment context |
 | **Optional** | Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation Orchestrator, AAP MCP server | Deeper AI, multi-step orchestration, ITSM intelligence |
 
-> **Not a fixed product stack.**
->
-> You do not need Red Hat AI, Automation code assistant at incident time, and a message queue on day one. Start with EDA plus AAP plus the tools the customer already runs; add inference, MCP, and Automation Orchestrator when the use case requires them (see [Common AIOps use cases](#common-aiops-use-cases)).
-
-> **EDA is part of Ansible Automation Platform.**
->
-> It is referred to separately sometimes depending on the workflow. EDA uses rulebooks to monitor events, then executes specified job templates or workflows based on the event. Think of it simply as inputs and outputs. EDA is an automatic way for inputs into Ansible Automation Platform, where Ansible Automation Platform is the output (running a job template or workflow).
-
-> **Terminology update -- Lightspeed rebranding.**
->
-> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
+Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation Orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them.
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
@@ -229,6 +219,8 @@ Closed-loop detect, decide, act, validate using observability, inference, and **
 > **Workshop and Run demo, not the default customer path.**
 >
 > Most teams start at **Crawl** (enrichment) or **Walk** ([curated automation remediation](#4-curated-automation-remediation-walk)) using existing job templates. See [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md) for production-style integration patterns. The four-part pipeline below matches the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) and illustrates multi-LLM **Run** depth.
+
+**Event-Driven Ansible** is included in Ansible Automation Platform. The sections below name EDA separately where rulebooks are the event **input** path and AAP job templates are the governed **output**.
 
 An AIOps workflow has four (4) parts:
 

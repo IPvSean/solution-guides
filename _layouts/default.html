@@ -48,10 +48,15 @@
       function renderMermaid() {
         document.querySelectorAll('pre > code.language-mermaid').forEach(function (codeEl) {
           var pre = codeEl.parentElement;
+          var wrapper = pre.closest('.code-block-wrapper');
           var div = document.createElement('div');
           div.className = 'mermaid';
           div.textContent = codeEl.textContent;
-          pre.parentNode.replaceChild(div, pre);
+          if (wrapper) {
+            wrapper.parentNode.replaceChild(div, wrapper);
+          } else {
+            pre.parentNode.replaceChild(div, pre);
+          }
         });
 
         document.querySelectorAll('.mermaid').forEach(function (el) {

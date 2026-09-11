@@ -1186,6 +1186,12 @@ td {
   box-sizing: border-box;
 }
 
+.mermaid {
+  margin: 1.25rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .code-block-lang {
   position: absolute;
   top: 8px;
