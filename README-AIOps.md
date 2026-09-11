@@ -190,9 +190,9 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> | Validated | Optional: provisions RHEL AI infrastructure |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a> | Certified | Optional: configures and serves models for self-hosted inference |
 
-> **Need to deploy your own AI inference endpoint?**
+> **Red Hat AI only:** Deploy your own inference endpoint?
 >
-> The `infra.ai` and `redhat.ai` collections automate the full stack -- from provisioning a GPU instance to serving a model. See the companion guide [AI Infrastructure automation with Ansible](README-IA.md) for a complete walkthrough.
+> The `infra.ai` and `redhat.ai` collections automate **Red Hat AI** on your infrastructure -- from provisioning a GPU instance to serving a model with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See the companion guide [AI Infrastructure automation with Ansible](README-IA.md) for a complete walkthrough.
 
 ### External Systems
 
@@ -205,20 +205,79 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 | Red Hat Lightspeed | Recommended | CVE and Advisor remediation content via console.redhat.com |
 | Git repository | Optional | Required only for workshop Run pipeline (playbook promotion) |
 | Automation Orchestrator | Optional | Multi-step orchestration, approvals, AI agent nodes (see UC01 deep-dive) |
-| AAP MCP server | Optional | ServiceNow LEAP and Lightspeed MCP integrations |
+| AAP MCP server | Recommended at Walk | Query job templates and workflows, launch governed runs; also ServiceNow LEAP and Lightspeed MCP |
 | Chat or ITSM tool | Recommended | Mattermost, Slack, ServiceNow |
 
 <h2 id="aiops-workflow"></h2>
 
 ## AIOps Workflow (reference architecture)
 
-> **Workshop and Run demo, not the default customer path.**
+The **default production pattern** is **curated automation remediation** at **Walk** maturity: when an incident arrives, the AI assistant uses the **AAP MCP server** to **search** Ansible Automation Platform for **pre-approved** job templates and workflows, **selects** the best match (like a menu), and requests a **governed run**. Nothing new is invented at incident time, which keeps audit trails, RBAC, and change control intact.
+
+> **Why select instead of generate?**
 >
-> Most teams start at **Crawl** (enrichment) or **Walk** ([curated automation remediation](#4-curated-automation-remediation-walk)) using existing job templates. See [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md) for production-style integration patterns. The four-part pipeline below matches the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) and illustrates multi-LLM **Run** depth.
+> Generating playbooks from an alert introduces **unreviewed change** every time the same symptom recurs. Teams already maintain trusted automation in AAP. MCP exposes that library to the AI client so inference **chooses** from approved options instead of authoring fixes from thin air.
 
 **Event-Driven Ansible** is included in Ansible Automation Platform. The sections below name EDA separately where rulebooks are the event **input** path and AAP job templates are the governed **output**.
 
-An AIOps workflow has four (4) parts:
+<h3 id="4-curated-automation-remediation-walk"></h3>
+
+### Reference architecture: curated automation remediation (Walk)
+
+Use case **4 -- Curated automation remediation** is the reference loop for most customer conversations. Work can start from observability (EDA), an ITSM ticket, or an operator using an AI client (Cursor, Claude Code, ChatGPT, Copilot, and similar). The AI layer may call Red Hat AI or another model for **correlation**; execution always flows through **existing** AAP content.
+
+| Step | What happens |
+|------|----------------|
+| **1** | An **IT infrastructure issue** fires (EDA rulebook, Splunk or Instana alert, ServiceNow ticket, scheduled check, or human request). |
+| **2** | The **AI assistant** asks AAP, via **MCP**, what remediation automation is available for this class of problem. |
+| **3** | **AAP** returns the **approved automation library** -- labeled job templates and workflows (fix permissions, increase storage, correct configuration, patch CVE, and similar). |
+| **4** | The AI **correlates** incident context to one library entry (or a short ranked list for human approval). |
+| **5** | The AI **requests a run** of the selected template (for example, **Increase storage**) through MCP with the operator's RBAC. |
+| **6** | **AAP executes** the approved automation and reports success back to observability or ITSM. |
+
+```mermaid
+graph LR
+  A([IT infrastructure issue]) --> B[EDA ticket or AI client]
+  subgraph AI
+    B --> C[Correlate symptoms]
+    C --> D[Select from menu]
+  end
+  subgraph AAP
+    E[AAP MCP search library]
+    F[Run approved job template]
+  end
+  C --> E
+  E --> D
+  D --> F
+  F --> G([Remediation validated])
+```
+
+<img src="assets/images/aiops-use-case-04-curated-automation-remediation.png" alt="Curated automation remediation: AI uses MCP to search AAP for approved job templates, correlates the incident, and runs governed automation">
+
+> **Tip:** Deep-dive the pattern.
+>
+> See [Curated Automation Remediation: From EDA to Orchestrated Automation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) and [Ansible DevTools -- Connecting to Ansible Automation Platform](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform) for MCP gateway endpoints (`job_management`, `inventory_management`, and related services).
+
+#### Operational impact (reference path)
+
+| Stage | Operational Impact | Why |
+|-------|-------------------|-----|
+| **1. Detect** | **None to low** | Events and tickets are read-only until a run is requested. |
+| **2. MCP search** | **None** | Lists existing templates and workflows; no infrastructure change. |
+| **3. Correlate and select** | **None** | AI reasoning only; selection is from the approved library. |
+| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation Orchestrator at Walk before auto-run at Run. |
+
+Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
+
+<h3 id="workshop-run-pipeline"></h3>
+
+### Workshop pipeline: multi-LLM playbook generation (Run demo)
+
+> **Workshop and Run demo, not the default customer path.**
+>
+> The four-part pipeline below matches the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html). It shows **Automation code assistant** playbook generation and Git promotion for teams exploring **Run** depth. Most deployments should stay on the [curated MCP path](#4-curated-automation-remediation-walk) until policy explicitly allows incident-time codegen.
+
+An AIOps **workshop** pipeline has four (4) parts:
 
 1. **Event-Driven Ansible (EDA) Response**
 
@@ -236,7 +295,7 @@ An AIOps workflow has four (4) parts:
 
    The final Job Template that fixes the issue on your IT infrastructure.  This is executing the Ansible Playbook that was generated in the previous workflow.  This falls under the **automation** part of AIOps and wraps up our self healing infrastructure use-case.
 
-### Operational Impact per Stage
+### Operational Impact per Stage (workshop pipeline)
 
 | Stage | Operational Impact | Why |
 |-------|-------------------|-----|
@@ -253,9 +312,9 @@ Stages 1-3 are safe to experiment with in any environment. Stage 4 is where prod
 
 <h3 id="example-workflow-diagram"></h3>
 
-### Example Workflow Diagram
+### Example Workflow Diagram (workshop)
 
-This is a workflow **example** from our hands-on workshop **Introduction to AI-Driven Ansible Automation**
+This diagram is from the hands-on workshop **Introduction to AI-Driven Ansible Automation**. It illustrates the **codegen** Run pipeline, not the default [curated MCP reference architecture](#4-curated-automation-remediation-walk).
 
 [![overview_diagram](https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/overview_diagram.png?raw=true)](https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/overview_diagram.png?raw=true)
 
@@ -705,9 +764,11 @@ Please consider using the <a target="_blank" href="https://console.redhat.com/an
 
 <h2 id="3-remediation-workflow"></h2>
 
-## 3. Remediation Workflow
+## 3. Remediation Workflow (workshop Run demo)
 
-The third part of the AIOps workflow is the **Remediation Workflow**.  This workflow will take a prompt from the previous workflow, allow the human operator to customize this prompt, then build an Ansible Playbook to remediate the issue, sync this to git and build a job template that will run this playbook for the final step.
+The third part of the **workshop** AIOps pipeline is the **Remediation Workflow**. For production **Walk** deployments, replace this stage with [curated selection via AAP MCP](#4-curated-automation-remediation-walk) instead of generating new playbooks at incident time.
+
+This workshop workflow takes a prompt from the previous workflow, allows the human operator to customize this prompt, then builds an Ansible Playbook to remediate the issue, syncs this to git and builds a job template that will run this playbook for the final step.
 
  Here is a breakdown of the four main components:
 
@@ -871,7 +932,7 @@ This guide covers the self-healing infrastructure use case, which has its own ma
 | Maturity | Approach | How It Works | AI Role |
 |----------|----------|-------------|---------|
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6b6.png" width="20" style="vertical-align:text-bottom;"> **Crawl** | Ticket Enrichment | EDA detects event → AI diagnoses root cause → enriched context is posted to chat/ITSM → **human remediates manually** | Read-only: AI interprets, humans act |
-| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Curated Remediation | EDA detects event → AI diagnoses root cause → AI **selects the right playbook** from a pre-approved library → human approves → playbook executes | AI selects from existing automation; no new code is created |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Curated Remediation | EDA or ticket → AI **searches AAP via MCP** → AI **selects** from the approved library → human approves if required → governed job runs | AI chooses existing automation; MCP supplies the menu; no new code at incident time |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Self-Healing | EDA detects event → AI diagnoses → **approved playbook or governed workflow** executes → validation confirms recovery | Closed-loop automation from the **existing library**, with policy limits |
 
 The workflow in this guide demonstrates a **workshop Run** stage that includes Automation code assistant playbook generation. Organizations should start at **Crawl** (enrichment only) or **Walk** (curated templates). Each stage reuses the same architecture; the difference is how far down the pipeline you automate.

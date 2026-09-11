@@ -21,7 +21,7 @@ This guide demonstrates how to connect **Azure Service Bus Queues** directly to 
 
 > **This guide builds on the AIOps reference architecture.**
 >
-> For the full end-to-end AIOps pipeline -- including AI inference, Lightspeed playbook generation, and the Crawl/Walk/Run maturity model -- see [AIOps automation with Ansible](README-AIOps.md). This guide focuses specifically on using **Azure Service Bus** as the event transport layer.
+> Production **Walk** remediation uses **AAP MCP** to search approved job templates and workflows, then AI **selects** from that library before a governed run. See [curated automation remediation](README-AIOps.md#4-curated-automation-remediation-walk). This guide wires **Azure Service Bus** into EDA and walks the **workshop Run** pipeline (enrichment plus Lightspeed codegen) where labs need it; swap stage 3 for MCP selection when you deploy for real.
 
 <h2 id="background"></h2>
 
@@ -94,12 +94,12 @@ What makes up the solution?
 
 ## Azure Service Bus to Ansible Workflow
 
-The workflow has four stages, matching the [AIOps reference architecture](README-AIOps.md):
+The workflow has four stages aligned with the [workshop Run pipeline](README-AIOps.md#workshop-run-pipeline) in the foundational AIOps guide (Azure Service Bus replaces Kafka as the transport layer):
 
 1. **Azure Event → Service Bus → EDA** -- Azure Monitor, Defender for Cloud, or a custom application publishes an event to a Service Bus queue. EDA subscribes to the queue and consumes the message.
 2. **Enrichment Workflow** -- AAP gathers additional context from the affected Azure resource or on-prem host, sends the enriched data to Red Hat AI for root cause analysis, and notifies the operations team.
-3. **Remediation Workflow** -- Ansible Lightspeed generates a remediation playbook from the AI analysis, commits it to Git, and creates a Job Template.
-4. **Execute Remediation** -- The generated playbook runs against the affected infrastructure (Azure VMs, on-prem hosts, or network devices), resolving the issue.
+3. **Remediation Workflow (workshop Run demo)** -- Ansible Lightspeed generates a remediation playbook from the AI analysis, commits it to Git, and creates a Job Template. At **Walk**, use [AAP MCP to select an existing template](README-AIOps.md#4-curated-automation-remediation-walk) instead.
+4. **Execute Remediation** -- The approved or generated playbook runs against the affected infrastructure (Azure VMs, on-prem hosts, or network devices), resolving the issue.
 
 ### Operational Impact per Stage
 
@@ -376,7 +376,7 @@ az servicebus queue send \
 
 ## Related Guides
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **AIOps reference architecture:** See [AIOps automation with Ansible](README-AIOps.md) for the full end-to-end pipeline, including Lightspeed playbook generation, policy enforcement, and the broader AIOps maturity journey.
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **AIOps reference architecture:** [AIOps automation with Ansible](README-AIOps.md) -- curated MCP selection at Walk, workshop codegen at Run, and the Crawl/Walk/Run maturity model.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50d.png" width="20" style="vertical-align:text-bottom;"> **Using Splunk as the trigger?** See [Triggering Automated Remediation from Splunk Alerts](README-AIOps-Splunk.md) for connecting Splunk alerts to the same AIOps pipeline.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4a1.png" width="20" style="vertical-align:text-bottom;"> **Looking for ServiceNow integration?** See [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) for LEAP/MCP-driven remediation and related ITSM patterns (see also [KB 7127603](https://access.redhat.com/articles/7127603)).
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Need to deploy the AI backend?** See [AI Infrastructure automation with Ansible](README-IA.md) for automating Red Hat AI provisioning with the `infra.ai` and `redhat.ai` collections.

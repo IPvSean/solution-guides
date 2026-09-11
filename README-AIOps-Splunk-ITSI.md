@@ -27,7 +27,7 @@ This guide demonstrates how to connect Splunk to **Event-Driven Ansible (EDA)** 
 
 > **This guide builds on the AIOps reference architecture.**
 >
-> For the full end-to-end AIOps pipeline -- including AI inference, Lightspeed playbook generation, and the Crawl/Walk/Run maturity model -- see [AIOps automation with Ansible](README-AIOps.md). This guide focuses specifically on using **Splunk** as the observability and detection layer with Event-Driven Ansible as the automation bridge.
+> Production **Walk** remediation uses **AAP MCP** to search approved job templates and workflows, then AI **selects** from that library before a governed run. See [curated automation remediation](README-AIOps.md#4-curated-automation-remediation-walk). This guide focuses on **Splunk** as the observability layer with Event-Driven Ansible; use cases below mix ITSI add-on flows and **workshop Run** webhook pipelines (Lightspeed codegen) where noted.
 
 <h2 id="background"></h2>
 
@@ -429,12 +429,12 @@ If the database service runs in AWS and the bottleneck is a VPC network limit, t
 
 ## Splunk Webhook Alert Pipeline
 
-Use Cases B and C below use **Splunk webhook alerts** (rather than the ITSI Red Hat EDA Add-on) to trigger Event-Driven Ansible. The workflow has four stages, matching the [AIOps reference architecture](README-AIOps.md):
+Use Cases B and C below use **Splunk webhook alerts** (rather than the ITSI Red Hat EDA Add-on) to trigger Event-Driven Ansible. The workflow has four stages aligned with the [workshop Run pipeline](README-AIOps.md#workshop-run-pipeline):
 
 1. **Splunk Alert -> EDA** -- A saved search or alert fires and sends a webhook payload to Event-Driven Ansible
 2. **Enrichment Workflow** -- AAP gathers additional context, sends it to Red Hat AI for root cause analysis, and notifies the operations team
-3. **Remediation Workflow** -- Ansible Lightspeed generates a remediation playbook, commits it to Git, and creates a Job Template
-4. **Execute Remediation** -- The generated playbook runs against the affected infrastructure
+3. **Remediation Workflow (workshop Run demo)** -- Ansible Lightspeed generates a remediation playbook, commits it to Git, and creates a Job Template. At **Walk**, use [AAP MCP to select an existing template](README-AIOps.md#4-curated-automation-remediation-walk) instead.
+4. **Execute Remediation** -- The approved or generated playbook runs against the affected infrastructure
 
 | Stage | Operational Impact | Why |
 |-------|-------------------|-----|
@@ -1002,7 +1002,7 @@ curl -H "Content-Type: application/json" \
 
 ## Related Guides
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **AIOps reference architecture:** See [AIOps automation with Ansible](README-AIOps.md) for the full end-to-end pipeline, including AI inference, Lightspeed playbook generation, and the broader AIOps maturity journey.
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **AIOps reference architecture:** [AIOps automation with Ansible](README-AIOps.md) -- curated MCP selection at Walk, workshop codegen at Run, and partner event sources.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Need to deploy the AI backend?** See [AI Infrastructure automation with Ansible](README-IA.md) for automating Red Hat AI provisioning with the `infra.ai` and `redhat.ai` collections.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See [Get started with EDA (Ansible Rulebook)](https://access.redhat.com/articles/7136720) for the fundamentals of rulebooks, event sources, and actions.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4a1.png" width="20" style="vertical-align:text-bottom;"> **Looking for ServiceNow integration?** See [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) for LEAP/MCP-driven remediation and related ITSM patterns (see also [KB 7127603](https://access.redhat.com/articles/7127603)).

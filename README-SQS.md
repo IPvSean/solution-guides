@@ -95,9 +95,9 @@ What makes up the solution?
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> | Validated | Provisions RHEL AI infrastructure (AWS, Azure, GCP, bare metal) |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a> | Certified | Configures and serves AI models using InstructLab |
 
-> **Need to deploy your own AI inference endpoint?**
+> **Red Hat AI only:** Deploy your own inference endpoint?
 >
-> The `infra.ai` and `redhat.ai` collections automate the full stack -- from provisioning a GPU instance to serving a model. See the companion guide [AI Infrastructure automation with Ansible](README-IA.md) for a complete walkthrough.
+> The `infra.ai` and `redhat.ai` collections automate **Red Hat AI** on your infrastructure -- from provisioning a GPU instance to serving a model with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See the companion guide [AI Infrastructure automation with Ansible](README-IA.md) for a complete walkthrough.
 
 ### External Systems
 
@@ -115,7 +115,11 @@ What makes up the solution?
 
 ## AIOps with SQS Workflow
 
-The AIOps workflow has four (4) parts -- the same pipeline described in the [AIOps automation with Ansible](README-AIOps.md) guide, with AWS SQS serving as the message queue:
+> **Production Walk path:**
+>
+> After enrichment, use **AAP MCP** to search approved job templates, let AI **select** from the library, and launch a governed run. See [curated automation remediation](README-AIOps.md#4-curated-automation-remediation-walk). The four parts below follow the [workshop Run pipeline](README-AIOps.md#workshop-run-pipeline) with **AWS SQS** as the message queue.
+
+The AIOps workflow has four (4) parts:
 
 1. **Event-Driven Ansible (EDA) Response with SQS**
 
@@ -125,9 +129,9 @@ The AIOps workflow has four (4) parts -- the same pipeline described in the [AIO
 
    AAP coordinates with Red Hat AI, notifies your chat application or ITSM. This is the **Inference** part of the AIOps pipeline.
 
-3. **Remediation Workflow**
+3. **Remediation Workflow (workshop Run demo)**
 
-   Generates a playbook via Ansible Lightspeed, syncs it to Git, builds a Job Template. This is also part of **Inference** -- a multi-LLM workflow using Red Hat AI for diagnosis and Ansible Lightspeed for playbook generation.
+   Generates a playbook via Ansible Lightspeed, syncs it to Git, builds a Job Template. At **Walk**, use [AAP MCP to select an existing template](README-AIOps.md#4-curated-automation-remediation-walk) instead of incident-time codegen.
 
 4. **Execute Remediation**
 
@@ -593,7 +597,7 @@ This guide demonstrates the **Run** stage. Organizations can start at **Crawl** 
 
 ## Related Guides
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Full AIOps reference architecture:** See [AIOps automation with Ansible](README-AIOps.md) for the complete pipeline with all event source options.
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Full AIOps reference architecture:** [AIOps automation with Ansible](README-AIOps.md) -- curated MCP selection at Walk, workshop codegen at Run, and SQS as one event transport option.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Need to deploy the AI backend?** See [AI Infrastructure automation with Ansible](README-IA.md) for automating Red Hat AI provisioning with the `infra.ai` and `redhat.ai` collections.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Want to try this hands-on?** The <a target="_blank" href="https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html">Hands-On AIOps Workshop</a> walks through the full self-healing pipeline with a live lab.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See <a target="_blank" href="https://access.redhat.com/articles/7136720">Get started with EDA (Ansible Rulebook)</a> for the fundamentals.

@@ -31,9 +31,10 @@ This use case sits at **Walk** maturity: event- or ticket-initiated flows that c
 
 ## Solution
 
-- **EDA** triggers on observability or ITSM events
-- **AAP** runs only **approved** job templates and workflows
-- **AI** maps incident context to library entries (patch, restart, expand storage, rotate certificate, update firewall rule, and similar)
+- **EDA** triggers on observability or ITSM events (or an operator starts from an AI client)
+- **AAP MCP** exposes the **approved automation library** -- job templates and workflows the AI can search like a menu
+- **AAP** runs only **approved** job templates and workflows selected through MCP (RBAC follows the operator token)
+- **AI** maps incident context to library entries (patch, restart, expand storage, rotate certificate, update firewall rule, and similar) without generating new playbooks at incident time
 - **AO** adds approval nodes and routing when multiple curated options match
 
 ### Who Benefits
@@ -46,7 +47,7 @@ This use case sits at **Walk** maturity: event- or ticket-initiated flows that c
 
 ## Prerequisites
 
-- Ansible Automation Platform 2.5 or later with a documented remediation library
+- Ansible Automation Platform 2.6.4 or later with MCP gateway access for job template discovery and launch ([DevTools MCP setup](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform))
 - Event-Driven Ansible for event-initiated selection flows
 - Automation Orchestrator when approvals and branching are required
 
