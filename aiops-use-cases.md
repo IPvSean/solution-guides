@@ -106,4 +106,4 @@ Solution Guides answer "how does AAP plus a partner solve X?" Use cases answer "
 
 ## Browse the catalog
 
-Return to the [Solution Guides catalog]({{ '/' | relative_url }}#aiops-use-cases) for partner integrations, or filter by partner on the homepage.
+Return to the [Solution Guides catalog]({{ '/' | relative_url }}#aiops-solutions) for partner integrations, or filter by partner on the homepage.

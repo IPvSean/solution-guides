@@ -18,10 +18,6 @@ patternfly: true
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Solution Guides
         </a>
-        <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases" class="cards-sidebar__jump">
-          <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
-          AIOps Use Cases
-        </a>
         <a href="#implementation-guides" class="cards-sidebar__jump">
           <i class="fas fa-chevron-right cards-sidebar__jump-icon" aria-hidden="true"></i>
           Implementation Guides
