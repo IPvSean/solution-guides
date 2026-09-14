@@ -81,6 +81,7 @@ Key non-negotiables:
 - **Automation Hub links**: Every Ansible collection referenced must link to its Automation Hub page.
 - **KB article link (legacy only)**: If a corresponding article exists on access.redhat.com, include the link in a blockquote under the title. New guides do not require a KB article.
 - **Lightspeed naming**: Follow `.cursor/rules/red-hat-lightspeed-terminology.mdc` for Automation code assistant, Automation intelligent assistant, and Red Hat Lightspeed in new prose and catalog copy.
+- **Automation orchestrator naming**: Follow `.cursor/rules/red-hat-automation-orchestrator-terminology.mdc` (**Automation orchestrator**, not title case on the second word).
 
 ## Scoring and Reviewing Guides
 
