@@ -435,5 +435,5 @@ ServiceNow LEAP helps operations teams move from “we have incidents” to “w
 
 ---
 
-<img width="400" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aap_logo.png">
+<img class="guide-closing-logo" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aap_logo.png" alt="Red Hat Ansible Automation Platform">
 {% endraw %}

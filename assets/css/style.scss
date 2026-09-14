@@ -227,6 +227,15 @@ img {
     border: none;
 }
 
+.guide-closing-logo {
+  display: block;
+  width: auto !important;
+  max-width: 140px;
+  height: auto;
+  margin: 1.25rem auto 0;
+  padding: 0;
+}
+
 // Partner / vendor logos inline in guides (not lightbox diagrams)
 .guide-vendor-logo {
   display: block;

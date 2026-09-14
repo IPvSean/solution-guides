@@ -294,4 +294,4 @@ This guide demonstrates the lowest-risk entry point for ServiceNow + Ansible aut
 
 ---
 
-<img width="400" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aap_logo.png">
+<img class="guide-closing-logo" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aap_logo.png" alt="Red Hat Ansible Automation Platform">
