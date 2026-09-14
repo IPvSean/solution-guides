@@ -82,11 +82,11 @@ Ansible Automation Platform is the **trusted execution and orchestration layer**
 <tbody>
 <tr><td><strong>Core</strong></td><td>Ansible Automation Platform, Event-Driven Ansible</td><td>Governed job execution, rulebooks, workflows</td></tr>
 <tr><td><strong>Common</strong></td><td>Customer observability or ITSM (Splunk, Instana, ServiceNow, Azure, AWS, and others), inference or MCP as needed</td><td>Events, tickets, enrichment context</td></tr>
-<tr><td><strong>Optional</strong></td><td>Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation Orchestrator, AAP MCP server</td><td>Deeper AI, multi-step orchestration, ITSM intelligence</td></tr>
+<tr><td><strong>Optional</strong></td><td>Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation orchestrator, AAP MCP server</td><td>Deeper AI, multi-step orchestration, ITSM intelligence</td></tr>
 </tbody>
 </table>
 
-Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation Orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them. [Prerequisites](#prerequisites) lists maturity-scoped platform and integration needs.
+Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them. [Prerequisites](#prerequisites) lists maturity-scoped platform and integration needs.
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
@@ -171,7 +171,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 ### Ansible Automation Platform
 
 - **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for Crawl through Run in this guide).
-- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation Orchestrator** (multi-step approvals, agent nodes, and closed-loop patterns in UC01 Stages 3+ and later use cases).
+- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (multi-step approvals, agent nodes, and closed-loop patterns in UC01 Stages 3+ and later use cases).
 
 Foundational AIOps assumes **rulebooks and job templates configured in AAP** (UI or your existing GitOps process). **Config-as-code collections** (`ansible.eda`, `ansible.controller`, partner collections) matter when you automate platform setup or reproduce the workshop; they are **not** prerequisites to understand Crawl/Walk/Run or curated remediation. Hub links and when each collection applies are in [Key Terms -- Ansible collections](#key-terms-collections).
 
@@ -187,7 +187,7 @@ Requirements depend on **maturity and which use case or partner guide** you impl
 |----------|----------|-------------------------|
 | **Crawl** | AAP 2.5+ with EDA | At least one **event or ticket source** (observability or ITSM); optional **inference** for enrichment |
 | **Walk (curated)** | Same | **AAP MCP server** for library search and governed launch; optional chat/ITSM for notifications |
-| **Walk/Run (orchestrated)** | **AAP 2.7+** with **Automation Orchestrator** | Approvals, branching, validation loops ([Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) decision framework) |
+| **Walk/Run (orchestrated)** | **AAP 2.7+** with **Automation orchestrator** | Approvals, branching, validation loops ([Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) decision framework) |
 | **Run + content** | As above | **Red Hat Lightspeed** (CVE/Advisor playbooks) where you remediate from Lightspeed content |
 
 ### Lab-only or partner-specific (not foundational defaults)
@@ -254,7 +254,7 @@ graph LR
 | **1. Detect** | **None to low** | Events and tickets are read-only until a run is requested. |
 | **2. MCP search** | **None** | Lists existing templates and workflows; no infrastructure change. |
 | **3. Correlate and select** | **None** | AI reasoning only; selection is from the approved library. |
-| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation Orchestrator at Walk before auto-run at Run. |
+| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run. |
 
 Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
 
@@ -265,7 +265,7 @@ Before high-impact runs, teams typically enforce:
 | Guardrail | Walk | Run |
 |-----------|------|-----|
 | **Library-first** | MCP exposes only approved job templates and workflows | Same; grow the library before expanding autonomy |
-| **Approvals** | Human or Automation Orchestrator gate before launch | Policy-defined auto-run inside boundaries |
+| **Approvals** | Human or Automation orchestrator gate before launch | Policy-defined auto-run inside boundaries |
 | **Validation** | Post-run job or observability check | Closed-loop validate before closing the incident |
 | **Policy** | Surveys, inventory limits, credential scope | <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/automated-policy-as-code">Automated Policy as Code</a> where required |
 

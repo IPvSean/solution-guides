@@ -35,7 +35,7 @@ Add capabilities progressively:
 
 - **Event-Driven Ansible (EDA)** and **AAP** for scheduled or triggered collection playbooks and approved remediation job templates
 - **AI enrichment** to prioritize recommendations and explain tradeoffs in operator language
-- **Automation Orchestrator (AO)** when workflows need approval gates, dependency-aware sequencing (for example drain traffic before resize), or multi-cloud branching
+- **Automation orchestrator (AO)** when workflows need approval gates, dependency-aware sequencing (for example drain traffic before resize), or multi-cloud branching
 
 ### Who Benefits
 
@@ -49,7 +49,7 @@ Add capabilities progressively:
 
 - Ansible Automation Platform 2.5 or later
 - Event-Driven Ansible (optional, for threshold-driven runs)
-- Automation Orchestrator (when Walk-stage orchestration is required)
+- Automation orchestrator (when Walk-stage orchestration is required)
 - Access to cloud or hybrid cost and utilization APIs (customer-specific collections)
 
 ## EDA to AO adoption path
@@ -66,7 +66,7 @@ Collect utilization and cost facts; run pre-approved rightsizing or reclamation 
 
 AI summarizes waste and risk per recommendation before any job runs.
 
-### Stage 3+: Automation Orchestrator
+### Stage 3+: Automation orchestrator
 
 Switch and approval nodes for environment-specific routing, dependency checks, and human sign-off on production changes.
 

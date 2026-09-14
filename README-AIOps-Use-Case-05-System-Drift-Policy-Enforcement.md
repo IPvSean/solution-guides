@@ -49,7 +49,7 @@ Scheduled reviews and compliance scans are natural entry points. The distinguish
 
 - Ansible Automation Platform 2.5 or later
 - Policy and inventory sources integrated with playbooks or MCP
-- Automation Orchestrator for multi-step enforce-and-report workflows (Run maturity)
+- Automation orchestrator for multi-step enforce-and-report workflows (Run maturity)
 
 ## EDA to AO adoption path
 
@@ -65,7 +65,7 @@ Scheduled scans, reports, and manual remediation job templates.
 
 AI summaries of drift and recommended actions on tickets or dashboards.
 
-### Stage 3+: Automation Orchestrator
+### Stage 3+: Automation orchestrator
 
 Open ticket, generate report, or run automated remediation branches with approvals.
 

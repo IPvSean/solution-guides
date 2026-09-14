@@ -21,7 +21,7 @@ inline_edit: true
 
 > **What these pages are for.**
 >
-> AIOps Use Cases explain **when** Event-Driven Ansible, AI enrichment, and Automation Orchestrator earn their place for a given operational pattern. They are **not** partner Solution Guides. Partner technologies may appear as examples; start with the [foundational AIOps Solution Guide](README-AIOps.md) for the reference architecture, then open partner integrations from each use case's Related Guides section.
+> AIOps Use Cases explain **when** Event-Driven Ansible, AI enrichment, and Automation orchestrator earn their place for a given operational pattern. They are **not** partner Solution Guides. Partner technologies may appear as examples; start with the [foundational AIOps Solution Guide](README-AIOps.md) for the reference architecture, then open partner integrations from each use case's Related Guides section.
 
 ## Crawl, Walk, Run
 

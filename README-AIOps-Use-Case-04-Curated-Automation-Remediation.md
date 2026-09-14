@@ -49,7 +49,7 @@ This use case sits at **Walk** maturity: event- or ticket-initiated flows that c
 
 - Ansible Automation Platform 2.6.4 or later with MCP gateway access for job template discovery and launch ([DevTools MCP setup](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform))
 - Event-Driven Ansible for event-initiated selection flows
-- Automation Orchestrator when approvals and branching are required
+- Automation orchestrator when approvals and branching are required
 
 ## EDA to AO adoption path
 
@@ -65,7 +65,7 @@ Static mapping from alert type to one approved job template.
 
 AI chooses among labeled job templates based on incident context.
 
-### Stage 3+: Automation Orchestrator
+### Stage 3+: Automation orchestrator
 
 Approval gates, switch nodes for confidence, and validation loops after remediation.
 

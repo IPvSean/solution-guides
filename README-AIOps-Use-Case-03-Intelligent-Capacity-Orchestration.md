@@ -47,7 +47,7 @@ Traditional monitoring answers "is this host red?" Capacity orchestration answer
 
 - Ansible Automation Platform 2.5 or later
 - Inventory and metrics accessible to playbooks or MCP tools
-- Automation Orchestrator for multi-stage capacity workflows (Walk maturity)
+- Automation orchestrator for multi-stage capacity workflows (Walk maturity)
 
 ## EDA to AO adoption path
 
@@ -63,7 +63,7 @@ Scheduled fact collection and threshold-based job templates.
 
 AI-generated capacity plans and risk summaries attached to tickets or reports.
 
-### Stage 3+: Automation Orchestrator
+### Stage 3+: Automation orchestrator
 
 User- or schedule-initiated workflows: dependencies, capacity plan generation, approval, execution.
 

@@ -17,7 +17,7 @@ Known issues with proven fixes still wait in alert queues while someone diagnose
 
 **Challenge:** Delay, inconsistency, and on-call toil for repeatable failures.
 
-**Solved with AI + automation:** Observability platforms detect system-level failures. AI interprets signals and maps them to **pre-approved** remediation. AAP executes with permissions and audit. Orchestrator coordinates validation and escalation.
+**Solved with AI + automation:** Observability platforms detect system-level failures. AI interprets signals and maps them to **pre-approved** remediation. AAP executes with permissions and audit. Automation orchestrator coordinates validation and escalation.
 
 **Business outcomes:** Faster recovery, consistent operations, scalable adaptability, controlled autonomy.
 
@@ -56,7 +56,7 @@ graph LR
 
 - Ansible Automation Platform 2.5 or later
 - Event-Driven Ansible connected to observability or ITSM
-- Automation Orchestrator for full closed-loop workflows at Run maturity
+- Automation orchestrator for full closed-loop workflows at Run maturity
 - Approved remediation library (strongly recommended before autonomous act steps)
 
 ## EDA to AO adoption path
@@ -73,7 +73,7 @@ Automated remediation for known alert types with validation playbooks.
 
 AI-assisted diagnosis before human or automated act steps.
 
-### Stage 3+: Automation Orchestrator
+### Stage 3+: Automation orchestrator
 
 Closed-loop workflows with approval, loops, and validation nodes.
 

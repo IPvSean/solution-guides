@@ -23,7 +23,7 @@
 
 Ticket enrichment is where most operations teams leave time on the floor. The monitoring tool fires. A ticket opens. Someone reads it, gathers context from two or three other systems, decides what to run, and finally kicks off automation that executes in minutes. The execution is not the problem. The investigation before it is.
 
-This use case walks through ticket enrichment in six concrete scenarios: what a well-designed **AAP + EDA** setup handles on its own, the signals that tell you when you have outgrown it, and how **Automation Orchestrator (AO)** extends that design when your requirements demand it. Every scenario includes an explicit decision point so you can locate yourself on the adoption path and know what to build next.
+This use case walks through ticket enrichment in six concrete scenarios: what a well-designed **AAP + EDA** setup handles on its own, the signals that tell you when you have outgrown it, and how **Automation orchestrator (AO)** extends that design when your requirements demand it. Every scenario includes an explicit decision point so you can locate yourself on the adoption path and know what to build next.
 
 It is written for the engineer who builds and maintains these workflows, not a buyer overview. If you are deciding which node type to use and why, this is for you.
 
@@ -56,7 +56,7 @@ The ticket enrichment pattern uses three components, added progressively:
 
 - **Event-Driven Ansible (EDA)** to detect events and trigger automation without polling
 - **Ansible Automation Platform (AAP)** to execute remediation playbooks with governance, credential management, and auditability
-- **Automation Orchestrator (AO)** to add context-aware routing, human approval gates, retry loops, and AI reasoning to the workflow layer that sits above AAP job execution
+- **Automation orchestrator (AO)** to add context-aware routing, human approval gates, retry loops, and AI reasoning to the workflow layer that sits above AAP job execution
 
 Not every team needs all three. Stage 1 needs only EDA and AAP. Later stages add AO capabilities as requirements demand them.
 
@@ -78,9 +78,9 @@ Not every team needs all three. Stage 1 needs only EDA and AAP. Later stages add
 - Event-Driven Ansible controller configured
 - Job templates for target remediation playbooks already tested
 
-### Automation Orchestrator
+### Automation orchestrator
 
-- Automation Orchestrator (required for Stages 3-5)
+- Automation orchestrator (required for Stages 3-5)
 - AO connected to AAP as an execution target
 - MCP tools configured for any external system queries (AAP, ITSM, monitoring)
 
@@ -427,9 +427,9 @@ The approval node is not a bureaucratic gate here. It is what makes an on-call e
 
 ---
 
-## Decision Framework: When to Add Automation Orchestrator
+## Decision framework: when to add Automation orchestrator
 
-Automation Orchestrator runs on top of AAP -- it is not a replacement. The question is when the additional workflow capabilities it adds are worth the complexity. Use this to locate your requirements.
+Automation orchestrator runs on top of AAP -- it is not a replacement. The question is when the additional workflow capabilities it adds are worth the complexity. Use this to locate your requirements.
 
 **EDA + AAP job templates are sufficient when:**
 
