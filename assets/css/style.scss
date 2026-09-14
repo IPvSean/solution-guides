@@ -1257,8 +1257,11 @@ td, th {
 
 .guide-table-capability-layers td:first-child,
 .guide-table-capability-layers th:first-child {
-  white-space: nowrap;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
   width: 1%;
+  min-width: 6.5rem;
 }
 
 td:last-child,
