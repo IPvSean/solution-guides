@@ -149,194 +149,24 @@ This diagram is from the hands-on workshop **Introduction to AI-Driven Ansible A
 
 <h2 id="1-event-driven-ansible-eda-response"></h2>
 
-## 1. Event-Driven Ansible (EDA) Response
+## 1. Event-Driven Ansible (EDA) Response (workshop)
 
-The first part of the AIOps workflow is the **Event-Driven Ansible (EDA) Response**.  Here is a breakdown of the four main components:
+The workshop pipeline starts when EDA receives an event. **Production-neutral** event examples, observability tools, and message buses are on the [foundational AIOps guide -- Event intake reference](README-AIOps.md#event-intake-reference).
 
 <a target="_blank" href="https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/eda_response.png"><img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/eda_response.png" width="50%"></a>
 
-  1. IT infrastructure event
-  2. Observability tool picks up event
-  3. EDA sees event in message queue
-  4. Execute Enrichment workflow
+### Example walkthrough (workshop lab)
 
-<h3 id="example-walkthrough-for-eda-response"></h3>
+In the hands-on lab, students simulate an **httpd** outage:
 
-### Example Walkthrough for EDA Response
-
-In our hands-on workshop we simulate an **httpd** application outage.  This is how the workflow works:
-
-  1. **IT infrastructure event**: The student will break httpd using a Job Template
-  2. **Observability tool picks up event**: Filebeat monitors Apache logs, Kafka acts as the event transport
-  3. **EDA sees event in message queue**: EDA listens to Kafka, launches automation workflows
-  4. **Execute Enrichment workflow** Ansible Automation Platform kicks off part 2, **Log Enrichment and Prompt Generation Workflow**
+1. **IT infrastructure event** -- break httpd using a Job Template
+2. **Observability** -- Filebeat and Kafka transport (lab only)
+3. **EDA** -- rulebook launches the enrichment workflow
+4. **Next** -- Log enrichment and prompt generation (workshop §2 below)
 
 > **Why Kafka?**
 >
-> <a target="_blank" href="https://kafka.apache.org/">Apache Kafka</a> is a distributed streaming platform used for building real-time data pipelines and streaming applications, enabling applications to publish, consume, and process high volumes of data streams. It is all open source and self hosted and works great for workshops. This could be replaced by any event bus of your choosing. Event-Driven Ansible has numerous plugins including integrations with AWS SQS, AWS CloudTrail, Azure Service Bus, and Prometheus.
-
-
-> **Why Filebeat?**
->
-> <a target="_blank" href="https://www.elastic.co/beats/filebeat">Filebeat</a> is a lightweight shipper for logs. It is also free and open source and works great for lab environments. Event-Driven Ansible has numerous plugins including integrations with BigPanda, Dynatrace, IBM Instana, Zabbix, and CyberArk.
-
-> **Do you need both a message bus and an observability tool?**
->
-> It depends on the particular integration. Generally combining a message bus and an observability tool will scale the most, but it really depends on your particular use-case, amount of events, etc. Many observability platforms can work directly with Event-Driven Ansible just fine.
-
-Now that you understand our workflow example, lets dive into production-grade examples:
-
-<h3 id="1-it-infrastructure-event"></h3>
-
-### 1. **IT infrastructure event**:
-
-What kind of events are relevant in an AIOps workflow?  EDA's value proposition is that it is extremely versatile and pluggable.  This means that Ansible Automation Platform can effectively handle any type of event.
-
-However here is a great list of ideas:
-
-<h4 id="img-srchttpscdnjsdelivrnetghtwittertwemoji1402assets72x721f525png-width20-stylevertical-aligntext-bottom-application-level-events"></h4>
-
-#### <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f525.png" width="20" style="vertical-align:text-bottom;"> Application-Level Events
-
-| Event | Source | Example Response |
-|-------|--------|------------------|
-| **application service crash or stopped** | `systemd`, `monit`, or Prometheus alert | Restart, notify on Slack, check last logs via journald |
-| **High 5xx error rate in NGINX/Apache** | Web server logs, Prometheus metrics | Trigger Ansible to roll back a recent deployment or redirect traffic |
-| **Application log shows exception spike** | Log aggregator (ELK, Loki, Datadog) | Run Ansible remediation that restarts service and clears cache |
-| **Web app fails readiness check** | Kubernetes liveness/readiness probe | Reboot pod, scale another replica, or notify developer team |
-| **API latency exceeds threshold** | APM tool (e.g., Dynatrace, Instana) | Provision more backend instances or restart slow services |
-
-<h4 id="img-srchttpscdnjsdelivrnetghtwittertwemoji1402assets72x722699png-width20-stylevertical-aligntext-bottom-infrastructure--platform-events"></h4>
-
-#### <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2699.png" width="20" style="vertical-align:text-bottom;"> Infrastructure & Platform Events
-
-| Event | Source | Example Response |
-|-------|--------|------------------|
-| **Disk space usage > 90%** | Prometheus Node Exporter, Zabbix | Clean temp files, archive logs, or extend volume |
-| **High CPU load on EC2 or VM** | CloudWatch, Telegraf, etc. | Scale out VM set or move workloads |
-| **OOM Kill in container** | Kubernetes Events | Restart pod, notify engineering, increase memory limits |
-| **Node goes NotReady in Kubernetes** | K8s API | Cordon node, reassign pods, and open a ticket |
-| **Filesystem becomes read-only** | `dmesg`, audit logs, OS-level alerts | Unmount and remount or migrate app to another host |
-
-<h4 id="img-srchttpscdnjsdelivrnetghtwittertwemoji1402assets72x721f310png-width20-stylevertical-aligntext-bottom-network--security-events"></h4>
-
-#### <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f310.png" width="20" style="vertical-align:text-bottom;"> Network & Security Events
-
-| Event | Source | Example Response |
-|-------|--------|------------------|
-| **Interface down / Link failure** | SNMP traps, syslog | Notify NOC, run Ansible playbook to reroute traffic |
-| **Unauthorized SSH attempt detected** | Fail2Ban, syslog, SIEM | Block IP, rotate SSH keys, notify SOC |
-| **SSL certificate expiring soon** | Certbot, monitoring tool | Auto-renew with Let's Encrypt, push new cert with Ansible |
-| **DNS resolution failures** | `systemd-resolved`, DNS logs | Switch DNS provider or fix `/etc/resolv.conf` |
-
-<h4 id="img-srchttpscdnjsdelivrnetghtwittertwemoji1402assets72x721f4a1png-width20-stylevertical-aligntext-bottomobservability-driven-triggers"></h4>
-
-#### <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4a1.png" width="20" style="vertical-align:text-bottom;">Observability-Driven Triggers
-
-| Event | Source | Example Response |
-|-------|--------|------------------|
-| **SLO breach warning (latency or error rate)** | SRE observability tool | Pre-emptively scale or rollback new features |
-| **New critical error introduced in logs post-deploy** | ELK, Honeycomb, etc. | Rollback deployment via Ansible |
-| **User reports spike via feedback or ticket** | ITSM tools | Use AI to correlate symptoms, gather diagnostics, and kick off a fix |
-
-<h3 id="2-observability-tool-picks-up-event"></h3>
-### 2. **Observability tool picks up event**:
-
-Now that you have a great understanding of types of events, what are great examples of observability tools that can plug-in to an AIOps workflow:
-
-<h4 id="filebeat"></h4>
-
-#### Filebeat
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/beats-logo.webp">
-
-Filebeat is a lightweight, open-source log shipper from Elastic that forwards logs from end-systems to a message aggregator. It is not an observability platform on its own -- it requires a message bus like Kafka to transport events to EDA. We use it in the AIOps workshop because it is free, low-overhead, and easy to deploy in lab environments.
-
-<h4 id="ibm-instana"></h4>
-
-#### IBM Instana
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/ibm_instana.png">
-
-<a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ibm/instana/">IBM Instana on Automation hub</a>
-
-IBM Instana provides real-time observability across hybrid and multicloud environments with automatic change detection, end-to-end tracing, and context-rich alerts. Its built-in anomaly detection and contextual correlation make it a natural event source for EDA rulebooks -- Instana can trigger automation workflows directly or through a message bus like Kafka.
-
-<h4 id="splunk"></h4>
-
-#### Splunk
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/splunk-logo.png">
-
-<a target="_blank" href="https://console.redhat.com/ansible/automation-hub/namespaces/splunk/">Splunk on Automation hub</a>
-
-Splunk ingests logs, metrics, traces, and events from virtually any source, providing a centralized view of system health across complex IT environments. Its machine learning and anomaly detection capabilities can proactively surface issues, making it an ideal trigger source for EDA-driven remediation workflows.
-
-
-<h3 id="3-eda-sees-event-in-message-queue"></h3>
-
-### 3. **EDA sees event in message queue**
-
-Message queues are optional depending on the observability tool.  For example IBM Instana can work directly with Event-Driven Ansible to trigger automation jobs, or it can work with a message queue like Apache Kafka.  Here are some examples of other message queues that Ansible Automation Platform works with:
-
-<h4 id="aws-sqs"></h4>
-
-#### AWS SQS
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/aws-logo.png">
-
-<a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/amazon/aws/">AWS on Automation hub</a>
-
-Amazon SQS (Simple Queue Service) is a managed message queuing service that decouples event producers from consumers. In an AIOps workflow, observability tools or AWS CloudWatch can publish events to an SQS queue, and EDA subscribes to that queue to trigger automation.
-
-<h4 id="azure-service-bus"></h4>
-
-#### Azure Service Bus
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/azure_service_bus.jpg">
-
-<a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/azure_service_bus/">Azure Service Bus on Automation hub</a>
-
-Azure Service Bus is a fully managed enterprise messaging service with message queuing and publish-subscribe capabilities. EDA can subscribe to Service Bus topics or queues to detect events from Azure resources and third-party systems, making it a natural fit for cloud-centric AIOps workflows.
-
-<h4 id="kafka"></h4>
-
-#### Kafka
-
-<img class="guide-vendor-logo" alt="" src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/kafka_logo.webp">
-
-<a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/kafka/">Kafka on Automation hub</a>
-
-Apache Kafka is a high-throughput, fault-tolerant event streaming platform that collects telemetry data, logs, alerts, and state changes from diverse sources. EDA listens to Kafka topics for specific patterns and triggers remediation workflows. Kafka's ability to decouple producers and consumers makes it ideal for scaling AIOps pipelines across large environments.
-
-Example rulebook for Kafka:
-
-```yaml
----
-- name: Web app issue
-  hosts: all
-  sources:
-   - ansible.eda.kafka:
-       host: service1
-       port: 9092
-       topic: httpd-error-logs
-
-  rules:
-    - name: apache shutdown detected
-      condition: event.body.message is search("shutting down")
-      action:
-        run_workflow_template:
-          organization: "Default"
-          name: "{{ workflow_template_name | default('AI Insights and Lightspeed prompt generation') }}"
-
-    - name: show event messages
-      condition: event.body.message is defined
-      action:
-        debug:
-          msg: "{{ event.body.message }}"
-
-```
-
+> <a target="_blank" href="https://kafka.apache.org/">Apache Kafka</a> is common in labs; production may use Instana webhooks, Splunk, ServiceNow, SQS, Azure Service Bus, or direct EDA plugins instead.
 
 <h2 id="2-log-enrichment-and-prompt-generation-workflow"></h2>
 
