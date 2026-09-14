@@ -33,6 +33,8 @@ inline_edit: true
 
 The two **Run** links above are separate conversation topics (prevent drift vs close the break-fix loop), not a mandatory sequence.
 
+**Self-healing (use case 6)** models curated Run execution from an approved library; the optional multi-LLM workshop appendix on that page is for lab and policy-governed exceptions only.
+
 ## How work starts
 
 Workflows can begin from a human request, an observability event, an ITSM ticket, or a scheduled review. The use case describes the **pattern**; the entry point depends on the customer environment.
