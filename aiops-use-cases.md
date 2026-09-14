@@ -31,9 +31,7 @@ inline_edit: true
 | **Walk** | Orchestrate and automate with intelligence | [Intelligent Capacity Orchestration](README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md), [Curated Automation Remediation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) |
 | **Run** | Autonomous operations and continuous enforcement | [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) |
 
-> **Run includes two patterns.**
->
-> **System-level drift and policy enforcement** prevents risk from accumulating across the environment. **Self-healing infrastructure** closes the loop when something breaks (detect, decide, act, validate). Customers often need both over time; they are separate conversation topics, not sequential homework.
+The two **Run** links above are separate conversation topics (prevent drift vs close the break-fix loop), not a mandatory sequence.
 
 ## How work starts
 

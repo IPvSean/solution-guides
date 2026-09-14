@@ -95,11 +95,7 @@ Capabilities compose by **maturity and use case**, not as one preset bundle. The
 
 ## Common AIOps use cases
 
-Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips). Partner Solution Guides on each use case page implement the pattern with specific integrations.
-
-> **Run includes two patterns.**
->
-> **System-level drift and policy enforcement** prevents risk from accumulating. **Self-healing infrastructure** closes the loop when something breaks (detect, decide, act, validate). Customers often need both over time; they are separate topics, not sequential homework.
+Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips). Use cases **5** and **6** are both **Run** but different buyer questions (drift and policy vs self-healing); partner depth lives on each linked page.
 
 ### How work starts
 
