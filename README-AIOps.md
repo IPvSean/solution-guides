@@ -86,7 +86,7 @@ Ansible Automation Platform is the **trusted execution and orchestration layer**
 </tbody>
 </table>
 
-Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation Orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them.
+Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation Orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them. [Prerequisites](#prerequisites) lists maturity-scoped platform and integration needs.
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
@@ -170,34 +170,31 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 ### Ansible Automation Platform
 
-- **Ansible Automation Platform 2.5+** -- Required for enterprise Event-Driven Ansible support.
+- **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for Crawl through Run in this guide).
+- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation Orchestrator** (multi-step approvals, agent nodes, and closed-loop patterns in UC01 Stages 3+ and later use cases).
 
-### Baseline automation content
-
-Most AIOps paths need **Event-Driven Ansible** and **Ansible Automation Platform** job execution only:
-
-- **`ansible.eda`** -- rulebooks, event sources, and filters (see [Automation Hub](https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/))
-- **`ansible.controller`** -- job templates, workflows, surveys, and RBAC as code (see [Automation Hub](https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/))
-
-Partner Solution Guides list additional collections (`servicenow.itsm`, IBM Instana, Splunk, and others).
-
-> **Tip:** Collections reference
->
-> Hub links, optional self-hosted inference collections, and when to use them are in [Key Terms](#key-terms) at the end of this guide.
+Foundational AIOps assumes **rulebooks and job templates configured in AAP** (UI or your existing GitOps process). **Config-as-code collections** (`ansible.eda`, `ansible.controller`, partner collections) matter when you automate platform setup or reproduce the workshop; they are **not** prerequisites to understand Crawl/Walk/Run or curated remediation. Hub links and when each collection applies are in [Key Terms -- Ansible collections](#key-terms-collections).
 
 ### External Systems
 
-| System | Required | Examples |
-|--------|----------|----------|
-| Observability or ITSM (pattern-dependent) | Yes for event/ticket flows | IBM Instana, Splunk, ServiceNow, Dynatrace, Prometheus, Azure, AWS |
-| Message queue or event bus | Optional | Kafka, AWS SQS, Azure Service Bus (depends on partner) |
-| AI inference endpoint | Optional | Red Hat AI, partner AI, or any OpenAI-compatible API for enrichment |
-| Automation code assistant | Optional | IDE **authoring-time** only; optional UC06 advanced lab -- not Walk curated remediation |
-| Red Hat Lightspeed | Recommended | CVE and Advisor remediation content via console.redhat.com |
-| Git repository | Optional | Required for Git-backed projects; UC06 workshop appendix uses promotion flow |
-| Automation Orchestrator | Optional | Multi-step orchestration, approvals, AI agent nodes (see UC01 deep-dive) |
-| AAP MCP server | Recommended at Walk | Query job templates and workflows, launch governed runs; also ServiceNow LEAP and Lightspeed MCP |
-| Chat or ITSM tool | Recommended | Mattermost, Slack, ServiceNow |
+Requirements depend on **maturity and which use case or partner guide** you implement -- not everything below at once.
+
+<h3 id="what-you-need-by-maturity"></h3>
+
+### What you need by maturity
+
+| Maturity | Platform | External / integration |
+|----------|----------|-------------------------|
+| **Crawl** | AAP 2.5+ with EDA | At least one **event or ticket source** (observability or ITSM); optional **inference** for enrichment |
+| **Walk (curated)** | Same | **AAP MCP server** for library search and governed launch; optional chat/ITSM for notifications |
+| **Walk/Run (orchestrated)** | **AAP 2.7+** with **Automation Orchestrator** | Approvals, branching, validation loops ([Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) decision framework) |
+| **Run + content** | As above | **Red Hat Lightspeed** (CVE/Advisor playbooks) where you remediate from Lightspeed content |
+
+### Lab-only or partner-specific (not foundational defaults)
+
+- Message bus (Kafka, SQS, Azure Service Bus) -- partner guide dependent
+- Git promotion / **Automation code assistant** -- [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) only
+- Named stacks -- open the relevant **partner Solution Guide** or **AIOps Use Case** page (Instana, Splunk, ServiceNow, and others)
 
 <h2 id="aiops-workflow"></h2>
 
@@ -396,7 +393,7 @@ With this framework, teams move from manual triage toward governed AIOps: enrich
 
 ## Key Terms
 
-Reference for Ansible collections mentioned in this guide. Partner integrations add their own collections on each Solution Guide page.
+Reference for Ansible collections in this guide, including config-as-code and partner integrations. Partner Solution Guides add their own collections on each page.
 
 <div class="key-terms-group">
 
@@ -418,7 +415,7 @@ Reference for Ansible collections mentioned in this guide. Partner integrations 
 
 <dt>Partner collections</dt>
 <dd>Collections named on each partner Solution Guide (for example <code>servicenow.itsm</code>, IBM Instana, Splunk or EDA integrations).
-<span class="key-terms-detail">Install only for the integration you are implementing; the External Systems table above lists pattern-level requirements.</span></dd>
+<span class="key-terms-detail">Install only for the integration you are implementing; see [What you need by maturity](#what-you-need-by-maturity) in Prerequisites.</span></dd>
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> and <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a></dt>
 <dd>Optional validated and certified collections for **self-hosted Red Hat AI** on your infrastructure.
