@@ -242,9 +242,10 @@ graph LR
 
 <img src="assets/images/aiops-use-case-04-curated-automation-remediation.png" alt="Curated automation remediation: AI uses MCP to search AAP for approved job templates, correlates the incident, and runs governed automation">
 
-> **Tip:** Deep-dive the pattern.
+> **Tip:** Go deeper.
 >
-> See [Curated Automation Remediation: From EDA to Orchestrated Automation](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) and [Ansible DevTools -- Connecting to Ansible Automation Platform](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform) for MCP gateway endpoints (`job_management`, `inventory_management`, and related services).
+> - [Curated Automation Remediation (use case 4)](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) -- full Walk pattern
+> - [Ansible DevTools: connect to AAP MCP](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform) -- gateway setup and toolsets
 
 #### Operational impact (reference path)
 
