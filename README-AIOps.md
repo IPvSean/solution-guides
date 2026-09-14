@@ -279,11 +279,20 @@ Before high-impact runs, teams typically enforce:
 
 ### Crawl (enrichment before remediation)
 
-At **Crawl**, use **read-only** enrichment: EDA plus inference adds context to tickets or chat so operators decide faster. See [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), and [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md).
+At **Crawl**, use **read-only** enrichment: EDA plus inference adds context to tickets or chat so operators decide faster. Deeper walkthroughs:
+
+- [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) -- use case pattern (Crawl)
+- [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md) -- ITSM enrichment
+- [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md) -- observability-driven enrichment
 
 ### Run (closed loop; advanced lab on UC06)
 
-**Run** covers drift enforcement and **self-healing** from the **approved library**, not novel playbooks at alert time. See [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) and [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md). Multi-LLM **workshop codegen** lives only in the [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only), not in this foundational workflow.
+**Run** covers drift enforcement and **self-healing** from the **approved library**, not novel playbooks at alert time. Start here:
+
+- [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) -- prevent slow failure and policy drift
+- [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md) -- detect, act, validate on known failure classes
+
+Multi-LLM **workshop codegen** is optional lab depth only: [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) (not part of this foundational workflow).
 
 
 <h2 id="validation"></h2>
