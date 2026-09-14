@@ -206,16 +206,12 @@ The **default production pattern** is **curated automation remediation** at **Wa
 >
 > Generating playbooks from an alert introduces **unreviewed change** every time the same symptom recurs. Teams already maintain trusted automation in AAP. MCP exposes that library to the AI client so inference **chooses** from approved options instead of authoring fixes from thin air.
 
-**Event-Driven Ansible** is included in Ansible Automation Platform. The four sections below follow the same shape as the hands-on workshop pipeline, mapped to the **production curated path**: detect, search the library, correlate and select, then execute with guardrails.
+**Event-Driven Ansible** is included in Ansible Automation Platform. The four sections below follow the same shape as the hands-on workshop pipeline, mapped to the **production curated path**:
 
-| Stage | Operational Impact | Why |
-|-------|-------------------|-----|
-| **1. Detect** | **None to low** | Events and tickets are read-only until a run is requested. |
-| **2. MCP search** | **None** | Lists existing templates and workflows; no infrastructure change. |
-| **3. Correlate and select** | **None** | AI reasoning only; selection is from the approved library. |
-| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run. |
-
-Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
+1. **[Detect](#1-detect)** -- observability, ITSM, or an operator surfaces a symptom.
+2. **[MCP search](#2-mcp-search)** -- the AI client lists approved job templates and workflows in AAP.
+3. **[Correlate and select](#3-correlate-and-select)** -- inference picks from the library (or a short list for approval).
+4. **[Execute approved job](#4-execute-approved-job)** -- governed run with guardrails and validation.
 
 <h2 id="1-detect"></h2>
 <a id="event-intake-reference"></a>
@@ -459,6 +455,17 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 3. **Notify** -- post enriched context to **chat or ITSM** (Mattermost, Slack, ServiceNow, and similar) so a human approves the next step.
 
 At **Walk**, the same correlation step leads to **select from menu** and a **governed run** in stage 4. Deep adoption paths: [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md).
+
+### Risk at a glance
+
+| Stage | Operational Impact | Why |
+|-------|-------------------|-----|
+| **1. Detect** | **None to low** | Events and tickets are read-only until a run is requested. |
+| **2. MCP search** | **None** | Lists existing templates and workflows; no infrastructure change. |
+| **3. Correlate and select** | **None** | AI reasoning only; selection is from the approved library. |
+| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run. |
+
+Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
 
 <h2 id="4-execute-approved-job"></h2>
 
