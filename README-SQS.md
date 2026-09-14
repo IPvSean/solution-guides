@@ -68,7 +68,7 @@ What makes up the solution?
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e8.png" width="20" style="vertical-align:text-bottom;"> **Amazon SQS** as the event transport layer <a target="_blank" href="https://aws.amazon.com/sqs/">[Link]</a>
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **Event-Driven Ansible (EDA)** to consume SQS messages and trigger workflows <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/event-driven-ansible">[Link]</a>
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Red Hat AI** for understanding service issues <a target="_blank" href="https://www.redhat.com/en/products/ai">[Link]</a>
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2728.png" width="20" style="vertical-align:text-bottom;"> **Ansible Lightspeed** to generate remediation playbooks <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/ansible-lightspeed">[Link]</a>
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2728.png" width="20" style="vertical-align:text-bottom;"> **Automation code assistant** to generate remediation playbooks (workshop Run only) <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/ansible-lightspeed">[Link]</a>
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f501.png" width="20" style="vertical-align:text-bottom;"> **Ansible Automation Platform (AAP)** workflows for orchestration <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible">[Link]</a>
 
 > **EDA is part of Ansible Automation Platform.**
@@ -114,7 +114,7 @@ What makes up the solution?
 | AWS IAM credentials | Yes | Access key / secret key or IAM role with `sqs:ReceiveMessage`, `sqs:DeleteMessage`, `sqs:GetQueueUrl` |
 | Observability tool | Yes | AWS CloudWatch, Filebeat, IBM Instana, Splunk, Dynatrace |
 | AI inference endpoint | Yes | Red Hat AI (RHEL AI + InstructLab) or any OpenAI-compatible API |
-| Ansible Lightspeed | Yes | Ansible Lightspeed with IBM watsonx Code Assistant |
+| Automation code assistant | Yes | Workshop Run codegen (Red Hat AI, IBM watsonx, or Gemini backends) -- not Red Hat Lightspeed curated remediations |
 | Git repository | Yes | GitHub, GitLab, Gitea |
 | Chat or ITSM tool | Recommended | Mattermost, Slack, ServiceNow |
 
@@ -138,7 +138,7 @@ The AIOps workflow has four (4) parts:
 
 3. **Remediation Workflow (workshop Run demo)**
 
-   Generates a playbook via Ansible Lightspeed, syncs it to Git, builds a Job Template. At **Walk**, use [AAP MCP to select an existing template](README-AIOps.md#4-curated-automation-remediation-walk) instead of incident-time codegen.
+   Generates a playbook via **Automation code assistant**, syncs it to Git, builds a Job Template. At **Walk**, use [AAP MCP to select an existing template](README-AIOps.md#4-curated-automation-remediation-walk) instead of incident-time codegen.
 
 4. **Execute Remediation**
 
@@ -177,7 +177,7 @@ AWS Event (CloudWatch/EventBridge/App)
          │
          ▼
     ┌──────────────────────────┐
-    │  Remediation Workflow    │  ← Lightspeed generates playbook, commit to Git
+    │  Remediation Workflow    │  ← Automation code assistant generates playbook, commit to Git
     └────┬─────────────────────┘
          │
          ▼
@@ -387,7 +387,7 @@ The four components:
 1. Capture Additional Information
 2. Red Hat AI: Analyze Incident
 3. Notify Chat / ITSM
-4. Build Ansible Lightspeed Job Template
+4. Build Automation code assistant job template
 
 <img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/log_enrichment_and_prompt_generation.png">
 
@@ -456,31 +456,31 @@ Post the AI-generated diagnosis to your team's communication channel. See the [A
 
 <h3 id="4-build-ansible-lightspeed-job-template"></h3>
 
-### 4. Build Ansible Lightspeed Job Template
+### 4. Build Automation code assistant job template
 
-This step creates (or updates) the Job Template with the AI-generated insights for the Remediation Workflow. The implementation is identical to the general AIOps pipeline -- see [AIOps guide -- Build Ansible Lightspeed Job Template](README-AIOps.md#4-build-ansible-lightspeed-job-template).
+This step creates (or updates) the Job Template with the AI-generated insights for the Remediation Workflow. The implementation matches the [UC06 workshop appendix -- Build Automation code assistant job template](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#4-build-ansible-lightspeed-job-template).
 
 <h2 id="3-remediation-workflow"></h2>
 
 ## 3. Remediation Workflow
 
-The Remediation Workflow generates an Ansible Playbook via Lightspeed, commits it to Git, syncs the project, and builds a Job Template. This workflow is identical across all AIOps integrations regardless of the event source.
+The Remediation Workflow generates an Ansible Playbook via **Automation code assistant**, commits it to Git, syncs the project, and builds a Job Template. This workflow is identical across all AIOps integrations regardless of the event source.
 
 <img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/remediation_workflow.png">
 
-1. Lightspeed Remediation Playbook Generator
+1. Automation code assistant remediation playbook generator (workshop job names may still say Lightspeed)
 2. Commit Fix to Git
 3. Sync Project
 4. Build Remediation Template
 
-See [AIOps automation with Ansible -- Remediation Workflow](README-AIOps.md#3-remediation-workflow) for the complete walkthrough of each step.
+See [Self-healing infrastructure -- Remediation Workflow (workshop appendix)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#3-remediation-workflow) for the complete walkthrough of each step.
 
 <h3 id="1-lightspeed-remediation-playbook-generator"></h3>
 
-### 1. Lightspeed Remediation Playbook Generator
+### 1. Automation code assistant remediation playbook generator
 
 ```yaml
-    - name: Send request to Lightspeed API
+    - name: Send request to Automation code assistant API
       ansible.builtin.uri:
         url: "{{ input_lightspeed_url | default('https://c.ai.ansible.redhat.com/api/v0/ai/generations/') }}"
         method: POST
@@ -552,7 +552,7 @@ Validate each stage of the pipeline independently:
 | **SQS Queue** | Messages are arriving in the queue | Send a test message: `aws sqs send-message --queue-url $QUEUE_URL --message-body '{"test": "eda-validation"}'` | Message appears in SQS console or via `aws sqs receive-message` |
 | **EDA + SQS** | EDA is polling and receiving messages | Check AAP -- rulebook activation should show as **Running** | Event log shows received SQS messages |
 | **Enrichment Workflow** | AI analyzed the incident and notifications were sent | Trigger a test alarm; check Workflow Visualizer | All workflow nodes green; chat/ITSM received the AI diagnosis |
-| **Remediation Workflow** | Lightspeed generated a playbook and it was committed | Check Git repo for new playbook; verify Job Template was created | Playbook file exists in repo; Job Template points to correct playbook |
+| **Remediation Workflow** | Automation code assistant generated a playbook and it was committed | Check Git repo for new playbook; verify Job Template was created | Playbook file exists in repo; Job Template points to correct playbook |
 | **Execute Remediation** | The AI-generated playbook resolved the issue | Run the remediation Job Template | Job completes successfully; service returns to steady state |
 
 #### End-to-End Test
@@ -596,7 +596,7 @@ aws sqs send-message \
 |----------|----------|-------------|---------|
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6b6.png" width="20" style="vertical-align:text-bottom;"> **Crawl** | Ticket Enrichment | EDA consumes SQS events -> AI diagnoses root cause -> enriched context posted to chat/ITSM -> **human remediates manually** | Read-only: AI interprets, humans act |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Curated Remediation | EDA consumes SQS events -> AI diagnoses root cause -> AI **selects the right playbook** from a pre-approved library -> human approves -> playbook executes | AI selects from existing automation |
-| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Self-Healing | EDA consumes SQS events -> AI diagnoses root cause -> Lightspeed **generates a new remediation playbook** -> policy engine validates -> playbook executes | AI generates new automation on-the-fly |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Self-Healing | EDA consumes SQS events -> AI diagnoses root cause -> **Automation code assistant generates a new remediation playbook** -> policy engine validates -> playbook executes | AI generates new automation on-the-fly |
 
 This guide demonstrates the **Run** stage. Organizations can start at **Crawl** by using only the Enrichment Workflow (stages 1-2) and stopping before the Remediation Workflow.
 
@@ -614,7 +614,7 @@ This guide demonstrates the **Run** stage. Organizations can start at **Crawl** 
 
 ## Summary
 
-With AWS SQS as the event transport, your AIOps pipeline gains the durability and scalability of a fully managed message queue without the overhead of running your own broker infrastructure. Events from CloudWatch, EventBridge, SNS, or any application that publishes to SQS automatically flow into Event-Driven Ansible, where AI inference diagnoses the root cause and Ansible Lightspeed generates remediation playbooks on-the-fly. The result is a cloud-native self-healing architecture that leverages your existing AWS infrastructure and reduces mean time to resolution (MTTR) without writing custom Lambda functions or polling scripts.
+With AWS SQS as the event transport, your AIOps pipeline gains the durability and scalability of a fully managed message queue without the overhead of running your own broker infrastructure. Events from CloudWatch, EventBridge, SNS, or any application that publishes to SQS automatically flow into Event-Driven Ansible, where AI inference diagnoses the root cause and **Automation code assistant** generates remediation playbooks on-the-fly in **workshop Run** scenarios. The result is a cloud-native self-healing architecture that leverages your existing AWS infrastructure and reduces mean time to resolution (MTTR) without writing custom Lambda functions or polling scripts.
 
 ---
 

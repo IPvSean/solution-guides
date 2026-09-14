@@ -153,7 +153,7 @@ List the tools and technologies used in this solution. Link to product pages.
 **Example:**
 
 - **Red Hat AI** for understanding service issues
-- **Ansible Lightspeed** to generate remediation playbooks
+- **Automation code assistant** to generate remediation playbooks (workshop Run -- not Red Hat Lightspeed curated content)
 - **Ansible Automation Platform (AAP)** workflows for orchestration
 - **Event-Driven Ansible (EDA)** to listen to real-time service events
 

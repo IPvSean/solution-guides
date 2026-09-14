@@ -113,7 +113,7 @@ An AIOps **workshop** pipeline has four (4) parts:
 
 3. **Remediation Workflow**
 
-   Generates a playbook via Ansible Lightspeed, syncs it to Git, builds another Job Template.  This also falls under the **Inference** part of the AIOps workflow.  For this solution we are using one AI LLM endpoint (Red Hat AI) to figure out what the issue is and diagnose it, and one AI LLM endpoint to create an Ansible Playbook to remediate the issue.  This is considered a **multi-LLM workflow**, as we are using 2 or more LLM endpoints within our workflow.
+   Generates a playbook via **Automation code assistant**, syncs it to Git, builds another Job Template.  This also falls under the **Inference** part of the AIOps workflow.  For this solution we are using one AI LLM endpoint (Red Hat AI) to figure out what the issue is and diagnose it, and one AI LLM endpoint (**Automation code assistant**) to create an Ansible Playbook to remediate the issue.  This is considered a **multi-LLM workflow**, as we are using 2 or more LLM endpoints within our workflow.
 
 4. **Execute Remediation**
 
@@ -349,7 +349,7 @@ The second part of the AIOps workflow is the **Log Enrichment and Prompt Generat
 1. Capture Additional Information
 2. Red Hat AI: Analyze Incident
 3. Notify Chat / ITSM
-4. Build Ansible Lightspeed Job Template
+4. Build Automation code assistant job template
 
 <h3 id="1-capture-additional-information"></h3>
 
@@ -514,17 +514,17 @@ Slack is an enterprise messaging platform with a rich API and app ecosystem that
 
 <h3 id="4-build-ansible-lightspeed-job-template"></h3>
 
-### 4. Build Ansible Lightspeed Job Template
+### 4. Build Automation code assistant job template
 
 The final piece of this workflow is creating (or updating) a Ansible Automation Platform job template with the insights we just gained from Red Hat AI.
 
-We have a problem, such as an application outage, and we now have a solution: for example: "there is a mis-configuration on this line" and now we can use this information we gleaned and now prompt Ansible Lightspeed in the next workflow, the **Remediation workflow**.  We are basically using one AI endpoint (Red Hat AI) to help create a prompt to a second AI endpoint (Ansible Lightspeed) to create an Ansible Playbook to help remediate the issue.
+We have a problem, such as an application outage, and we now have a solution: for example: "there is a mis-configuration on this line" and now we can use this information we gleaned and now prompt **Automation code assistant** in the next workflow, the **Remediation workflow**.  We are basically using one AI endpoint (Red Hat AI) to help create a prompt to a second AI endpoint (**Automation code assistant**) to create an Ansible Playbook to help remediate the issue.
 
 <img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/workflow_prompt.png">
 
 A way to do this (an opinionated way, but not the only way) is to use an <a target="_blank" href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/latest/html-single/using_automation_execution/index#controller-surveys-in-job-templates">Ansible Survey</a>.
 
-In the above screenshot, the left is the prompt we will use in the next workflow, while the right is the insights we gleaned from Red Hat AI based on all the information it had.  This is a natural breakpoint where the human can course correct the prompt.  We will still have time to review the solution before we move it into production, but it may make sense for your IT operations team to review this prompt before we move onto Lightspeed.
+In the above screenshot, the left is the prompt we will use in the next workflow, while the right is the insights we gleaned from Red Hat AI based on all the information it had.  This is a natural breakpoint where the human can course correct the prompt.  We will still have time to review the solution before we move it into production, but it may make sense for your IT operations team to review this prompt before we move onto **Automation code assistant** playbook generation.
 
 > **Could we make this one workflow?**
 >
@@ -598,16 +598,16 @@ This workshop workflow takes a prompt from the previous workflow, allows the hum
 
 <img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/remediation_workflow.png">
 
-1. Lightspeed Remediation Playbook Generator
+1. Automation code assistant remediation playbook generator
 2. Commit Fix to Git
 3. Sync Project
 4. Build Remediation Template
 
 <h3 id="1-lightspeed-remediation-playbook-generator"></h3>
 
-### 1. Lightspeed Remediation Playbook Generator
+### 1. Automation code assistant remediation playbook generator
 
-Ansible Lightspeed also has an API.  We can communicate to this API similarly as we do with Red Hat AI solutions.  Here is an example task:
+**Automation code assistant** also has a generation API.  We can communicate to this API similarly as we do with Red Hat AI solutions.  Here is an example task:
 
 ```yaml
     - name: Send request to AI API
@@ -631,7 +631,7 @@ The API will respond with the Ansible Playbook as part of the payload under the 
 
 ### 2. Commit Fix to Git
 
-Once the Ansible Playbook is retrieved from Ansible Lightspeed, we need to store it in a Git repo.  We can use the <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">Ansible SCM</a> (source control management) content collection to easily publish the content to any specified repo.
+Once the Ansible Playbook is retrieved from **Automation code assistant**, we need to store it in a Git repo.  We can use the <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">Ansible SCM</a> (source control management) content collection to easily publish the content to any specified repo.
 
 Here is an excerpt from our AIOps Workshop:
 
@@ -679,7 +679,7 @@ The final job template inside this workflow is creating a new job template with 
 
 ## 4. Execute Remediation
 
-The final step is running the remediation Job Template that was dynamically created in the previous workflow. This is the Ansible Playbook that Lightspeed generated -- committed to Git, synced to a project, and loaded into a Job Template -- now ready to execute against the affected host.
+The final step is running the remediation Job Template that was dynamically created in the previous workflow. This is the Ansible Playbook that **Automation code assistant** generated -- committed to Git, synced to a project, and loaded into a Job Template -- now ready to execute against the affected host.
 
 <img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/overview_diagram.png">
 
