@@ -39,7 +39,7 @@ The two **Run** links above are separate conversation topics (prevent drift vs c
 
 Workflows can begin from a human request, an observability event, an ITSM ticket, or a scheduled review. The use case describes the **pattern**; the entry point depends on the customer environment.
 
-<img src="assets/images/how-work-starts.png" alt="How work starts: human, event, ticket, and scheduled paths converge on Ansible Automation Platform execution" class="guide-how-work-starts">
+<img src="{{ '/assets/images/how-work-starts.png' | relative_url }}" alt="How work starts: human, event, ticket, and scheduled paths converge on Ansible Automation Platform execution" class="guide-how-work-starts">
 
 ## All six use cases
 
