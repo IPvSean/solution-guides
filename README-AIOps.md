@@ -105,7 +105,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 <div class="cards-track-section cards-track-section--use-cases">
 <nav class="use-case-strip" aria-label="AIOps use cases">
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">
   <span class="use-case-strip__num">1</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">Incident and Ticket Enrichment</span>
@@ -113,7 +113,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
   </span>
   <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
 </a>
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-02-Cost-Resource-Optimization.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-02-Cost-Resource-Optimization' | relative_url }}">
   <span class="use-case-strip__num">2</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">Cost and Resource Optimization</span>
@@ -121,7 +121,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
   </span>
   <span class="use-case-maturity-chip use-case-maturity-chip--crawl">Crawl</span>
 </a>
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-03-Intelligent-Capacity-Orchestration' | relative_url }}">
   <span class="use-case-strip__num">3</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">Intelligent Capacity Orchestration</span>
@@ -129,7 +129,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
   </span>
   <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
 </a>
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-04-Curated-Automation-Remediation.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-04-Curated-Automation-Remediation' | relative_url }}">
   <span class="use-case-strip__num">4</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">Curated Automation Remediation</span>
@@ -137,7 +137,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
   </span>
   <span class="use-case-maturity-chip use-case-maturity-chip--walk">Walk</span>
 </a>
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement' | relative_url }}">
   <span class="use-case-strip__num">5</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">System-Level Drift and Policy Enforcement</span>
@@ -145,7 +145,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
   </span>
   <span class="use-case-maturity-chip use-case-maturity-chip--run">Run</span>
 </a>
-<a class="use-case-strip__item" href="README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md">
+<a class="use-case-strip__item" href="{{ '/README-AIOps-Use-Case-06-Self-Healing-Infrastructure' | relative_url }}">
   <span class="use-case-strip__num">6</span>
   <span class="use-case-strip__body">
     <span class="use-case-strip__title">Self-healing infrastructure</span>
