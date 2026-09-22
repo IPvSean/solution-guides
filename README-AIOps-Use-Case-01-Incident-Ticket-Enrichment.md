@@ -96,27 +96,15 @@ Not every team needs all three. Stage 1 needs only EDA and AAP. Later stages add
 
 ### Where are you today?
 
-Before reading the scenarios, locate yourself on the adoption path. Pick the statement that best describes your current state:
+Before reading the scenarios, locate yourself on the adoption path. Pick the row that best describes your current state:
 
-> **Stage 1:**
->
-> I have EDA rulebooks firing playbooks on known alert types. The automation works for repetitive incidents with deterministic fixes.
-
-> **Stage 2:**
->
-> I have deterministic automation running. I want to reduce investigation time on incidents that engineers still handle manually. My goal is AI-generated analysis on the ticket before anyone opens it -- not automated remediation. I am not ready for a full orchestration platform yet.
-
-> **Stage 3:**
->
-> I have AI enrichment on tickets. The rulebooks are growing because the same alert type needs different responses depending on context I cannot encode in a single rule.
-
-> **Stage 4:**
->
-> I have context-aware routing in place. My next problem is incidents where no rulebook entry matches and the correct response requires correlating data from multiple systems.
-
-> **Stage 5:**
->
-> I have AI-assisted triage for novel incidents. My remaining problems are post-remediation validation and P1 escalations where an on-call engineer needs assembled context in under two minutes.
+| Stage | You are here if… | Jump to |
+|-------|------------------|---------|
+| **1** | EDA fires playbooks on known alerts with deterministic fixes | [Stage 1](#stage-1-known-incident-known-fix) |
+| **2** | Automation runs, but engineers still spend triage time; you want AI analysis on the ticket, not remediation yet | [Stage 2](#stage-2-ai-enriched-tickets-with-aap-only) |
+| **3** | Tickets are AI-enriched; rulebooks grow because the same alert needs different responses by context | [Stage 3](#stage-3-context-aware-routing) |
+| **4** | Context-aware routing works; novel incidents need multi-system correlation | [Stage 4](#stage-4-ai-driven-triage-for-novel-incidents) |
+| **5** | Novel triage works; gaps are post-remediation validation and fast P1 context | [Stage 5](#stage-5-full-orchestration-workflows) |
 
 Each section below starts at one of these points and shows what to build next.
 
