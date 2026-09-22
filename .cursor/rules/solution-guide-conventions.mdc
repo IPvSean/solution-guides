@@ -41,6 +41,21 @@ Internal cross-references between solution guides should use plain markdown link
 See [AIOps automation with Ansible](README-AIOps.md) for the full pipeline.
 ```
 
+Many guide bodies wrap content in `{% raw %}…{% endraw %}`, so **Liquid does not run** inside them. For HTML `href` attributes in those files (for example use-case strips), use a plain Pages path with `.html`, not `relative_url`:
+
+```html
+# Good -- works inside {% raw %} on GitHub Pages
+<a href="README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.html">…</a>
+
+# Bad -- Liquid left as literal text inside {% raw %}
+<a href="{{ '/README-AIOps-Use-Case-01-Incident-Ticket-Enrichment' | relative_url }}">…</a>
+
+# Bad -- GitHub Pages serves raw markdown for .md URLs
+<a href="README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md">…</a>
+```
+
+Hub pages with YAML front matter and no `{% raw %}` wrapper (for example `aiops-use-cases.md`) may keep using `{{ '/path' | relative_url }}`.
+
 ## Solution Guide Structure
 
 All solution guides must follow the framework in `README-best-practices.md`. The framework section names map 1:1 to the section names in every guide:
