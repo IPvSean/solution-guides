@@ -1,17 +1,11 @@
 {% raw %}
 <div class="guide-header">
 
-<h1>Incident and Ticket Enrichment: From EDA to Orchestrated Automation</h1>
+<h1>Incident and Ticket Enrichment</h1>
 
 <span class="guide-type-badge guide-type-badge--use-case"><i class="fas fa-layer-group" aria-hidden="true"></i> AIOps Use Case</span>
 
 </div>
-
-> **Pattern guide, not a partner integration.**
->
-> This page is the **extended adoption path** for [use case 1: Incident and ticket enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) in the [Common AIOps Use Cases hub](aiops-use-cases.md). ServiceNow and Splunk appear as common examples; swap collections and APIs for your ITSM and observability stack.
-
-<img src="assets/images/aiops-circle.png" alt="Incident and Ticket Enrichment" style="max-width:400px">
 
 <style>
   div#toc {
@@ -23,13 +17,11 @@
 
 Ticket enrichment is where most operations teams leave time on the floor. The monitoring tool fires. A ticket opens. Someone reads it, gathers context from two or three other systems, decides what to run, and finally kicks off automation that executes in minutes. The execution is not the problem. The investigation before it is.
 
-This use case walks through ticket enrichment in six concrete scenarios: what a well-designed **AAP + EDA** setup handles on its own, the signals that tell you when you have outgrown it, and how **Automation orchestrator (AO)** extends that design when your requirements demand it. Every scenario includes an explicit decision point so you can locate yourself on the adoption path and know what to build next.
+This is **Crawl** enrichment with a clear **Walk/Run** path into **Automation orchestrator (AO)** when you outgrow rulebooks alone. It walks through ticket enrichment in five concrete stages: what a well-designed **AAP + EDA** setup handles on its own, the signals that tell you when you have outgrown it, and how AO extends that design when your requirements demand it. Every stage includes an explicit decision point so you can locate yourself on the adoption path and know what to build next.
 
-It is written for the engineer who builds and maintains these workflows, not a buyer overview. If you are deciding which node type to use and why, this is for you.
+It is written for the engineer who builds and maintains these workflows, not a buyer overview. If you are deciding which node type to use and why, this is for you. Start from the [Common AIOps Use Cases hub](aiops-use-cases.md) or the foundational [AIOps automation with Ansible](README-AIOps.md) guide for the broader reference architecture. ServiceNow and Splunk appear as examples -- swap collections and APIs for your ITSM and observability stack.
 
-> **Note:** ITSM platform
->
-> Examples in this guide use ServiceNow and the `servicenow.itsm` collection. The patterns apply equally to any ITSM or ticketing platform -- Jira Service Management, BMC Helix, Freshservice, or a custom webhook endpoint. Swap the ticket-creation and work-note steps for your platform's Ansible collection or API.
+<img src="assets/images/aiops-circle.png" alt="Incident and Ticket Enrichment: Observability, Inference, and Automation" style="max-width:400px">
 
 <h2 id="background"></h2>
 
@@ -88,6 +80,10 @@ Not every team needs all three. Stage 1 needs only EDA and AAP. Later stages add
 
 - ITSM platform (ServiceNow in the examples below)
 - Monitoring platform capable of webhook output (Splunk, Dynatrace, Instana, or equivalent)
+
+> **Note:** ITSM platform
+>
+> Examples in this guide use ServiceNow and the `servicenow.itsm` collection. The patterns apply equally to any ITSM or ticketing platform -- Jira Service Management, BMC Helix, Freshservice, or a custom webhook endpoint. Swap the ticket-creation and work-note steps for your platform's Ansible collection or API.
 
 ### Featured Ansible Content Collections
 
