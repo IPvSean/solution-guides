@@ -77,8 +77,8 @@ inline_edit: true
 </section>
 </div>
 <section class="guide-types-tracks">
-  <h2 id="solution-guide-tracks" class="guide-types-tracks__title">Solution Guide tracks</h2>
-  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>tracks</strong> by automation pattern: AIOps and Event-Driven partner integrations. All tracks use the same guide framework, validation expectations, and maturity path structure. Within AIOps and Event-Driven, one guide per domain may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, including <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases">six operational use cases</a> and Crawl/Walk/Run).</p>
+  <h2 id="solution-guide-categories" class="guide-types-tracks__title">Solution Guide categories</h2>
+  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>categories</strong> by domain: AIOps and Network automation. All categories use the same guide framework, validation expectations, and maturity path structure. Within a category, one guide may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, including <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases">six operational use cases</a> and Crawl/Walk/Run).</p>
 
   <div class="guide-type-tracks">
     <article class="guide-type-track guide-type-track--aiops">
@@ -97,12 +97,12 @@ inline_edit: true
       </div>
     </article>
 
-    <article class="guide-type-track guide-type-track--event-driven">
+    <article class="guide-type-track guide-type-track--network">
       <div class="guide-type-track__header">
-        <span class="guide-type-track__badge">Event-Driven</span>
-        <h3 id="event-driven-solutions" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#event-driven-solutions">Event-Driven Solutions</a></h3>
+        <span class="guide-type-track__badge">Network</span>
+        <h3 id="network-automation" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#network-automation">Network automation</a></h3>
       </div>
-      <p class="guide-type-track__body">Partner integrations where <strong>Event-Driven Ansible</strong> closes the loop from partner events to automated action -- without an AI enrichment layer. Use these when webhooks, queues, or CMDB state changes should trigger governed Ansible execution in real time.</p>
+      <p class="guide-type-track__body">Partner integrations for <strong>network source of truth, configuration, and failover</strong> with Ansible Automation Platform. Use these when NetBox (or similar) inventory and intent should drive device config, provisioning, or circuit recovery -- with Event-Driven Ansible when state changes should trigger governed execution.</p>
       <div class="guide-type-track__examples">
         <span class="guide-type-track__examples-label">Examples</span>
         <div class="guide-type-track__pills">

@@ -513,18 +513,18 @@ Grade guides against this rubric before publishing:
 
 Score each 1-5. Anything below 3 in any category -- revise before publish.
 
-### Scoring by Solution Track
+### Scoring by Solution Category
 
-Apply the base rubric above, then adjust expectations by track. Do not penalize a guide for capabilities outside its track.
+Apply the base rubric above, then adjust expectations by category. Do not penalize a guide for capabilities outside its category.
 
-| Track | Rubric adjustments |
-|-------|-------------------|
+| Category | Rubric adjustments |
+|----------|-------------------|
 | **AIOps** | Full rubric. Technical Executability should include AI enrichment, inference endpoints, MCP/Lightspeed integration, or governed playbook selection where the guide claims an AI outcome. |
-| **Event-Driven** | Do not penalize absence of AI. Weight EDA rulebooks, webhook or queue integration, and closed-loop automation without inference. Business Framing should cite operational response time, not AI accuracy. |
+| **Network automation** | Do not penalize absence of AI. Weight inventory/source-of-truth integration (for example NetBox), device configuration or failover workflows, and closed-loop automation where EDA is used. Business Framing should cite change velocity, outage reduction, or config consistency. |
 | **AIOps Use Case** | Lighter on YAML depth and single-partner executability. Weight decision paths, adoption narrative, explicit signals for when to add the next capability, and cross-links to reference architectures. Validation may be scenario-based rather than a single runnable pipeline. Six patterns live in [README-AIOps.md](README-AIOps.md#common-aiops-use-cases); the ticket enrichment appendix is the primary extended adoption page. |
 
 **N/A rules:**
-- Event-Driven guides: skip AI-specific executability checks unless the guide adds an optional AI enrichment section.
+- Network automation guides: skip AI-specific executability checks unless the guide adds an optional AI enrichment section.
 - AIOps Use Case pages: Architecture Clarity may emphasize decision flow over deployment topology; Production Readiness Info may be advisory rather than a full runbook.
 
 </details>

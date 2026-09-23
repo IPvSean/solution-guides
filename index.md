@@ -28,12 +28,12 @@ patternfly: true
       </p>
     </div>
     <div class="cards-sidebar__section">
-      <h4 class="cards-sidebar__title">Solution track</h4>
+      <h4 class="cards-sidebar__title">Categories</h4>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
         <input type="checkbox" value="aiops"> AIOps
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
-        <input type="checkbox" value="event-driven"> Event-Driven
+        <input type="checkbox" value="network"> Network automation
       </label>
     </div>
     <div class="cards-sidebar__section">
@@ -336,20 +336,7 @@ patternfly: true
         </div>
       </a>
 
-      </div>
-      </div>
-
-      <div id="event-driven-solutions" class="cards-track-section">
-        <div class="cards-track-section__heading">
-          <h3 class="cards-track-section__title">Event-Driven Solutions</h3>
-          <a href="{{ '/guide-types' | relative_url }}#event-driven-solutions" class="guide-section__info" data-tooltip="Partner integrations where Event-Driven Ansible closes the loop from partner events to automated action." aria-label="Learn about Event-Driven Solutions">
-            <i class="fas fa-info-circle" aria-hidden="true"></i>
-          </a>
-        </div>
-        <p class="cards-track-section__intro">Closed-loop automation from partner webhooks and events through EDA rulebooks to governed Ansible execution.</p>
-        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="event-driven-gallery">
-
-      <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,event-driven,solution,wip">
+      <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-tags="kafka,aiops,solution,wip">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-orange">
@@ -358,8 +345,49 @@ patternfly: true
                 Work in Progress
               </span>
             </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
-              <span class="pf-v6-c-label__content">Event-Driven</span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Consuming OpenShift API Resources with EDA and Kafka</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      </div>
+      </div>
+
+      <div id="network-automation" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">Network automation</h3>
+          <a href="{{ '/guide-types' | relative_url }}#network-automation" class="guide-section__info" data-tooltip="Partner integrations for network source of truth, configuration, and failover with Ansible Automation Platform." aria-label="Learn about Network automation">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Network source of truth, configuration, and failover patterns -- NetBox as inventory and intent, with Event-Driven Ansible where state changes should trigger governed execution.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="network-gallery">
+
+      <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,network,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--network">
+              <span class="pf-v6-c-label__content">Network</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -377,7 +405,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,event-driven,solution,wip">
+      <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-tags="netbox,network,solution,wip">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-orange">
@@ -386,8 +414,8 @@ patternfly: true
                 Work in Progress
               </span>
             </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
-              <span class="pf-v6-c-label__content">Event-Driven</span>
+            <span class="pf-v6-c-label card-label-track card-label-track--network">
+              <span class="pf-v6-c-label__content">Network</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -400,34 +428,6 @@ patternfly: true
             <span class="card-partner-logo-set card-partner-logo-set--netbox">
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled.png' | relative_url }}" alt="NetBox Labs" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled-darkmode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-OpenShift-EDA-Kafka' | relative_url }}" class="card-link" data-tags="kafka,event-driven,solution,wip">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-orange">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                Work in Progress
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--event-driven">
-              <span class="pf-v6-c-label__content">Event-Driven</span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Consuming OpenShift API Resources with EDA and Kafka</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Capture OpenShift Namespace lifecycle events via Knative APIServerSource, stream them through Kafka, and surface them in Event-Driven Ansible for logging and downstream automation.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set">
-              <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
           </div>
         </div>
@@ -652,7 +652,7 @@ patternfly: true
       <div class="legacy-guides__body">
       <p class="legacy-guides__intro">These solution guides were published on access.redhat.com before this repository existed. They are being reviewed and will be migrated to the new format as full markdown guides.</p>
       <div class="pf-v6-l-gallery cards-gallery legacy-guides__gallery">
-        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-tags="servicenow,event-driven,solution,published">
+        <a href="{{ '/README-ServiceNow-ITSM' | relative_url }}" class="card-link" data-tags="servicenow,aiops,solution,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">ServiceNow ITSM Ticket Enrichment</h3>
@@ -678,7 +678,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7123366" class="card-link" target="_blank" data-tags="cisco,published">
+        <a href="https://access.redhat.com/articles/7123366" class="card-link" target="_blank" data-tags="cisco,network,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Network Back Up and Configuration</h3>
@@ -691,7 +691,7 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7123361" class="card-link" target="_blank" data-tags="cisco,published">
+        <a href="https://access.redhat.com/articles/7123361" class="card-link" target="_blank" data-tags="cisco,network,published">
           <div class="pf-v6-c-card">
             <div class="pf-v6-c-card__title">
               <h3 class="pf-v6-c-card__title-text">Network Fact Gathering & Reporting</h3>
@@ -727,7 +727,7 @@ patternfly: true
   var aiopsFoundationalHero = document.getElementById('aiops-foundational-hero');
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
-    { section: document.getElementById('event-driven-solutions'), gallery: document.getElementById('event-driven-gallery') },
+    { section: document.getElementById('network-automation'), gallery: document.getElementById('network-gallery') },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') }
   ];
 
@@ -818,9 +818,9 @@ patternfly: true
 
     if (solutionGuidesSection) {
       var aiopsSection = document.getElementById('aiops-solutions');
-      var eventDrivenSection = document.getElementById('event-driven-solutions');
+      var networkSection = document.getElementById('network-automation');
       var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
-        || (eventDrivenSection && eventDrivenSection.style.display !== 'none');
+        || (networkSection && networkSection.style.display !== 'none');
       solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
     }
   }

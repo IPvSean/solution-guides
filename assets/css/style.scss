@@ -807,7 +807,7 @@ img {
   border-color: #e8e0f5;
 }
 
-.guide-type-track--event-driven {
+.guide-type-track--network {
   background: linear-gradient(135deg, #e7f6f8 0%, #f4fbfc 50%, #ffffff 100%);
   border-color: #b8dde5;
 }
@@ -840,7 +840,7 @@ img {
   border: 1px solid #e8e0f5;
 }
 
-.guide-type-track--event-driven .guide-type-track__badge {
+.guide-type-track--network .guide-type-track__badge {
   color: #0f6e82;
   background: #e7f6f8;
   border: 1px solid #b8dde5;
@@ -1001,7 +1001,7 @@ img {
   }
 }
 
-.guide-type-track--event-driven .guide-type-example-pill {
+.guide-type-track--network .guide-type-example-pill {
   color: #0f6e82;
   background: #e7f6f8;
   border: 1px solid #b8dde5;
@@ -1027,8 +1027,8 @@ img {
   }
 }
 
-.guide-type-track--event-driven .guide-type-track__title a:hover,
-.guide-type-track--event-driven .guide-type-track__title a:focus {
+.guide-type-track--network .guide-type-track__title a:hover,
+.guide-type-track--network .guide-type-track__title a:focus {
   color: #0f6e82;
 }
 
@@ -2393,7 +2393,7 @@ b {
 
 @media screen and (max-width: 1100px) {
   #aiops-gallery,
-  #event-driven-gallery,
+  #network-gallery,
   #journey-gallery,
   #implementation-gallery,
   #wip-gallery {
@@ -2407,7 +2407,7 @@ b {
   }
 
   #aiops-gallery,
-  #event-driven-gallery,
+  #network-gallery,
   #journey-gallery,
   #implementation-gallery,
   #wip-gallery {
@@ -2783,7 +2783,7 @@ b {
   border: 1px solid #e8e0f5;
 }
 
-.card-label-track--event-driven {
+.card-label-track--network {
   --pf-v6-c-label--BackgroundColor: #e7f6f8;
   --pf-v6-c-label--Color: #0f6e82;
   border: 1px solid #b8dde5;
@@ -3554,8 +3554,8 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     }
   }
 
-  .guide-type-track--event-driven .guide-type-track__title a:hover,
-  .guide-type-track--event-driven .guide-type-track__title a:focus {
+  .guide-type-track--network .guide-type-track__title a:hover,
+  .guide-type-track--network .guide-type-track__title a:focus {
     color: #9edbe8;
   }
 
@@ -3577,7 +3577,7 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     }
   }
 
-  .guide-type-track--event-driven .guide-type-example-pill {
+  .guide-type-track--network .guide-type-example-pill {
     color: #9edbe8;
     background: #1a3a42;
     border-color: #2d6a78;
@@ -3664,7 +3664,7 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     border-color: #4a3d7a;
   }
 
-  .guide-type-track--event-driven {
+  .guide-type-track--network {
     background: linear-gradient(135deg, #1a3a42 0%, #24262b 100%);
     border-color: #2d6a78;
   }
@@ -3684,7 +3684,7 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     border-color: #4a3d7a;
   }
 
-  .guide-type-track--event-driven .guide-type-track__badge {
+  .guide-type-track--network .guide-type-track__badge {
     color: #9edbe8;
     background: #1a3a42;
     border-color: #2d6a78;
@@ -3825,7 +3825,7 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     border-color: #4a3d7a;
   }
 
-  .card-label-track--event-driven {
+  .card-label-track--network {
     --pf-v6-c-label--BackgroundColor: #1a3a42;
     --pf-v6-c-label--Color: #9edbe8;
     border-color: #2d6a78;
