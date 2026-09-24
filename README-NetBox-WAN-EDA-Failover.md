@@ -1,7 +1,7 @@
 {% raw %}
 <div class="guide-header">
 
-<h1>Automated WAN Circuit Failover with NetBox and Ansible Automation Platform</h1>
+<h1>Event-Driven WAN Circuit Failover with NetBox and Ansible Automation Platform</h1>
 
 <span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
 
@@ -486,7 +486,7 @@ Open the GitHub Pages URL and confirm a new timestamped report appears in the in
 
 ## Related Guides
 
-- **[Event-Driven Network Configuration with NetBox and AAP](README-NetBox-EDA-Config-Solution-Guide.md):** Foundational guide covering NetBox dynamic inventory, config contexts, and event-driven NTP/banner/VLAN configuration. Start here if your team is new to NetBox + EDA integration.
+- **[Event-Driven Network Source of Truth with NetBox and AAP](README-NetBox-SoT-EDA-Config.md):** Foundational guide covering NetBox dynamic inventory, config contexts, and event-driven NTP/banner/VLAN configuration. Start here if your team is new to NetBox + EDA integration.
 
 - **[EDA + NetBox Workshop](https://github.com/rhpds/zt-ans-bu-eda-netbox):** 7-module hands-on workshop covering AAP dynamic inventory, EDA rulebooks, NetBox webhooks, and workflow automation. Ideal for teams new to Event-Driven Ansible.
 

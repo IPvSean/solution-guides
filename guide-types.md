@@ -106,8 +106,8 @@ inline_edit: true
       <div class="guide-type-track__examples">
         <span class="guide-type-track__examples-label">Examples</span>
         <div class="guide-type-track__pills">
-          <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="guide-type-example-pill">Automated WAN circuit failover with NetBox and AAP</a>
-          <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="guide-type-example-pill">Event-driven network configuration with NetBox and AAP</a>
+          <a href="{{ '/README-NetBox-WAN-EDA-Failover' | relative_url }}" class="guide-type-example-pill">Event-driven WAN circuit failover with NetBox and AAP</a>
+          <a href="{{ '/README-NetBox-SoT-EDA-Config' | relative_url }}" class="guide-type-example-pill">Event-driven network source of truth with NetBox and AAP</a>
         </div>
       </div>
     </article>

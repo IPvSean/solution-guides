@@ -1,7 +1,7 @@
 {% raw %}
 <div class="guide-header">
 
-<h1>Event-Driven Network Configuration with NetBox and Ansible Automation Platform</h1>
+<h1>Event-Driven Network Source of Truth with NetBox and Ansible Automation Platform</h1>
 
 <span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
 
@@ -657,7 +657,7 @@ Confirm the new NTP server appears in the association list.
 
 ## Related Guides
 
-- **[Automated WAN Circuit Failover with NetBox and AAP](README-NetBox-AAP-Solution-Guide.md):** Advanced use case covering event-driven circuit failover with dynamic backup discovery, router reconfiguration, and automated incident reporting. Builds on the EDA + NetBox foundation established in this guide.
+- **[Event-Driven WAN Circuit Failover with NetBox and AAP](README-NetBox-WAN-EDA-Failover.md):** Advanced use case covering event-driven circuit failover with dynamic backup discovery, router reconfiguration, and automated incident reporting. Builds on the EDA + NetBox foundation established in this guide.
 
 - **[NetBox Dynamic Inventory Plugin Documentation](https://docs.ansible.com/ansible/latest/collections/netbox/netbox/nb_inventory_inventory.html):** Full reference for the `netbox.netbox.nb_inventory` plugin including all configuration options, query filters, and compose directives.
 
