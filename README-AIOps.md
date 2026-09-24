@@ -175,10 +175,6 @@ Capabilities compose by **maturity and use case**, not as one preset bundle. Use
 
 Foundational AIOps assumes **rulebooks and job templates configured in AAP** (UI or your existing GitOps process). **Config-as-code collections** (`ansible.eda`, `ansible.controller`, partner collections) matter when you automate platform setup or reproduce the workshop; they are **not** prerequisites to understand Crawl/Walk/Run or curated remediation. Hub links and when each collection applies are in [Key Terms -- Ansible collections](#key-terms-collections).
 
-### External Systems
-
-Requirements depend on **maturity and which use case or partner guide** you implement -- not everything below at once.
-
 <h3 id="what-you-need-by-maturity">What you need by maturity</h3>
 
 | Maturity | Platform | External / integration |
