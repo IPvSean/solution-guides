@@ -37,20 +37,15 @@ AIOps breaks this linear relationship by inserting **AI inference** between the 
 
 ### Where AIOps sits in the automation stack
 
-IT automation is moving through three generations. Most organizations still lean on the first; the second is growing; the third is emerging:
+Organizations usually run more than one kind of automation initiative at the same time. These are the common types -- not a ladder you must climb:
 
-```mermaid
-graph LR
-  A([Task-based]) --> B([Event-driven]) --> C([Agent-driven])
-```
-
-| Generation | What it does |
+| Automation | What it does |
 |------------|--------------|
 | **Task-based** | Run known playbooks on a schedule or trigger |
 | **Event-driven** | React to known conditions with pre-written rules |
 | **Agent-driven** | Handle novel situations with real-time contextual judgment |
 
-**AIOps with Ansible** bridges **event-driven** and **agent-driven**: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
+Most teams still lean heavily on **task-based** work, with **event-driven** adoption growing and **agent-driven** still emerging. **AIOps with Ansible** bridges event-driven and agent-driven: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
 
 <h2 id="background"></h2>
 
