@@ -47,9 +47,7 @@ Organizations usually run more than one kind of automation initiative at the sam
 
 Most teams still lean heavily on **task-based** work, with **event-driven** adoption growing and **agent-driven** still emerging. **AIOps with Ansible** bridges event-driven and agent-driven: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
 
-<h2 id="background"></h2>
-
-## Background
+<h2 id="background">Background</h2>
 
 **AIOps** stands for *artificial intelligence* for IT operations. It refers both to a modern approach to managing IT operations and to the software systems that implement it. AIOps uses data science, big data, and machine learning to augment--or even automate--many traditionally manual IT tasks. The goal is to improve issue detection, root cause analysis, and system resolution.
 
@@ -77,9 +75,7 @@ There are three major parts of AIOps:
 >
 > Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
 
-<h2 id="solution"></h2>
-
-## Solution
+<h2 id="solution">Solution</h2>
 
 Ansible Automation Platform is the **trusted execution and orchestration layer** for AIOps. Partner observability, ITSM, and cloud tools supply signals; AAP and Event-Driven Ansible close the loop with auditability and RBAC.
 
@@ -99,9 +95,7 @@ Capabilities compose by **maturity and use case**, not as one preset bundle. The
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
 
-<h2 id="common-aiops-use-cases"></h2>
-
-## Common AIOps use cases
+<h2 id="common-aiops-use-cases">Common AIOps use cases</h2>
 
 Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips). Use cases **5** and **6** are both **Run** but different buyer questions (drift and policy vs self-healing); partner depth lives on each linked page.
 
@@ -172,9 +166,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f5fa.png" width="20" style="vertical-align:text-bottom;"> **Automation Architect** | Event-driven workflows that outgrow deterministic rules | Reference patterns for EDA, inference, curated remediation, and optional orchestration -- any observability or ITSM partner |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4ca.png" width="20" style="vertical-align:text-bottom;"> **IT Manager / Director** | Justifying AI investment while managing operational risk | Crawl/Walk/Run adoption, measurable MTTR gains, governance before autonomous Run |
 
-<h2 id="prerequisites"></h2>
-
-## Prerequisites
+<h2 id="prerequisites">Prerequisites</h2>
 
 ### Ansible Automation Platform
 
@@ -187,9 +179,7 @@ Foundational AIOps assumes **rulebooks and job templates configured in AAP** (UI
 
 Requirements depend on **maturity and which use case or partner guide** you implement -- not everything below at once.
 
-<h3 id="what-you-need-by-maturity"></h3>
-
-### What you need by maturity
+<h3 id="what-you-need-by-maturity">What you need by maturity</h3>
 
 | Maturity | Platform | External / integration |
 |----------|----------|-------------------------|
@@ -204,9 +194,7 @@ Requirements depend on **maturity and which use case or partner guide** you impl
 - Git promotion / **Automation code assistant** -- [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) only
 - Named stacks -- open the relevant **partner Solution Guide** or **AIOps Use Case** page (Instana, Splunk, ServiceNow, and others)
 
-<h2 id="aiops-workflow"></h2>
-
-## AIOps workflow
+<h2 id="aiops-workflow">AIOps workflow</h2>
 
 The **default production pattern** is **curated automation remediation** at **Walk** maturity: when an incident arrives, the AI assistant uses the **AAP MCP server** to **search** Ansible Automation Platform for **pre-approved** job templates and workflows, **selects** the best match (like a menu), and requests a **governed run**. Nothing new is invented at incident time, which keeps audit trails, RBAC, and change control intact.
 
@@ -221,10 +209,8 @@ The **default production pattern** is **curated automation remediation** at **Wa
 3. **[Correlate and select](#3-correlate-and-select)** -- inference picks from the library (or a short list for approval).
 4. **[Execute approved job](#4-execute-approved-job)** -- governed run with guardrails and validation.
 
-<h2 id="1-detect"></h2>
+<h2 id="1-detect">1. Detect</h2>
 <a id="event-intake-reference"></a>
-
-## 1. Detect
 
 **Operational impact:** **None to low** -- events and tickets are read-only until a run is requested.
 
@@ -374,9 +360,7 @@ Example rulebook for Kafka:
 
 ```
 
-<h2 id="2-mcp-search"></h2>
-
-## 2. MCP search
+<h2 id="2-mcp-search">2. MCP search</h2>
 
 **Operational impact:** **None** -- lists existing templates and workflows; no infrastructure change.
 
@@ -395,10 +379,8 @@ Work can also start from an operator pasting incident context into an AI client 
 > - [Ansible DevTools: connect to AAP MCP](README-Ansible-DevTools.md#connecting-to-ansible-automation-platform) -- gateway setup and toolsets
 > - [Curated Automation Remediation (use case 4)](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md) -- full Walk pattern
 
-<h2 id="3-correlate-and-select"></h2>
+<h2 id="3-correlate-and-select">3. Correlate and select</h2>
 <a id="4-curated-automation-remediation-walk"></a>
-
-## 3. Correlate and select
 
 **Operational impact:** **None** -- AI reasoning only; selection is from the approved library.
 
@@ -434,9 +416,7 @@ graph LR
 
 <img src="assets/images/aiops-use-case-04-curated-automation-remediation.png" alt="Curated automation remediation: AI uses MCP to search AAP for approved job templates, correlates the incident, and runs governed automation">
 
-<h3 id="trusted-playbook-sources"></h3>
-
-### Trusted sources for the approved library
+<h3 id="trusted-playbook-sources">Trusted sources for the approved library</h3>
 
 Walk and Run assume automation already lives in AAP as reviewed job templates and workflows. Common sources:
 
@@ -452,9 +432,7 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 >
 > Whether a playbook came from **Red Hat Lightspeed** (curated CVE or Advisor content), was **drafted with Automation code assistant** and reviewed by your team, or was hand-crafted, the same promotion process applies: Git as source of truth, project sync in AAP, Job Templates with guardrails (credentials, inventory limits, surveys), and optional approval gates. The IDE is where review happens for AI-assisted authoring; AAP is where gatekeeping happens.
 
-<h3 id="crawl-analyze-notify"></h3>
-
-### Crawl: analyze, recommend, and notify
+<h3 id="crawl-analyze-notify">Crawl: analyze, recommend, and notify</h3>
 
 **Crawl** uses the same inference stack as Walk but stops after **Correlate and select** -- no stage 4 run:
 
@@ -475,9 +453,7 @@ At **Walk**, the same correlation step leads to **select from menu** and a **gov
 
 Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
 
-<h2 id="4-execute-approved-job"></h2>
-
-## 4. Execute approved job
+<h2 id="4-execute-approved-job">4. Execute approved job</h2>
 
 **Operational impact:** **High** -- runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run.
 
@@ -501,9 +477,7 @@ Before high-impact runs, teams typically enforce:
 | **Run** | Policy validates curated content; auto-run only within defined boundaries |
 
 
-<h2 id="validation"></h2>
-
-## Validation
+<h2 id="validation">Validation</h2>
 
 Validate the **curated remediation** path end to end. Partner Solution Guides add tool-specific steps; this table is the pattern-level checklist.
 
@@ -529,9 +503,7 @@ Most failures on the curated path show up as **library gaps**, **wrong selection
 | Job launch denied | RBAC or credential scope on MCP token | Use a token that may execute the selected template on target inventory |
 | Job succeeded but alert persists | Validation playbook missing or wrong host group | Add post-run validation job; confirm observability feedback loop in partner guide |
 
-<h2 id="aiops-maturity-path"></h2>
-
-## AIOps Maturity Path
+<h2 id="aiops-maturity-path">AIOps Maturity Path</h2>
 
 Progress from read-only enrichment toward governed closed-loop automation. The [AIOps workflow](#aiops-workflow) sections above map **Detect** through **Execute**; the hub table lists all six use-case patterns.
 
@@ -549,9 +521,7 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 
 **Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md). Workshop codegen: [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) only.
 
-<h2 id="related-guides"></h2>
-
-## Related Guides
+<h2 id="related-guides">Related Guides</h2>
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Workshop / advanced Run lab:** [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) and [Self-healing infrastructure -- optional workshop appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) (codegen under policy, not production default)
 - [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md)
@@ -568,9 +538,7 @@ With this framework, teams move from manual triage toward governed AIOps: enrich
 
 ---
 
-<h2 id="key-terms"></h2>
-
-## Key Terms
+<h2 id="key-terms">Key Terms</h2>
 
 Reference for Ansible collections in this guide, including config-as-code and partner integrations. Partner Solution Guides add their own collections on each page. For **Red Hat Lightspeed curated remediations** versus **Automation code assistant** authoring-time drafts, see [Trusted sources for the approved library](#trusted-playbook-sources).
 
