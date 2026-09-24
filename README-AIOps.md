@@ -35,18 +35,6 @@ Traditional event-driven automation is **deterministic** -- for every event you 
 
 AIOps breaks this linear relationship by inserting **AI inference** between the event and **governed Ansible execution**. Most production paths **enrich** signals or **select from pre-approved job templates** rather than generating new playbooks at incident time. This guide maps operational patterns (Crawl/Walk/Run), partner integrations, and the **curated remediation** workflow most teams deploy in production. Advanced workshop codegen is documented on [Self-healing infrastructure (use case 6)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md), not here.
 
-### Where AIOps sits in the automation stack
-
-Organizations usually run more than one kind of automation initiative at the same time. These are the common types -- not a ladder you must climb:
-
-| Automation | What it does |
-|------------|--------------|
-| **Task-based** | Run known playbooks on a schedule or trigger |
-| **Event-driven** | React to known conditions with pre-written rules |
-| **Agent-driven** | Handle novel situations with real-time contextual judgment |
-
-Most teams still lean heavily on **task-based** work, with **event-driven** adoption growing and **agent-driven** still emerging. **AIOps with Ansible** bridges event-driven and agent-driven: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
-
 <h2 id="background">Background</h2>
 
 **AIOps** stands for *artificial intelligence* for IT operations. It refers both to a modern approach to managing IT operations and to the software systems that implement it. AIOps uses data science, big data, and machine learning to augment--or even automate--many traditionally manual IT tasks. The goal is to improve issue detection, root cause analysis, and system resolution.
@@ -70,6 +58,18 @@ There are three major parts of AIOps:
    - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d6.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/blog/aiops-and-ansible-automation-platform-where-ai-intelligence-meets-trusted-execution">AIOps and Ansible Automation Platform: Where AI intelligence meets trusted execution</a>
 
 **Ansible Automation Platform** connects **observability** and **inference** to build **self-healing infrastructure.** Adoption is incremental: start with the loop that matches your maturity stage, then add inference, orchestration, and deeper Red Hat AI capabilities when a use case benefits from them.
+
+### Where AIOps sits in the automation stack
+
+Organizations usually run more than one kind of automation initiative at the same time. These are the common types -- not a ladder you must climb:
+
+| Automation | What it does |
+|------------|--------------|
+| **Task-based** | Run known playbooks on a schedule or trigger |
+| **Event-driven** | React to known conditions with pre-written rules |
+| **Agent-driven** | Handle novel situations with real-time contextual judgment |
+
+Most teams still lean heavily on **task-based** work, with **event-driven** adoption growing and **agent-driven** still emerging. **AIOps with Ansible** bridges event-driven and agent-driven: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
 
 <h2 id="solution">Solution</h2>
 
