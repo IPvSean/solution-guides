@@ -71,10 +71,6 @@ There are three major parts of AIOps:
 
 **Ansible Automation Platform** connects **observability** and **inference** to build **self-healing infrastructure.** Adoption is incremental: start with the loop that matches your maturity stage, then add inference, orchestration, and deeper Red Hat AI capabilities when a use case benefits from them.
 
-> **Terminology update -- Lightspeed rebranding.**
->
-> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
-
 <h2 id="solution">Solution</h2>
 
 Ansible Automation Platform is the **trusted execution and orchestration layer** for AIOps. Partner observability, ITSM, and cloud tools supply signals; AAP and Event-Driven Ansible close the loop with auditability and RBAC.
@@ -167,6 +163,10 @@ Capabilities compose by **maturity and use case**, not as one preset bundle. Use
 <tr><td><strong>Optional</strong></td><td>Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation orchestrator, AAP MCP server</td><td>Deeper AI, multi-step orchestration, ITSM intelligence</td></tr>
 </tbody>
 </table>
+
+> **Terminology update -- Lightspeed rebranding.**
+>
+> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
 
 ### Ansible Automation Platform
 
