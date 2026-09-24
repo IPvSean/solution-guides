@@ -308,13 +308,13 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-NetBox-SoT-EDA-Config' | relative_url }}" class="card-link" data-partners="netbox,infrastructure,published,event-driven,network">
+      <a href="{{ '/README-NetBox-SoT-EDA-Config' | relative_url }}" class="card-link" data-partners="netbox,implementation,published,event-driven,network">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
+            <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
               </span>
             </span>
           </div>
@@ -324,19 +324,16 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
           </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
-          </div>
         </div>
       </a>
 
-      <a href="{{ '/README-NetBox-WAN-EDA-Failover' | relative_url }}" class="card-link" data-partners="netbox,infrastructure,published,event-driven,network">
+      <a href="{{ '/README-NetBox-WAN-EDA-Failover' | relative_url }}" class="card-link" data-partners="netbox,implementation,published,event-driven,network">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-green">
+            <span class="pf-v6-c-label pf-m-blue">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
               </span>
             </span>
           </div>
@@ -345,9 +342,6 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
           </div>
         </div>
       </a>
