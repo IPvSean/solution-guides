@@ -79,19 +79,6 @@ There are three major parts of AIOps:
 
 Ansible Automation Platform is the **trusted execution and orchestration layer** for AIOps. Partner observability, ITSM, and cloud tools supply signals; AAP and Event-Driven Ansible close the loop with auditability and RBAC.
 
-<table class="guide-table-capability-layers">
-<thead>
-<tr><th>Layer</th><th>Components</th><th>Role</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Core</strong></td><td>Ansible Automation Platform, Event-Driven Ansible</td><td>Governed job execution, rulebooks, workflows</td></tr>
-<tr><td><strong>Common</strong></td><td>Customer observability or ITSM (Splunk, Instana, ServiceNow, Azure, AWS, and others), inference or MCP as needed</td><td>Events, tickets, enrichment context</td></tr>
-<tr><td><strong>Optional</strong></td><td>Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation orchestrator, AAP MCP server</td><td>Deeper AI, multi-step orchestration, ITSM intelligence</td></tr>
-</tbody>
-</table>
-
-Capabilities compose by **maturity and use case**, not as one preset bundle. The table shows where Red Hat and partner offerings fit: **Core** execution and Event-Driven Ansible first, then **Common** observability, ITSM, and inference when enrichment or triage needs them, then **Optional** depth (self-hosted Red Hat AI, Lightspeed content, Automation orchestrator, MCP) as patterns in [Common AIOps use cases](#common-aiops-use-cases) call for them. [Prerequisites](#prerequisites) lists maturity-scoped platform and integration needs.
-
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
 
@@ -167,6 +154,19 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4ca.png" width="20" style="vertical-align:text-bottom;"> **IT Manager / Director** | Justifying AI investment while managing operational risk | Crawl/Walk/Run adoption, measurable MTTR gains, governance before autonomous Run |
 
 <h2 id="prerequisites">Prerequisites</h2>
+
+Capabilities compose by **maturity and use case**, not as one preset bundle. Use this table to see where Red Hat and partner offerings fit, then the maturity-scoped lists below for what to stand up first:
+
+<table class="guide-table-capability-layers">
+<thead>
+<tr><th>Layer</th><th>Components</th><th>Role</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Core</strong></td><td>Ansible Automation Platform, Event-Driven Ansible</td><td>Governed job execution, rulebooks, workflows</td></tr>
+<tr><td><strong>Common</strong></td><td>Customer observability or ITSM (Splunk, Instana, ServiceNow, Azure, AWS, and others), inference or MCP as needed</td><td>Events, tickets, enrichment context</td></tr>
+<tr><td><strong>Optional</strong></td><td>Red Hat Lightspeed (CVE/Advisor content), self-hosted Red Hat AI, Automation orchestrator, AAP MCP server</td><td>Deeper AI, multi-step orchestration, ITSM intelligence</td></tr>
+</tbody>
+</table>
 
 ### Ansible Automation Platform
 
