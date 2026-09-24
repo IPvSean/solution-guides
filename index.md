@@ -284,6 +284,50 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-NetBox-SoT-EDA-Config' | relative_url }}" class="card-link" data-partners="netbox,infrastructure,published,event-driven,network">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Event-Driven Network Source of Truth with NetBox and AAP</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-NetBox-WAN-EDA-Failover' | relative_url }}" class="card-link" data-partners="netbox,infrastructure,published,event-driven,network">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Event-Driven WAN Circuit Failover with NetBox and AAP</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
+          </div>
+        </div>
+      </a>
+
     </div>
 
     <div class="cards-wip-section">
@@ -395,51 +439,6 @@ patternfly: true
             </div>
             <div class="pf-v6-c-card__footer">
               <img src="{{ '/assets/images/redhat-ai-logo.png' | relative_url }}" alt="Red Hat AI" class="card-partner-logo">
-            </div>
-          </div>
-        </a>
-
-
-        <a href="{{ '/README-NetBox-EDA-Config-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Event-Driven Network Configuration with NetBox and AAP</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Dynamic inventory from NetBox, event-driven NTP and banner configuration via config contexts and EDA webhooks, and zero-touch device provisioning workflows.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
-            </div>
-          </div>
-        </a>
-
-        <a href="{{ '/README-NetBox-AAP-Solution-Guide' | relative_url }}" class="card-link" data-partners="netbox,aiops,wip">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__header">
-              <span class="pf-v6-c-label pf-m-orange">
-                <span class="pf-v6-c-label__content">
-                  <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                  Work in Progress
-                </span>
-              </span>
-            </div>
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Automated WAN Circuit Failover with NetBox and AAP</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Event-driven WAN circuit failover using NetBox as the network source of truth, EDA for automated trigger, dynamic backup discovery, router reconfiguration, and automated incident reporting.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="pf-v6-c-label pf-m-outline pf-m-compact"><span class="pf-v6-c-label__content">NetBox</span></span>
             </div>
           </div>
         </a>
