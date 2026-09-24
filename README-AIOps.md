@@ -41,10 +41,7 @@ IT automation is moving through three generations. Most organizations still lean
 
 ```mermaid
 graph LR
-  A([Task-based]) --> B([Event-driven])
-  B --> C([Agent-driven])
-  B --> D[AIOps with Ansible]
-  D --> C
+  A([Task-based]) --> B([Event-driven]) --> C([Agent-driven])
 ```
 
 | Generation | What it does |
