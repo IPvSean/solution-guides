@@ -35,9 +35,25 @@ Traditional event-driven automation is **deterministic** -- for every event you 
 
 AIOps breaks this linear relationship by inserting **AI inference** between the event and **governed Ansible execution**. Most production paths **enrich** signals or **select from pre-approved job templates** rather than generating new playbooks at incident time. This guide maps operational patterns (Crawl/Walk/Run), partner integrations, and the **curated remediation** workflow most teams deploy in production. Advanced workshop codegen is documented on [Self-healing infrastructure (use case 6)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md), not here.
 
-> **Where does AIOps fit?**
->
-> The industry is moving through three generations of IT automation: **task-based** automation (running known playbooks on a schedule or trigger), **event-driven** automation (reacting to known conditions with pre-written rules), and **agent-driven** automation (handling novel situations with real-time contextual judgment). Most organizations today rely heavily on task-based automation, with event-driven adoption growing and agent-driven still emerging. AIOps with Ansible bridges event-driven and agent-driven by using AI to handle situations you *didn't* explicitly write rules for, without requiring a fully autonomous agent.
+### Where AIOps sits in the automation stack
+
+IT automation is moving through three generations. Most organizations still lean on the first; the second is growing; the third is emerging:
+
+```mermaid
+graph LR
+  A([Task-based]) --> B([Event-driven])
+  B --> C([Agent-driven])
+  B --> D[AIOps with Ansible]
+  D --> C
+```
+
+| Generation | What it does |
+|------------|--------------|
+| **Task-based** | Run known playbooks on a schedule or trigger |
+| **Event-driven** | React to known conditions with pre-written rules |
+| **Agent-driven** | Handle novel situations with real-time contextual judgment |
+
+**AIOps with Ansible** bridges **event-driven** and **agent-driven**: AI inference enriches signals or helps **select from an approved automation library**, then **AAP** executes with governance. That is Crawl/Walk in this guide -- not a fully autonomous agent on day one. Deeper Run autonomy still stays inside policy and the curated library.
 
 <h2 id="background"></h2>
 
