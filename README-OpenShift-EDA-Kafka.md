@@ -1024,7 +1024,7 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0    s
 
 - **Full AIOps reference architecture:** See [AIOps automation with Ansible](README-AIOps.md) for the complete self-healing pipeline with AI inference, Lightspeed playbook generation, and Kafka event consumption.
 - **Alternative event transport:** See [AIOps with AWS SQS and Event-Driven Ansible](README-SQS.md) for using AWS SQS instead of Kafka as the message queue.
-- **Another EDA pattern:** See [Event-Driven Network Configuration with NetBox and Ansible Automation Platform](README-NetBox-EDA-Config-Solution-Guide.md) for using EDA with webhooks instead of Kafka.
+- **Another EDA pattern:** See [Event-Driven Network Source of Truth with NetBox and Ansible Automation Platform](README-NetBox-SoT-EDA-Config.md) for using EDA with webhooks instead of Kafka.
 - **New to Event-Driven Ansible?** See <a target="_blank" href="https://access.redhat.com/articles/7136720">Get started with EDA (Ansible Rulebook)</a> for the fundamentals.
 
 ---
