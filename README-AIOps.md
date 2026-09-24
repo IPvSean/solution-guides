@@ -80,7 +80,7 @@ Ansible Automation Platform is the **trusted execution and orchestration layer**
 
 <h2 id="common-aiops-use-cases">Common AIOps use cases</h2>
 
-Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips). Use cases **5** and **6** are both **Run** but different buyer questions (drift and policy vs self-healing); partner depth lives on each linked page.
+Six operational patterns for customer conversations. **AI identifies opportunities; automation delivers outcomes.** Each row below maps to **Crawl**, **Walk**, or **Run** (see maturity chips).
 
 ### How work starts
 
