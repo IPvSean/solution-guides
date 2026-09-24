@@ -26,39 +26,6 @@ By inserting AI inference between SQS events and Ansible remediation, a single i
 >
 > The overall AIOps workflow is covered in depth in the companion guide [AIOps automation with Ansible](README-AIOps.md). This guide focuses specifically on using AWS SQS as the message queue component and covers AWS-specific configuration, EDA rulebook setup, and IAM considerations.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-- [AIOps with SQS Workflow](#aiops-with-sqs-workflow)
-  - [Operational Impact per Stage](#operational-impact-per-stage)
-  - [Example Workflow Diagram](#example-workflow-diagram)
-- [1. Event-Driven Ansible (EDA) Response with SQS](#1-event-driven-ansible-eda-response-with-sqs)
-  - [AWS Events That Feed SQS](#aws-events-that-feed-sqs)
-  - [Configuring SQS for EDA](#configuring-sqs-for-eda)
-  - [EDA Rulebook for SQS](#eda-rulebook-for-sqs)
-- [2. Log Enrichment and Prompt Generation Workflow](#2-log-enrichment-and-prompt-generation-workflow)
-  - [1. Capture Additional Information](#1-capture-additional-information)
-  - [2. Red Hat AI: Analyze Incident](#2-red-hat-ai-analyze-incident)
-  - [3. Notify Chat / ITSM](#3-notify-chat--itsm)
-  - [4. Build Ansible Lightspeed Job Template](#4-build-ansible-lightspeed-job-template)
-- [3. Remediation Workflow](#3-remediation-workflow)
-  - [1. Lightspeed Remediation Playbook Generator](#1-lightspeed-remediation-playbook-generator)
-  - [2. Commit Fix to Git](#2-commit-fix-to-git)
-  - [3. Sync Project](#3-sync-project)
-  - [4. Build Remediation Template](#4-build-remediation-template)
-- [4. Execute Remediation](#4-execute-remediation)
-- [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
-- [AIOps Maturity Path](#aiops-maturity-path)
-  - [Self-Healing Infrastructure: Crawl, Walk, Run](#self-healing-infrastructure-crawl-walk-run)
-- [Related Guides](#related-guides)
-- [Summary](#summary)
-
 <h2 id="background"></h2>
 
 ## Background

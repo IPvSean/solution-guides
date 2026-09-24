@@ -25,24 +25,6 @@ Event-driven detection means action begins the moment a certificate is flagged. 
 
 ---
 
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [Certificate Rotation Workflow](#certificate-rotation-workflow)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Step 1: Set up the EDA rulebook](#step-1-set-up-the-eda-rulebook)
-  - [Step 2: AI risk analysis and decision routing](#step-2-ai-risk-analysis-and-decision-routing)
-  - [Step 3a: Rotate the certificate (PROCEED path)](#step-3a-rotate-the-certificate-proceed-path)
-  - [Step 3b: Schedule for maintenance window (SCHEDULE path)](#step-3b-schedule-for-maintenance-window-schedule-path)
-  - [Step 4: Resolve in ITSM](#step-4-resolve-in-itsm)
-- [Validation](#validation)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [ROI Recap](#roi-recap)
-  - [Measuring Success](#measuring-success)
-
----
-
 ## Background
 
 Windows Server environments rely on IIS for hosting internal portals, APIs, and web applications. These servers use TLS certificates to encrypt traffic, and those certificates expire. Manually renewing and rebinding them to IIS is tedious, error-prone, and detrimental to your services when it doesn't happen on time.

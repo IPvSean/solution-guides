@@ -21,22 +21,6 @@ This guide demonstrates how to deploy Red Hat Ansible Automation Platform 2.6 wi
 
 **Technical value:** Proven enterprise topology for production AAP deployments. Streaming replication with sub-5-second RPO protects against data loss. EFM-managed automated failover orchestrates database promotion and AAP service activation without operator intervention. Full implementation roadmap from infrastructure provisioning through testing and production cutover.
 
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [Multi-Datacenter DR Architecture](#multi-datacenter-dr-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Phase 1: Infrastructure Preparation](#phase-1-infrastructure-preparation)
-  - [Phase 2: Database Cluster Setup](#phase-2-database-cluster-setup)
-  - [Phase 3: AAP Installation](#phase-3-aap-installation)
-  - [Phase 4: Integration and Automation](#phase-4-integration-and-automation)
-  - [Phase 5: Testing and Validation](#phase-5-testing-and-validation)
-  - [Phase 6: Production Cutover](#phase-6-production-cutover)
-- [Validation](#validation)
-- [Operational Runbook](#operational-runbook)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-
 ---
 
 ## Background

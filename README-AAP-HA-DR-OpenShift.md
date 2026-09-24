@@ -7,7 +7,7 @@
 </style>
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR on OpenShift architecture" style="max-width:100%">
 </a>
 
 ## Overview
@@ -19,24 +19,6 @@ This implementation guide shows how to deploy **AAP 2.7 (operator-based) on two 
 **DR model:** Two-site active-passive. The standby cluster runs the AAP CR with `idle_aap: true` so operators stay installed while component replicas remain at zero until promotion.
 
 **Related published guide:** For VM-based Active-Passive DR with EDB Postgres Advanced Server (not OpenShift/CNPG), see [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md).
-
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [HA/DR Architecture](#hadr-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Install the Operators](#1-install-the-operators)
-  - [Configure External Secrets](#2-configure-external-secrets)
-  - [Deploy the CloudNativePG Cluster](#3-deploy-the-cloudnativepg-cluster)
-  - [Deploy AAP](#4-deploy-aap)
-  - [Failover Procedures](#6-failover-procedures)
-- [Validation](#validation)
-- [Validated Test Scenarios and Observed SLAs](#validated-test-scenarios-and-observed-slas)
-- [Day 2 Operations](#8-day-2-operations)
-- [Known Issues](#known-issues)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Appendix A: ODF RGW Multisite Storage](#appendix-a-odf-rgw-multisite-storage)
 
 ---
 
@@ -195,7 +177,7 @@ High availability mechanisms and failover are only as reliable as the last time 
 ## HA/DR Architecture
 
 <a target="_blank" href="assets/images/aap-hadr-full-architecture.png">
-  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%; cursor:zoom-in">
+  <img src="assets/images/aap-hadr-full-architecture.png" alt="AAP HA/DR Full Architecture" style="max-width:100%">
 </a>
 
 ```mermaid
@@ -1539,11 +1521,11 @@ Example status check (shape varies by version):
 | Metrics service will not reconcile | External Postgres admin secret not passed through | Apply the Known Issues workaround for `postgres-admin-credentials` |
 | Replication not Streaming on Cluster B | NLB hostname, mTLS certs, or `streaming_replica` password mismatch | Verify `externalClusters` connectionParameters, shared CA, and replication TLS secrets |
 
-## Validated Test Scenarios and Observed SLAs
+## Verified Test Scenarios
 
 The following scenarios were executed against this architecture and **passed** for the outcomes described below. Times are **observed averages rounded to the nearest second** -- use them to set recovery expectations, not as contractual SLAs. Environment sizing, node `tolerationSeconds`, DNS/GSLB behavior, and workload mix will change results.
 
-| Test type | Scenario | Failure and recovery expectation | Observed SLA |
+| Test type | Scenario | Failure and recovery expectation | Observed recovery times |
 |-----------|----------|----------------------------------|--------------|
 | Pod recovery | Hub API pod failure during active sessions / collection sync | Surviving Hub replicas continue serving; failed pod restarts; sessions re-auth as needed; no Hub DB data loss | **59 seconds** average recovery |
 | Pod recovery | Hub Worker pod failure during content operations | Worker restarts; collection sync continues after restart | **8 seconds** average recovery |

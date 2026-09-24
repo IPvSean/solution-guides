@@ -19,22 +19,6 @@ Most organizations already have proven Ansible automation for service restarts, 
 
 **Technical value:** Governed remediation with RBAC-scoped job templates -- only authorized teams can trigger remediation within their scope. Credential isolation -- secrets stored in automation controller and injected at runtime, never exposed in playbooks or logs. Bidirectional observability-automation feedback loop via Host Agent REST API annotations, linking remediation actions to Incidents on the Instana timeline.
 
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [Integration Architecture](#integration-architecture)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Part 1: Shared Setup](#part-1-shared-setup)
-  - [Part 2: Path A -- Event-Driven Ansible Integration](#part-2-path-a--event-driven-ansible-integration)
-  - [Part 3: Path B -- Instana Automation Framework](#part-3-path-b--instana-automation-framework)
-  - [Part 4: Use Case Walkthroughs](#part-4-use-case-walkthroughs)
-  - [Part 5: Optional AI-Assisted Routing](#part-5-optional-ai-assisted-routing)
-- [Validation](#validation)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [ROI Recap](#roi-recap)
-  - [Measuring Success](#measuring-success)
-
 ---
 
 ## Background
@@ -107,6 +91,10 @@ IBM owns both Instana and Red Hat, which means tighter integration than third-pa
 | **IT Manager / Director** | MTTR measured in hours despite having automation in place; no audit trail linking observability events to remediation actions; difficulty connecting automation outcomes to business impact | Existing automation investment delivers more value -- playbooks that were run manually now execute in minutes with the same governance and a complete audit trail. Automated remediation of mission-critical services produces measurable improvements in uptime and SLA compliance that map directly to business outcomes |
 
 ### Demos and Labs
+
+- Demo video: [Watch the demo](https://youtu.be/sjouT0Nnphg)
+
+<iframe src="https://www.youtube.com/embed/sjouT0Nnphg" style="width: 100%; max-width: 400px; aspect-ratio: 16/9; display: block;" frameborder="0" allowfullscreen></iframe>
 
 - [Red Hat TV: From Observability to Action with Event-Driven Ansible and IBM Instana](https://tv.redhat.com/en/detail/6365958260112/from-observability-to-action-with-event-driven-ansible-and-ibm-instana)
 - [IBM Developer: Automation-Powered AIOps using Instana and Red Hat Ansible](https://developer.ibm.com/articles/automation-powered-aiops/)

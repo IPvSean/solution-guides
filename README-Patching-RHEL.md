@@ -11,31 +11,6 @@ Security patching at scale is one of the most time-consuming and error-prone tas
 
 This guide demonstrates how to collapse that timeline from days to minutes using **Red Hat Lightspeed MCP** and the **Ansible Automation Platform MCP server**. An operator describes the problem in natural language -- "patch CVE-2024-6174 on my production fleet" -- and the MCP-connected AI assistant identifies affected systems, surfaces the correct advisory, selects the approved remediation playbook, and executes it through AAP with full audit trail. No manual advisory lookup, no hand-written playbooks, no SSH sessions.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
-  - [MCP Servers](#mcp-servers)
-- [Patching Workflow](#patching-workflow)
-  - [Operational Impact per Stage](#operational-impact-per-stage)
-- [Solution Walkthrough](#solution-walkthrough)
-  - [Step 1: Identify Vulnerable Systems with Red Hat Lightspeed MCP](#step-1-identify-vulnerable-systems-with-red-hat-lightspeed-mcp)
-  - [Step 2: Retrieve Advisory Details and Affected Packages](#step-2-retrieve-advisory-details-and-affected-packages)
-  - [Step 3: Select and Review the Remediation Playbook via AAP MCP](#step-3-select-and-review-the-remediation-playbook-via-aap-mcp)
-  - [Step 4: Execute the Patch via Ansible Automation Platform](#step-4-execute-the-patch-via-ansible-automation-platform)
-  - [Step 5: Validate and Report](#step-5-validate-and-report)
-- [Validation](#validation)
-  - [Test](#test)
-  - [Expected Result](#expected-result)
-  - [Troubleshooting](#troubleshooting)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Sources](#sources)
-
 <h2 id="background"></h2>
 
 ## Background

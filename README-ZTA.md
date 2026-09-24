@@ -11,21 +11,6 @@
 
 Traditional network security relies on perimeter defenses, but modern threats require a "never trust, always verify" approach. Organizations spend hours manually coordinating identity, secrets, policy, and network controls across fragmented tools, leading to security gaps and operational overhead. This guide demonstrates how to build and operate a Zero Trust Architecture using Red Hat Ansible Automation Platform as the central orchestration layer, reducing manual security operations by 80% while improving compliance posture.
 
-**Table of Contents**
-- [Background](#background)
-- [Solution](#solution)
-- [Prerequisites](#prerequisites)
-- [Zero Trust Architecture Workflow](#zero-trust-architecture-workflow)
-- [Use Cases](#use-cases)
-  - [Use Case 1: Infrastructure Integration and Service Verification](#use-case-1-infrastructure-integration-and-service-verification)
-  - [Use Case 2: Just-In-Time Credential Management](#use-case-2-just-in-time-credential-management)
-  - [Use Case 3: Platform-Level Policy Enforcement](#use-case-3-platform-level-policy-enforcement)
-  - [Use Case 4: Workload Identity Verification for Network Operations](#use-case-4-workload-identity-verification-for-network-operations)
-  - [Use Case 5: Defense-in-Depth Access Control](#use-case-5-defense-in-depth-access-control)
-- [Validation](#validation)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-
 <h2 id="background"></h2>
 
 ## Background

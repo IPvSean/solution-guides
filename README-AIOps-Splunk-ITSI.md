@@ -23,41 +23,6 @@ This guide demonstrates how to connect Splunk to **Event-Driven Ansible (EDA)** 
 >
 > For the full end-to-end AIOps pipeline -- including AI inference, Lightspeed playbook generation, and the Crawl/Walk/Run maturity model -- see [AIOps automation with Ansible](README-AIOps.md). This guide focuses specifically on using **Splunk** as the observability and detection layer with Event-Driven Ansible as the automation bridge.
 
-- [Overview](#overview)
-- [Background](#background)
-- [Solution](#solution)
-  - [Who Benefits](#who-benefits)
-- [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [Splunk Stack](#splunk-stack)
-  - [External Systems](#external-systems)
-- [Use Case A: Predictive AIOps with Splunk ITSI](#use-case-a-predictive-aiops-with-splunk-itsi)
-  - [The Scenario](#the-scenario)
-  - [Architecture Diagram](#architecture-diagram)
-  - [Incident Response Timeline](#incident-response-timeline)
-  - [A1. Predictive Detection with MLTK](#a1-predictive-detection-with-mltk)
-  - [A2. Aggregation Policy and Episode Management](#a2-aggregation-policy-and-episode-management)
-  - [A3. Event-Driven Ansible Integration](#a3-event-driven-ansible-integration)
-  - [A4. Automated Remediation](#a4-automated-remediation)
-- [Splunk Webhook Alert Pipeline](#splunk-webhook-alert-pipeline)
-- [Use Case B: RHEL Server Remediation](#use-case-b-rhel-server-remediation)
-  - [B1. Configure Splunk Alert Action (Webhook)](#b1-configure-splunk-alert-action-webhook)
-  - [B2. EDA Rulebook for Splunk Events](#b2-eda-rulebook-for-splunk-events)
-  - [B3. Enrichment Workflow -- Gather Context and Analyze with AI](#b3-enrichment-workflow----gather-context-and-analyze-with-ai)
-  - [B4. Notify and Remediate](#b4-notify-and-remediate)
-- [Use Case C: Network AIOps -- OSPF Remediation](#use-case-c-network-aiops----ospf-remediation)
-  - [C1. Configure Splunk for Network Event Detection](#c1-configure-splunk-for-network-event-detection)
-  - [C2. EDA Rulebook for OSPF Events](#c2-eda-rulebook-for-ospf-events)
-  - [C3. AI-Driven Ticket Enrichment](#c3-ai-driven-ticket-enrichment)
-  - [C4. Network AIOps Workflow -- Lightspeed Remediation](#c4-network-aiops-workflow----lightspeed-remediation)
-  - [C5. Validation -- Three OSPF Failure Scenarios](#c5-validation----three-ospf-failure-scenarios)
-- [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
-- [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
-- [Summary](#summary)
-
 <h2 id="background"></h2>
 
 ## Background
