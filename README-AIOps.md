@@ -28,10 +28,10 @@ Traditional event-driven automation is **deterministic** -- for every event you 
 
 | Approach | Events | Rules Required | Actions |
 |----------|--------|---------------|---------|
-| Traditional EDA | 10 | 10 | 10 |
-| Traditional EDA | 100 | 100 | 100 |
-| Traditional EDA | 1,000 | 1,000 | 1,000 |
-| **AIOps with EDA** | **1,000** | **Few rulebooks** (+ AI inference) | **Curated or governed** |
+| Traditional event-driven | 10 | 10 | 10 |
+| Traditional event-driven | 100 | 100 | 100 |
+| Traditional event-driven | 1,000 | 1,000 | 1,000 |
+| **AIOps with Event-Driven Ansible (EDA)** | **1,000** | **Few rulebooks** (+ AI inference) | **Curated or governed** |
 
 AIOps breaks this linear relationship by inserting **AI inference** between the event and **governed Ansible execution**. Most production paths **enrich** signals or **select from pre-approved job templates** rather than generating new playbooks at incident time. This guide maps operational patterns (Crawl/Walk/Run), partner integrations, and the **curated remediation** workflow most teams deploy. For the hands-on workshop pipeline, see [Self-healing infrastructure (use case 6)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
@@ -73,7 +73,7 @@ Most teams still lean heavily on **task-based** work, with **event-driven** adop
 
 <h2 id="solution">Solution</h2>
 
-Ansible Automation Platform is the **trusted execution and orchestration layer** for AIOps. Partner observability, ITSM, and cloud tools supply signals; AAP and Event-Driven Ansible close the loop with auditability and RBAC.
+Ansible Automation Platform is the **trusted execution and orchestration layer** for AIOps. Partner observability, ITSM, and cloud tools supply signals; AAP and **EDA** close the loop with auditability and RBAC.
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [YouTube video (~2 min)](https://youtu.be/a3fCHd2vTXU?si=L_5jGYZFtb3SzCJq)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e2.png" width="20" style="vertical-align:text-bottom;"> [Please consider subscribing to the Ansible Team!](https://youtube.com/ansibleautomation?sub_confirmation=1)
@@ -155,7 +155,7 @@ Requirements depend on which use case or partner guide you implement.
 
 ### Ansible Automation Platform
 
-- **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for this guide).
+- **Ansible Automation Platform 2.5+** -- Required for enterprise **EDA** (baseline for this guide).
 - **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (approvals, task agents, and logic steps) or the **AAP MCP server** (library search and governed launch from an AI client).
 
 <h3 id="event-sources">Event sources</h3>
@@ -186,7 +186,7 @@ The **default production pattern** is **curated automation remediation**: when a
 >
 > Generating playbooks from an alert introduces **unreviewed change** every time the same symptom recurs. Teams already maintain trusted automation in AAP. MCP exposes that library to the AI client so inference **chooses** from approved options instead of authoring fixes from thin air.
 
-**Event-Driven Ansible** is included in Ansible Automation Platform. The four sections below follow the same shape as the hands-on workshop pipeline, mapped to the **production curated path**:
+**EDA** is included in Ansible Automation Platform. The four sections below follow the same shape as the hands-on workshop pipeline, mapped to the **production curated path**:
 
 1. **[Detect](#1-detect)** -- observability, ITSM, or an operator surfaces a symptom.
 2. **[MCP search](#2-mcp-search)** -- the AI client lists approved job templates and workflows in AAP.
@@ -284,7 +284,7 @@ Splunk ingests logs, metrics, traces, and events from virtually any source, prov
 
 ### Message queues and EDA (optional)
 
-Message queues are optional depending on the observability tool.  For example IBM Instana can work directly with Event-Driven Ansible to trigger automation jobs, or it can work with a message queue like Apache Kafka.  Here are some examples of other message queues that Ansible Automation Platform works with:
+Message queues are optional depending on the observability tool. For example IBM Instana can work directly with EDA to trigger automation jobs, or it can work with a message queue like Apache Kafka. Here are some examples of other message queues that Ansible Automation Platform works with:
 
 <h4 id="aws-sqs"></h4>
 
