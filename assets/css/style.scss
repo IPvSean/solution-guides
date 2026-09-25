@@ -262,10 +262,12 @@ img {
   object-fit: contain;
   object-position: left center;
   margin: 0 0 0.35rem;
-  padding: 0;
-  border: none;
-  box-shadow: none;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   cursor: default;
+  background: transparent !important;
 }
 
 table.guide-table-event-sources {
