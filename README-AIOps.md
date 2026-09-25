@@ -419,8 +419,6 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 
 <h2 id="4-execute-approved-job">4. Execute approved job</h2>
 
-**Operational impact:** **High** -- runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run.
-
 The AI client (or workflow) **launches** the selected job template or workflow through MCP with the operator's RBAC. AAP executes the approved automation, records audit history, and should feed results back to observability or ITSM. Add a **validation** job or observability check before closing the incident at **Run** maturity.
 
 ### Production guardrails (curated path)
