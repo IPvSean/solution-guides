@@ -6,7 +6,7 @@ permalink: /opus-review-solution/
 
 # Review: Published Solution Guides
 
-*Reviewed: July 22, 2026*
+*Reviewed: September 25, 2026*
 
 ## Scorecard
 
@@ -16,7 +16,7 @@ permalink: /opus-review-solution/
 | 2 | [AIOps with Splunk and EDA](#2-aiops-with-splunk-and-event-driven-ansible) | 8.9/10 | Deepest multi-use-case guide; three integration patterns with strong validation and troubleshooting |
 | 3 | [Automated Incident Remediation with IBM Instana](#3-automated-incident-remediation-with-ibm-instana) | 8.9/10 | Dual-path architecture (EDA vs native); per-use-case operational impact and unusually complete validation |
 | 4 | [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](#4-unlock-aiops-with-servicenow-leap-and-ansible-mcp-server) | 8.7/10 | Strong LEAP/MCP governance story with MTTR focus, customer evidence, multi-agent visibility |
-| 5 | [AIOps automation with Ansible](#5-aiops-automation-with-ansible) | 8.5/10 | Strong foundational reference architecture; best systems narrative, observability catalog, and playbook source mapping |
+| 5 | [AIOps automation with Ansible](#5-aiops-automation-with-ansible) | 8.6/10 | Strongest foundational reference architecture; curated-path framing, MCP workflow clarity, structured validation, and comprehensive event/tool catalog |
 
 ---
 
@@ -187,43 +187,49 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 ### 5. AIOps automation with Ansible
 
 **File:** [README-AIOps.md](README-AIOps.md)
-**Score: 8.5 / 10**
+**Score: 8.6 / 10**
 
 | Category | Score |
 |----------|-------|
-| Outcome Clarity (20%) | 4 |
+| Outcome Clarity (20%) | 4.5 |
 | Architecture Clarity (20%) | 5 |
-| Technical Executability (25%) | 4 |
-| Validation/Testability (15%) | 3 |
+| Technical Executability (25%) | 3.5 |
+| Validation/Testability (15%) | 4 |
 | Production Readiness (10%) | 4.5 |
 | Business Framing (10%) | 4.5 |
 
-**Stats:** ~7,500 words | 8 YAML blocks | 6+ substantive workflow/concept images | 4 pipeline phases with 16 numbered substeps
+**Stats:** ~4,800 words | 1 YAML block | 1 Mermaid diagram | 4 substantive images + light/dark logo catalog | 4 pipeline phases (Detect → MCP → Correlate → Execute) | Key Terms glossary with 10 entries | 6-card use-case strip
 
 **Strengths:**
-- Strong systems narrative: clear contrast between deterministic EDA scaling and AI-in-the-middle architecture
-- Risk-aware layering with operational impact matrix and Crawl/Walk/Run framing
-- Comprehensive reference tables for event types, observability tools, message queues, and AI endpoints
-- "Where Do Good Playbooks Come From?" section maps four playbook sources to maturity stages
+- Curated-path framing is now the clearest of any guide: the opening deterministic-vs-AIOps table immediately shows why curated remediation matters, and the "Why select instead of generate?" callout anchors the entire narrative
+- Four-phase workflow (Detect → MCP search → Correlate and select → Execute approved job) maps cleanly to both the Mermaid diagram and the use-case 4 cross-link -- readers always know where they are
+- MCP phase has its own section with a concrete read-path table (search JTs, search workflows, RBAC boundary) -- strongest MCP coverage in the foundational guide
+- Validation section now has a structured stage-by-stage checklist and a dedicated troubleshooting table (up from no structured validation in the July review)
+- "Trusted sources for the approved library" table distinguishes Red Hat Lightspeed curated content, Advisor recommendations, pre-approved AAP library, RHEL System Roles, and Automation code assistant -- the only guide that separates all five sources
+- Event source catalog (application, infrastructure, network/security, observability-driven) with tool-logo tables and Automation Hub links is the most comprehensive event reference across all guides
+- Key Terms glossary with 10 entries and cross-links to guide sections provides a standalone reference glossary
+- Production guardrails table (library-first, approvals, validation, policy) is concise and actionable
+- UC04 cross-link positions this guide as the high-level walkthrough and use case 4 as the deep-dive pattern page
 
 **Weaknesses:**
-- Validation lacks verbatim sample outputs -- weaker as a standalone cookbook
-- No single explicit "Solution Walkthrough" heading; depth is spread across sections 1-4
-- AAP YAML snippets embed HTML emoji in `name` fields, which breaks copy-paste as valid YAML
+- Only one YAML block (Kafka rulebook) -- down from eight in the July review as depth was delegated to partner and use-case pages; the guide's centerpiece claim (MCP library search and governed launch) has no runnable code example
+- No verbatim expected output anywhere -- validation checklist describes what to verify but never shows a concrete `ansible-output` block or API response
+- Use-case strip HTML is a large block that breaks reading flow in the source markdown; readers in GitHub preview see a wall of raw HTML before the workflow sections
 
 **Suggestions:**
-1. Add verbatim expected output for each pipeline stage
-2. Sanitize YAML examples so template names are plain strings suitable for copy-paste
-3. Insert the KB blockquote under the H1 per publishing standards
+1. Add a short MCP artifact -- even a 5-line `curl` or `ansible-playbook` snippet showing a governed template search and launch -- to back the architectural claim with executable proof
+2. Add one verbatim `ansible-output` block (for example a successful EDA activation log or MCP search response) to the Validation section
+3. Consider a second YAML block for the MCP-driven launch or a workflow-template-as-code excerpt to bring Technical Executability back toward 4
 
 ---
 
 ## Cross-Cutting Observations
 
-**What changed since the May 2026 review:**
+**What changed since the July 2026 review:**
 
-- **Windows Cert Rotation** is the new standard for AIOps validation (three decision paths, three test scenarios with syntax-highlighted output)
-- **MCP coverage is growing** -- the ServiceNow guide documents MCP server integration alongside governed template-as-code
+- **AIOps foundational guide** (8.5 → 8.6) was significantly restructured: curated-path default is now the opening thesis, four-phase workflow with MCP, structured validation checklist and troubleshooting table, Key Terms glossary, UC04 cross-link, and light/dark tool-logo catalog. YAML depth was deliberately delegated to partner and use-case pages
+- **Windows Cert Rotation** remains the standard for AIOps validation (three decision paths, three test scenarios with syntax-highlighted output)
+- **MCP coverage is growing** -- the ServiceNow guide documents MCP server integration alongside governed template-as-code; the foundational AIOps guide now has a dedicated MCP search phase with a read-path table
 - **Closed-loop incident narratives** are now the baseline -- Splunk and Instana both demonstrate detect-through-remediate completeness with per-stage validation
 
 **Patterns that work well across solution guides:**
@@ -232,11 +238,13 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 - Arcade + video demos (Windows Cert, ServiceNow)
 - Dual-path or multi-pattern architecture comparisons (Instana: EDA vs native; Splunk: ITSI, webhook, OSPF)
 - Measurable success metrics and ROI recap tables (Windows, Instana, ServiceNow)
+- Key Terms glossaries with Automation Hub links (AIOps foundational)
+- Curated-path framing with "Why select instead of generate?" rationale (AIOps foundational)
 
 **Recurring gaps across solution guides:**
 1. **Source repo links** -- many guides show code excerpts but don't link to a full runnable repo
 2. **Cost estimates** -- only Windows Cert addresses AI API cost consistently
-3. **YAML copy-paste fidelity** -- the foundational AIOps guide still embeds HTML emoji in YAML `name` fields
+3. **MCP executable artifacts** -- the foundational AIOps guide describes the MCP search workflow but has no runnable code; adding a short `curl` or playbook snippet would back the architectural claim
 4. **ansible-output highlighting** -- now available site-wide; guides with playbook output should adopt it (Windows Cert sets the standard)
 5. **Missing KB blockquotes** -- Splunk and AIOps guides lack the legacy KB link under the title
 
@@ -244,4 +252,4 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 - Windows Cert Rotation (9.8) is the reference standard for AIOps guides: event-driven detection, AI judgment, governed execution, ITSM audit trail, and custom syntax highlighting
 - Splunk and Instana tie at 8.9 -- Splunk wins on multi-use-case depth and Splunk-specific operational detail; Instana wins on dual-path architecture clarity and per-use-case validation
 - ServiceNow (8.7) is the strongest MCP governance story with customer evidence and multi-agent visibility
-- AIOps automation with Ansible (8.5) remains the best foundational systems narrative but trails on validation depth and copy-paste fidelity
+- AIOps automation with Ansible (8.6) gains from curated-path clarity, structured validation, MCP workflow detail, and the Key Terms glossary -- but trails on executable depth (one YAML block) and lacks verbatim expected output
