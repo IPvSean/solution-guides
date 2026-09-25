@@ -166,6 +166,10 @@ You need at least one way for symptoms to reach automation -- a ticketing system
 - **ITSM / tickets** -- ServiceNow and similar systems where incidents or change requests start the loop
 - **Optional inference** -- Red Hat AI or another OpenAI-compatible endpoint when you enrich signals before enrichment or selection
 
+> **Tip:** Want event examples and vendor detail?
+>
+> Skip to [1. Detect](#1-detect) in the AIOps workflow -- event tables, observability tools, and message buses are walked through there.
+
 ### Red Hat Lightspeed (optional)
 
 For CVE and Advisor remediations, **Red Hat Lightspeed** publishes **curated** playbooks your teams promote into the approved library. That is not **Automation code assistant** (authoring-time drafts). See [Trusted sources for the approved library](#trusted-playbook-sources).
