@@ -481,7 +481,7 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 
 ## Summary
 
-With this framework, teams move from manual triage toward governed AIOps: enrich signals at **Crawl**, route to **pre-approved automation** at **Walk**, and close the loop at **Run** with policy, validation, and trust in the automation library. Ansible Automation Platform remains the execution layer for partner observability paths, self-hosted **inference** for enrichment, and **Red Hat Lightspeed curated remediations**.
+This foundational guide shows how Ansible Automation Platform turns AIOps signals into **governed remediation**: detect with EDA or ITSM, search the approved library through MCP, correlate and select with AI assistance, then execute with guardrails and validation. Partner observability and ticketing paths plug into that same loop. AAP stays the trusted execution layer -- with optional self-hosted **inference** for enrichment and **Red Hat Lightspeed** curated remediations feeding the library teams already trust.
 
 ---
 
