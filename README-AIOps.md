@@ -468,15 +468,6 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 
 **Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
-<h2 id="related-guides">Related Guides</h2>
-
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html)
-- [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md)
-- [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md)
-- [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md)
-- [AIOps with AWS SQS and Event-Driven Ansible](README-SQS.md)
-- [Event-Driven Remediation with Azure Service Bus](README-AIOps-Azure-Service-Bus.md)
-
 ---
 
 ## Summary
