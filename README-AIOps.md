@@ -162,8 +162,7 @@ Requirements depend on which use case or partner guide you implement -- not ever
 - **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for this guide).
 - **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (approvals, task agents, and logic steps) or the **AAP MCP server** (library search and governed launch from an AI client).
 
-### Event sources
-<a id="event-sources"></a>
+<h3 id="event-sources">Event sources</h3>
 
 You need at least one way for symptoms to reach automation -- a ticketing system, an observability platform, or both. Partner Solution Guides cover specific stacks; examples include:
 
