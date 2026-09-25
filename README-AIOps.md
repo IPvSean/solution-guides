@@ -193,6 +193,8 @@ The **default production pattern** is **curated automation remediation**: when a
 3. **[Correlate and select](#3-correlate-and-select)** -- inference picks from the library (or a short list for approval).
 4. **[Execute approved job](#4-execute-approved-job)** -- governed run with guardrails and validation.
 
+<img src="assets/images/aiops-curated-remediation-overview.png" alt="Curated remediation: AI selects from an approved automation library in Ansible Automation Platform to remediate IT infrastructure">
+
 <h2 id="1-detect">1. Detect</h2>
 <a id="event-intake-reference"></a>
 
