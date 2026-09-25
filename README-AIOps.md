@@ -153,10 +153,6 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 Requirements depend on which use case or partner guide you implement -- not everything below at once.
 
-> **Terminology update -- Lightspeed rebranding.**
->
-> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
-
 ### Ansible Automation Platform
 
 - **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for this guide).
@@ -173,6 +169,10 @@ You need at least one way for symptoms to reach automation -- a ticketing system
 ### Red Hat Lightspeed (optional)
 
 For CVE and Advisor remediations, **Red Hat Lightspeed** publishes **curated** playbooks your teams promote into the approved library. That is not **Automation code assistant** (authoring-time drafts). See [Trusted sources for the approved library](#trusted-playbook-sources).
+
+> **Terminology update -- Lightspeed rebranding.**
+>
+> Red Hat has consolidated its AI-powered services under the **Lightspeed** brand. **Ansible Lightspeed Code Assistant** is now **Automation code assistant** (supports Gemini, Red Hat AI, or IBM watsonx). **Ansible Lightspeed Intelligent Assistant** is now **Automation intelligent assistant**. **Red Hat Insights** (console.redhat.com) is now **Red Hat Lightspeed**. The functionality is the same -- only the branding has changed. This guide uses both old and new names where they appear in existing code and screenshots.
 
 <h2 id="aiops-workflow">AIOps workflow</h2>
 
