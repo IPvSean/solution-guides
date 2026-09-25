@@ -474,7 +474,45 @@ This foundational guide shows how Ansible Automation Platform turns AIOps signal
 
 <h2 id="key-terms">Key Terms</h2>
 
-Reference for Ansible collections in this guide, including config-as-code and partner integrations. Partner Solution Guides add their own collections on each page. For **Red Hat Lightspeed curated remediations** versus **Automation code assistant** authoring-time drafts, see [Trusted sources for the approved library](#trusted-playbook-sources).
+Short definitions for concepts used in this guide, plus Ansible collections. Partner Solution Guides add their own collections on each page.
+
+<div class="key-terms-group">
+
+<h3 id="key-terms-concepts">Concepts</h3>
+
+<dl class="key-terms-glossary">
+
+<dt>AIOps</dt>
+<dd>Artificial intelligence for IT operations -- using data, inference, and automation to improve detection, diagnosis, and resolution.
+<span class="key-terms-detail">See <a target="_blank" href="https://www.redhat.com/en/topics/ai/what-is-aiops">What is AIOps?</a> and the <a href="#background">Background</a> section of this guide.</span></dd>
+
+<dt>Event-Driven Ansible (EDA)</dt>
+<dd>The event intake capability in Ansible Automation Platform: rulebooks watch sources (webhooks, Kafka, partner plugins) and trigger jobs or workflows when conditions match.
+<span class="key-terms-detail">Baseline for Detect in this guide; see <a href="#1-detect">1. Detect</a>.</span></dd>
+
+<dt><a target="_blank" href="https://www.redhat.com/en/topics/ai/what-is-model-context-protocol-mcp">Model Context Protocol (MCP)</a></dt>
+<dd>An open protocol that lets AI clients call tools and data sources in a standard way. In this guide, the <strong>AAP MCP server</strong> exposes approved job templates and workflows so an AI assistant can search the library and request governed runs.
+<span class="key-terms-detail">See <a href="#2-mcp-search">2. MCP search</a> and <a target="_blank" href="https://www.redhat.com/en/topics/ai/what-is-model-context-protocol-mcp">What is MCP?</a>.</span></dd>
+
+<dt>Approved library / curated remediation</dt>
+<dd>Pre-reviewed job templates and workflows already in AAP. At incident time, AI <strong>selects</strong> from that menu and AAP executes -- it does not invent new playbooks from an alert.
+<span class="key-terms-detail">See <a href="#aiops-workflow">AIOps workflow</a> and <a href="#trusted-playbook-sources">Trusted sources for the approved library</a>.</span></dd>
+
+<dt>Automation orchestrator</dt>
+<dd>AAP capability for multi-step workflows with approvals, task agents, and logic steps (AAP 2.7+).
+<span class="key-terms-detail">Optional for gated launches and closed-loop validation; see <a href="#prerequisites">Prerequisites</a>.</span></dd>
+
+<dt>Red Hat Lightspeed</dt>
+<dd>console.redhat.com services (formerly Red Hat Insights) that publish <strong>Red Hat-curated</strong> CVE and Advisor remediation playbooks -- expert-authored content, not LLM output.
+<span class="key-terms-detail">Distinct from <strong>Automation code assistant</strong> (authoring-time drafts in the IDE). See <a href="#trusted-playbook-sources">Trusted sources</a>.</span></dd>
+
+<dt>Automation code assistant</dt>
+<dd>LLM-assisted playbook authoring in the IDE (formerly Ansible Lightspeed Code Assistant). Humans review and promote content into the approved library.
+<span class="key-terms-detail">Not used for incident-time codegen on the curated path in this guide.</span></dd>
+
+</dl>
+
+</div>
 
 <div class="key-terms-group">
 
@@ -487,8 +525,8 @@ Reference for Ansible collections in this guide, including config-as-code and pa
 <span class="key-terms-detail">Baseline for event-driven AIOps paths in this guide and in partner Solution Guides.</span></dd>
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/">ansible.controller</a></dt>
-<dd>Certified collection for Ansible Automation Platform configuration as code: job templates, workflows, surveys, credentials, and RBAC.
-<span class="key-terms-detail">Baseline for governed execution regardless of observability or ITSM partner.</span></dd>
+<dd>Certified collection for automation controller resources as code: job templates, workflows, surveys, credentials, and RBAC (routes through the platform gateway on AAP 2.7+).
+<span class="key-terms-detail">Baseline for governed execution. <code>ansible.platform</code> covers gateway auth and platform-wide resources -- it does not replace controller job-template modules.</span></dd>
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">ansible.scm</a></dt>
 <dd>Certified collection for Git operations against playbook projects.
