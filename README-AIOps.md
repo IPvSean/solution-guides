@@ -417,17 +417,6 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 >
 > Stop after correlate/select and **notify** only (chat or ITSM). See [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md).
 
-### Risk at a glance
-
-| Stage | Operational Impact | Why |
-|-------|-------------------|-----|
-| **1. Detect** | **None to low** | Events and tickets are read-only until a run is requested. |
-| **2. MCP search** | **None** | Lists existing templates and workflows; no infrastructure change. |
-| **3. Correlate and select** | **None** | AI reasoning only; selection is from the approved library. |
-| **4. Execute approved job** | **High** | Runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run. |
-
-Stages 1-3 are safe to experiment with in non-production. Stage 4 is where production risk lives -- which is why Walk keeps a **human approval** gate before launch unless policy explicitly allows auto-run.
-
 <h2 id="4-execute-approved-job">4. Execute approved job</h2>
 
 **Operational impact:** **High** -- runs production automation. Use surveys, approvals, or Automation orchestrator at Walk before auto-run at Run.
