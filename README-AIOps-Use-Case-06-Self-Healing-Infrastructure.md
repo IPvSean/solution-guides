@@ -83,25 +83,15 @@ Closed-loop workflows with approval, loops, and validation nodes.
 |-------|-------------------|
 | Detect to act on known failure class | EDA or MCP client receives alert with enough context to select a library template |
 | Curated execute | Governed job completes; observability or validation job shows recovery |
-| Optional workshop appendix | Four-stage checklist in [appendix validation](#appendix-validation-workshop-pipeline) passes in lab only |
 
 <h2 id="optional-appendix-workshop-multi-llm-pipeline-policy-governed-only"></h2>
+<a id="workshop-run-pipeline"></a>
 
-## Optional appendix: workshop multi-LLM pipeline (policy-governed only)
+## Workshop pipeline
 
-> **Not for production default.**
->
-> Use this pipeline only after lab testing, Git promotion, policy-as-code, and explicit approval gates. Run the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) first. Production **Run** self-healing should follow [curated remediation on the foundational guide](README-AIOps.md#4-curated-automation-remediation-walk) and [Curated Automation Remediation (use case 4)](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md).
+This section walks the four-part pipeline from the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html): EDA response, enrichment, playbook generation with **Automation code assistant**, and execute remediation.
 
-<h3 id="workshop-run-pipeline"></h3>
-
-### Workshop pipeline: multi-LLM playbook generation (Run demo)
-
-> **Workshop and Run demo, not the default customer path.**
->
-> The four-part pipeline below matches the [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html). It shows **Automation code assistant** playbook generation and Git promotion for teams exploring **Run** depth. Most deployments should stay on the [curated MCP path](README-AIOps.md#4-curated-automation-remediation-walk) until policy explicitly allows incident-time codegen.
-
-An AIOps **workshop** pipeline has four (4) parts:
+An AIOps workshop pipeline has four (4) parts:
 
 1. **Event-Driven Ansible (EDA) Response**
 
@@ -136,9 +126,9 @@ Stages 1-3 are safe to experiment with in any environment. Stage 4 is where prod
 
 <h3 id="example-workflow-diagram"></h3>
 
-### Example Workflow Diagram (workshop)
+### Example Workflow Diagram
 
-This diagram is from the hands-on workshop **Introduction to AI-Driven Ansible Automation**. It illustrates the **codegen** Run pipeline, not the default [curated MCP reference architecture](README-AIOps.md#4-curated-automation-remediation-walk).
+This diagram is from the hands-on workshop **Introduction to AI-Driven Ansible Automation**.
 
 [![overview_diagram](https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/overview_diagram.png?raw=true)](https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/overview_diagram.png?raw=true)
 
@@ -149,13 +139,13 @@ This diagram is from the hands-on workshop **Introduction to AI-Driven Ansible A
 
 <h2 id="1-event-driven-ansible-eda-response"></h2>
 
-## 1. Event-Driven Ansible (EDA) Response (workshop)
+## 1. Event-Driven Ansible (EDA) Response
 
-The workshop pipeline starts when EDA receives an event. **Production-neutral** event examples, observability tools, and message buses are on the [foundational AIOps guide -- Event intake reference](README-AIOps.md#event-intake-reference).
+The pipeline starts when EDA receives an event. Event examples, observability tools, and message buses are also on the [foundational AIOps guide -- Event intake reference](README-AIOps.md#event-intake-reference).
 
 <a target="_blank" href="https://github.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/blob/main/solution_images/eda_response.png"><img src="https://raw.githubusercontent.com/rhpds/showroom-lb2961-ai-driven-ansible-automation/refs/heads/main/solution_images/eda_response.png" width="50%"></a>
 
-### Example walkthrough (workshop lab)
+### Example walkthrough
 
 In the hands-on lab, students simulate an **httpd** outage:
 
@@ -418,9 +408,9 @@ Please consider using the <a target="_blank" href="https://console.redhat.com/an
 
 <h2 id="3-remediation-workflow"></h2>
 
-## 3. Remediation Workflow (workshop Run demo)
+## 3. Remediation Workflow
 
-The third part of the **workshop** AIOps pipeline is the **Remediation Workflow**. For production **Walk** deployments, replace this stage with [curated selection via AAP MCP](README-AIOps.md#4-curated-automation-remediation-walk) instead of generating new playbooks at incident time.
+The third part of the AIOps pipeline is the **Remediation Workflow**.
 
 This workshop workflow takes a prompt from the previous workflow, allows the human operator to customize this prompt, then builds an Ansible Playbook to remediate the issue, syncs this to git and builds a job template that will run this playbook for the final step.
 

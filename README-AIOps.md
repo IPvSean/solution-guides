@@ -33,7 +33,7 @@ Traditional event-driven automation is **deterministic** -- for every event you 
 | Traditional EDA | 1,000 | 1,000 | 1,000 |
 | **AIOps with EDA** | **1,000** | **Few rulebooks** (+ AI inference) | **Curated or governed** |
 
-AIOps breaks this linear relationship by inserting **AI inference** between the event and **governed Ansible execution**. Most production paths **enrich** signals or **select from pre-approved job templates** rather than generating new playbooks at incident time. This guide maps operational patterns (Crawl/Walk/Run), partner integrations, and the **curated remediation** workflow most teams deploy in production. Advanced workshop codegen is documented on [Self-healing infrastructure (use case 6)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md), not here.
+AIOps breaks this linear relationship by inserting **AI inference** between the event and **governed Ansible execution**. Most production paths **enrich** signals or **select from pre-approved job templates** rather than generating new playbooks at incident time. This guide maps operational patterns (Crawl/Walk/Run), partner integrations, and the **curated remediation** workflow most teams deploy. For the hands-on workshop pipeline, see [Self-healing infrastructure (use case 6)](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
 <h2 id="background">Background</h2>
 
@@ -468,10 +468,6 @@ Validate the **curated remediation** path end to end. Partner Solution Guides ad
 | **3. Select and approve** | AI correlates to one library entry (or short list) | Selected template matches runbook intent; approval recorded if required at Walk |
 | **4. Execute and validate** | Governed job run completes | Job success in AAP; observability or validation playbook shows service recovered |
 
-> **Hands-on lab (optional).**
->
-> The [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) and the [UC06 workshop appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) cover multi-LLM codegen for lab exploration only -- not the production checklist above.
-
 ### Troubleshooting (curated path)
 
 Most failures on the curated path show up as **library gaps**, **wrong selection**, or **RBAC** on execute.
@@ -491,7 +487,7 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 |----------|-----------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6b6.png" width="20" style="vertical-align:text-bottom;"> **Crawl** | Incident & Ticket Enrichment, Cost & Resource Optimization | AI **interprets** operational signals and attaches context -- no changes to systems |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Curated Automation Remediation, Intelligent Capacity Orchestration | AI **selects** from pre-approved automation -- proven playbooks, governed execution |
-| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md), [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) | Closed-loop **approved library** execution with policy and validation; not incident-time codegen |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md), [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md) | Closed-loop **approved library** execution with policy and validation |
 
 > **AIOps is the outcome. Agentic is a capability.**
 >
@@ -499,11 +495,11 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 
 **Crawl** (stops before stage 4): [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md). See also [Crawl: analyze, recommend, and notify](#crawl-analyze-notify) in section 3.
 
-**Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md). Workshop codegen: [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) only.
+**Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
 <h2 id="related-guides">Related Guides</h2>
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Workshop / advanced Run lab:** [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) and [Self-healing infrastructure -- optional workshop appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) (codegen under policy, not production default)
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [Hands-On AIOps Workshop](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html)
 - [Automated Incident Remediation with IBM Instana](README-Instana-AIOps.md)
 - [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md)
 - [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md)
@@ -514,7 +510,7 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 
 ## Summary
 
-With this framework, teams move from manual triage toward governed AIOps: enrich signals at **Crawl**, route to **pre-approved automation** at **Walk**, and close the loop at **Run** with policy, validation, and trust in the automation library. Ansible Automation Platform remains the execution layer for partner observability paths, self-hosted **inference** for enrichment, and **Red Hat Lightspeed curated remediations**. Novel playbook generation at incident time is out of scope for this foundational guide.
+With this framework, teams move from manual triage toward governed AIOps: enrich signals at **Crawl**, route to **pre-approved automation** at **Walk**, and close the loop at **Run** with policy, validation, and trust in the automation library. Ansible Automation Platform remains the execution layer for partner observability paths, self-hosted **inference** for enrichment, and **Red Hat Lightspeed curated remediations**.
 
 ---
 
@@ -538,7 +534,7 @@ Reference for Ansible collections in this guide, including config-as-code and pa
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">ansible.scm</a></dt>
 <dd>Certified collection for Git operations against playbook projects.
-<span class="key-terms-detail">Used in the optional [UC06 workshop appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) for Git promotion. Not required for Crawl enrichment or Walk curated remediation.</span></dd>
+<span class="key-terms-detail">Used in the [UC06 workshop pipeline](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#workshop-run-pipeline) for Git promotion.</span></dd>
 
 <dt>Partner collections</dt>
 <dd>Collections named on each partner Solution Guide (for example <code>servicenow.itsm</code>, IBM Instana, Splunk or EDA integrations).
