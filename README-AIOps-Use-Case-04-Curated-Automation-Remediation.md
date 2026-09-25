@@ -29,6 +29,8 @@ Teams need consistent remediation, but unconstrained AI agents may generate a di
 
 This use case sits at **Walk** maturity: event- or ticket-initiated flows that combine EDA, inference, and job templates. It pairs naturally with Red Hat Lightspeed and pre-approved content at Crawl/Walk and with Automation code assistant at Run **only inside policy boundaries** -- selection from curated content remains the default for production.
 
+For a shared high-level Detect → MCP → select → execute walkthrough across partners, see [AIOps automation with Ansible](README-AIOps.md#aiops-workflow). This page is the dedicated pattern guide and will expand with deeper scenarios, demos, and Arcade content.
+
 ## Solution
 
 - **EDA** triggers on observability or ITSM events (or an operator starts from an AI client)

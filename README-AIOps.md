@@ -96,6 +96,8 @@ Six operational patterns for customer conversations. **AI identifies opportuniti
 
 Each pattern has its own **AIOps Use Case** page (adoption path, partner links, validation). Pick a row below or open the [Common AIOps Use Cases hub](aiops-use-cases.md).
 
+This foundational guide's [AIOps workflow](#aiops-workflow) is a **high-level walkthrough** of use case **4 -- Curated Automation Remediation**. That use-case page will grow more detailed and opinionated over time (examples, labs, Arcade). Open it from the strip when you want the dedicated pattern guide.
+
 <div class="cards-track-section cards-track-section--use-cases">
 <nav class="use-case-strip" aria-label="AIOps use cases">
 <a class="use-case-strip__item" href="README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.html">
@@ -182,11 +184,13 @@ For CVE and Advisor remediations, **Red Hat Lightspeed** publishes **curated** p
 
 The **default production pattern** is **curated automation remediation**: when an incident arrives, the AI assistant uses the **AAP MCP server** to **search** Ansible Automation Platform for **pre-approved** job templates and workflows, **selects** the best match (like a menu), and requests a **governed run**. Nothing new is invented at incident time, which keeps audit trails, RBAC, and change control intact.
 
+The sections below are a **high-level walkthrough** of that pattern -- the same loop as [Curated Automation Remediation (use case 4)](README-AIOps-Use-Case-04-Curated-Automation-Remediation.md). Use that page for the dedicated use-case narrative; expect it to gain deeper examples, demos, and Arcade content as it matures. This foundational guide stays the shared Detect → MCP search → Correlate and select → Execute path.
+
 > **Why select instead of generate?**
 >
 > Generating playbooks from an alert introduces **unreviewed change** every time the same symptom recurs. Teams already maintain trusted automation in AAP. MCP exposes that library to the AI client so inference **chooses** from approved options instead of authoring fixes from thin air.
 
-**EDA** is included in Ansible Automation Platform. The four sections below follow the same shape as the hands-on workshop pipeline, mapped to the **production curated path**:
+**EDA** is included in Ansible Automation Platform. The four sections below map to the curated path:
 
 1. **[Detect](#1-detect)** -- observability, ITSM, or an operator surfaces a symptom.
 2. **[MCP search](#2-mcp-search)** -- the AI client lists approved job templates and workflows in AAP.
