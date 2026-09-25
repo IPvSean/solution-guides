@@ -180,7 +180,7 @@ For CVE and Advisor remediations, **Red Hat Lightspeed** publishes **curated** p
 
 <h2 id="aiops-workflow">AIOps workflow</h2>
 
-The **default production pattern** is **curated automation remediation** at **Walk** maturity: when an incident arrives, the AI assistant uses the **AAP MCP server** to **search** Ansible Automation Platform for **pre-approved** job templates and workflows, **selects** the best match (like a menu), and requests a **governed run**. Nothing new is invented at incident time, which keeps audit trails, RBAC, and change control intact.
+The **default production pattern** is **curated automation remediation**: when an incident arrives, the AI assistant uses the **AAP MCP server** to **search** Ansible Automation Platform for **pre-approved** job templates and workflows, **selects** the best match (like a menu), and requests a **governed run**. Nothing new is invented at incident time, which keeps audit trails, RBAC, and change control intact.
 
 > **Why select instead of generate?**
 >
