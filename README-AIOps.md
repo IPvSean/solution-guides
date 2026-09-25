@@ -413,15 +413,9 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 >
 > Whether a playbook came from **Red Hat Lightspeed** (curated CVE or Advisor content), was **drafted with Automation code assistant** and reviewed by your team, or was hand-crafted, the same promotion process applies: Git as source of truth, project sync in AAP, Job Templates with guardrails (credentials, inventory limits, surveys), and optional approval gates. The IDE is where review happens for AI-assisted authoring; AAP is where gatekeeping happens.
 
-<h3 id="crawl-analyze-notify">Crawl: analyze, recommend, and notify</h3>
-
-**Crawl** uses the same inference stack as Walk but stops after **Correlate and select** -- no stage 4 run:
-
-1. **Correlate** -- optional fact gathering on hosts plus **Red Hat AI** or another OpenAI-compatible endpoint interprets the signal (for example disk full, service down, certificate expiry).
-2. **Recommend** -- the AI client may query **AAP MCP** read-only and **suggest** matching job templates from the library (for example **Increase storage capacity**) without launching them.
-3. **Notify** -- post enriched context to **chat or ITSM** (Mattermost, Slack, ServiceNow, and similar) so a human approves the next step.
-
-At **Walk**, the same correlation step leads to **select from menu** and a **governed run** in stage 4. Deep adoption paths: [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md).
+> **Tip:** Not ready to run automation yet?
+>
+> Stop after correlate/select and **notify** only (chat or ITSM). See [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md).
 
 ### Risk at a glance
 
@@ -494,7 +488,7 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 >
 > Agentic workflows -- where AI plans, uses tools, reflects on results, and iterates -- can enhance any stage of this journey. But AIOps does not require agentic capabilities to deliver value. A deterministic EDA rulebook that enriches a ServiceNow ticket is AIOps at the Crawl stage. A fully autonomous agent that reasons about OSPF failures is AIOps at the Run stage. Start where you are.
 
-**Crawl** (stops before stage 4): [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md). See also [Crawl: analyze, recommend, and notify](#crawl-analyze-notify) in section 3.
+**Crawl** (enrichment / notify only): [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md).
 
 **Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
