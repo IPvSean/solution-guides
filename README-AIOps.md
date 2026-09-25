@@ -505,15 +505,15 @@ Reference for Ansible collections in this guide, including config-as-code and pa
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/scm/">ansible.scm</a></dt>
 <dd>Certified collection for Git operations against playbook projects.
-<span class="key-terms-detail">Used in the [UC06 workshop pipeline](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#workshop-run-pipeline) for Git promotion.</span></dd>
+<span class="key-terms-detail">Used in the <a href="README-AIOps-Use-Case-06-Self-Healing-Infrastructure.html#workshop-run-pipeline">UC06 workshop pipeline</a> for Git promotion.</span></dd>
 
 <dt>Partner collections</dt>
 <dd>Collections named on each partner Solution Guide (for example <code>servicenow.itsm</code>, IBM Instana, Splunk or EDA integrations).
-<span class="key-terms-detail">Install only for the integration you are implementing; see [Event sources](#event-sources) in Prerequisites.</span></dd>
+<span class="key-terms-detail">Install only for the integration you are implementing; see <a href="#event-sources">Event sources</a> in Prerequisites.</span></dd>
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> and <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a></dt>
-<dd>Optional validated and certified collections for **self-hosted Red Hat AI** on your infrastructure.
-<span class="key-terms-detail">Automate provisioning GPU capacity and serving models with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See [AI Infrastructure automation with Ansible](README-IA.md) for a full walkthrough.</span></dd>
+<dd>Optional validated and certified collections for <strong>self-hosted Red Hat AI</strong> on your infrastructure.
+<span class="key-terms-detail">Automate provisioning GPU capacity and serving models with RHEL AI and InstructLab. They do not replace generic OpenAI-compatible APIs or partner-hosted inference. See <a href="README-IA.html">AI Infrastructure automation with Ansible</a> for a full walkthrough.</span></dd>
 
 </dl>
 
@@ -525,9 +525,9 @@ Reference for Ansible collections in this guide, including config-as-code and pa
 
 | | |
 |---|---|
-| <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/trial"><strong>Try Ansible Automation Platform</strong></a> | Start a free 60-day trial and build your first automation workflows |
-| <a target="_blank" href="https://www.redhat.com/en/services/consulting"><strong>Red Hat Consulting</strong></a> | Work with Red Hat experts to design, implement, and scale AIOps automation tailored to your environment |
-| <a target="_blank" href="https://www.redhat.com/en/services/training-and-certification"><strong>Training and Certification</strong></a> | Build team skills with hands-on courses and industry-recognized certifications |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/trial"><strong>Try Ansible Automation Platform</strong></a> | Start a free 60-day trial and build your first automation workflows |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f91d.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/services/consulting"><strong>Red Hat Consulting</strong></a> | Work with Red Hat experts to design, implement, and scale AIOps automation tailored to your environment |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f393.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.redhat.com/en/services/training-and-certification"><strong>Training and Certification</strong></a> | Build team skills with hands-on courses and industry-recognized certifications |
 
 ---
 
