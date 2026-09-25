@@ -156,7 +156,7 @@ Requirements depend on which use case or partner guide you implement.
 ### Ansible Automation Platform
 
 - **Ansible Automation Platform 2.5+** -- Required for enterprise **EDA** (baseline for this guide).
-- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (approvals, task agents, and logic steps) or the **AAP MCP server** (library search and governed launch from an AI client).
+- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (approvals, task agents, and logic steps) or the **AAP <a target="_blank" href="https://www.redhat.com/en/topics/ai/what-is-model-context-protocol-mcp">Model Context Protocol (MCP)</a> server** (library search and governed launch from an AI client).
 
 <h3 id="event-sources">Event sources</h3>
 
