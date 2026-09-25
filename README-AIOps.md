@@ -365,9 +365,7 @@ Work can also start from an operator pasting incident context into an AI client 
 <h2 id="3-correlate-and-select">3. Correlate and select</h2>
 <a id="4-curated-automation-remediation-walk"></a>
 
-**Operational impact:** **None** -- AI reasoning only; selection is from the approved library.
-
-Use case **4 -- Curated automation remediation** is the reference loop for most customer conversations. Work can start from observability (EDA), an ITSM ticket, or an operator using an AI client (Cursor, Claude Code, ChatGPT, Copilot, and similar). The AI layer may call Red Hat AI or another model for **correlation**; execution always flows through **existing** AAP content chosen in this stage.
+Curated automation provides a practical foundation for AIOps with Red Hat Ansible Automation Platform (AAP). Remediation can begin with an observability event through Event-Driven Ansible, an ITSM ticket, or an operator using an AI client such as Cursor, Claude Code, ChatGPT, or Copilot. AI capabilities from Red Hat AI or another platform help correlate signals and recommend actions, while AAP executes approved automation content to deliver controlled, repeatable remediation.
 
 | Step | What happens |
 |------|----------------|
