@@ -151,7 +151,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-Requirements depend on which use case or partner guide you implement -- not everything below at once.
+Requirements depend on which use case or partner guide you implement.
 
 ### Ansible Automation Platform
 
