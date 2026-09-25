@@ -151,7 +151,7 @@ Each pattern has its own **AIOps Use Case** page (adoption path, partner links, 
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-Requirements depend on **maturity and which use case or partner guide** you implement -- not everything below at once.
+Requirements depend on which use case or partner guide you implement -- not everything below at once.
 
 > **Terminology update -- Lightspeed rebranding.**
 >
@@ -159,23 +159,21 @@ Requirements depend on **maturity and which use case or partner guide** you impl
 
 ### Ansible Automation Platform
 
-- **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for Crawl through Run in this guide).
-- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (multi-step approvals, agent nodes, and closed-loop patterns in UC01 Stages 3+ and later use cases).
+- **Ansible Automation Platform 2.5+** -- Required for enterprise **Event-Driven Ansible** (baseline for this guide).
+- **Ansible Automation Platform 2.7+** -- Required when you adopt **Automation orchestrator** (approvals, task agents, and logic steps) or the **AAP MCP server** (library search and governed launch from an AI client).
 
-<h3 id="what-you-need-by-maturity">What you need by maturity</h3>
+### Event sources
+<a id="event-sources"></a>
 
-| Maturity | Platform | External / integration |
-|----------|----------|-------------------------|
-| **Crawl** | AAP 2.5+ with EDA | At least one **event or ticket source** (observability or ITSM); optional **inference** for enrichment |
-| **Walk (curated)** | Same | **AAP MCP server** for library search and governed launch; optional chat/ITSM for notifications |
-| **Walk/Run (orchestrated)** | **AAP 2.7+** with **Automation orchestrator** | Approvals, branching, validation loops ([Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md) decision framework) |
-| **Run + content** | As above | **Red Hat Lightspeed** curated CVE/Advisor remediations (not Automation code assistant) |
+You need at least one way for symptoms to reach automation -- a ticketing system, an observability platform, or both. Partner Solution Guides cover specific stacks; examples include:
 
-### Lab-only or partner-specific (not foundational defaults)
+- **Observability** -- IBM Instana, Splunk, and similar alert or metric sources that can feed EDA (webhook, plugin, or message bus)
+- **ITSM / tickets** -- ServiceNow and similar systems where incidents or change requests start the loop
+- **Optional inference** -- Red Hat AI or another OpenAI-compatible endpoint when you enrich signals before enrichment or selection
 
-- Message bus (Kafka, SQS, Azure Service Bus) -- partner guide dependent
-- Git promotion / **Automation code assistant** -- [UC06 optional appendix](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#optional-appendix-workshop-multi-llm-pipeline-policy-governed-only) only
-- Named stacks -- open the relevant **partner Solution Guide** or **AIOps Use Case** page (Instana, Splunk, ServiceNow, and others)
+### Red Hat Lightspeed (optional)
+
+For CVE and Advisor remediations, **Red Hat Lightspeed** publishes **curated** playbooks your teams promote into the approved library. That is not **Automation code assistant** (authoring-time drafts). See [Trusted sources for the approved library](#trusted-playbook-sources).
 
 <h2 id="aiops-workflow">AIOps workflow</h2>
 
@@ -545,7 +543,7 @@ Reference for Ansible collections in this guide, including config-as-code and pa
 
 <dt>Partner collections</dt>
 <dd>Collections named on each partner Solution Guide (for example <code>servicenow.itsm</code>, IBM Instana, Splunk or EDA integrations).
-<span class="key-terms-detail">Install only for the integration you are implementing; see [What you need by maturity](#what-you-need-by-maturity) in Prerequisites.</span></dd>
+<span class="key-terms-detail">Install only for the integration you are implementing; see [Event sources](#event-sources) in Prerequisites.</span></dd>
 
 <dt><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/validated/infra/ai">infra.ai</a> and <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/redhat/ai">redhat.ai</a></dt>
 <dd>Optional validated and certified collections for **self-hosted Red Hat AI** on your infrastructure.
