@@ -198,8 +198,6 @@ The **default production pattern** is **curated automation remediation**: when a
 <h2 id="1-detect">1. Detect</h2>
 <a id="event-intake-reference"></a>
 
-**Operational impact:** **None to low** -- events and tickets are read-only until a run is requested.
-
 Something must **detect** a symptom and reach EDA, an ITSM ticket, or an AI client before MCP search runs. The tables below are vendor-neutral patterns -- not a checklist to deploy all at once.
 
 ### What can trigger automation?
@@ -344,8 +342,6 @@ Example rulebook for Kafka:
 ```
 
 <h2 id="2-mcp-search">2. MCP search</h2>
-
-**Operational impact:** **None** -- lists existing templates and workflows; no infrastructure change.
 
 After **Detect**, the AI assistant (or an enrichment workflow that hands off to a client) queries Ansible Automation Platform through the **AAP MCP server**. MCP returns **labeled job templates and workflows** from the approved library -- fix permissions, increase storage, patch a CVE, restart a service, and similar -- scoped to the operator's RBAC. Nothing launches yet; this stage only builds the menu for correlation.
 
