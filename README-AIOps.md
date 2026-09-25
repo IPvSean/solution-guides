@@ -464,9 +464,9 @@ Progress from read-only enrichment toward governed closed-loop automation. The [
 >
 > Agentic workflows -- where AI plans, uses tools, reflects on results, and iterates -- can enhance any stage of this journey. But AIOps does not require agentic capabilities to deliver value. A deterministic EDA rulebook that enriches a ServiceNow ticket is AIOps at the Crawl stage. A fully autonomous agent that reasons about OSPF failures is AIOps at the Run stage. Start where you are.
 
-**Crawl** (enrichment / notify only): [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md).
+**Crawl:** [Incident and Ticket Enrichment](README-AIOps-Use-Case-01-Incident-Ticket-Enrichment.md), [ServiceNow ITSM Ticket Enrichment Automation](README-ServiceNow-ITSM.md), [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.md).
 
-**Run** (closed loop after stage 4): [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
+**Run:** [System-Level Drift and Policy Enforcement](README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement.md), [Self-healing infrastructure](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md).
 
 ---
 
