@@ -415,25 +415,18 @@ Walk and Run assume automation already lives in AAP as reviewed job templates an
 
 <h2 id="4-execute-approved-job">4. Execute approved job</h2>
 
-The AI client (or workflow) **launches** the selected job template or workflow through MCP with the operator's RBAC. AAP executes the approved automation, records audit history, and should feed results back to observability or ITSM. Add a **validation** job or observability check before closing the incident at **Run** maturity.
+The AI client (or workflow) **launches** the selected job template or workflow through MCP with the operator's RBAC. AAP executes the approved automation, records audit history, and should feed results back to observability or ITSM. Add a **validation** job or observability check before closing the incident.
 
-### Production guardrails (curated path)
+### Production guardrails
 
 Before high-impact runs, teams typically enforce:
 
-| Guardrail | Walk | Run |
-|-----------|------|-----|
-| **Library-first** | MCP exposes only approved job templates and workflows | Same; grow the library before expanding autonomy |
-| **Approvals** | Human or Automation orchestrator gate before launch | Policy-defined auto-run inside boundaries |
-| **Validation** | Post-run job or observability check | Closed-loop validate before closing the incident |
-| **Policy** | Surveys, inventory limits, credential scope | <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/automated-policy-as-code">Automated Policy as Code</a> where required |
-
-| Maturity | Policy approach |
-|----------|----------------|
-| **Crawl** | No production remediation from AI; enrichment only |
-| **Walk** | Policy checks plus human approval before curated job runs |
-| **Run** | Policy validates curated content; auto-run only within defined boundaries |
-
+| Recommendation | What to do |
+|----------------|------------|
+| **Library-first** | Expose only approved job templates and workflows through MCP; grow the library before expanding autonomy |
+| **Approvals** | Require a human or Automation orchestrator gate before launch until policy clearly allows auto-run |
+| **Validation** | Confirm recovery with a post-run job or observability check before closing the incident |
+| **Policy** | Use surveys, inventory limits, and credential scope; add <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/automated-policy-as-code">Automated Policy as Code</a> where required |
 
 <h2 id="validation">Validation</h2>
 
@@ -443,7 +436,7 @@ Validate the **curated remediation** path end to end. Partner Solution Guides ad
 |-------|----------------|-------------------|
 | **1. Detect** | Event, ticket, or operator request reaches automation | EDA rulebook activation **Running** with matching events, or MCP client receives incident context |
 | **2. MCP library search** | AI client queries AAP with operator RBAC | MCP returns labeled job templates or workflows relevant to the symptom class |
-| **3. Select and approve** | AI correlates to one library entry (or short list) | Selected template matches runbook intent; approval recorded if required at Walk |
+| **3. Select and approve** | AI correlates to one library entry (or short list) | Selected template matches runbook intent; approval recorded if required |
 | **4. Execute and validate** | Governed job run completes | Job success in AAP; observability or validation playbook shows service recovered |
 
 ### Troubleshooting (curated path)
