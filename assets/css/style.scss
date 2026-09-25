@@ -227,13 +227,29 @@ img {
     border: none;
 }
 
+.guide-closing-logo-set {
+  display: block;
+  margin: 1.25rem auto 0;
+  text-align: center;
+  line-height: 0;
+}
+
 .guide-closing-logo {
   display: block;
   width: auto !important;
   max-width: 140px;
   height: auto;
-  margin: 1.25rem auto 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  cursor: default;
+}
+
+.guide-closing-logo-set .guide-closing-logo--dark {
+  display: none;
 }
 
 // Partner / vendor logos inline in guides (not lightbox diagrams)
@@ -3994,6 +4010,14 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   }
 
   .guide-tool-logo-set .guide-tool-logo--dark {
+    display: block;
+  }
+
+  .guide-closing-logo-set .guide-closing-logo--light {
+    display: none;
+  }
+
+  .guide-closing-logo-set .guide-closing-logo--dark {
     display: block;
   }
 
