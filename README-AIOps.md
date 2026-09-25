@@ -353,7 +353,7 @@ After **Detect**, the AI assistant (or an enrichment workflow that hands off to 
 |---------------|--------------|
 | **Search job templates** | Names, descriptions, and organization scope for symptom-matching automation |
 | **Search workflows** | Multi-step governed sequences (surveys, approvals, child jobs) |
-| **RBAC boundary** | Empty or partial results if the token cannot see or run candidates -- fix before stage 4 |
+| **RBAC boundary** | Empty or partial results if the token cannot see or run candidates |
 
 Work can also start from an operator pasting incident context into an AI client without EDA; MCP search works the same way once context is available.
 
