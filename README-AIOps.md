@@ -255,21 +255,65 @@ EDA is versatile and pluggable -- Ansible Automation Platform can react to many 
 
 Examples of tools that can feed EDA directly or via a bus (see [Common AIOps use cases](#common-aiops-use-cases) and partner guides):
 
-| Tool | Description | Automation Hub |
-|------|-------------|----------------|
-| <a id="filebeat"></a>**Filebeat** | Filebeat is a lightweight, open-source log shipper from Elastic that forwards logs from end-systems to a message aggregator. It is not an observability platform on its own -- it requires a message bus like Kafka to transport events to EDA. Workshops often use Filebeat because it is free, low-overhead, and easy to deploy in lab environments. | -- |
-| <a id="ibm-instana"></a>**IBM Instana** | IBM Instana provides real-time observability across hybrid and multicloud environments with automatic change detection, end-to-end tracing, and context-rich alerts. Its built-in anomaly detection and contextual correlation make it a natural event source for EDA rulebooks -- Instana can trigger automation workflows directly or through a message bus like Kafka. | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ibm/instana/">IBM Instana</a> |
-| <a id="splunk"></a>**Splunk** | Splunk ingests logs, metrics, traces, and events from virtually any source, providing a centralized view of system health across complex IT environments. Its machine learning and anomaly detection capabilities can proactively surface issues, making it an ideal trigger source for EDA-driven remediation workflows. | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/namespaces/splunk/">Splunk</a> |
+<table class="guide-table-event-sources">
+<thead>
+<tr><th>Tool</th><th>Description</th><th>Hub</th><th>Solution guide</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="filebeat"></a><img class="guide-tool-logo" src="assets/images/logos/beats-logo.svg" alt=""><strong>Filebeat</strong></td>
+<td>Filebeat is a lightweight, open-source log shipper from Elastic that forwards logs from end-systems to a message aggregator. It is not an observability platform on its own -- it requires a message bus like Kafka to transport events to EDA. Workshops often use Filebeat because it is free, low-overhead, and easy to deploy in lab environments.</td>
+<td>--</td>
+<td>--</td>
+</tr>
+<tr>
+<td><a id="ibm-instana"></a><img class="guide-tool-logo" src="assets/images/logos/instana-logo.png" alt=""><strong>IBM Instana</strong></td>
+<td>IBM Instana provides real-time observability across hybrid and multicloud environments with automatic change detection, end-to-end tracing, and context-rich alerts. Its built-in anomaly detection and contextual correlation make it a natural event source for EDA rulebooks -- Instana can trigger automation workflows directly or through a message bus like Kafka.</td>
+<td><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ibm/instana/">Instana</a></td>
+<td><a href="README-Instana-AIOps.html">Instana AIOps</a></td>
+</tr>
+<tr>
+<td><a id="splunk"></a><img class="guide-tool-logo" src="assets/images/logos/splunk-logo.png" alt=""><strong>Cisco Splunk</strong></td>
+<td>Cisco Splunk (Splunk Enterprise / Splunk Cloud) ingests logs, metrics, traces, and events from virtually any source, providing a centralized view of system health across complex IT environments. Its machine learning and anomaly detection capabilities can proactively surface issues, making it an ideal trigger source for EDA-driven remediation workflows -- including network domains such as Cisco infrastructure.</td>
+<td><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/namespaces/splunk/">Splunk</a></td>
+<td><a href="README-AIOps-Splunk-ITSI.html">Splunk and EDA</a></td>
+</tr>
+</tbody>
+</table>
+
+> **Tip:** Skip Filebeat on Linux hosts?
+>
+> For RHEL and other Linux systems, **journald** or **syslog** can feed a message bus (or an EDA-compatible source) without Filebeat. Filebeat is a convenient lab shipper -- not a hard requirement when native OS logging already reaches your bus.
 
 ### Message queues and EDA (optional)
 
 Message queues are optional depending on the observability tool. For example IBM Instana can work directly with EDA to trigger automation jobs, or it can work with a message queue like Apache Kafka. Here are some examples of other message queues that Ansible Automation Platform works with:
 
-| Tool | Description | Automation Hub |
-|------|-------------|----------------|
-| <a id="aws-sqs"></a>**AWS SQS** | Amazon SQS (Simple Queue Service) is a managed message queuing service that decouples event producers from consumers. In an AIOps workflow, observability tools or AWS CloudWatch can publish events to an SQS queue, and EDA subscribes to that queue to trigger automation. | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/amazon/aws/">AWS</a> |
-| <a id="azure-service-bus"></a>**Azure Service Bus** | Azure Service Bus is a fully managed enterprise messaging service with message queuing and publish-subscribe capabilities. EDA can subscribe to Service Bus topics or queues to detect events from Azure resources and third-party systems, making it a natural fit for cloud-centric AIOps workflows. | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/azure_service_bus/">Azure Service Bus</a> |
-| <a id="kafka"></a>**Kafka** | Apache Kafka is a high-throughput, fault-tolerant event streaming platform that collects telemetry data, logs, alerts, and state changes from diverse sources. EDA listens to Kafka topics for specific patterns and triggers remediation workflows. Kafka's ability to decouple producers and consumers makes it ideal for scaling AIOps pipelines across large environments. | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/kafka/">Kafka</a> |
+<table class="guide-table-event-sources">
+<thead>
+<tr><th>Tool</th><th>Description</th><th>Hub</th><th>Solution guide</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><a id="aws-sqs"></a><img class="guide-tool-logo" src="assets/images/logos/aws-logo.png" alt=""><strong>AWS SQS</strong></td>
+<td>Amazon SQS (Simple Queue Service) is a managed message queuing service that decouples event producers from consumers. In an AIOps workflow, observability tools or AWS CloudWatch can publish events to an SQS queue, and EDA subscribes to that queue to trigger automation.</td>
+<td><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/amazon/aws/">AWS</a></td>
+<td><a href="README-SQS.html">AWS SQS and EDA</a></td>
+</tr>
+<tr>
+<td><a id="azure-service-bus"></a><img class="guide-tool-logo" src="assets/images/logos/azure-logo.png" alt=""><strong>Azure Service Bus</strong></td>
+<td>Azure Service Bus is a fully managed enterprise messaging service with message queuing and publish-subscribe capabilities. EDA can subscribe to Service Bus topics or queues to detect events from Azure resources and third-party systems, making it a natural fit for cloud-centric AIOps workflows.</td>
+<td><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/azure_service_bus/">Azure</a></td>
+<td><a href="README-AIOps-Azure-Service-Bus.html">Azure Service Bus</a></td>
+</tr>
+<tr>
+<td><a id="kafka"></a><img class="guide-tool-logo" src="assets/images/logos/kafka_logo.webp" alt=""><strong>Kafka</strong></td>
+<td>Apache Kafka is a high-throughput, fault-tolerant event streaming platform that collects telemetry data, logs, alerts, and state changes from diverse sources. EDA listens to Kafka topics for specific patterns and triggers remediation workflows. Kafka's ability to decouple producers and consumers makes it ideal for scaling AIOps pipelines across large environments.</td>
+<td><a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/content/eda%2Fplugins%2Fevent_source/kafka/">Kafka</a></td>
+<td>--</td>
+</tr>
+</tbody>
+</table>
 
 Example rulebook for Kafka:
 

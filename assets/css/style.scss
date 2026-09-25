@@ -252,6 +252,47 @@ img {
   cursor: default;
 }
 
+// Compact logos in Detect event-source / message-queue tables
+.guide-tool-logo {
+  display: block;
+  width: auto;
+  max-width: 100px;
+  max-height: 28px;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  margin: 0 0 0.35rem;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+table.guide-table-event-sources {
+  table-layout: auto;
+
+  th:first-child,
+  td:first-child {
+    width: 7.5rem;
+    min-width: 7.5rem;
+    vertical-align: top;
+    white-space: normal;
+  }
+
+  th:nth-child(3),
+  td:nth-child(3),
+  th:nth-child(4),
+  td:nth-child(4) {
+    width: 1%;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  td:nth-child(2) {
+    vertical-align: top;
+  }
+}
+
 // Guide content images (border + click-to-expand lightbox)
 .guide-image {
   display: block;
