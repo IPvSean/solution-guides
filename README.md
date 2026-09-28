@@ -17,6 +17,7 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 | Network Fact Gathering & Reporting | | [access.redhat.com](https://access.redhat.com/articles/7123361) |
 | Network Back Up and Configuration | | [access.redhat.com](https://access.redhat.com/articles/7123366) |
 | Unlock AIOps with ServiceNow LEAP and Ansible MCP server | [README-AIOps-ServiceNow.md](README-AIOps-ServiceNow.md) | [access.redhat.com](https://access.redhat.com/articles/7127603) |
+| Intelligent Network Automation with Gluware and Ansible | [README-Gluware-Network-Automation.md](README-Gluware-Network-Automation.md) | |
 | Consuming OpenShift API Resources with EDA and Kafka | [README-OpenShift-EDA-Kafka.md](README-OpenShift-EDA-Kafka.md) | |
 | AAP HA/DR on OpenShift with CloudNativePG | [README-AAP-HA-DR-OpenShift.md](README-AAP-HA-DR-OpenShift.md) | |
 
