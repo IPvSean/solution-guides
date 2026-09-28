@@ -516,12 +516,11 @@ Expected: `gluware.gluware` with the installed version.
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6b6.png" width="20" style="vertical-align:text-bottom;"> **Crawl** | Dynamic inventory + snapshots | Use Gluware as Ansible's network inventory source of truth. Trigger config snapshots on demand from Ansible. Low risk, immediate value. |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Audit-driven reporting | Run compliance audits from Ansible workflows. Export results to ITSM (ServiceNow, Jira). Build visibility before adding remediation. |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Full closed-loop automation | Remediate drift automatically, trigger OS upgrades from pipelines, deploy complex configs with pre/post validation. EDA can initiate workflows from observability alerts. |
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/2708.png" width="20" style="vertical-align:text-bottom;"> **Fly** | AI-augmented network ops | Integrate Gluware's data with Red Hat AI / Automation code assistant for natural-language-driven network operations and AI-generated remediation playbooks. |
 
 > **Tip:** Start at Walk.
 >
 > Begin with Use Case A at the Walk stage -- use the audit module to generate compliance reports without auto-remediation. Once audit policies are validated and teams trust the results, enable automated remediation for Run.
-
-<!-- The PDF includes a "Fly" stage for AI-augmented network ops. Omitted here pending maturity of AI + network integration patterns. -->
 
 ## Related Guides
 
