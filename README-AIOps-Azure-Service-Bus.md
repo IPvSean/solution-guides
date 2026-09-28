@@ -381,6 +381,12 @@ az servicebus queue send \
 >
 > Route Azure Monitor alerts to Service Bus and deploy the EDA rulebook and enrichment workflow first. Let your team see AI-enriched Azure alerts in Slack for a few weeks before adding automated remediation. This builds confidence in the pipeline and catches edge cases early.
 
+## Summary
+
+With Azure Service Bus connected to Event-Driven Ansible, your Azure monitoring alerts become the trigger for automated enrichment and remediation. Instead of engineers manually triaging every Azure Monitor alert, events flow through Service Bus into an AIOps pipeline that diagnoses root cause with AI and remediates with Ansible -- reducing MTTR and bridging the gap between Azure's cloud monitoring and your operational automation, whether the affected systems are in Azure, on-prem, or hybrid.
+
+---
+
 <h2 id="related-guides"></h2>
 
 ## Related Guides
@@ -390,12 +396,6 @@ az servicebus queue send \
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4a1.png" width="20" style="vertical-align:text-bottom;"> **Looking for ServiceNow integration?** See [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) for LEAP/MCP-driven remediation and related ITSM patterns (see also [KB 7127603](https://access.redhat.com/articles/7127603)).
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9e0.png" width="20" style="vertical-align:text-bottom;"> **Need to deploy the AI backend?** See [AI Infrastructure automation with Ansible](README-IA.md) for automating Red Hat AI provisioning with the `infra.ai` and `redhat.ai` collections.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See [Get started with EDA (Ansible Rulebook)](https://access.redhat.com/articles/7136720) for the fundamentals of rulebooks, event sources, and actions.
-
----
-
-## Summary
-
-With Azure Service Bus connected to Event-Driven Ansible, your Azure monitoring alerts become the trigger for automated enrichment and remediation. Instead of engineers manually triaging every Azure Monitor alert, events flow through Service Bus into an AIOps pipeline that diagnoses root cause with AI and remediates with Ansible -- reducing MTTR and bridging the gap between Azure's cloud monitoring and your operational automation, whether the affected systems are in Azure, on-prem, or hybrid.
 
 ---
 

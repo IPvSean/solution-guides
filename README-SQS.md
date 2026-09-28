@@ -600,6 +600,12 @@ aws sqs send-message \
 
 This guide demonstrates the **Run** stage. Organizations can start at **Crawl** by using only the Enrichment Workflow (stages 1-2) and stopping before the Remediation Workflow.
 
+## Summary
+
+With AWS SQS as the event transport, your AIOps pipeline gains the durability and scalability of a fully managed message queue without the overhead of running your own broker infrastructure. Events from CloudWatch, EventBridge, SNS, or any application that publishes to SQS automatically flow into Event-Driven Ansible, where AI inference diagnoses the root cause and **Automation code assistant** generates remediation playbooks on-the-fly in **workshop Run** scenarios. The result is a cloud-native self-healing architecture that leverages your existing AWS infrastructure and reduces mean time to resolution (MTTR) without writing custom Lambda functions or polling scripts.
+
+---
+
 <h2 id="related-guides"></h2>
 
 ## Related Guides
@@ -609,12 +615,6 @@ This guide demonstrates the **Run** stage. Organizations can start at **Crawl** 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Want to try this hands-on?** The <a target="_blank" href="https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html">Hands-On AIOps Workshop</a> walks through the full self-healing pipeline with a live lab.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **New to Event-Driven Ansible?** See <a target="_blank" href="https://access.redhat.com/articles/7136720">Get started with EDA (Ansible Rulebook)</a> for the fundamentals.
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Looking for ticket enrichment?** See <a target="_blank" href="https://access.redhat.com/articles/7127603">ServiceNow ITSM Ticket Enrichment Automation</a> -- a great starting point for the **Crawl** stage of AIOps.
-
----
-
-## Summary
-
-With AWS SQS as the event transport, your AIOps pipeline gains the durability and scalability of a fully managed message queue without the overhead of running your own broker infrastructure. Events from CloudWatch, EventBridge, SNS, or any application that publishes to SQS automatically flow into Event-Driven Ansible, where AI inference diagnoses the root cause and **Automation code assistant** generates remediation playbooks on-the-fly in **workshop Run** scenarios. The result is a cloud-native self-healing architecture that leverages your existing AWS infrastructure and reduces mean time to resolution (MTTR) without writing custom Lambda functions or polling scripts.
 
 ---
 

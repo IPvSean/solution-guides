@@ -270,17 +270,17 @@ Create a job template using this playbook. Save it as "Enrich CVE ticket." Add a
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Chain steps into AAP workflow templates; enrich tickets with CVE data from Red Hat Insights; add surveys for user input |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Integrate Event-Driven Ansible for automatic ticket creation on alerts; update CMDB; attach reports; connect monitoring/observability tools for closed-loop remediation |
 
+## Summary
+
+This guide demonstrates the lowest-risk entry point for ServiceNow + Ansible automation: reading ticket data, creating incidents, and enriching them with CVE advisory context from Red Hat Insights. Each step builds on the last, from simple data gathering to automated enrichment that reduces manual triage and improves ticket quality. Once comfortable with these patterns, teams can extend to CMDB updates, file attachments, Event-Driven Ansible integrations, and the governed LEAP + MCP execution pattern described in the companion guide.
+
+---
+
 ## Related Guides
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f517.png" width="20" style="vertical-align:text-bottom;"> **LEAP + MCP integration:** [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **AIOps reference architecture:** [AIOps automation with Ansible](README-AIOps.md)
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **Event-Driven Ansible:** <a target="_blank" href="https://www.redhat.com/en/interactive-labs/ansible#event-driven-ansible">Self-paced labs: Getting started with Event-Driven Ansible</a>
-
----
-
-## Summary
-
-This guide demonstrates the lowest-risk entry point for ServiceNow + Ansible automation: reading ticket data, creating incidents, and enriching them with CVE advisory context from Red Hat Insights. Each step builds on the last, from simple data gathering to automated enrichment that reduces manual triage and improves ticket quality. Once comfortable with these patterns, teams can extend to CMDB updates, file attachments, Event-Driven Ansible integrations, and the governed LEAP + MCP execution pattern described in the companion guide.
 
 ---
 

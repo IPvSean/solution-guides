@@ -655,18 +655,6 @@ Confirm the new NTP server appears in the association list.
 
 ---
 
-## Related Guides
-
-- **[Event-Driven WAN Circuit Failover with NetBox and AAP](README-NetBox-WAN-EDA-Failover.md):** Advanced use case covering event-driven circuit failover with dynamic backup discovery, router reconfiguration, and automated incident reporting. Builds on the EDA + NetBox foundation established in this guide.
-
-- **[NetBox Dynamic Inventory Plugin Documentation](https://docs.ansible.com/ansible/latest/collections/netbox/netbox/nb_inventory_inventory.html):** Full reference for the `netbox.netbox.nb_inventory` plugin including all configuration options, query filters, and compose directives.
-
-- **[Event-Driven Ansible Documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.6/html/using_event-driven_ansible/index):** Official Red Hat documentation for EDA controller configuration, rulebook syntax, and action plugins.
-
-- **[NetBox Config Contexts](https://netboxlabs.com/docs/netbox/en/stable/models/extras/configcontext/):** NetBox documentation for creating and managing config contexts with hierarchical assignment.
-
----
-
 ## Summary
 
 This guide demonstrated three progressively mature use cases for managing network device configuration with NetBox and Ansible Automation Platform:
@@ -678,6 +666,18 @@ This guide demonstrated three progressively mature use cases for managing networ
 - **Use Case C** extended the pattern to device lifecycle: adding a new device to NetBox triggers a provisioning workflow that configures NTP, banner, and VLANs in parallel for zero-touch onboarding.
 
 The unifying pattern is **NetBox as the single source of both inventory and desired state**. The dynamic inventory plugin eliminates static files. Config contexts define what devices should look like. EDA webhooks close the loop between "desired state changed" and "devices updated." Together, they transform NetBox from a passive documentation tool into an active driver of network automation.
+
+---
+
+## Related Guides
+
+- **[Event-Driven WAN Circuit Failover with NetBox and AAP](README-NetBox-WAN-EDA-Failover.md):** Advanced use case covering event-driven circuit failover with dynamic backup discovery, router reconfiguration, and automated incident reporting. Builds on the EDA + NetBox foundation established in this guide.
+
+- **[NetBox Dynamic Inventory Plugin Documentation](https://docs.ansible.com/ansible/latest/collections/netbox/netbox/nb_inventory_inventory.html):** Full reference for the `netbox.netbox.nb_inventory` plugin including all configuration options, query filters, and compose directives.
+
+- **[Event-Driven Ansible Documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.6/html/using_event-driven_ansible/index):** Official Red Hat documentation for EDA controller configuration, rulebook syntax, and action plugins.
+
+- **[NetBox Config Contexts](https://netboxlabs.com/docs/netbox/en/stable/models/extras/configcontext/):** NetBox documentation for creating and managing config contexts with hierarchical assignment.
 
 ---
 
