@@ -17,17 +17,14 @@
 >
 > This guide is a draft reformatted from the Gluware Ansible Certified Collection Solution Guide (v1.0, June 2026). Sections may be incomplete. Partner logos, Arcade demos, and additional validation detail are expected in a future revision.
 
-<!-- TODO: Add Gluware light/dark logos to assets/images/logos/ and enable the hero callout below -->
-<!--
 <div class="guide-hero-callout guide-hero-partner guide-hero-partner--gluware" role="img" aria-label="Ansible Automation Platform and Gluware">
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set">
-    <img src="assets/images/logos/gluware-logo.png" alt="Gluware" class="card-partner-logo card-partner-logo--light">
-    <img src="assets/images/logos/gluware-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+    <img src="assets/images/logos/glueware-light.png" alt="Gluware" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/glueware-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
   </span>
 </div>
--->
 
 ## Overview
 

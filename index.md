@@ -455,6 +455,12 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Configuration compliance with closed-loop remediation, multi-vendor OS upgrades, and complex NAC deployments -- AAP as the orchestration plane, Gluware as the network intelligence layer.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/glueware-light.png' | relative_url }}" alt="Gluware" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/glueware-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
       </div>
