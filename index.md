@@ -74,6 +74,9 @@ patternfly: true
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="windows"> Windows
       </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="gluware"> Gluware
+      </label>
     </div>
     </div>
     <div class="cards-sidebar__section cards-sidebar__section--status">
@@ -429,6 +432,28 @@ patternfly: true
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled.png' | relative_url }}" alt="NetBox Labs" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/logo_netboxlabs_dark_teal-scaled-darkmode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Gluware-Network-Automation' | relative_url }}" class="card-link" data-tags="gluware,cisco,network,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--network">
+              <span class="pf-v6-c-label__content">Network</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Intelligent Network Automation with Gluware and Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Configuration compliance with closed-loop remediation, multi-vendor OS upgrades, and complex NAC deployments -- AAP as the orchestration plane, Gluware as the network intelligence layer.
           </div>
         </div>
       </a>
