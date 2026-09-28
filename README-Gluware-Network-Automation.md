@@ -519,15 +519,6 @@ Expected: `gluware.gluware` with the installed version.
 >
 > Begin with Use Case A at the Walk stage -- use the audit module to generate compliance reports without auto-remediation. Once audit policies are validated and teams trust the results, enable automated remediation for Run.
 
-## Related Guides
-
-- [AIOps automation with Ansible](README-AIOps.html) -- foundational AIOps reference architecture
-- [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.html) -- Splunk integration with EDA, including network OSPF scenario
-- <a target="_blank" href="https://access.redhat.com/articles/7123366">Network Backup and Configuration</a> -- KB article for network config management
-- <a target="_blank" href="https://access.redhat.com/articles/7123361">Network Fact Gathering and Reporting</a> -- KB article for network inventory and reporting
-- <a target="_blank" href="https://gluware.com/ansible">Gluware Ansible Certified Collection</a> -- Gluware partner page
-- <a target="_blank" href="https://gluware.com/platforms">Gluware Supported Platforms</a> -- vendor and OS coverage
-
 ## Summary
 
 The Gluware Ansible Certified Collection enables enterprise network teams to combine the orchestration power of Red Hat Ansible Automation Platform with the deep, intent-based network automation capabilities of Gluware -- without custom scripting or bespoke API integrations.
@@ -539,6 +530,15 @@ The three use cases in this guide represent the highest-value, highest-frequency
 - **Complex configuration deployments -- NAC (Use Case C)** enables safe, intent-driven deployment of complex configurations with pre-change backup, structured provisioning via Config Model, and post-change connectivity verification.
 
 Together, these workflows reduce manual toil, improve compliance posture, shrink change windows, and give network and operations teams a consistent, auditable, and scalable automation pipeline.
+
+## Related Guides
+
+- [AIOps automation with Ansible](README-AIOps.html) -- foundational AIOps reference architecture
+- [AIOps with Splunk and Event-Driven Ansible](README-AIOps-Splunk-ITSI.html) -- Splunk integration with EDA, including network OSPF scenario
+- <a target="_blank" href="https://access.redhat.com/articles/7123366">Network Backup and Configuration</a> -- KB article for network config management
+- <a target="_blank" href="https://access.redhat.com/articles/7123361">Network Fact Gathering and Reporting</a> -- KB article for network inventory and reporting
+- <a target="_blank" href="https://gluware.com/ansible">Gluware Ansible Certified Collection</a> -- Gluware partner page
+- <a target="_blank" href="https://gluware.com/platforms">Gluware Supported Platforms</a> -- vendor and OS coverage
 
 <span class="guide-closing-logo-set">
 <img class="guide-closing-logo guide-closing-logo--light" src="assets/images/logos/aap_logo.png" alt="Red Hat Ansible Automation Platform">
