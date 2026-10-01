@@ -463,7 +463,8 @@
         if (!link) return;
         var base = link.href.split('?')[0];
         var pageURL = window.location.href;
-        var pageName = window.location.pathname.split('/').pop().replace('.html', '') || 'Home';
+        var pageName = window.location.pathname.split('/').pop().replace('.html', '').replace(/^index$/, '') || 'Solution Guides Index';
+        pageName = pageName.replace(/^README-/, '').replace(/-/g, ' ');
         var title = encodeURIComponent('Feedback: ' + pageName);
         var body = encodeURIComponent('**Page:** ' + pageURL + '\n\n---\n\n');
         link.href = base + '?title=' + title + '&body=' + body;
