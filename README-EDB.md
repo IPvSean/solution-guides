@@ -122,7 +122,7 @@ EDB is a trusted PostgreSQL partner with deep integration into Red Hat's ecosyst
 
 - **RHEL 9.4+** on all AAP component VMs and PostgreSQL database nodes
 - **Podman** (bundled with RHEL) for AAP container runtime
-- **Python >= 3.9** for Ansible Core
+- **Python >= 3.12** for Ansible Core
 
 ### External Systems
 
@@ -225,6 +225,13 @@ EDB is a trusted PostgreSQL partner with deep integration into Red Hat's ecosyst
             └─────────────────────────────────────┘
                      (Asynchronous)
 ```
+
+#### Interactive Failover Sequence Diagram
+
+For an interactive, step-by-step walkthrough of the 7-scene automated failover sequence (from Day 1 provisioning through restored operations), open the interactive diagram:
+
+[**View Interactive Failover Diagram** (HTML)](assets/interactive/failover-sequence-diagram.html)
+
 
 ### Data Flow During Normal Operations (DC1 Active)
 

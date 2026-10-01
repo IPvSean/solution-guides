@@ -60,6 +60,9 @@ patternfly: true
         <input type="checkbox" value="kafka"> Kafka
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
+        <input type="checkbox" value="logicmonitor"> LogicMonitor
+      </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="netbox"> NetBox
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
@@ -363,6 +366,28 @@ patternfly: true
               <img src="{{ '/assets/images/logos/kafka_logo.webp' | relative_url }}" alt="Kafka" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/kafka_logo_dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-AIOps-LogicMonitor' | relative_url }}" class="card-link" data-tags="logicmonitor,aiops,solution,wip">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-orange">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
+                Work in Progress
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Closed-Loop Network Remediation with LogicMonitor and Edwin AI</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            A crawl-walk-run maturity model for closed-loop network remediation: LogicMonitor alerts trigger Event-Driven Ansible, progressing from a single BGP-reset job template, to Edwin AI-enriched branched workflows, to agentic remediation via the AAP MCP Server.
           </div>
         </div>
       </a>
