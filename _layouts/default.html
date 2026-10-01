@@ -141,7 +141,7 @@
             <a class="header-link" href="{{ '/best-practices/' | relative_url }}">
               Best practices
             </a>
-            <a class="header-link" target="_new" href="https://github.com/ansible-tmm/solution-guides/issues/new">
+            <a class="header-link" target="_new" id="open-issue-link" href="https://github.com/ansible-tmm/solution-guides/issues/new">
               Open an issue
             </a>
             <button type="button" class="header-theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode">
@@ -455,6 +455,17 @@
 
           requestAnimationFrame(animate);
         }
+      })();
+    </script>
+    <script>
+      (function() {
+        var link = document.getElementById('open-issue-link');
+        if (!link) return;
+        var base = link.href.split('?')[0];
+        var pageURL = window.location.href;
+        var title = encodeURIComponent('Feedback: ' + (document.title || pageURL));
+        var body = encodeURIComponent('**Page:** ' + pageURL + '\n\n---\n\n');
+        link.href = base + '?title=' + title + '&body=' + body;
       })();
     </script>
   </body>
