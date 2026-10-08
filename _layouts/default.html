@@ -16,13 +16,43 @@
     <meta name="twitter:title" content="AAP Guides">
     <meta name="twitter:description" content="{{ site.description | default: 'Browse Ansible Automation Platform solution and implementation guides for AIOps, network automation, and more.' | xml_escape }}">
     <meta name="twitter:image" content="{{ '/assets/social/og-image-v1.jpg' | absolute_url }}">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHMT749KVY"></script>
+    {%- comment -%}
+      GitHub Pages serves the same guide at /page and /page.html. Prefer the
+      extensionless URL so Analytics and the address bar stay consolidated.
+    {%- endcomment -%}
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-RHMT749KVY');
+      window.__guidesCanonicalRedirect = (function () {
+        var path = window.location.pathname;
+        var clean;
+        if (/\/index\.html$/i.test(path)) {
+          clean = path.replace(/\/index\.html$/i, '/');
+        } else if (/\.html$/i.test(path)) {
+          clean = path.replace(/\.html$/i, '');
+        }
+        if (clean && clean !== path) {
+          window.location.replace(clean + window.location.search + window.location.hash);
+          return true;
+        }
+        return false;
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -- skip when redirecting so .html hits are not double-counted -->
+    <script>
+      if (!window.__guidesCanonicalRedirect) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        var pagePath = window.location.pathname
+          .replace(/\/index\.html$/i, '/')
+          .replace(/\.html$/i, '');
+        gtag('config', 'G-RHMT749KVY', {
+          page_path: pagePath + window.location.search
+        });
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-RHMT749KVY';
+        document.head.appendChild(gtagScript);
+      }
     </script>
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
     <link rel="apple-touch-icon" href="{{ '/assets/images/favicon.png' | relative_url }}">
