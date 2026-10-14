@@ -1737,3 +1737,141 @@ When a bucket replicates from the master zone to the replica via RGW multisite s
 **Workaround:** Read the bucket metadata with `radosgw-admin metadata get bucket:<name>`, patch `creation_time` from `0.000000` to the current UTC timestamp, and write it back with `radosgw-admin metadata put`. This runs on both clusters during multisite bootstrap and is automated in the `rgw_multisite_setup` role.
 
 Both workarounds are idempotent and safe to re-run. They must be applied on every fresh cluster bootstrap.
+
+## Appendix B: Deploying with the `aap-hadr-example` Repository
+
+The `aap-hadr-example` repository contains the manifests, inventory, ApplicationSets, bootstrap helpers, and Ansible collection used to deploy the two-cluster AAP 2.7 example. This section is the deployment route through that repository. Use its `docs/getting-started.md` for command prerequisites and readiness checks, and its `docs/infrastructure-requirements.md` to prepare the clusters.
+
+The example targets two dedicated ROSA clusters. It does not create clusters, AWS Secrets Manager values, IAM/OIDC trust, network paths, DNS, certificates, or traffic routing. Prepare those before syncing the root Argo CD Applications. The sample GitOps application controller uses `cluster-admin`; review the RBAC policy for your organization.
+
+### 1. Copy and configure the example
+
+From the repository root, install the local dependencies and copy the sample pair:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements.txt
+cp -R examples/aws-rosa-pair my-deployment
+```
+
+Configure these files in the copied directory:
+
+| File | Values to set |
+|---|---|
+| `settings.yaml` | HTTPS Git repository URL and revision Argo CD will sync |
+| `deployment/argocd/environments/*.yaml` | Cluster contexts and endpoints, AAP routes, AWS region and role, storage, CNPG sites, RGW endpoints, and secret prefix |
+| `deployment/argocd/pairs/*.yaml` | Pair members and initial desired AAP/CNPG primary |
+
+Rename environment and pair records so each filename matches its record ID. Create the AWS Secrets Manager objects listed in `docs/secrets.md`; keep secret values, private keys, and kubeconfigs out of Git. The example uses the fixed namespace and resource names `aap` and `aap-postgres`.
+
+### 2. Render and publish the deployment
+
+Run the local checks from the repository root:
+
+```sh
+make validate configure render ops-inventory DEPLOYMENT=my-deployment
+make deployment-inputs DEPLOYMENT=my-deployment
+```
+
+Review the generated output for both clusters and both desired-primary states. Commit and push the configured inventory and generated bootstrap files to the Git revision in `settings.yaml`. Argo CD cannot sync local or unpushed changes.
+
+### 3. Bootstrap GitOps on both clusters
+
+Set the shell variables from the environment and pair records. `CLUSTER_A` and `CLUSTER_B` are the `target_cluster_id` values; `PRIMARY` is the target cluster for `desired_primary_environment_id`, and `REPLICA` is the other member. `RGW_PRIMARY` and `RGW_REPLICA` come from the fixed `rgw_role` values. The sample pair uses `example-a` and `example-b`:
+
+```sh
+DEPLOYMENT=my-deployment
+CLUSTER_A=example-a
+CLUSTER_B=example-b
+CONTEXT_A=customer-cluster-a
+CONTEXT_B=customer-cluster-b
+RGW_PRIMARY=example-a
+RGW_REPLICA=example-b
+PRIMARY=example-a
+REPLICA=example-b
+```
+
+Set `CONTEXT_A` and `CONTEXT_B` to the kubeconfig context names from each environment record. The other cluster variables use the inventory's cluster IDs.
+
+Install OpenShift GitOps and its example RBAC on each cluster:
+
+```sh
+for cluster in "$CLUSTER_A" "$CLUSTER_B"; do
+  make gitops-install DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster"
+  make gitops-rbac DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster"
+done
+```
+
+Wait for the GitOps operator, ApplicationSet CRD, Argo CD instance, and controllers to become ready, then continue with the ESO layer in step 4. Exact readiness checks are in `docs/getting-started.md`.
+
+### 4. Apply the platform layers in order
+
+Install the operations collection before the RGW setup step:
+
+```sh
+python3 -m pip install -r operations/requirements.txt
+make ops-install
+```
+
+Apply ESO on both clusters, attach its AWS identity after the service account exists, and wait for readiness:
+
+```sh
+for cluster in "$CLUSTER_A" "$CLUSTER_B"; do
+  make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster" LAYER=eso
+  make eso-identity DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster"
+  make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster" LAYER=eso
+done
+```
+
+Apply ODF to the fixed RGW primary first, then the replica. Once both are ready, configure RGW multisite:
+
+```sh
+make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$RGW_PRIMARY" LAYER=odf
+make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$RGW_PRIMARY" LAYER=odf
+make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$RGW_REPLICA" LAYER=odf
+make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$RGW_REPLICA" LAYER=odf
+make rgw-setup DEPLOYMENT="$DEPLOYMENT"
+```
+
+Apply CNPG to the initial database primary, then its replica. Create the AAP metrics Secret on each cluster after CNPG is ready; this Secret is generated live and must not be committed. For this target, pass the kubeconfig context name rather than the inventory cluster ID:
+
+```sh
+make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$PRIMARY" LAYER=cnpg
+make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$PRIMARY" LAYER=cnpg
+make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$REPLICA" LAYER=cnpg
+make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$REPLICA" LAYER=cnpg
+
+for context in "$CONTEXT_A" "$CONTEXT_B"; do
+  make postgres-admin-secret DEPLOYMENT="$DEPLOYMENT" CLUSTER="$context"
+done
+```
+
+Apply and wait for the AAP platform on both clusters. The pair inventory selects the active and idle AAP instances:
+
+```sh
+for cluster in "$CLUSTER_A" "$CLUSTER_B"; do
+  make apply-layer DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster" LAYER=platform
+  make ready DEPLOYMENT="$DEPLOYMENT" CLUSTER="$cluster" LAYER=platform
+done
+```
+
+Configure external traffic routing, license AAP, and verify the pair before use.
+
+### 5. Check and operate the pair
+
+Generate the operations inventory and check the configuration. After both clusters and replication are ready, run the read-only preflight:
+
+```sh
+make ops-inventory DEPLOYMENT="$DEPLOYMENT"
+make ops-check DEPLOYMENT="$DEPLOYMENT"
+make preflight DEPLOYMENT="$DEPLOYMENT"
+```
+
+Use the operations collection and `docs/operations.md` for planned switchover, disaster recovery, and replication rebuild. A switchover requires the operations workflow; changing the desired-primary field alone is not sufficient. The collection does not publish Git changes or manage global traffic routing.
+
+### Validation limits
+
+The local checks validate inventory, generated resources, and operations inventory. They do not prove Argo CD reconciliation, operator compatibility, database or RGW replication, traffic cutover, or recovery. The repository's validation notes state that live HA/DR qualification is pending. Do not treat the measured results elsewhere in this guide as qualification of this repository or as an RTO/RPO commitment.
+
+For configuration fields, secret names, and validation limits, use `docs/configuration.md`, `docs/secrets.md`, and `docs/validation.md` in the example repository.
