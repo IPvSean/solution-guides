@@ -115,11 +115,8 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 - No measurable success metrics table or ROI recap -- guides like Windows Cert and Instana quantify outcomes (MTTR reduction, cost per call, etc.); this guide describes value qualitatively in the Business Value Drivers but doesn't provide a "Measuring Success" reference
 - No demo or lab embed (Arcade, video, or Instruqt) -- the guide is executable enough that this is not critical, but an interactive demo would put it on par with Windows Cert
 - Mermaid diagrams show the two-stage pipeline flow but not a component topology diagram -- a top-down diagram showing Satellite, AAP Controller, EDA Controller, and the managed fleet with credential/network flows would strengthen Architecture Clarity
-- The WIP banner is still present at the top of the guide (lines 17-19) even though all WIP items have been addressed -- should be removed to match published status
-
 **Suggestions:**
-1. Remove the WIP banner -- every item it lists (catalog chrome, Summary order, maturity framing) has been resolved
-2. Add a "Measuring Success" table with 3-4 quantifiable metrics (time-to-remediate, percentage of fleet patched within SLA, number of manual triage hours eliminated) and where to find them in AAP/Satellite
+1. Add a "Measuring Success" table with 3-4 quantifiable metrics (time-to-remediate, percentage of fleet patched within SLA, number of manual triage hours eliminated) and where to find them in AAP/Satellite
 3. Optional: add a component topology Mermaid diagram (Satellite ↔ EDA ↔ Controller ↔ Fleet) alongside the existing pipeline diagrams
 4. Optional: add a demo (Arcade embed or short video walkthrough) showing the webhook → scan → install loop in action
 

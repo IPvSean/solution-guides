@@ -404,13 +404,13 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="satellite,aiops,solution,wip">
+      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="satellite,aiops,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-orange">
+            <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                Work in Progress
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
               </span>
             </span>
             <span class="pf-v6-c-label card-label-track card-label-track--aiops">
