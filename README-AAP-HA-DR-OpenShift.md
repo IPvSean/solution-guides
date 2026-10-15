@@ -1571,6 +1571,7 @@ The following scenarios were executed against this architecture and **passed** f
 
 - [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md) -- VM-based Active-Passive DR with EDB Postgres Advanced Server and EFM
 - [Consuming OpenShift API Resources with EDA and Kafka](README-OpenShift-EDA-Kafka.md) -- OpenShift event capture patterns complementary to platform HA
+- [`aap-ha-dr-gitops`](https://gitlab.cee.redhat.com/ansible/aap-ha-dr-gitops/-/tree/devel) (**internal Red Hat GitLab**) -- example GitOps deployment on ROSA using CNPG for the database, ODF for S3-compatible storage, and ESO for AWS Secrets Manager secrets
 
 ## Appendix A: ODF RGW Multisite Storage
 
@@ -1737,5 +1738,3 @@ When a bucket replicates from the master zone to the replica via RGW multisite s
 **Workaround:** Read the bucket metadata with `radosgw-admin metadata get bucket:<name>`, patch `creation_time` from `0.000000` to the current UTC timestamp, and write it back with `radosgw-admin metadata put`. This runs on both clusters during multisite bootstrap and is automated in the `rgw_multisite_setup` role.
 
 Both workarounds are idempotent and safe to re-run. They must be applied on every fresh cluster bootstrap.
-
-For an example implementation using GitOps for deployment automation, CNPG for the database, ODF for S3-compatible storage, and ESO to pull secrets from AWS Secrets Manager on ROSA clusters, see the `aap-ha-dr-gitops` repository.
