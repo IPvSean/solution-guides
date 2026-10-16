@@ -78,6 +78,9 @@ The remediation playbooks support a strict dry-run mode. Ensure these are expose
 
 ### Step 3.2: Configure the Discovery Job Template
 Create a Job Template to run the read-only PQC assessment:
+
+<img src="assets/images/pqc_discovery.png" alt="PQC Discovery Job Template Configuration">
+
 - **Name**: PQC Discovery
 - **Job Type**: Run
 - **Inventory**: Select your target RHEL inventory
@@ -110,6 +113,10 @@ Create a Job Template to apply PQC hardening:
 Trigger the **PQC Discovery** Job Template.
 - **Expected Runtime**: 10-30 seconds per host, depending on the number of certificates in the scan paths and active TLS ports.
 - **Impact**: Zero. The discovery role is strictly read-only.
+
+<img src="assets/images/pqc_discovery-ai-enriched.png" alt="PQC Discovery job output enriched with AI summary">
+
+<img src="assets/images/pqc_reports.png" alt="PQC Readiness Fleet Report Dashboard">
 
 ### Running Remediation
 1. Trigger the **PQC Remediation** Job Template with all dry-run variables set to `true`.
