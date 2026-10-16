@@ -632,7 +632,7 @@ patternfly: true
       </div>
       <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
-      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,implementation,published">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,security,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -678,7 +678,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,netbox,published">
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,security,netbox,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
