@@ -21,7 +21,7 @@ The `pqc.ansible` collection provides an automated, scalable way to manage the P
 
 1. **Discovery & Visibility**: The collection scans systems without making changes, identifying legacy cryptography in use across certificates, SSH configurations, active TLS services, and system crypto-policies.
 2. **Compliance Reporting**: It normalizes findings into standard formats (Common Findings Format v1.0.0 and CycloneDX v1.6 CBOM) to integrate with compliance dashboards like Backstage.
-3. **Automated Remediation**: It provides targeted playbooks to enforce PQC standards safely. This includes enabling ML-KEM hybrid key exchange in SSH and nginx, and updating the RHEL system-wide crypto-policy to support post-quantum modules—all with built-in dry-run and validation checks to prevent outages.
+3. **Automated Remediation**: It provides targeted playbooks to enforce PQC standards safely. This includes enabling ML-KEM hybrid key exchange in SSH and nginx, and updating the RHEL system-wide crypto-policy to support post-quantum modules--all with built-in dry-run and validation checks to prevent outages.
 
 ## 1. Prerequisites and Environment Setup
 

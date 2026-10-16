@@ -342,3 +342,22 @@ Published since the July 2026 review. Not yet scored against the [Implementation
 - OpenShift-EDA (9.2*) is a strong foundational guide limited only by its deliberately basic immediate outcome
 - EDB (8.7*) remains a reference-grade VM-based DR architecture; AI Infrastructure (7.3*) and RHAIIS (6.9*) need framework alignment work before they can compete with the top tier
 - PostgreSQL Autovacuum Tuning is published but pending its first scored review
+## pqc.ansible (`README-PQC-Discovery.md`)
+
+**Score:** 9.2 / 10
+**Verdict:** Solid, practitioner-focused implementation guide that covers discovery, variables, AAP integration, and deep verification. Ready to publish after fixing a minor style issue.
+
+### Strengths
+- Excellent deep-dive mapping of variables to playbook behavior (e.g., `pqc_collect_*` toggles).
+- Thorough verification section with actual commands (`update-crypto-policies --show`, `sshd -T`, `openssl s_client`) and exactly what output to expect per RHEL version.
+- Detailed AAP instructions showing job template configurations, required credentials, and survey setups.
+- Helpful troubleshooting section covering realistic edge cases (Backstage ingest failures, OpenSSL 3.5+ requirements).
+
+### Weaknesses
+- Had one em dash (`—`) violation in the overview (fixed in review).
+- Missing twemoji icons on the headings (optional but good for consistency with solution guides).
+- The title specifies "Implementation Guide" but it was submitted when reviewing "Solution Guides".
+
+### Suggestions
+- Ensure this is linked correctly in the index / README as an Implementation guide, not a Business Solution Guide.
+- (Resolved) Changed the em dash (`—`) to a double dash (`--`).

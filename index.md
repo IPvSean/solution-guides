@@ -572,6 +572,27 @@ patternfly: true
       </div>
       <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">pqc.ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Assess Post-Quantum Cryptography (PQC) readiness across RHEL 8/9/10 and provide automated remediation for system crypto-policies, SSH, and nginx.
+          </div>
+          <div class="pf-v6-c-card__footer">
+          </div>
+        </div>
+      </a>
+
       <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-tags="edb,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
