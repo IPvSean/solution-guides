@@ -122,7 +122,7 @@ inline_edit: true
         <span class="guide-type-track__examples-label">Examples</span>
         <div class="guide-type-track__pills">
           <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="guide-type-example-pill">Automated runtime mitigation for Linux OT hosts</a>
-          <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="guide-type-example-pill">pqc.ansible</a>
+          <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="guide-type-example-pill">PQC Discovery</a>
         </div>
       </div>
     </article>

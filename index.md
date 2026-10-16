@@ -643,7 +643,7 @@ patternfly: true
             </span>
           </div>
           <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">pqc.ansible</h3>
+            <h3 class="pf-v6-c-card__title-text">PQC Discovery</h3>
           </div>
           <div class="pf-v6-c-card__body">
             Assess Post-Quantum Cryptography (PQC) readiness across RHEL 8/9/10 and provide automated remediation for system crypto-policies, SSH, and nginx.

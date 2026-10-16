@@ -3,7 +3,7 @@ title: PQC Discovery - Implementation Guide
 tags: [ansible, pqc, cryptography, security, implementation-guide]
 ---
 
-# PQC discovery and Scoped Remediation - Implementation Guide
+# PQC Discovery and Scoped Remediation - Implementation Guide
 
 <!-- tags: ansible, pqc, cryptography, security, rhel, implementation-guide -->
 
