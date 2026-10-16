@@ -111,5 +111,19 @@ inline_edit: true
         </div>
       </div>
     </article>
+
+    <article class="guide-type-track guide-type-track--security">
+      <div class="guide-type-track__header">
+        <span class="guide-type-track__badge">Security</span>
+        <h3 id="security-automation" class="guide-type-track__title"><a href="{{ '/' | relative_url }}#security-automation">Security automation</a></h3>
+      </div>
+      <p class="guide-type-track__body">Partner integrations for <strong>security response, compliance, and threat mitigation</strong> with Ansible Automation Platform. Use these when security events should trigger governed execution.</p>
+      <div class="guide-type-track__examples">
+        <span class="guide-type-track__examples-label">Examples</span>
+        <div class="guide-type-track__pills">
+          <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="guide-type-example-pill">Automated runtime mitigation for Linux OT hosts</a>
+        </div>
+      </div>
+    </article>
   </div>
 </section>
