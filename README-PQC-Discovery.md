@@ -1,5 +1,5 @@
 ---
-title: pqc.ansible - Implementation Guide
+title: PQC Discovery - Implementation Guide
 tags: [ansible, pqc, cryptography, security, implementation-guide]
 ---
 
