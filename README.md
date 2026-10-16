@@ -21,6 +21,7 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 | Consuming OpenShift API Resources with EDA and Kafka | [README-OpenShift-EDA-Kafka.md](README-OpenShift-EDA-Kafka.md) | |
 | AAP HA/DR on OpenShift with CloudNativePG | [README-AAP-HA-DR-OpenShift.md](README-AAP-HA-DR-OpenShift.md) | |
 | Proactive vulnerability remediation with Satellite, Event-Driven Ansible, and Lightspeed On-Premises | [README-Satellite-CVE-Remediation.md](README-Satellite-CVE-Remediation.md) | |
+| Automated runtime mitigation for Linux OT hosts | [README-Falco-runtime-mitigation.md](README-Falco-runtime-mitigation.md) | |
 | pqc.ansible - Post-Quantum Cryptography Readiness Implementation | [README-PQC-Discovery.md](README-PQC-Discovery.md) | |
 
 ## Contributing

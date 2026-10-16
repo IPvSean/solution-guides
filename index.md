@@ -35,6 +35,9 @@ patternfly: true
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
         <input type="checkbox" value="network"> Network automation
       </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
+        <input type="checkbox" value="security"> Security automation
+      </label>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Partners</h4>
@@ -432,6 +435,28 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
+          </div>
+        </div>
+      </a>
+
       </div>
       </div>
 
@@ -561,6 +586,41 @@ patternfly: true
       </a>
       </div>
       </div>
+      
+      <div id="security-automation" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">Security automation</h3>
+          <a href="{{ '/guide-types' | relative_url }}#security-automation" class="guide-section__info" data-tooltip="Partner integrations for security response, compliance, and threat mitigation." aria-label="Learn about Security automation">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Automated security response, compliance enforcement, and threat mitigation using Ansible Automation Platform.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="security-gallery">
+
+      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
+          </div>
+        </div>
+      </a>
+      </div>
+      </div>
+      
     </section>
 
     <section id="implementation-guides" class="cards-guide-section">
@@ -572,7 +632,7 @@ patternfly: true
       </div>
       <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
-      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,implementation,published">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,security,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -618,7 +678,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,netbox,published">
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,security,netbox,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -876,6 +936,7 @@ patternfly: true
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('network-automation'), gallery: document.getElementById('network-gallery') },
+    { section: document.getElementById('security-automation'), gallery: document.getElementById('security-gallery') },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') }
   ];
 
@@ -967,8 +1028,10 @@ patternfly: true
     if (solutionGuidesSection) {
       var aiopsSection = document.getElementById('aiops-solutions');
       var networkSection = document.getElementById('network-automation');
+      var securitySection = document.getElementById('security-automation');
       var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
-        || (networkSection && networkSection.style.display !== 'none');
+        || (networkSection && networkSection.style.display !== 'none')
+        || (securitySection && securitySection.style.display !== 'none');
       solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
     }
   }
