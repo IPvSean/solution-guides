@@ -18,6 +18,7 @@ permalink: /opus-review-solution/
 | 4 | [Automated Incident Remediation with IBM Instana](#4-automated-incident-remediation-with-ibm-instana) | 8.9/10 | Dual-path architecture (EDA vs native); per-use-case operational impact and unusually complete validation |
 | 5 | [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](#5-unlock-aiops-with-servicenow-leap-and-ansible-mcp-server) | 8.7/10 | Strong LEAP/MCP governance story with MTTR focus, customer evidence, multi-agent visibility |
 | 6 | [AIOps automation with Ansible](#6-aiops-automation-with-ansible) | 8.6/10 | Strongest foundational reference architecture; curated-path framing, MCP workflow clarity, structured validation, and comprehensive event/tool catalog |
+| 7 | [Automated runtime mitigation for Linux OT hosts](#7-automated-runtime-mitigation-for-linux-ot-hosts) | 9.3/10 | Excellent closed-loop enforcement guide with clear MITRE ATT&CK mapping, strong validation, and end-to-end event-driven architecture. |
 
 ---
 
@@ -263,6 +264,44 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 1. Add a short MCP artifact -- even a 5-line `curl` or `ansible-playbook` snippet showing a governed template search and launch -- to back the architectural claim with executable proof
 2. Add one verbatim `ansible-output` block (for example a successful EDA activation log or MCP search response) to the Validation section
 3. Consider a second YAML block for the MCP-driven launch or a workflow-template-as-code excerpt to bring Technical Executability back toward 4
+
+---
+
+## Cross-Cutting Observations
+
+---
+
+### 7. Automated runtime mitigation for Linux OT hosts
+
+**File:** [README-Falco-runtime-mitigation.md](README-Falco-runtime-mitigation.md)
+**Score: 9.3 / 10**
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (20%) | 5 |
+| Architecture Clarity (20%) | 4.5 |
+| Technical Executability (25%) | 4.5 |
+| Validation/Testability (15%) | 5 |
+| Production Readiness (10%) | 4 |
+| Business Framing (10%) | 5 |
+
+**Stats:** ~900 words | 2 YAML logic blocks | 1 bash block | 1 Mermaid diagram | 3 walkthrough steps | 1 validation test path
+
+**Verdict:** Ready for publishing.
+
+**Strengths:**
+- Outcome-oriented title and clear problem statement focusing on OT environments and response time.
+- Solid validation section with a concrete test command (`ssh root@rhel01.example.com "sudo -u nobody bash -c 'echo test'"`), expected output, and a troubleshooting table.
+- Good business framing with a "Who Benefits" table that maps personas to specific OT and SecOps challenges.
+- Clear maturity path progressing from manual review to automated ITSM ticketing to fully automated remediation.
+- Featured code blocks clearly demonstrate the EDA rulebook logic and the dynamic dispatcher playbook that maps MITRE ATT&CK technique IDs to mitigation roles.
+- The Mermaid diagram explicitly shows the closed loop starting and ending at the Target Host.
+
+**Weaknesses:**
+- Could benefit from a "Measuring Success" table with quantifiable metrics (e.g., MTTR reduction) to match the elite guides.
+
+**Suggestions:**
+1. Optional: Add a short video or interactive demo showing the Falco alert triggering the mitigation in real-time.
 
 ---
 
