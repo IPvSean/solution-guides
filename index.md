@@ -432,6 +432,28 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="aiops,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
+          </div>
+        </div>
+      </a>
+
       </div>
       </div>
 
