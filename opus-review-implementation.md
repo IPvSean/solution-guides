@@ -22,6 +22,7 @@ permalink: /opus-review-implementation/
 | 6 | [AI Infrastructure automation with Ansible](#6-ai-infrastructure-automation-with-ansible) | 7.3/10* | Clear two-collection story (infra.ai + redhat.ai); needs framework alignment and deeper validation |
 | 7 | [Intelligent Assistant with Red Hat AI Inference Server](#7-intelligent-assistant-with-red-hat-ai-inference-server) | 6.9/10* | Strong hands-on RHAIIS + Lightspeed hookup; weakest framework alignment of published guides |
 | 8 | [PostgreSQL Autovacuum Tuning](#8-postgresql-autovacuum-tuning) | Pending review | Published; not yet scored against the Implementation Guide rubric |
+| 9 | [Vulnerability management with Lightwell](#9-vulnerability-management-with-lightwell) | 7.4/10 | Solid demo-grade implementation guide; event-driven CVE-to-patch pipeline is well-structured but needs a partner hero, source repo link, and a richer Architecture/Background section before reaching publication standard |
 
 ---
 
@@ -361,3 +362,48 @@ Published since the July 2026 review. Not yet scored against the [Implementation
 ### Suggestions
 - Ensure this is linked correctly in the index / README as an Implementation guide, not a Business Solution Guide.
 - (Resolved) Changed the em dash (`—`) to a double dash (`--`).
+
+---
+
+### 9. Vulnerability management with Lightwell
+
+**File:** [README-AAP-LightWell-AO](README-AAP-LightWell-AO) ⚠️ Missing `.md` extension
+**Score:** 7.4 / 10
+**Reviewed:** October 19, 2026
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (15%) | 4 |
+| Architecture Clarity (25%) | 3.5 |
+| Technical Executability (25%) | 3.5 |
+| Validation/Testability (20%) | 4 |
+| Production & Day-2 Readiness (15%) | 3.5 |
+
+**Stats:** ~1,100 words | 7 numbered walkthrough steps | 1 Mermaid diagram (7 nodes) | 6-row component table | 5-row troubleshooting table | 3 validation scenarios with verbatim expected output
+
+**Strengths:**
+- Event-driven architecture is well-represented: the Mermaid diagram cleanly traces the CVE disclosure path from EDA through RHTPA all the way to OS and app remediation.
+- Four distinct demo scenarios (CVE disclosed, OS patch, app dependency via CI/CD, app dependency via GitOps) give readers a concrete feel for what the pipeline can demonstrate.
+- Vault file setup is detailed and actionable -- all required variables are listed with examples.
+- Troubleshooting table covers the five most likely failure modes with specific log locations and fixes.
+- Reset procedure is documented, which is critical for a demo guide.
+- Day-2 Operations section addresses the three genuinely important operational concerns: EDA webhook liveness, RHTPA storage growth, and Keycloak certificate rotation.
+
+**Weaknesses:**
+- **Missing `.md` extension on filename.** The file is named `README-AAP-LightWell-AO` instead of `README-AAP-LightWell-AO.md`. GitHub Pages will not render it as HTML; browsers will serve raw text.
+- **No partner hero callout.** Partner implementation guides require a `guide-hero-callout guide-hero-partner` div with the AAP icon, `+`, and Lightwell wordmark. This is absent.
+- **Background section is too thin.** It describes what the demo does rather than the validation environment: no AAP version, no RHEL release confirmed, no scale tested against.
+- **Step 6 (EDA Rulebook) has no deployable content.** It says "deploy the EDA Rulebook (`rulebooks/cve_lifecycle.yml`)" but shows no YAML snippet, no EDA UI navigation steps, and no configuration screenshot or code. This step will fail a first-time reader.
+- **No source repository link.** The entire guide depends on external shell scripts (`trigger_*.sh`, `setup/*.yml`, `controller/configure.yml`) that are never linked. Readers cannot find or verify the referenced files.
+- **Architecture section missing decision rationale.** There is no explanation of why RHTPA is used for SBOM correlation instead of alternatives, why Gitea rather than a supported SCM, or why EDA webhook over polling. The component table describes roles but not decisions.
+- **Overview scope boundaries absent.** The framework requires a note on what this guide does NOT cover. There is no mention of scale limits, unsupported configurations, or what lies outside the demo scope.
+- **No Automation Hub collection table.** Collections are listed in the Prerequisites bullet but none link to their Automation Hub pages (required by convention).
+
+**Suggestions:**
+1. **Rename the file** to `README-AAP-LightWell-AO.md` so GitHub Pages renders it correctly.
+2. **Add partner hero callout** -- source or create a Lightwell wordmark at 36px in `assets/images/logos/` and wire up the `guide-hero-partner` div.
+3. **Expand Background** to document the validated environment: AAP version, RHEL 9.x release, node sizing used, and whether this was tested against a production or lab topology.
+4. **Fill out Step 6** with at least the EDA Controller UI navigation path and the key rulebook fields (source type, webhook port, AAP credential) -- or inline the relevant snippet from `cve_lifecycle.yml`.
+5. **Add the source repository link** in the Overview or Prerequisites (e.g., a "Source code" callout linking the GitHub repo hosting the demo playbooks and scripts).
+6. **Add Automation Hub links** for every referenced collection (`ansible.eda`, `ansible.controller`, `redhat.rhel_system_roles`, `community.general`, `ansible.posix`, `containers.podman`).
+7. **Add a "Scope" note** to the Overview clarifying this is a demo/lab deployment, the approximate fleet scale it was tested on, and what would need to change for production use.

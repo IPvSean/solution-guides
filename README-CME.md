@@ -1,10 +1,11 @@
 {% raw %}
-# Automated CVE Response and Compliance Verification with CME -- Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+<h1>Automated CVE response and compliance verification with CME</h1>
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
+</div>
 
 <style>
-  div#toc {
-    display: none;
-  }
+  div#toc { display: none; }
 </style>
 
 <h2 id="overview"></h2>
@@ -119,22 +120,22 @@ Phase 2 runs read-only verification of every matched control across all target h
 
 ### Workflow Architecture Diagram
 
-```
-Scanner Alert → EDA Controller → cve_response.yml → CME MCP Query → Dynamic Profile
-                                      |                                    |
-                                      ↓                                    ↓
-                                 PRE Verify ──→ Remediate ──→ POST Verify ──→ CVSS Attenuation
-                                      |              |              |               |
-                                 Read-only       sysctl,       Read-only        MCP scoring:
-                                 audit on        SELinux,      re-audit on      9.8 → 4.2
-                                 all hosts       crypto,       all hosts        per-metric
-                                                 packages                       attribution
+```mermaid
+graph LR
+    A([Scanner Alert]) -->|CVE webhook| B(EDA Controller)
+    B -->|Launch playbook| C(AAP Controller)
+    C -->|Query controls| D(CME MCP Server)
+    D -->|Control list| C
+    C -->|PRE verify| E[Target Fleet]
+    C -->|Remediate| E
+    C -->|POST verify| E
+    E -->|Results| F([CVSS Attenuation Score])
 ```
 
 In Automation Controller, the same flow maps to a **workflow template** with an approval gate:
 
 ```
-[Verify Posture] → [Approve Remediation] → [Remediate] → [Posture Report + Score]
+[Verify Posture] --> [Approve Remediation] --> [Remediate] --> [Posture Report + Score]
 ```
 
 <h2 id="solution-walkthrough"></h2>
@@ -429,6 +430,29 @@ rhel-vm    : ok=48   changed=5    unreachable=0    failed=0    skipped=3
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Connect EDA Controller to scanner webhooks for automatic CVE response. `cve_response.yml` runs the full 5-phase pipeline autonomously with policy-based approval (severity threshold gates replace human gates). AI agent triages CVEs, selects profiles, and escalates only novel threats. Posture reports feed SIEM dashboards for continuous compliance monitoring. |
 
 <h2 id="related-guides"></h2>
+
+## Day-2 Operations
+
+### Monitoring
+
+- **CME MCP Server:** Poll `http://<mcp-host>:8000/health` (or `/mcp`) to confirm the endpoint is responsive. Alert if the server returns non-200 or takes longer than 2 seconds to respond -- MCP unavailability causes `cme_query` and `cme_score` tasks to fail silently with empty results.
+- **EDA Rulebook Activation:** Monitor the EDA Controller for activation status `RUNNING`. A stopped or crashed activation means no CVE events will trigger the pipeline. Set up a synthetic event (a test `cve_disclosed` webhook) in your monitoring system to verify end-to-end liveness.
+- **AAP Job Duration:** Baseline the runtime of `CME -- CVE Response` across your fleet size. Runtimes that exceed 2x the baseline typically indicate SSH connectivity issues or package repository failures on a subset of hosts.
+
+### Maintenance
+
+- **`cme.controls` Collection Updates:** As the CME taxonomy grows (currently 118 controls), pull collection updates via `ansible-galaxy collection install cme.controls --upgrade` before running the pipeline against new CVE classes. New controls require regenerating roles with `python scripts/generate_collection.py`.
+- **MCP Server Docker Image:** Rebuild or pull the latest `cme-mcp` image before major CVE response campaigns to ensure CVSS vector mathematics reflect the latest NVD data. If using `cmetaxonomy.org`, monitor their status page.
+- **Execution Environment:** Rebuild the CME EE quarterly or when `ansible.controller`, `ansible.posix`, or `ansible.eda` release a new minor version. Pin EE image tags in AAP to prevent unintended upgrades during active incidents.
+
+### Known Issues
+
+| Issue | Symptom | Workaround |
+|-------|---------|-----------|
+| **FIPS mode controls skip remediation** | Roles for FIPS, Secure Boot, and LUKS emit `debug` messages and fall through to verify-only | Expected behavior -- these controls require reboots or hardware changes. Track as accepted risk or remediate manually during a maintenance window. |
+| **`cme_score` returns no attenuation on first run** | `cme_post_passed` is empty because no controls passed PRE verify | Run a second `verify.yml` pass after the initial baseline deployment to populate the passed-controls list before scoring. |
+| **Workflow approval node times out** | No user with `Approve` role processes the approval within the timeout (default 3600s) | Assign the `Approve` role to a team with on-call coverage, or increase the timeout for low-urgency workflows via the AAP Controller API. |
+| **Backslash in control description causes YAML parse error** | `include_role` task fails with `yaml.scanner.ScannerError` | Regenerate the affected role with `python scripts/generate_collection.py` -- the fixed `_escape_yaml` function strips problematic characters. |
 
 ## Related Guides
 

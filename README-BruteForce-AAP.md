@@ -17,12 +17,17 @@
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set">
     <img src="assets/images/logos/splunk-logo.png" alt="Splunk" class="card-partner-logo card-partner-logo--light" width="106" height="32">
+    <img src="assets/images/logos/splunk-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true" width="106" height="32">
   </span>
 </div>
 
 ## Overview
 
 Security operations centers (SOCs) spend countless hours manually chasing alerts and isolating compromised hosts, a delay that offers attackers time to pivot and exfiltrate data. This guide demonstrates how to build a closed-loop security automation pipeline using Event-Driven Ansible (EDA). By connecting Splunk's real-time threat detection directly to HashiCorp Vault and Ansible Automation Platform (AAP), organizations can automatically contain brute-force attacks in seconds by revoking dynamic database credentials.
+
+<div class="guide-outcome">
+<strong>Outcome:</strong> A closed-loop EDA pipeline that detects a Splunk brute-force alert, revokes the compromised application's HashiCorp Vault database lease, and stops the affected service -- all within seconds, without human intervention.
+</div>
 
 * [Background](#background)
 * [Solution](#solution)
@@ -87,17 +92,14 @@ This solution replaces manual alert triage with an automated remediation pipelin
 
 The remediation workflow relies on an event-driven architecture, completely removing human latency from the initial containment phase.
 
-```
-+-----------+        +--------------+        +--------------+        +---------------+
-|  Splunk   | -----> |   EDA        | -----> |  AAP         | -----> |   Vault       |
-|  (SIEM)   | Webhk  |  Rulebook    |  API   |  Controller  |  API   | (Revocation)  |
-+-----------+        +--------------+        +--------------+        +---------------+
-      ^                                                                      |
-      | (Log ingestion)                                                      v (Lease drop)
-+-----------+                                                        +---------------+
-| Target    | <----------------------------------------------------- |  Application  |
-| Server    |                      (Isolated)                        |  Database     |
-+-----------+                                                        +---------------+
+```mermaid
+graph LR
+    A([Splunk SIEM]) -->|Webhook| B(EDA Rulebook)
+    B -->|API trigger| C(AAP Controller)
+    C -->|Revoke lease| D([HashiCorp Vault])
+    D -->|Drop DB user| E([Application Database])
+    A -.->|Log ingestion| F([Target Server])
+    C -->|Stop service + remove env file| F
 ```
 
 1. **Threat Detection:** A threat actor targets a workload with an SSH brute-force attack. Splunk Universal Forwarders stream these authentication failures to the indexer.

@@ -23,6 +23,9 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 | Proactive vulnerability remediation with Satellite, Event-Driven Ansible, and Lightspeed On-Premises | [README-Satellite-CVE-Remediation.md](README-Satellite-CVE-Remediation.md) | |
 | Automated runtime mitigation for Linux OT hosts | [README-Falco-runtime-mitigation.md](README-Falco-runtime-mitigation.md) | |
 | PQC Discovery - Post-Quantum Cryptography Readiness Implementation | [README-PQC-Discovery.md](README-PQC-Discovery.md) | |
+| Automated CVE response and compliance verification with CME | [README-CME.md](README-CME.md) | |
+| Automated vulnerability remediation with Lightwell and Ansible | [README-AAP-LightWell-AO.md](README-AAP-LightWell-AO.md) | |
+| Automated brute-force remediation with Event-Driven Ansible | [README-BruteForce-AAP.md](README-BruteForce-AAP.md) | |
 
 ## Contributing
 
