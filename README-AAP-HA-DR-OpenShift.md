@@ -31,6 +31,10 @@ When Ansible Automation Platform runs on OpenShift as mission-critical infrastru
 
 This implementation guide shows how to deploy **AAP 2.7 (operator-based) on two OpenShift clusters** with **CloudNativePG** cross-cluster streaming replication, replicated S3-compatible storage, shared secrets via External Secrets Operator, and controlled switchover / emergency failover procedures.
 
+## Reference Implementation
+
+For a specific implementation and example playbooks that drive these operations, see the [AAP HA/DR GitOps example](https://github.com/ansible/aap-ha-dr-gitops). It uses OpenShift GitOps (Argo CD), although the manifests can equivalently be rendered with `oc kustomize` and applied through other workflows; the operations playbooks assume the GitOps workflow. The repository is intentionally specific to its documented infrastructure and presumes OpenShift clusters provisioned through ROSA, which has implications for storage classes, networking, identity, and other platform services. It requires adaptation to your environment; S3, DNS, storage classes, and related services have many valid implementation options, and the example's assumptions and caveats should be reviewed before reuse.
+
 **DR model:** Two-site active-passive. The standby cluster runs the AAP CR with `idle_aap: true` so operators stay installed while component replicas remain at zero until promotion.
 
 **Related published guide:** For VM-based Active-Passive DR with EDB Postgres Advanced Server (not OpenShift/CNPG), see [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md).
@@ -1737,3 +1741,4 @@ When a bucket replicates from the master zone to the replica via RGW multisite s
 **Workaround:** Read the bucket metadata with `radosgw-admin metadata get bucket:<name>`, patch `creation_time` from `0.000000` to the current UTC timestamp, and write it back with `radosgw-admin metadata put`. This runs on both clusters during multisite bootstrap and is automated in the `rgw_multisite_setup` role.
 
 Both workarounds are idempotent and safe to re-run. They must be applied on every fresh cluster bootstrap.
+
