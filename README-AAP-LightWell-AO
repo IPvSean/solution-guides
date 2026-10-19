@@ -1,5 +1,5 @@
 <div class="guide-header">
-<h1>Lightwell Patch to Production - Implementation Guide</h1>
+<h1>Vulnerability management with Lightwell</h1>
 <span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-cogs" aria-hidden="true"></i> Implementation Guide</span>
 </div>
 
@@ -22,20 +22,16 @@ This implementation guide demonstrates a security automation architecture using 
 ```mermaid
 graph TD
     A([CVE Event / Webhook]) -->|Payload| B(AAP EDA Controller)
-    B -->|Trigger| C(Automation Orchestrator)
+    B -->|Trigger| C(AAP Controller)
     C -->|Query SBOMs| D(RHTPA)
-    C -->|AI Triage & Routing| H(Neuromancer AI)
-    H -->|Route: OS Patch| E[Target Fleet Nodes]
-    H -->|Route: App Patch| F(Gitea / CI Pipeline)
-    H -->|Route: CME Mitigate| I[CME Compensating Controls]
+    C -->|Remediate OS| E[Target Fleet Nodes]
+    C -->|Remediate App| F(Gitea / CI Pipeline)
     F -->|Rebuild Container| G(Builder Node)
     G --> E
 ```
 
 | Component | Role |
 |---|---|
-| **Automation Orchestrator** | Executes remediation workflows, including AI agentic nodes. |
-| **Neuromancer AI** | Provides LLM-powered triage, routing decisions, and escalation summaries. |
 | **AAP Controller** | Executes remediation playbooks and configuration as code. |
 | **AAP EDA Controller** | Listens for CVE disclosure events and triggers workflows. |
 | **RHTPA** | Red Hat Trusted Profile Analyzer. Stores SBOMs and correlates CVEs. |
@@ -144,18 +140,12 @@ ansible-playbook setup/prepare_target.yml -i inventory/hosts.yml --ask-vault-pas
 ansible-playbook setup/prepare_builder.yml -i inventory/hosts.yml --ask-vault-pass
 ```
 
-### Step 4: Configure AAP Controller & Automation Orchestrator
+### Step 4: Configure AAP Controller
 Use Configuration as Code (CaC) to automatically create all required Job Templates, Workflow Templates, Credentials, and Projects in AAP.
 
 ```bash
 ansible-playbook controller/configure.yml --ask-vault-pass
 ```
-
-**Import the Neuromancer Workflow:**
-The AI-driven triage workflow must be imported into Automation Orchestrator.
-1. Navigate to Automation Orchestrator.
-2. Import the workflow definition from `ao/lightwell-neuromancer-workflow.json`.
-3. Ensure the agentic nodes (e.g., `[AI] CVE Triage`) are correctly linked to your LLM provider (e.g., drc maas sonnet 4.6).
 
 ### Step 5: Establish Initial SBOM Baseline
 Run the initial SBOM scan to populate RHTPA with the baseline state of your targets.
