@@ -153,6 +153,30 @@ graph TD
 2. **RHSA Available:** Lightwell sends an `rhsa_available` event when a Red Hat Security Advisory is released. EDA triggers `Patch Test and Deploy`, which runs `dnf update` on the affected OS package and re-scans with Grype to confirm remediation.
 3. **App Dependency Fixed:** Lightwell sends an `app_dependency_fixed` event when an upstream Python/library fix is available. EDA triggers `App Dependency Remediate`, which sends a rebuild signal to Gitea. The CI pipeline rebuilds the container image with the patched dependency.
 
+> **Tip:** Use an LLM to identify which containers need rebuilding.
+>
+> When a dependency fix arrives, it is rarely obvious which of many container images actually bundle the affected package. The `App Dependency Remediate` workflow can include a task that calls an LLM (via an MCP endpoint or the AAP MCP server) with the patched package name and the full SBOM inventory from RHTPA. The model cross-references the package against every image's dependency tree and returns a ranked list of containers that need a rebuild -- so the CI/CD trigger is scoped to only the affected services rather than rebuilding the entire fleet.
+>
+> A simple pattern using the `ansible.builtin.uri` module:
+>
+> ```yaml
+> - name: Ask LLM which containers include the affected package
+>   ansible.builtin.uri:
+>     url: "{{ llm_mcp_endpoint }}/query"
+>     method: POST
+>     body_format: json
+>     body:
+>       prompt: >
+>         Given the following SBOM inventory: {{ rhtpa_sbom_summary }}.
+>         Which container images include the package {{ affected_package }}
+>         as a direct or transitive dependency? Return a JSON list of image names only.
+>   register: llm_response
+>
+> - name: Trigger rebuild only for affected images
+>   ansible.builtin.set_fact:
+>     rebuild_targets: "{{ llm_response.json.images }}"
+> ```
+
 ## Solution Walkthrough
 
 ### Step 1: Configure Inventory and Variables
