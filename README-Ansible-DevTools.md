@@ -6,11 +6,12 @@
 
 </div>
 
-<div class="guide-hero-callout guide-hero-partner guide-hero-partner--redhat" role="img" aria-label="Ansible Automation Platform and Red Hat">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--devtools" role="img" aria-label="Ansible Automation Platform and Ansible Development Tools">
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
-  <span class="guide-hero-partner__partner card-partner-logo-set">
-    <img src="assets/images/logos/redhat-logo.svg" alt="Red Hat" class="card-partner-logo" width="118" height="28">
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--devtools">
+    <img src="assets/images/logos/ansible-devtools-logo.png" alt="Ansible Development Tools" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/ansible-devtools-logo.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
   </span>
 </div>
 
