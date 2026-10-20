@@ -884,28 +884,18 @@ patternfly: true
           </div>
         </div>
       </a>
-      </div>
-      </div>
 
-    </section>
-
-    <section id="implementation-guides" class="cards-guide-section">
-      <div class="cards-guide-section__heading">
-        <h2 class="cards-guide-section__title">Implementation Guides</h2>
-        <a href="{{ '/guide-types' | relative_url }}#implementation-guides" class="guide-section__info" data-tooltip="How to deploy and configure AAP for reliability, performance, and production outcomes." aria-label="Learn about Implementation Guides">
-          <i class="fas fa-info-circle" aria-hidden="true"></i>
-        </a>
-      </div>
-      <div class="cards-track-section cards-track-section--flat">
-      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
-      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="redhat,pqc,security,implementation,published">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="redhat,pqc,security,solution,published">
         <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
               </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
             </span>
           </div>
           <div class="pf-v6-c-card__title">
@@ -922,7 +912,20 @@ patternfly: true
           </div>
         </div>
       </a>
+      </div>
+      </div>
 
+    </section>
+
+    <section id="implementation-guides" class="cards-guide-section">
+      <div class="cards-guide-section__heading">
+        <h2 class="cards-guide-section__title">Implementation Guides</h2>
+        <a href="{{ '/guide-types' | relative_url }}#implementation-guides" class="guide-section__info" data-tooltip="How to deploy and configure AAP for reliability, performance, and production outcomes." aria-label="Learn about Implementation Guides">
+          <i class="fas fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="cards-track-section cards-track-section--flat">
+      <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
       <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-tags="edb,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">

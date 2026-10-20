@@ -1,11 +1,17 @@
 ---
-title: PQC Discovery - Implementation Guide
-tags: [ansible, pqc, cryptography, security, implementation-guide]
+title: PQC Discovery
+tags: [ansible, pqc, cryptography, security, rhel, solution-guide]
 ---
 
-# PQC Discovery and Scoped Remediation - Implementation Guide
+<div class="guide-header">
 
-<!-- tags: ansible, pqc, cryptography, security, rhel, implementation-guide -->
+<h1>PQC Discovery and Scoped Remediation</h1>
+
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+
+</div>
+
+<!-- tags: ansible, pqc, cryptography, security, rhel, solution-guide -->
 
 <div class="guide-hero-callout guide-hero-partner guide-hero-partner--rhel" role="img" aria-label="Ansible Automation Platform and Red Hat Enterprise Linux">
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
