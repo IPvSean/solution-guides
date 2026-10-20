@@ -8,9 +8,14 @@
   div#toc { display: none; }
 </style>
 
-<div class="guide-hero-callout" role="img" aria-label="Ansible Automation Platform">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--zero-trust" role="img" aria-label="Ansible Automation Platform and Zero Trust Architecture">
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
-  <span class="guide-hero-callout__text"><strong>Ansible unlocks Zero Trust</strong></span>
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--zero-trust">
+    <img src="assets/images/logos/zero-trust.png" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
+    <img src="assets/images/logos/zero-trust.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+    <span class="card-partner-logo-label">Zero Trust</span>
+  </span>
 </div>
 
 <!-- tags: ansible, aap, opa, vault, spiffe, spire, idm, netbox, arista, splunk, zta, security, nist -->
@@ -167,8 +172,6 @@ Three credential types cover the full ZTA stack: machine credentials (SSH to RHE
 | `ZTA Arista Credential` | Network | KV `secret/data/network/arista` resolved at job time |
 | `ZTA Vault SSH Credential` | Vault Signed SSH | AppRole + `ssh/roles/ssh-signer` CA |
 
----
-
 ### 2. Configure LDAP Authentication and Team Mapping
 
 **Operational Impact:** Low
@@ -207,8 +210,6 @@ LDAP User Search:
 > **Zero Trust principle:** Authentication alone is insufficient.
 >
 > A successful LDAP bind proves identity but grants no permissions. Without authenticator maps, the user lands on a blank platform. The maps translate verified external identity into scoped, least-privilege access -- no parallel local accounts to maintain.
-
----
 
 ### 3. Configure OPA Policy as Code (Platform Gateway)
 
@@ -260,8 +261,6 @@ user_in_patch_team {
 | Contains "deploy" or "credential" | Applications or DevOps |
 | All others | Any authenticated user |
 
----
-
 ### 4. Add In-Playbook OPA Checks (Inner Ring)
 
 **Operational Impact:** Low
@@ -299,8 +298,6 @@ graph LR
     B --> C(Arista: Configure DB ACL)
     C --> D([Deploy Application])
 ```
-
----
 
 ### 5. Configure SPIFFE Workload Identity for High-Risk Operations
 

@@ -71,6 +71,27 @@ h3, h3 * {
   font-weight: 500;
 }
 
+// jekyll-theme-dinky underlines h1/h2/h3. Keep a single rule on major section
+// headings (h2) only -- drop h1 (guide-header already has a separator) and h3
+// (subsections) so lines do not stack into doubles.
+h1, h3 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+h2 {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+// Markdown "---" between sections becomes <hr> and stacks with the h2 underline,
+// reading as a stray line above the next heading. Prefer the h2 rule alone.
+.guide-layout > section > hr,
+.wrapper > section > hr {
+  display: none;
+}
+
 h1, h1 * {
   font-size: 32px;
   line-height: 1.1;
@@ -434,10 +455,19 @@ table.guide-table-event-sources {
   max-width: 140px;
 }
 
-.guide-hero-partner--zero-trust .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
-  height: 36px;
-  max-height: 36px;
-  max-width: 56px;
+.guide-hero-partner--zero-trust .guide-hero-partner__partner.card-partner-logo-set {
+  gap: 0.5rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    max-height: 36px;
+    max-width: 56px;
+  }
+
+  .card-partner-logo-label {
+    font-size: 16px;
+  }
 }
 
 .guide-hero-partner--cloud-native .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
@@ -506,6 +536,60 @@ table.guide-table-event-sources {
   height: auto;
   max-height: 32px;
   max-width: 90px;
+}
+
+// Wide Falco horizontal wordmark (277x100)
+.guide-hero-partner--falco .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 120px;
+}
+
+// Wide RHEL 9 product logo (2000x983)
+.guide-hero-partner--rhel9 .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 36px;
+  max-width: 140px;
+}
+
+// Wide RHEL product logo without version (2000x490)
+.guide-hero-partner--rhel .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 140px;
+}
+
+// Wide IBM Lightwell wordmark (2000x690)
+.guide-hero-partner--lightwell .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 140px;
+}
+
+// Square technology icons + text labels (icon alone is not widely recognized)
+.guide-hero-partner--devspaces .guide-hero-partner__partner.card-partner-logo-set,
+.guide-hero-partner--devtools .guide-hero-partner__partner.card-partner-logo-set,
+.guide-hero-partner--automation-orchestrator .guide-hero-partner__partner.card-partner-logo-set {
+  gap: 0.5rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    max-height: 36px;
+    max-width: 36px;
+  }
+
+  .card-partner-logo-label {
+    font-size: 16px;
+  }
+}
+
+// OPA: light and dark are "Open Policy Agent" wordmarks
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light,
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--dark {
+  height: auto;
+  max-height: 32px;
+  max-width: 180px;
 }
 
 .guide-hero-callout__icon {
@@ -895,6 +979,11 @@ table.guide-table-event-sources {
   border-color: #b8dde5;
 }
 
+.guide-type-track--security {
+  background: linear-gradient(135deg, #faeae8 0%, #fdf6f5 50%, #ffffff 100%);
+  border-color: #f0c8c4;
+}
+
 .guide-type-track--journey {
   background: linear-gradient(135deg, #faf3e8 0%, #fdf9f3 50%, #ffffff 100%);
   border-color: #e8d4a8;
@@ -927,6 +1016,12 @@ table.guide-table-event-sources {
   color: #0f6e82;
   background: #e7f6f8;
   border: 1px solid #b8dde5;
+}
+
+.guide-type-track--security .guide-type-track__badge {
+  color: #a30000;
+  background: #faeae8;
+  border: 1px solid #f0c8c4;
 }
 
 .guide-type-track--journey .guide-type-track__badge {
@@ -1097,6 +1192,19 @@ table.guide-table-event-sources {
   }
 }
 
+.guide-type-track--security .guide-type-example-pill {
+  color: #a30000;
+  background: #faeae8;
+  border: 1px solid #f0c8c4;
+
+  &:hover,
+  &:focus {
+    color: #7d0000;
+    background: #f5d8d4;
+    border-color: #e0a8a0;
+  }
+}
+
 .guide-type-track--journey .guide-type-example-pill {
   color: #9a6700;
   background: #faf3e8;
@@ -1113,6 +1221,11 @@ table.guide-table-event-sources {
 .guide-type-track--network .guide-type-track__title a:hover,
 .guide-type-track--network .guide-type-track__title a:focus {
   color: #0f6e82;
+}
+
+.guide-type-track--security .guide-type-track__title a:hover,
+.guide-type-track--security .guide-type-track__title a:focus {
+  color: #a30000;
 }
 
 .guide-type-track--journey .guide-type-track__title a:hover,
@@ -2872,6 +2985,12 @@ b {
   border: 1px solid #b8dde5;
 }
 
+.card-label-track--security {
+  --pf-v6-c-label--BackgroundColor: #faeae8;
+  --pf-v6-c-label--Color: #a30000;
+  border: 1px solid #f0c8c4;
+}
+
 .card-label-style--foundational {
   --pf-v6-c-label--BackgroundColor: #e7f1fa;
   --pf-v6-c-label--Color: #0066cc;
@@ -3186,6 +3305,61 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   width: auto;
 }
 
+// Wide Falco horizontal wordmark (277x100)
+.card-partner-logo-set--falco .card-partner-logo {
+  height: auto;
+  max-height: 24px;
+  max-width: 108px;
+  width: auto;
+}
+
+// Wide RHEL 9 product logo (2000x983)
+.card-partner-logo-set--rhel9 .card-partner-logo {
+  height: auto;
+  max-height: 36px;
+  max-width: 120px;
+  width: auto;
+}
+
+// Wide RHEL product logo without version (2000x490)
+.card-partner-logo-set--rhel .card-partner-logo {
+  height: auto;
+  max-height: 24px;
+  max-width: 120px;
+  width: auto;
+}
+
+// Wide IBM Lightwell wordmark (2000x690)
+.card-partner-logo-set--lightwell .card-partner-logo {
+  height: auto;
+  max-height: 24px;
+  max-width: 120px;
+  width: auto;
+}
+
+// Square technology icons + text labels (icon alone is not widely recognized)
+.card-partner-logo-set--devspaces,
+.card-partner-logo-set--devtools,
+.card-partner-logo-set--automation-orchestrator {
+  gap: 0.45rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    width: auto;
+    max-width: 36px;
+  }
+}
+
+// OPA: light and dark are "Open Policy Agent" wordmarks
+.card-partner-logo-set--opa .card-partner-logo--light,
+.card-partner-logo-set--opa .card-partner-logo--dark {
+  height: auto;
+  max-height: 32px;
+  max-width: 160px;
+  width: auto;
+}
+
 // Wide PostgreSQL wordmark (5200x800 canvas)
 .card-partner-logo-set--postgresql .card-partner-logo {
   height: auto;
@@ -3201,11 +3375,25 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   max-width: 78px;
 }
 
-// Icon mark (not a wordmark); nudge above default 28px height for parity with EDB/Red Hat AI footers
-.card-partner-logo-set--zero-trust .card-partner-logo {
-  height: 36px;
-  width: auto;
-  max-width: 56px;
+// NIST ZTA icon mark + text label (icon alone is not widely recognized)
+.card-partner-logo-set--zero-trust {
+  gap: 0.45rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    width: auto;
+    max-width: 56px;
+  }
+}
+
+.card-partner-logo-label {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #151515;
+  white-space: nowrap;
 }
 
 .card-partner-logo {
@@ -3381,6 +3569,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: var(--text-primary);
   }
 
+  // Stronger than --border-color so h2 underlines stay visible on dark pages
+  h2 {
+    border-bottom-color: #5a5f6a;
+  }
+
   section > blockquote {
     background: #2a2540;
     box-shadow: 0 2px 6px var(--shadow-sm);
@@ -3455,7 +3648,63 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   }
 
   .code-block-wrapper pre code {
-    color: var(--text-secondary) !important;
+    color: #e6edf3 !important;
+  }
+
+  // Light-theme token colors use !important; override for dark readability
+  .code-block-wrapper .token.comment,
+  .code-block-wrapper .token.prolog,
+  .code-block-wrapper .token.doctype,
+  .code-block-wrapper .token.cdata {
+    color: #8b949e !important;
+  }
+
+  .code-block-wrapper .token.punctuation {
+    color: #c9d1d9 !important;
+  }
+
+  .code-block-wrapper .token.property,
+  .code-block-wrapper .token.tag,
+  .code-block-wrapper .token.boolean,
+  .code-block-wrapper .token.number,
+  .code-block-wrapper .token.constant,
+  .code-block-wrapper .token.symbol,
+  .code-block-wrapper .token.deleted {
+    color: #79c0ff !important;
+  }
+
+  .code-block-wrapper .token.selector,
+  .code-block-wrapper .token.attr-name,
+  .code-block-wrapper .token.string,
+  .code-block-wrapper .token.char,
+  .code-block-wrapper .token.builtin,
+  .code-block-wrapper .token.inserted {
+    color: #7ee787 !important;
+  }
+
+  // YAML keys often tokenize as atrule/important; keep them bright like properties
+  .code-block-wrapper .token.atrule,
+  .code-block-wrapper .token.keyword {
+    color: #ff7b72 !important;
+  }
+
+  .code-block-wrapper .token.function,
+  .code-block-wrapper .token.class-name {
+    color: #d2a8ff !important;
+  }
+
+  .code-block-wrapper .token.operator,
+  .code-block-wrapper .token.entity,
+  .code-block-wrapper .token.url,
+  .code-block-wrapper .language-css .token.string,
+  .code-block-wrapper .style .token.string {
+    color: #ff7b72 !important;
+  }
+
+  .code-block-wrapper .token.regex,
+  .code-block-wrapper .token.important,
+  .code-block-wrapper .token.variable {
+    color: #ffa657 !important;
   }
 
   .code-block-lang,
@@ -3507,6 +3756,10 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: var(--text-primary);
     background: var(--bg-surface-alt);
     border-color: var(--border-color);
+  }
+
+  .card-partner-logo-label {
+    color: var(--text-primary);
   }
 
   .key-terms-group {
@@ -3658,6 +3911,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: #9edbe8;
   }
 
+  .guide-type-track--security .guide-type-track__title a:hover,
+  .guide-type-track--security .guide-type-track__title a:focus {
+    color: #f5b5b0;
+  }
+
   .guide-type-track--journey .guide-type-track__title a:hover,
   .guide-type-track--journey .guide-type-track__title a:focus {
     color: #e8c87a;
@@ -3686,6 +3944,19 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
       color: #c8f0f8;
       background: #234a54;
       border-color: #3d8a9a;
+    }
+  }
+
+  .guide-type-track--security .guide-type-example-pill {
+    color: #f5b5b0;
+    background: #3d1a1a;
+    border-color: #7a3030;
+
+    &:hover,
+    &:focus {
+      color: #fad4d0;
+      background: #4d2222;
+      border-color: #9a4040;
     }
   }
 
@@ -3768,6 +4039,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     border-color: #2d6a78;
   }
 
+  .guide-type-track--security {
+    background: linear-gradient(135deg, #3d1a1a 0%, #24262b 100%);
+    border-color: #7a3030;
+  }
+
   .guide-type-track--journey {
     background: linear-gradient(135deg, #3d3018 0%, #2d3039 100%);
     border-color: #6a5528;
@@ -3787,6 +4063,12 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: #9edbe8;
     background: #1a3a42;
     border-color: #2d6a78;
+  }
+
+  .guide-type-track--security .guide-type-track__badge {
+    color: #f5b5b0;
+    background: #3d1a1a;
+    border-color: #7a3030;
   }
 
   .guide-type-track--journey .guide-type-track__badge {
@@ -3928,6 +4210,12 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     --pf-v6-c-label--BackgroundColor: #1a3a42;
     --pf-v6-c-label--Color: #9edbe8;
     border-color: #2d6a78;
+  }
+
+  .card-label-track--security {
+    --pf-v6-c-label--BackgroundColor: #3d1a1a;
+    --pf-v6-c-label--Color: #f5b5b0;
+    border-color: #7a3030;
   }
 
   .card-label-style--foundational {

@@ -8,10 +8,13 @@
   div#toc { display: none; }
 </style>
 
-<div class="guide-hero-callout guide-hero-partner" role="img" aria-label="Ansible Automation Platform and Lightwell">
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--lightwell" role="img" aria-label="Ansible Automation Platform and IBM Lightwell">
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
-  <span class="guide-hero-partner__partner" style="font-size:1.25rem;font-weight:700;letter-spacing:0.02em;">Lightwell</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--lightwell">
+    <img src="assets/images/logos/lightwell-logo.png" alt="IBM Lightwell" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/lightwell-logo-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
 </div>
 
 <!-- tags: ansible, aap, eda, cve, lightwell, rhtpa, sbom, security, patch-management -->

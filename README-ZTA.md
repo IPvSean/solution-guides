@@ -17,7 +17,8 @@
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--zero-trust">
-    <img src="assets/images/logos/zero-trust.png" alt="Zero Trust Architecture" class="card-partner-logo" width="52" height="36">
+    <img src="assets/images/logos/zero-trust.png" alt="" class="card-partner-logo" width="52" height="36" aria-hidden="true">
+    <span class="card-partner-logo-label">Zero Trust</span>
   </span>
 </div>
 
@@ -129,8 +130,6 @@ This solution demonstrates an end-to-end Zero Trust Architecture using Ansible A
 | Use Case 5 (Access Control) | **High** | Requires break-glass access path |
 
 **Warning:** Use Cases 3, 4, and 5 make configuration changes to SSH, network, and access controls. Test in a non-production environment first and ensure break-glass access is validated before applying to production systems.
-
----
 
 ## Zero Trust Architecture Workflow
 
@@ -260,8 +259,6 @@ curl -s http://central.zta.lab:8181/v1/data/zta/patch_access/decision \
 >
 > On AAP 2.6, configure IdM LDAP authentication via **Access Management → Authentication Methods**. Use **GroupOfNamesType** with `name_attr: cn` for FreeIPA group lookups. See the workshop Section 1.2 for detailed UI configuration steps including authentication mapping rules for team assignment.
 
----
-
 <h3 id="use-case-2"></h3>
 
 ### Use Case 2: Just-In-Time Credential Management
@@ -390,8 +387,6 @@ curl http://app.zta.lab:8081/health
 ```
 
 > **ZTA Principle:** Credentials are ephemeral. Without rotation, access is automatically removed. This limits the window of opportunity for compromised credentials and eliminates standing access.
-
----
 
 <h3 id="use-case-3"></h3>
 
@@ -533,8 +528,6 @@ sudo auditctl -l | grep zta
 ```
 
 > **Separation of Duties:** The `appdev` user (Applications team) cannot launch patching templates. The `ztauser` (Infrastructure team) cannot launch application deployment templates. Each team's access is scoped by OPA policy, enforced at the platform level.
-
----
 
 <h3 id="use-case-4"></h3>
 
@@ -711,8 +704,6 @@ curl -H "Authorization: Token $NETBOX_TOKEN" \
 ```
 
 > **Why verify workload identity?** A compromised script running outside AAP could impersonate a network admin user. SPIFFE cryptographically proves the *platform* is legitimate, not just the user.
-
----
 
 <h3 id="use-case-5"></h3>
 
@@ -899,8 +890,6 @@ ssh neteng@app.zta.lab
 ```
 
 > **Defense in Depth:** Even if one layer fails, others still protect. If the firewall rule is accidentally removed, HBAC still denies unauthorized users. If HBAC is misconfigured, Vault policy prevents certificate signing. If all three fail, Splunk detects the bypass and alerts.
-
----
 
 <h2 id="validation"></h2>
 
@@ -1235,8 +1224,6 @@ This guide demonstrated five use cases for implementing Zero Trust Architecture 
 
 Organizations implementing this architecture eliminate standing credentials, enforce deny-by-default policies at multiple layers, and automate the coordination of identity, secrets, policy, and network controls -- transforming Zero Trust from a conceptual framework into an operational reality.
 
----
-
 <h2 id="related-guides"></h2>
 
 ## Related Guides
@@ -1258,8 +1245,6 @@ Organizations implementing this architecture eliminate standing credentials, enf
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f511.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://developer.hashicorp.com/vault/docs/enterprise/namespaces">HashiCorp Vault Enterprise Namespaces</a> — Multi-tenant secrets management for large-scale deployments
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6e1.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.openpolicyagent.org/docs/latest/policy-language/">Open Policy Agent — Advanced Rego Patterns</a> — Custom policy authoring and testing
 
----
-
 **Sources and Further Reading:**
 
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d6.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://csrc.nist.gov/publications/detail/sp/800-207/final">NIST SP 800-207: Zero Trust Architecture</a>
@@ -1271,8 +1256,6 @@ Organizations implementing this architecture eliminate standing credentials, enf
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4ca.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://netbox.dev/">Netbox</a>
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f310.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://www.arista.com/en/products/software-controlled-container-networking">Arista cEOS</a>
 
----
-
 ## Next Steps
 
 | | |
@@ -1281,8 +1264,6 @@ Organizations implementing this architecture eliminate standing credentials, enf
 | <a target="_blank" href="https://github.com/nmartins0611/zta-workshop-aap"><strong>ZTA Workshop Source Code</strong></a> | Complete playbooks, OPA policies, and configuration for all five use cases |
 | <a target="_blank" href="https://www.redhat.com/en/services/consulting"><strong>Red Hat Consulting</strong></a> | Work with Red Hat experts to design and deploy Zero Trust Architecture at scale |
 | <a target="_blank" href="https://www.redhat.com/en/services/training-and-certification"><strong>Training and Certification</strong></a> | Build team skills with hands-on security automation courses |
-
----
 
 <span class="guide-closing-logo-set">
 <img class="guide-closing-logo guide-closing-logo--light" src="assets/images/logos/aap_logo.png" alt="Red Hat Ansible Automation Platform">

@@ -78,7 +78,7 @@ inline_edit: true
 </div>
 <section class="guide-types-tracks">
   <h2 id="solution-guide-categories" class="guide-types-tracks__title">Solution Guide categories</h2>
-  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>categories</strong> by domain: AIOps and Network automation. All categories use the same guide framework, validation expectations, and maturity path structure. Within a category, one guide may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, including <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases">six operational use cases</a> and Crawl/Walk/Run).</p>
+  <p class="guide-type-panel__tracks-intro">Solution Guides are grouped into <strong>categories</strong> by domain: AIOps, Network automation, and Security automation. All categories use the same guide framework, validation expectations, and maturity path structure. Within a category, one guide may carry a <strong>Foundational</strong> badge -- start there before partner integrations (today: <a href="{{ '/README-AIOps' | relative_url }}">AIOps automation with Ansible</a>, including <a href="{{ '/README-AIOps' | relative_url }}#common-aiops-use-cases">six operational use cases</a> and Crawl/Walk/Run).</p>
 
   <div class="guide-type-tracks">
     <article class="guide-type-track guide-type-track--aiops">
@@ -122,7 +122,8 @@ inline_edit: true
         <span class="guide-type-track__examples-label">Examples</span>
         <div class="guide-type-track__pills">
           <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="guide-type-example-pill">Automated runtime mitigation for Linux OT hosts</a>
-          <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="guide-type-example-pill">PQC Discovery</a>
+          <a href="{{ '/README-CME' | relative_url }}" class="guide-type-example-pill">CVE response and compliance verification with CME</a>
+          <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="guide-type-example-pill">RHEL 9 STIG and CIS compliance scanning</a>
         </div>
       </div>
     </article>

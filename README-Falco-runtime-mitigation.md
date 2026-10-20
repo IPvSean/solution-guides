@@ -6,6 +6,15 @@
 
 </div>
 
+<div class="guide-hero-callout guide-hero-partner guide-hero-partner--falco" role="img" aria-label="Ansible Automation Platform and Falco">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
+  <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--falco">
+    <img src="assets/images/logos/falco-horizontal-color.svg" alt="Falco" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/falco-horizontal-color-dark.svg" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+  </span>
+</div>
+
 ## Overview
 
 Organizations managing Linux Operational Technology (OT) hosts struggle to respond to runtime threats quickly enough to prevent system compromise. This guide demonstrates how to build a closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible (EDA) for orchestration to dynamically apply MITRE ATT&CK mitigation policies.

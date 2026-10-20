@@ -142,8 +142,6 @@ What makes up the solution?
 | Chat or ITSM tool | Recommended | Slack, Mattermost, or ServiceNow for human-in-the-loop notifications |
 | Cisco routers with OSPF | Use Case C | Two or more Cisco IOS/IOS-XE devices with OSPF configured |
 
----
-
 <h2 id="use-case-a-predictive-aiops-with-splunk-itsi"></h2>
 
 ## Use Case A: Predictive AIOps with Splunk ITSI
@@ -236,8 +234,6 @@ index="itsi_summary"
 >
 > ITSI overrides any `eval source` in the SPL with the correlation search name. The aggregation policy source filter must match this name exactly.
 
----
-
 ### A2. Aggregation Policy and Episode Management
 
 **Operational Impact:** None -- configures how notable events are grouped into actionable episodes.
@@ -266,8 +262,6 @@ disabled = 0
 ```
 
 Restart Splunk after adding this stanza.
-
----
 
 ### A3. Event-Driven Ansible Integration
 
@@ -307,8 +301,6 @@ Restart Splunk after adding this stanza.
 ```
 
 The rulebook matches on `sourcetype == "itsi_notable:group"` and the specific `itsi_policy_id`, then launches the **`Network loadbalance`** job template. The **throttle** prevents automation storms by allowing only one trigger per episode within 15 minutes. Because EDA uses `post_events: true`, the full ITSI episode payload is available to the playbook via `ansible_eda.event.payload`.
-
----
 
 ### A4. Automated Remediation
 
@@ -430,8 +422,6 @@ If the database service runs in AWS and the bottleneck is a VPC network limit, t
         state: present
 ```
 
----
-
 <h2 id="splunk-webhook-alert-pipeline"></h2>
 
 ## Splunk Webhook Alert Pipeline
@@ -459,8 +449,6 @@ Splunk Alert -> Webhook -> EDA Rulebook -> Enrichment Workflow -> AI Analysis ->
 > **Splunk replaces the Kafka/Filebeat layer.**
 >
 > In the AIOps reference architecture, Filebeat and Kafka handle event collection and transport. When using Splunk, it handles both -- Splunk ingests the data and fires the alert directly to EDA via webhook, simplifying the architecture.
-
----
 
 <h2 id="use-case-b-rhel-server-remediation"></h2>
 
@@ -650,8 +638,6 @@ The enrichment workflow posts the AI analysis to your team's communication chann
 > Updating the Splunk notable event with the AI analysis creates a full audit trail -- the detection, diagnosis, and remediation are all visible in Splunk's incident review dashboard.
 
 From here, the remediation follows the same pattern as the [UC06 workshop remediation workflow](README-AIOps-Use-Case-06-Self-Healing-Infrastructure.md#3-remediation-workflow) -- **Automation code assistant** generates a playbook, it gets committed to Git, and a Job Template is created for execution.
-
----
 
 <h2 id="use-case-c-network-aiops----ospf-remediation"></h2>
 
@@ -919,8 +905,6 @@ Each scenario demonstrates a progressively more complex OSPF failure, requiring 
 >
 > Each scenario adds conditions to the **code assistant** prompt. Scenario 1 has one condition, Scenario 2 has two, and Scenario 3 has three. This demonstrates how a network engineer can iteratively refine their prompt to handle more failure modes in a single playbook.
 
----
-
 <h2 id="validation"></h2>
 
 ## Validation
@@ -1015,8 +999,6 @@ This guide demonstrates three ways to connect Splunk to Event-Driven Ansible for
 
 The same pipeline applies across all three: Splunk detects, EDA triggers, AI enriches, and Ansible remediates -- reducing MTTR from hours of manual investigation to minutes of automated resolution. Whether the alert is a predicted network throughput anomaly, a failed httpd service, or an OSPF adjacency down, the pattern is the same. Only the detection logic, diagnostics collection, and remediation tasks change.
 
----
-
 <h2 id="related-guides"></h2>
 
 ## Related Guides
@@ -1027,8 +1009,6 @@ The same pipeline applies across all three: Splunk detects, EDA triggers, AI enr
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4a1.png" width="20" style="vertical-align:text-bottom;"> **Looking for ServiceNow integration?** See [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](README-AIOps-ServiceNow.md) for LEAP/MCP-driven remediation and related ITSM patterns (see also [KB 7127603](https://access.redhat.com/articles/7127603)).
 - <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> **Want to try this hands-on?** The [Hands-On AIOps Workshop -- Part 2](https://rhpds.github.io/ai-driven-automation-showroom/modules/index.html) walks through Splunk integration with Cisco router remediation in a live lab.
 
----
-
 ## Next Steps
 
 | | |
@@ -1036,8 +1016,6 @@ The same pipeline applies across all three: Splunk detects, EDA triggers, AI enr
 | <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/trial"><strong>Try Ansible Automation Platform</strong></a> | Start a free 60-day trial and build your first automation workflows |
 | <a target="_blank" href="https://www.redhat.com/en/services/consulting"><strong>Red Hat Consulting</strong></a> | Work with Red Hat experts to design, implement, and scale AIOps automation tailored to your environment |
 | <a target="_blank" href="https://www.redhat.com/en/services/training-and-certification"><strong>Training and Certification</strong></a> | Build team skills with hands-on courses and industry-recognized certifications |
-
----
 
 <span class="guide-closing-logo-set">
 <img class="guide-closing-logo guide-closing-logo--light" src="assets/images/logos/aap_logo.png" alt="Red Hat Ansible Automation Platform">

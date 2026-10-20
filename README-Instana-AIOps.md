@@ -32,8 +32,6 @@ Most organizations already have proven Ansible automation for service restarts, 
 
 **Technical value:** Governed remediation with RBAC-scoped job templates -- only authorized teams can trigger remediation within their scope. Credential isolation -- secrets stored in automation controller and injected at runtime, never exposed in playbooks or logs. Bidirectional observability-automation feedback loop via Host Agent REST API annotations, linking remediation actions to Incidents on the Instana timeline.
 
----
-
 ## Background
 
 ### The AIOps Gap: Detection Without Remediation
@@ -74,8 +72,6 @@ Instana's native AI generates investigation guidance and suggested scripts. AAP 
 
 IBM owns both Instana and Red Hat, which means tighter integration than third-party observability tools. The [`ibm.instana`](https://console.redhat.com/ansible/automation-hub/collections/published/ibm/instana/details) Ansible Content Collection is available on Red Hat automation hub, and Instana monitors Ansible natively via a [callback plugin](https://github.com/instana/instana-ansible) -- creating a bidirectional feedback loop where the automation layer is itself observed.
 
----
-
 ## Solution
 
 ### Components
@@ -111,8 +107,6 @@ IBM owns both Instana and Red Hat, which means tighter integration than third-pa
 
 - [Red Hat TV: From Observability to Action with Event-Driven Ansible and IBM Instana](https://tv.redhat.com/en/detail/6365958260112/from-observability-to-action-with-event-driven-ansible-and-ibm-instana)
 - [IBM Developer: Automation-Powered AIOps using Instana and Red Hat Ansible](https://developer.ibm.com/articles/automation-powered-aiops/)
-
----
 
 ## Prerequisites
 
@@ -152,8 +146,6 @@ IBM owns both Instana and Red Hat, which means tighter integration than third-pa
 - **Instana licensing**: SaaS or self-hosted; automation framework capability requires Standard or Enterprise edition
 - **Event-Driven Ansible controller**: included in AAP subscription, sized per standard [AAP planning guidance](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5/html/planning_your_installation/)
 - **AI inference endpoint** (optional): see [AI Infrastructure automation with Ansible](README-IA.md) for GPU and model serving requirements
-
----
 
 ## Integration Architecture
 
@@ -228,8 +220,6 @@ In both paths, Instana's built-in alert channels can simultaneously notify colla
 >
 > The RBAC policies, credential types, audit trail, and approval workflows are identical regardless of which path triggers the job template.
 
----
-
 ## Solution Walkthrough
 
 ### Part 1: Shared Setup
@@ -273,8 +263,6 @@ extra_vars:
   instana_api_token: !unsafe "{{ instana_api_token }}"
   instana_base_url: !unsafe "{{ instana_base_url }}"
 ```
-
----
 
 ### Part 2: Path A -- Event-Driven Ansible Integration
 
@@ -419,8 +407,6 @@ Create a rulebook activation in the Event-Driven Ansible controller:
 | **Credential** | AAP credential (for `run_job_template`) |
 | **Restart policy** | `Always` |
 
----
-
 ### Part 3: Path B -- Instana Automation Framework
 
 #### Step 5: Configure the Automation Action Ansible sensor
@@ -482,8 +468,6 @@ Key capabilities:
 > fi
 > ```
 
----
-
 ### Part 4: Use Case Walkthroughs
 
 #### Use Case 1: Service Latency Spike Recovery
@@ -544,8 +528,6 @@ Instana detects response time exceeding the adaptive threshold on a microservice
 
 The Host Agent REST API annotation (severity `-1` = Change) creates a visible marker on the Instana timeline, linking the remediation action to the original Incident for post-incident review.
 
----
-
 #### Use Case 2: Database Performance Degradation
 
 **Operational Impact:** Medium
@@ -592,8 +574,6 @@ Instana detects slow query execution times or connection pool exhaustion on a mo
 > **Tip:** Store database credentials in controller, not in playbooks.
 >
 > Store database credentials in an automation controller credential type -- never hardcode `db_admin_user` or `db_admin_password` in playbook variables. Use injectors to pass them as extra variables or environment variables at runtime.
-
----
 
 #### Use Case 3: Bad Deployment Auto-Rollback
 
@@ -647,8 +627,6 @@ Instana detects a spike in erroneous call rate correlated with a recent deployme
 > **Tip:** Put `kubeconfig` in a Kubernetes API credential type.
 >
 > For Kubernetes remediation, store the `kubeconfig` in an automation controller credential of type "OpenShift or Kubernetes API Bearer Token" and ensure the execution environment includes the `kubernetes.core` Ansible Certified Content Collection.
-
----
 
 ### Part 5: Optional AI-Assisted Routing
 
@@ -734,8 +712,6 @@ As teams add new job templates to automation controller, the AI automatically co
 >
 > The generic [AIOps automation with Ansible](README-AIOps.md) guide covers the AI inference pattern in depth, including how to use Red Hat AI, OpenAI, or any OpenAI-compatible endpoint.
 
----
-
 ## Validation
 
 ### Per-Stage Checklist
@@ -812,8 +788,6 @@ app-server-01.example.com : ok=4    changed=1    unreachable=0    failed=0
 | Annotation POST returns connection refused | Instana host agent not running on target | Verify agent status: `systemctl status instana-agent` |
 | Automation Action Ansible sensor can't reach automation controller | Ansible automation connector misconfigured | Verify the URL and API token in the Instana host agent configuration |
 
----
-
 ## Maturity Path
 
 | Maturity | Description | What to Build |
@@ -821,8 +795,6 @@ app-server-01.example.com : ok=4    changed=1    unreachable=0    failed=0
 | **Crawl** | Instana alerts forwarded to Event-Driven Ansible, which enriches and routes notifications -- no remediation, human decides. Ticket enrichment is the essential starting point -- every organization should have this in place before progressing further | Instana webhook -> EDA rulebook -> `run_job_template` that sends a notification (Slack, email, or ITSM ticket) with Incident context, Instana link, and optionally an AI-recommended job template with suggested variables so the operator has a ready-to-execute recommendation. This stage alone reduces triage time by giving on-call engineers everything they need to act in a single notification instead of manually correlating alerts across tools. For full ITSM enrichment, see the [ServiceNow ITSM Ticket Enrichment](https://access.redhat.com/articles/7127603) guide. |
 | **Walk** | Event-Driven Ansible triggers automation controller job templates with a human approval gate before execution | Enable `ask_variables_on_launch` on job templates; use automation controller approval workflow nodes; operator reviews before remediation runs |
 | **Run** | Fully automated closed-loop: Instana detects -> Event-Driven Ansible triggers -> automation controller remediates -> Instana confirms resolution | Remove approval gates for well-understood failure patterns; add policy guardrails (e.g., max 3 auto-remediations per hour per service, business-hours-only for critical services) |
-
----
 
 ## ROI Recap
 
@@ -854,15 +826,11 @@ Start capturing these metrics before enabling automated remediation -- having a 
 >
 > Identify 3-5 metrics most relevant to your environment and begin capturing baselines during the Crawl stage. Organizations that define success metrics before enabling automation can demonstrate measurable impact within the first quarter.
 
----
-
 ## Related Guides
 
 - [AIOps automation with Ansible](README-AIOps.md) -- the tool-agnostic AIOps pattern that this guide builds on
 - [AI Infrastructure automation with Ansible](README-IA.md) -- deploy the AI inference backend if using the optional LLM enrichment step
 - [Get started with EDA](https://access.redhat.com/articles/7136720) -- Event-Driven Ansible fundamentals for teams new to event-driven automation
-
----
 
 ## Sources
 
@@ -903,8 +871,6 @@ Start capturing these metrics before enabling automated remediation -- having a 
 | <a target="_blank" href="https://github.com/instana/intelligent-remediation-ansible">Intelligent Remediation Playbooks</a> | Reference playbooks for common Instana-triggered remediations |
 | <a target="_blank" href="https://github.com/instana/instana-ansible">Instana Ansible Callback Plugin</a> | Callback plugin that reports Ansible runs back to Instana for bidirectional observability |
 
----
-
 ## Next Steps
 
 | | |
@@ -912,8 +878,6 @@ Start capturing these metrics before enabling automated remediation -- having a 
 | <a target="_blank" href="https://www.redhat.com/en/technologies/management/ansible/trial"><strong>Try Ansible Automation Platform</strong></a> | Start a free 60-day trial and build your first automation workflows |
 | <a target="_blank" href="https://www.redhat.com/en/services/consulting"><strong>Red Hat Consulting</strong></a> | Work with Red Hat experts to design, implement, and scale AIOps automation tailored to your environment |
 | <a target="_blank" href="https://www.redhat.com/en/services/training-and-certification"><strong>Training and Certification</strong></a> | Build team skills with hands-on courses and industry-recognized certifications |
-
----
 
 <span class="guide-closing-logo-set">
 <img class="guide-closing-logo guide-closing-logo--light" src="assets/images/logos/aap_logo.png" alt="Red Hat Ansible Automation Platform">
