@@ -77,6 +77,7 @@ This solution replaces manual alert triage with an automated remediation pipelin
 |-----------|------|---------|
 | [ansible.eda](https://console.redhat.com/ansible/automation-hub/repo/published/ansible/eda/) | Certified | EDA webhook event sources and rulebook execution |
 | [community.hashi_vault](https://console.redhat.com/ansible/automation-hub/repo/published/community/hashi_vault/) | Community | Interacting with HashiCorp Vault APIs |
+| [hashicorp.vault](https://console.redhat.com/ansible/automation-hub/collections/published/hashicorp/vault/details) | Certified | Interacting with HashiCorp Vault APIs |
 | [ansible.builtin](https://console.redhat.com/ansible/automation-hub/) | Built-in | Interacting with REST APIs via the `uri` module |
 
 ### External Systems
