@@ -895,6 +895,11 @@ table.guide-table-event-sources {
   border-color: #b8dde5;
 }
 
+.guide-type-track--security {
+  background: linear-gradient(135deg, #faeae8 0%, #fdf6f5 50%, #ffffff 100%);
+  border-color: #f0c8c4;
+}
+
 .guide-type-track--journey {
   background: linear-gradient(135deg, #faf3e8 0%, #fdf9f3 50%, #ffffff 100%);
   border-color: #e8d4a8;
@@ -927,6 +932,12 @@ table.guide-table-event-sources {
   color: #0f6e82;
   background: #e7f6f8;
   border: 1px solid #b8dde5;
+}
+
+.guide-type-track--security .guide-type-track__badge {
+  color: #a30000;
+  background: #faeae8;
+  border: 1px solid #f0c8c4;
 }
 
 .guide-type-track--journey .guide-type-track__badge {
@@ -1097,6 +1108,19 @@ table.guide-table-event-sources {
   }
 }
 
+.guide-type-track--security .guide-type-example-pill {
+  color: #a30000;
+  background: #faeae8;
+  border: 1px solid #f0c8c4;
+
+  &:hover,
+  &:focus {
+    color: #7d0000;
+    background: #f5d8d4;
+    border-color: #e0a8a0;
+  }
+}
+
 .guide-type-track--journey .guide-type-example-pill {
   color: #9a6700;
   background: #faf3e8;
@@ -1113,6 +1137,11 @@ table.guide-table-event-sources {
 .guide-type-track--network .guide-type-track__title a:hover,
 .guide-type-track--network .guide-type-track__title a:focus {
   color: #0f6e82;
+}
+
+.guide-type-track--security .guide-type-track__title a:hover,
+.guide-type-track--security .guide-type-track__title a:focus {
+  color: #a30000;
 }
 
 .guide-type-track--journey .guide-type-track__title a:hover,
@@ -2872,6 +2901,12 @@ b {
   border: 1px solid #b8dde5;
 }
 
+.card-label-track--security {
+  --pf-v6-c-label--BackgroundColor: #faeae8;
+  --pf-v6-c-label--Color: #a30000;
+  border: 1px solid #f0c8c4;
+}
+
 .card-label-style--foundational {
   --pf-v6-c-label--BackgroundColor: #e7f1fa;
   --pf-v6-c-label--Color: #0066cc;
@@ -3658,6 +3693,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: #9edbe8;
   }
 
+  .guide-type-track--security .guide-type-track__title a:hover,
+  .guide-type-track--security .guide-type-track__title a:focus {
+    color: #f5b5b0;
+  }
+
   .guide-type-track--journey .guide-type-track__title a:hover,
   .guide-type-track--journey .guide-type-track__title a:focus {
     color: #e8c87a;
@@ -3686,6 +3726,19 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
       color: #c8f0f8;
       background: #234a54;
       border-color: #3d8a9a;
+    }
+  }
+
+  .guide-type-track--security .guide-type-example-pill {
+    color: #f5b5b0;
+    background: #3d1a1a;
+    border-color: #7a3030;
+
+    &:hover,
+    &:focus {
+      color: #fad4d0;
+      background: #4d2222;
+      border-color: #9a4040;
     }
   }
 
@@ -3768,6 +3821,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     border-color: #2d6a78;
   }
 
+  .guide-type-track--security {
+    background: linear-gradient(135deg, #3d1a1a 0%, #24262b 100%);
+    border-color: #7a3030;
+  }
+
   .guide-type-track--journey {
     background: linear-gradient(135deg, #3d3018 0%, #2d3039 100%);
     border-color: #6a5528;
@@ -3787,6 +3845,12 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: #9edbe8;
     background: #1a3a42;
     border-color: #2d6a78;
+  }
+
+  .guide-type-track--security .guide-type-track__badge {
+    color: #f5b5b0;
+    background: #3d1a1a;
+    border-color: #7a3030;
   }
 
   .guide-type-track--journey .guide-type-track__badge {
@@ -3928,6 +3992,12 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     --pf-v6-c-label--BackgroundColor: #1a3a42;
     --pf-v6-c-label--Color: #9edbe8;
     border-color: #2d6a78;
+  }
+
+  .card-label-track--security {
+    --pf-v6-c-label--BackgroundColor: #3d1a1a;
+    --pf-v6-c-label--Color: #f5b5b0;
+    border-color: #7a3030;
   }
 
   .card-label-style--foundational {

@@ -793,6 +793,50 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated CVE Response and Compliance Verification with CME</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Automate the full CVE response lifecycle with 118 compliance-as-code controls -- CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">RHEL 9 STIG and CIS Compliance Scanning with Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
+          </div>
+        </div>
+      </a>
       </div>
       </div>
       
@@ -1022,43 +1066,6 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="security,implementation,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Automated CVE Response and Compliance Verification with CME</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Automate the full CVE response lifecycle with 118 compliance-as-code controls -- CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="security,implementation,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">RHEL 9 STIG and CIS Compliance Scanning with Ansible</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
-          </div>
-        </div>
-      </a>
       </div>
       </div>
     </section>
