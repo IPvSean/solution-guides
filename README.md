@@ -27,6 +27,7 @@ Solution guides for AI-driven automation with Ansible Automation Platform.
 | Automated CVE response with policy-gated patching and compliance evidence | [README-CVE-defend-contain-comply.md](README-CVE-defend-contain-comply.md) | |
 | AI-driven CVE routing and remediation with Automation orchestrator | [README-AO-driven-CVE-routing.md](README-AO-driven-CVE-routing.md) | |
 | Zero Trust Architecture infrastructure with Ansible Automation Platform | [README-ZTA-with-AAP.md](README-ZTA-with-AAP.md) | |
+| Enforcing compliance and network governance with Policy as Code | [README-Compliance-Governance-with-policy.md](README-Compliance-Governance-with-policy.md) | |
 | RHEL 9 STIG and CIS compliance scanning with Ansible | [README-STIG-CIS-compliance.md](README-STIG-CIS-compliance.md) | |
 | Automated vulnerability remediation with Lightwell and Ansible | [README-AAP-LightWell-AO.md](README-AAP-LightWell-AO.md) | |
 | Automated brute-force remediation with Event-Driven Ansible | [README-BruteForce-AAP.md](README-BruteForce-AAP.md) | |

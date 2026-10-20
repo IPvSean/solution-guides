@@ -700,6 +700,28 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-Compliance-Governance-with-policy' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Enforcing Compliance and Network Governance</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Continuous compliance monitoring with EDA drift remediation, OPA contextual change-control gates (blast radius, change windows, ITSM tickets), and SPIFFE/SPIRE workload identity -- with a full audit trail in AAP Controller.
+          </div>
+        </div>
+      </a>
+
       <a href="{{ '/README-ZTA-with-AAP' | relative_url }}" class="card-link" data-tags="security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
