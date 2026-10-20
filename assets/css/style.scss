@@ -547,7 +547,8 @@ table.guide-table-event-sources {
 
 // Square technology icons + text labels (icon alone is not widely recognized)
 .guide-hero-partner--devspaces .guide-hero-partner__partner.card-partner-logo-set,
-.guide-hero-partner--devtools .guide-hero-partner__partner.card-partner-logo-set {
+.guide-hero-partner--devtools .guide-hero-partner__partner.card-partner-logo-set,
+.guide-hero-partner--automation-orchestrator .guide-hero-partner__partner.card-partner-logo-set {
   gap: 0.5rem;
   line-height: 1;
 
@@ -560,13 +561,6 @@ table.guide-table-event-sources {
   .card-partner-logo-label {
     font-size: 16px;
   }
-}
-
-// Square Automation orchestrator technology icon (400x400)
-.guide-hero-partner--automation-orchestrator .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
-  height: 36px;
-  max-height: 36px;
-  max-width: 36px;
 }
 
 // OPA: light and dark are "Open Policy Agent" wordmarks
@@ -3324,7 +3318,8 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 
 // Square technology icons + text labels (icon alone is not widely recognized)
 .card-partner-logo-set--devspaces,
-.card-partner-logo-set--devtools {
+.card-partner-logo-set--devtools,
+.card-partner-logo-set--automation-orchestrator {
   gap: 0.45rem;
   line-height: 1;
 
@@ -3333,13 +3328,6 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     width: auto;
     max-width: 36px;
   }
-}
-
-// Square Automation orchestrator technology icon (400x400)
-.card-partner-logo-set--automation-orchestrator .card-partner-logo {
-  height: 36px;
-  width: auto;
-  max-width: 36px;
 }
 
 // OPA: light and dark are "Open Policy Agent" wordmarks
