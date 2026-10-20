@@ -1,7 +1,7 @@
 {% raw %}
 <div class="guide-header">
 <h1>Automated vulnerability remediation with Lightwell and Ansible</h1>
-<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+<span class="guide-type-badge guide-type-badge--implementation"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
 </div>
 
 <style>
