@@ -1041,8 +1041,9 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--devtools">
-              <img src="{{ '/assets/images/logos/ansible-devtools-logo.png' | relative_url }}" alt="Ansible Development Tools" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/ansible-devtools-logo.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
               <img src="{{ '/assets/images/logos/ansible-devtools-logo.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              <span class="card-partner-logo-label">Ansible Content Tools</span>
             </span>
           </div>
         </div>
@@ -1072,8 +1073,9 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--devspaces">
-              <img src="{{ '/assets/images/logos/openshift-devspaces-logo.png' | relative_url }}" alt="Red Hat OpenShift Dev Spaces" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/openshift-devspaces-logo.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
               <img src="{{ '/assets/images/logos/openshift-devspaces-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              <span class="card-partner-logo-label">OpenShift Dev Spaces</span>
             </span>
           </div>
         </div>
