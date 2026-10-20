@@ -759,6 +759,12 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             AAP 2.6 as the NIST SP 800-207 Policy Enforcement Point -- identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) wired into one auditable automation fabric.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
+              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
 
