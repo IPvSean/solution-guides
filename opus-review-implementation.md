@@ -23,6 +23,7 @@ permalink: /opus-review-implementation/
 | 7 | [Intelligent Assistant with Red Hat AI Inference Server](#7-intelligent-assistant-with-red-hat-ai-inference-server) | 6.9/10* | Strong hands-on RHAIIS + Lightspeed hookup; weakest framework alignment of published guides |
 | 8 | [PostgreSQL Autovacuum Tuning](#8-postgresql-autovacuum-tuning) | Pending review | Published; not yet scored against the Implementation Guide rubric |
 | 9 | [Vulnerability management with Lightwell](#9-vulnerability-management-with-lightwell) | 7.4/10 | Solid demo-grade implementation guide; event-driven CVE-to-patch pipeline is well-structured but needs a partner hero, source repo link, and a richer Architecture/Background section before reaching publication standard |
+| 10 | [RHEL 9 STIG and CIS Compliance Scanning](#10-rhel-9-stig-and-cis-compliance-scanning) | 6.8/10 | Strong technical content and solid three-scenario validation; blocked from publication by missing guide-header/badge, no Day-2 Operations section, ASCII art diagram, and no troubleshooting table |
 
 ---
 
@@ -407,3 +408,55 @@ Published since the July 2026 review. Not yet scored against the [Implementation
 5. **Add the source repository link** in the Overview or Prerequisites (e.g., a "Source code" callout linking the GitHub repo hosting the demo playbooks and scripts).
 6. **Add Automation Hub links** for every referenced collection (`ansible.eda`, `ansible.controller`, `redhat.rhel_system_roles`, `community.general`, `ansible.posix`, `containers.podman`).
 7. **Add a "Scope" note** to the Overview clarifying this is a demo/lab deployment, the approximate fleet scale it was tested on, and what would need to change for production use.
+
+---
+
+### 10. RHEL 9 STIG and CIS Compliance Scanning
+
+**File:** [README-STIG-CIS-compliance.md](README-STIG-CIS-compliance.md)
+**Score:** 6.8 / 10
+**Reviewed:** October 20, 2026
+**Recommended type:** Implementation Guide (content is platform deployment / compliance tooling, not a partner integration)
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (15%) | 4 |
+| Architecture Clarity (25%) | 3 |
+| Technical Executability (25%) | 3.5 |
+| Validation/Testability (20%) | 4 |
+| Production & Day-2 Readiness (15%) | 2.5 |
+
+**Stats:** ~1,400 words | 3 walkthrough steps | 2 YAML code blocks | 1 ASCII art diagram (needs Mermaid) | 3 validation scenarios (no troubleshooting table) | Maturity Path as prose bullets (not table)
+
+**Strengths:**
+- The core design rationale is excellent: agentless scanning, ephemeral EE delivery, separate assessment and remediation jobs, and per-host NDJSON streaming are all deliberate choices explained clearly in "Key design decisions."
+- Three-profile coverage (DISA STIG V2R8, CIS Level 1 Server, CIS Level 2 Server) with rule counts, XCCDF profile IDs, CaC playbook names, and certification status in a clean table -- immediately actionable.
+- The `failed_when: rc not in [0, 2]` OpenSCAP exit-code handling is a non-obvious correctness detail that saves implementers from false failures; documenting it here is valuable.
+- Validation covers three concrete scenarios: scan completeness (no leftover artefacts), selective remediation (only tagged tasks ran), and CI guardrails (EE build-time `test -f` checks). This is stronger than most guides at this stage.
+- The `normalize_xccdf` module design (strip XCCDF prefix so rule IDs match CaC tags directly) eliminates the mapping-file maintenance problem -- worth highlighting more prominently.
+- NDJSON streaming rationale (avoiding Controller event-size truncation with 4000+ findings) is the kind of production-scale detail that distinguishes a real implementation guide from tutorial content.
+
+**Weaknesses:**
+1. **No `guide-header` div, no badge, no hero callout.** The guide opens with a YAML front matter block and a raw `#` heading. It will not render with the site's styled header or badge pill. The `type: solution-guide` in front matter conflicts with the content classification (this is an implementation guide).
+2. **No `guide-outcome` callout.** The overview paragraph is clear but the `<div class="guide-outcome">` callout required by the framework is absent.
+3. **No ToC.**
+4. **ASCII art architecture diagram.** The workflow diagram uses a text box drawing that does not render with Mermaid. The site convention requires fenced `mermaid` blocks.
+5. **No Day-2 Operations section.** Required for all implementation guides. Missing: monitoring (dashboard API health, EE image currency), content lifecycle (DISA quarterly STIG updates → EE rebuild cadence), known issues.
+6. **No troubleshooting table in Validation.** The three scenarios describe expected success behaviour but give no symptom → cause → fix mapping for common failures.
+7. **Maturity Path is prose bullets, not a table.** The framework requires a `| Maturity | Description |` table. The current content is one long paragraph broken into three bullet points.
+8. **No Summary section.**
+9. **No Who Benefits table.** Security engineers, compliance officers, and platform owners have distinct concerns not addressed.
+10. **Automation Hub links missing.** `ansible.posix` and `redhat.rhel_system_roles` are listed as prerequisites but not linked. The `security.compliance_*` collections have no link (expected for custom collections, but a source repo link is needed).
+11. **`status: draft` in front matter.** The guide is not yet ready to publish -- this is accurate but needs to be resolved before the guide appears in the catalog.
+12. **Not in `index.md` or `README.md` catalog.**
+
+**Suggestions:**
+1. Change the guide type to **Implementation Guide** -- replace the YAML front matter `type` value, add `<div class="guide-header">` with `guide-type-badge--implementation`, and add an AAP hero callout (no external partner logo needed).
+2. Add `<div class="guide-outcome">`: "Agentless RHEL 9 compliance scanning against DISA STIG V2R8 and CIS Benchmarks Level 1/2, with a separate tag-scoped remediation job that applies only the rules you choose -- no permanent scanner footprint, no all-or-nothing fixes."
+3. Convert the ASCII art diagram to a Mermaid `graph LR` showing: Target hosts → EE (copy datastream, run oscap, fetch XML) → normalize_xccdf → dashboard API → Remediation JT.
+4. Add a **Day-2 Operations** section covering: (a) EE rebuild cadence when DISA publishes a quarterly STIG update, (b) monitoring the dashboard API ingest endpoint for 4xx/5xx, (c) known issue with CIS L2 reboot-required rules that cannot be fully auto-remediated without a maintenance window.
+5. Add a **troubleshooting table** with at least: `oscap` exits with rc=1 (fatal XML parse error, not a scan finding); `normalize_xccdf` module fails with `ElementTree` error (malformed XCCDF from partial scan); dashboard API returns 413 (NDJSON batch too large, reduce `ndjson_batch_size`); EE build fails at `test -f` (scap-security-guide not installed in base image, check CentOS 9 Stream repo availability).
+6. Convert Maturity Path to the standard three-row `| Maturity | Description |` table.
+7. Add a Summary section (2-3 sentences wrapping up the guide).
+8. Add a Who Benefits table (Security Engineer, Compliance Officer, Platform Owner).
+9. Link `ansible.posix` and `redhat.rhel_system_roles` to their Automation Hub pages; add a source repo link for the `security.compliance_*` collections.
