@@ -847,11 +847,17 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--rhel9">
+              <img src="{{ '/assets/images/logos/rhel9-logo.png' | relative_url }}" alt="Red Hat Enterprise Linux 9" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/rhel9-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
       </div>
       </div>
-      
+
     </section>
 
     <section id="implementation-guides" class="cards-guide-section">

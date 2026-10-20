@@ -515,6 +515,13 @@ table.guide-table-event-sources {
   max-width: 120px;
 }
 
+// Wide RHEL 9 product logo (2000x983)
+.guide-hero-partner--rhel9 .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 36px;
+  max-width: 140px;
+}
+
 .guide-hero-callout__icon {
   flex-shrink: 0;
   width: 36px;
@@ -3233,6 +3240,14 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   height: auto;
   max-height: 24px;
   max-width: 108px;
+  width: auto;
+}
+
+// Wide RHEL 9 product logo (2000x983)
+.card-partner-logo-set--rhel9 .card-partner-logo {
+  height: auto;
+  max-height: 36px;
+  max-width: 120px;
   width: auto;
 }
 
