@@ -764,8 +764,9 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
-              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              <span class="card-partner-logo-label">Zero Trust</span>
             </span>
           </div>
         </div>
@@ -964,8 +965,9 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
-              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="Zero Trust" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
               <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+              <span class="card-partner-logo-label">Zero Trust</span>
             </span>
           </div>
         </div>

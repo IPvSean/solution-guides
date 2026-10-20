@@ -434,10 +434,19 @@ table.guide-table-event-sources {
   max-width: 140px;
 }
 
-.guide-hero-partner--zero-trust .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
-  height: 36px;
-  max-height: 36px;
-  max-width: 56px;
+.guide-hero-partner--zero-trust .guide-hero-partner__partner.card-partner-logo-set {
+  gap: 0.5rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    max-height: 36px;
+    max-width: 56px;
+  }
+
+  .card-partner-logo-label {
+    font-size: 16px;
+  }
 }
 
 .guide-hero-partner--cloud-native .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
@@ -3355,11 +3364,25 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   max-width: 78px;
 }
 
-// Icon mark (not a wordmark); nudge above default 28px height for parity with EDB/Red Hat AI footers
-.card-partner-logo-set--zero-trust .card-partner-logo {
-  height: 36px;
-  width: auto;
-  max-width: 56px;
+// NIST ZTA icon mark + text label (icon alone is not widely recognized)
+.card-partner-logo-set--zero-trust {
+  gap: 0.45rem;
+  line-height: 1;
+
+  .card-partner-logo {
+    height: 36px;
+    width: auto;
+    max-width: 56px;
+  }
+}
+
+.card-partner-logo-label {
+  font-family: 'Red Hat Text', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #151515;
+  white-space: nowrap;
 }
 
 .card-partner-logo {
@@ -3717,6 +3740,10 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
     color: var(--text-primary);
     background: var(--bg-surface-alt);
     border-color: var(--border-color);
+  }
+
+  .card-partner-logo-label {
+    color: var(--text-primary);
   }
 
   .key-terms-group {

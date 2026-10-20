@@ -12,8 +12,9 @@
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--zero-trust">
-    <img src="assets/images/logos/zero-trust.png" alt="Zero Trust Architecture" class="card-partner-logo card-partner-logo--light">
+    <img src="assets/images/logos/zero-trust.png" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
     <img src="assets/images/logos/zero-trust.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+    <span class="card-partner-logo-label">Zero Trust</span>
   </span>
 </div>
 
