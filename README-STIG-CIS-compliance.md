@@ -28,10 +28,10 @@ last_verified: 2026-10-20
 
 Security teams must prove RHEL 9 compliance against frameworks such as DISA STIG and the CIS Benchmarks, and then drive hosts back into conformance. Traditional Compliance-as-Code tooling (OpenSCAP with scap-security-guide) is certified and authoritative, but running it at scale has friction: scanners must be installed on targets, XCCDF result XML is verbose and hard to aggregate, and CaC remediation playbooks apply every fix at once when operators often want to fix only selected findings.
 
-This guide deploys three self-contained Ansible collections that scan RHEL 9 hosts against DISA STIG V2R8 (366 rules), CIS Benchmark Level 1 Server (~195 rules), and CIS Benchmark Level 2 Server (~262 rules). Each collection pairs an agentless OpenSCAP assessment job with a separate, tag-scoped remediation job, both packaged in a purpose-built Execution Environment. Results are normalized to a Common Findings Format and streamed per-host to a compliance dashboard API so a security team can see posture, drill into findings, and remediate selected rules -- deliberately and with full auditability.
+This guide deploys three self-contained Ansible collections that scan RHEL 9 hosts against DISA STIG V2R8 (366 rules), CIS Benchmark Level 1 Server (~195 rules), and CIS Benchmark Level 2 Server (~262 rules). Each collection pairs an agentless OpenSCAP assessment job with a separate, tag-scoped remediation job, both packaged in a purpose-built Execution Environment. Results are normalized to a Common Findings Format (CFF) and written per-host to structured JSON files on the execution node, so a security team can review posture, identify findings, and launch targeted remediation -- deliberately and with full auditability.
 
 <div class="guide-outcome">
-<strong>Outcome:</strong> Agentless RHEL 9 compliance scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2, with a separate tag-scoped remediation job that applies only the rules you choose -- no permanent scanner footprint on targets, no all-or-nothing fixes, continuous findings visible in a dashboard.
+<strong>Outcome:</strong> Agentless RHEL 9 compliance scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2, with a separate tag-scoped remediation job that applies only the rules you choose -- no permanent scanner footprint on targets, no all-or-nothing fixes, per-host CFF JSON findings written to the execution node for review and targeted follow-up.
 </div>
 
 - [Background](#background)
@@ -65,14 +65,14 @@ The automation pattern is **Day-2 security/compliance**: assess continuously, th
 
 1. **Agentless scanning.** Play 1 installs `openscap-scanner` only if missing, copies the ~15 MB datastream from the EE, runs `oscap xccdf eval`, fetches results back, and removes everything it installed.
 2. **Single Job Template, two plays.** The scan (targets) and normalization (localhost) run in the same container, so fetched XML needs no cross-container file sharing.
-3. **Per-host NDJSON ingestion.** Each host's findings are normalized individually and streamed as `application/x-ndjson` to the dashboard API, avoiding Controller event-size truncation with 4000+ findings.
+3. **Per-host NDJSON output.** Each host's findings are normalized individually and written as NDJSON to `/tmp/compliance-results/` on the execution node, avoiding Controller event-size truncation with 4000+ findings per scan.
 4. **Separate remediation.** The assessment never changes hosts. Remediation imports the CaC playbook from `scap-security-guide` and is scoped with native AAP `job_tags` -- the normalized rule IDs match CaC tags exactly, so no mapping file is needed.
 
 ### Who Benefits
 
 | Persona | Challenge | What They Gain |
 |---------|-----------|----------------|
-| **Security Engineer** | Running OpenSCAP at fleet scale means managing a permanent scanner package on every host and drowning in raw XCCDF XML | Ephemeral scanning from the EE -- no permanent footprint -- with normalized JSON findings ready for dashboard review |
+| **Security Engineer** | Running OpenSCAP at fleet scale means managing a permanent scanner package on every host and drowning in raw XCCDF XML | Ephemeral scanning from the EE -- no permanent footprint -- with normalized CFF JSON findings per host ready for review |
 | **Compliance Officer** | Demonstrating STIG or CIS conformance requires manual evidence collection; remediation is all-or-nothing | Per-host CFF JSON reports generated automatically, before/after comparison built into the workflow, selective remediation scoped to chosen rules |
 | **Platform Owner / SRE** | Compliance scans that run as full-fleet playbooks with no safeguards cause unintended configuration changes | Assessment job never modifies hosts; remediation is a separate, explicitly-launched job with `job_tags` and `limit` prompts |
 
@@ -90,7 +90,7 @@ The automation pattern is **Day-2 security/compliance**: assess continuously, th
 - **AAP Controller** access (host URL and API token) for `install.yml`
 - **RHEL 9 target hosts** reachable over SSH, with a machine credential using `become`
 - **Registry access** to `registry.redhat.io` for the base EE image, and CentOS 9 Stream repos at build time (for `scap-security-guide` and `openscap-scanner` RPMs)
-- **Optional:** a compliance dashboard API URL (`backstage_api_url`, `scan_id`, `ingest_token`) for centralized findings ingestion
+- **Optional:** an external reporting system or SIEM to ingest the per-host CFF JSON files written to `/tmp/compliance-results/` after each scan
 
 **Operational Impact:** Low for assessment (ephemeral package install/remove). Medium for remediation (modifies host configuration; some CIS Level 2 rules require a reboot).
 
@@ -108,8 +108,8 @@ The automation pattern is **Day-2 security/compliance**: assess continuously, th
 graph LR
     A([RHEL 9 Target Fleet]) -->|1. Copy datastream, run oscap| B(Execution Environment)
     B -->|2. Fetch XCCDF XML| C(normalize_xccdf module)
-    C -->|3. CFF JSON NDJSON| D([Dashboard API])
-    D -->|4. Select findings| E{Operator decision}
+    C -->|3. CFF JSON NDJSON| D([/tmp/compliance-results/])
+    D -->|4. Review findings| E{Operator decision}
     E -->|Remediate selected rules| F(Remediation JT\njob_tags=rule IDs)
     E -->|Accept risk / defer| G([Risk register])
     F -->|5. CaC tasks run on targets| A
@@ -166,13 +166,13 @@ Play 1 performs the ephemeral scan on every target. The oscap exit codes are han
   failed_when: _scan_result.rc not in [0, 2]
 ```
 
-Play 2 normalizes each host's XML into CFF JSON and streams each as NDJSON to `POST /api/compliance/findings/ingest` when a dashboard API URL is configured. The `normalize_xccdf` module strips the XCCDF prefix (`xccdf_org.ssgproject.content_rule_sshd_set_keepalive_0` becomes `sshd_set_keepalive_0`) so rule IDs match CaC remediation tags directly.
+Play 2 normalizes each host's XML into CFF JSON and writes each as an NDJSON file to `/tmp/compliance-results/<hostname>-findings.ndjson` on the execution node. The `normalize_xccdf` module strips the XCCDF prefix (`xccdf_org.ssgproject.content_rule_sshd_set_keepalive_0` becomes `sshd_set_keepalive_0`) so rule IDs match CaC remediation tags directly.
 
 ### Step 3 -- Review findings and remediate selected rules
 
 **Operational Impact:** Medium (modifies host configuration; some CIS L2 rules require reboot)
 
-From the dashboard, select the failed findings to fix and choose **Remediate**. The dashboard launches the Remediation JT (for example `compliance-remediate-stig-rhel9`) passing the chosen rule IDs as job tags and any CaC parameter overrides as extra_vars. To launch it manually in Automation Controller, click the JT's **Launch** button and fill in the prompts:
+Review the per-host NDJSON files in `/tmp/compliance-results/` to identify the failing rule IDs you want to fix. Launch the Remediation JT (for example `compliance-remediate-stig-rhel9`) in Automation Controller, clicking **Launch** and filling in the prompts with your chosen rule IDs:
 
 ```text
 Job tags:    sshd_set_keepalive_0,accounts_tmout
@@ -200,7 +200,7 @@ Because remediation is a separate job template -- never a node in the assessment
 |---------|-------------|-----|
 | `oscap xccdf eval` exits with rc=1 (job fails) | Fatal XML parse error in the datastream, not a scan finding -- rc=1 is a scanner error, rc=2 is findings | Verify `ssg-rhel9-ds.xml` in the EE is intact: rebuild the EE and re-run. Check for disk space on the execution node during the copy step |
 | `normalize_xccdf` fails with `ElementTree.ParseError` | XCCDF result XML was truncated during the fetch (large fleet, slow network) | Increase `ansible_ssh_timeout` on the fetch task; check `/tmp/compliance-scan/xccdf-results.xml` size on the target before fetch |
-| Dashboard API returns 413 (Request Entity Too Large) | NDJSON batch too large for the ingest endpoint | Reduce `ndjson_batch_size` in the assessment extra_vars (default 500; try 100 for large profiles) |
+| NDJSON output files are very large | Large profiles (STIG V2R8, 366+ rules × 100 hosts) produce multi-MB NDJSON files | Reduce `ndjson_batch_size` in the assessment extra_vars (default 500; try 100 for large profiles) or archive files to an artifact store after each run |
 | EE build fails at `test -f /usr/share/scap-security-guide/...` | `scap-security-guide` not installed -- CentOS 9 Stream repo unavailable or package version changed | Verify CentOS 9 Stream repos are reachable from the build host; pin the `scap-security-guide` version in the EE definition `system` dependencies |
 | Remediation JT applies all rules, not just tagged ones | `ask_tags_on_launch` was not set during `install.yml` registration, or job was launched via API without `job_tags` | Re-run `install.yml` for the profile; when launching via API, always pass `job_tags` in the launch payload |
 | CIS L2 rule shows `remediated` but fails on next scan | Rule requires a reboot (FIPS mode, grub, kernel cmdline) | Schedule a maintenance window reboot and re-scan to confirm. See warning in Step 3 above |
@@ -220,7 +220,6 @@ Monitor the [DISA STIG document library](https://public.cyber.mil/stigs/) for RH
 
 ### Monitoring
 
-- **Dashboard ingest endpoint:** Monitor `POST /api/compliance/findings/ingest` for 4xx/5xx responses. A sustained 500 rate after a STIG update usually indicates a schema mismatch between the new CFF output and the dashboard version -- rebuild both and check the CFF schema changelog.
 - **EE image currency:** Track the build date of the deployed EE image. An EE older than the current STIG version will produce findings against an outdated ruleset -- scheduled quarterly EE rebuilds align with the DISA update cadence.
 - **Scan job duration baseline:** A STIG scan of a single RHEL 9 host takes approximately 3-5 minutes. If fleet scans exceed 3x the per-host baseline, check SSH connectivity and execution node resource pressure.
 
@@ -230,14 +229,14 @@ Monitor the [DISA STIG document library](https://public.cyber.mil/stigs/) for RH
 |-------|---------|-----------|
 | CIS L2 FIPS mode rules cannot be auto-remediated | Rule `enable_fips_mode` applies the fix but the host fails on next scan until rebooted | Tag these rules separately and remediate only during a maintenance window with a post-reboot rescan scheduled |
 | `openscap-scanner` version drift | An older `openscap-scanner` on the target produces slightly different rule IDs than the EE datastream expects | Pin `openscap-scanner` version in the EE to match the RPM version available on your RHEL 9 targets, or pre-install the matching version via a baseline playbook |
-| Large fleets hit Controller job event limits | Jobs against 100+ hosts produce millions of events and slow the Controller UI | Enable `EVENT_STDOUT_MAX_BYTES_DISPLAY` tuning in AAP settings and use NDJSON streaming to the dashboard rather than relying on job event output for findings |
+| Large fleets hit Controller job event limits | Jobs against 100+ hosts produce millions of events and slow the Controller UI | Enable `EVENT_STDOUT_MAX_BYTES_DISPLAY` tuning in AAP settings; rely on the per-host NDJSON files in `/tmp/compliance-results/` rather than Controller job event output for findings review |
 
 ## Maturity Path
 
 | Maturity | Description |
 |----------|-------------|
 | **Crawl** | **Visibility only.** Run assessment JTs manually against a pilot inventory (5-10 hosts). Review per-host CFF JSON files locally. No remediation. Establish baseline pass/fail counts for STIG and CIS L1 before touching any configuration. |
-| **Walk** | **Selective remediation.** Connect the assessment JT to the compliance dashboard. Use the dashboard to select and launch remediation for low-risk rules (SSH keepalive, session timeouts, audit rules). Run post-remediation rescans to confirm. Scope all remediation runs with `limit` to staging hosts first. |
+| **Walk** | **Selective remediation.** Review per-host CFF JSON files from the assessment output. Launch the Remediation JT manually for low-risk rules (SSH keepalive, session timeouts, audit rules), passing the chosen rule IDs as job tags. Run post-remediation rescans to confirm. Scope all remediation runs with `limit` to staging hosts first. |
 | **Run** | **Continuous compliance.** Schedule assessment JTs on a recurring schedule (daily or after every change-window playbook). Configure EDA to trigger a targeted rescan when a change event touches a host. Automate EE rebuilds on DISA STIG release. Feed CFF findings into your SIEM for compliance trending and SLA reporting. |
 
 ## Summary
