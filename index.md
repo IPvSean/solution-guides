@@ -831,6 +831,12 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Automate the full CVE response lifecycle with 118 compliance-as-code controls -- CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--rhel">
+              <img src="{{ '/assets/images/logos/rhel-logo.png' | relative_url }}" alt="Red Hat Enterprise Linux" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/rhel-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
 
@@ -892,6 +898,10 @@ patternfly: true
             Assess Post-Quantum Cryptography (PQC) readiness across RHEL 8/9/10 and provide automated remediation for system crypto-policies, SSH, and nginx.
           </div>
           <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--rhel">
+              <img src="{{ '/assets/images/logos/rhel-logo.png' | relative_url }}" alt="Red Hat Enterprise Linux" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/rhel-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>

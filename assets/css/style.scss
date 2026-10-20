@@ -522,6 +522,13 @@ table.guide-table-event-sources {
   max-width: 140px;
 }
 
+// Wide RHEL product logo without version (2000x490)
+.guide-hero-partner--rhel .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 140px;
+}
+
 // Wide IBM Lightwell wordmark (2000x690)
 .guide-hero-partner--lightwell .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
   height: auto;
@@ -3254,6 +3261,14 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 .card-partner-logo-set--rhel9 .card-partner-logo {
   height: auto;
   max-height: 36px;
+  max-width: 120px;
+  width: auto;
+}
+
+// Wide RHEL product logo without version (2000x490)
+.card-partner-logo-set--rhel .card-partner-logo {
+  height: auto;
+  max-height: 24px;
   max-width: 120px;
   width: auto;
 }
