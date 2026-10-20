@@ -457,6 +457,12 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             One Automation orchestrator workflow handles every CVE type -- an AI triage step reads SBOM correlation results and routes to OS patch, app container rebuild, compensating controls, or log-only, with human approval before any production change.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--automation-orchestrator">
+              <img src="{{ '/assets/images/logos/automation-orchestrator-logo.png' | relative_url }}" alt="Automation orchestrator" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/automation-orchestrator-logo.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
 

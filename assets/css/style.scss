@@ -550,6 +550,13 @@ table.guide-table-event-sources {
   max-width: 36px;
 }
 
+// Square Automation orchestrator technology icon (400x400)
+.guide-hero-partner--automation-orchestrator .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: 36px;
+  max-height: 36px;
+  max-width: 36px;
+}
+
 // OPA: light = helmet icon; dark = "Open Policy Agent" wordmark
 .guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light {
   height: 36px;
@@ -3317,6 +3324,13 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 
 // Square Ansible Development Tools / content tools icon (400x400)
 .card-partner-logo-set--devtools .card-partner-logo {
+  height: 36px;
+  width: auto;
+  max-width: 36px;
+}
+
+// Square Automation orchestrator technology icon (400x400)
+.card-partner-logo-set--automation-orchestrator .card-partner-logo {
   height: 36px;
   width: auto;
   max-width: 36px;
