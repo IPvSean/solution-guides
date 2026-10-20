@@ -85,6 +85,13 @@ h2 {
   margin-bottom: 0.75rem;
 }
 
+// Markdown "---" between sections becomes <hr> and stacks with the h2 underline,
+// reading as a stray line above the next heading. Prefer the h2 rule alone.
+.guide-layout > section > hr,
+.wrapper > section > hr {
+  display: none;
+}
+
 h1, h1 * {
   font-size: 32px;
   line-height: 1.1;
@@ -3560,6 +3567,11 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 [data-theme="dark"] {
   h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
+  }
+
+  // Stronger than --border-color so h2 underlines stay visible on dark pages
+  h2 {
+    border-bottom-color: #5a5f6a;
   }
 
   section > blockquote {
