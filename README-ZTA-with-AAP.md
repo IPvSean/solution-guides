@@ -172,8 +172,6 @@ Three credential types cover the full ZTA stack: machine credentials (SSH to RHE
 | `ZTA Arista Credential` | Network | KV `secret/data/network/arista` resolved at job time |
 | `ZTA Vault SSH Credential` | Vault Signed SSH | AppRole + `ssh/roles/ssh-signer` CA |
 
----
-
 ### 2. Configure LDAP Authentication and Team Mapping
 
 **Operational Impact:** Low
@@ -212,8 +210,6 @@ LDAP User Search:
 > **Zero Trust principle:** Authentication alone is insufficient.
 >
 > A successful LDAP bind proves identity but grants no permissions. Without authenticator maps, the user lands on a blank platform. The maps translate verified external identity into scoped, least-privilege access -- no parallel local accounts to maintain.
-
----
 
 ### 3. Configure OPA Policy as Code (Platform Gateway)
 
@@ -265,8 +261,6 @@ user_in_patch_team {
 | Contains "deploy" or "credential" | Applications or DevOps |
 | All others | Any authenticated user |
 
----
-
 ### 4. Add In-Playbook OPA Checks (Inner Ring)
 
 **Operational Impact:** Low
@@ -304,8 +298,6 @@ graph LR
     B --> C(Arista: Configure DB ACL)
     C --> D([Deploy Application])
 ```
-
----
 
 ### 5. Configure SPIFFE Workload Identity for High-Risk Operations
 

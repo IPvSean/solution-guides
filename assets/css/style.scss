@@ -71,6 +71,13 @@ h3, h3 * {
   font-weight: 500;
 }
 
+// jekyll-theme-dinky underlines every h1/h2/h3 (border-bottom). That stacks with
+// .guide-header's separator and looks like redundant HRs between every section.
+h1, h2, h3 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 h1, h1 * {
   font-size: 32px;
   line-height: 1.1;
