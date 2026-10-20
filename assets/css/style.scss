@@ -522,6 +522,13 @@ table.guide-table-event-sources {
   max-width: 140px;
 }
 
+// Wide IBM Lightwell wordmark (2000x690)
+.guide-hero-partner--lightwell .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 140px;
+}
+
 .guide-hero-callout__icon {
   flex-shrink: 0;
   width: 36px;
@@ -3247,6 +3254,14 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
 .card-partner-logo-set--rhel9 .card-partner-logo {
   height: auto;
   max-height: 36px;
+  max-width: 120px;
+  width: auto;
+}
+
+// Wide IBM Lightwell wordmark (2000x690)
+.card-partner-logo-set--lightwell .card-partner-logo {
+  height: auto;
+  max-height: 24px;
   max-width: 120px;
   width: auto;
 }

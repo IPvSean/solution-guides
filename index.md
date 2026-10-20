@@ -776,7 +776,10 @@ patternfly: true
             Event-driven CVE-to-patch pipeline -- Lightwell events trigger EDA, which correlates CVEs against RHTPA SBOMs and automatically patches OS packages or triggers application container rebuilds.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
+            <span class="card-partner-logo-set card-partner-logo-set--lightwell">
+              <img src="{{ '/assets/images/logos/lightwell-logo.png' | relative_url }}" alt="IBM Lightwell" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/lightwell-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
@@ -801,7 +804,10 @@ patternfly: true
             One Automation Orchestrator workflow -- agentic triage, switch routing, approval gates, and a Python CI-polling script -- handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
           </div>
           <div class="pf-v6-c-card__footer">
-            <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
+            <span class="card-partner-logo-set card-partner-logo-set--lightwell">
+              <img src="{{ '/assets/images/logos/lightwell-logo.png' | relative_url }}" alt="IBM Lightwell" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/lightwell-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
           </div>
         </div>
       </a>
