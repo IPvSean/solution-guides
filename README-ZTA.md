@@ -17,7 +17,7 @@
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set card-partner-logo-set--zero-trust">
-    <img src="assets/images/logos/zero-trust.png" alt="Zero Trust Architecture" class="card-partner-logo">
+    <img src="assets/images/logos/zero-trust.png" alt="Zero Trust Architecture" class="card-partner-logo" width="52" height="36">
   </span>
 </div>
 
@@ -76,15 +76,6 @@ This solution demonstrates an end-to-end Zero Trust Architecture using Ansible A
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4cb.png" width="20" style="vertical-align:text-bottom;"> **Compliance / Audit** | Proving continuous compliance requires manual evidence collection across disconnected systems | Unified audit trail capturing OPA policy decisions, Vault credential lifecycle, IdM authentication, and network changes with full traceability |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f310.png" width="20" style="vertical-align:text-bottom;"> **Platform Engineer** | Network segmentation requires manual firewall rules and switch ACL changes prone to drift | Automated micro-segmentation with policy-driven VLAN management, firewall rules, and ACL enforcement validated against CMDB |
 
-**Recommended Demos and Self-Paced Labs:**
-
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3a5.png" width="20" style="vertical-align:text-bottom;"> [Zero Trust Workshop (GitHub)](https://github.com/nmartins0611/zta-workshop-aap) -- Complete hands-on lab with all five use cases
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> [Ansible Automation Platform Product Tour](https://www.redhat.com/en/technologies/management/ansible/try-it) -- Interactive platform walkthrough
-
-**Source Code:**
-
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bb.png" width="20" style="vertical-align:text-bottom;"> [nmartins0611/zta-workshop-aap](https://github.com/nmartins0611/zta-workshop-aap) -- Playbooks, policies, and configuration for all use cases
-
 <h2 id="prerequisites"></h2>
 
 ## Prerequisites
@@ -101,6 +92,7 @@ This solution demonstrates an end-to-end Zero Trust Architecture using Ansible A
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/posix/">ansible.posix</a> | Certified | Firewall management, mount, selinux, sysctl |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/community/general/">community.general</a> | Validated | OPA queries, system configuration |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/community/hashi_vault/">community.hashi_vault</a> | Validated | Vault integration, secrets lookups, SSH CA |
+| <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/community/hashi_vault/">hashicorp.vault</a> | Certified | Vault integration, secrets lookups, SSH CA |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/netbox/netbox/">netbox.netbox</a> | Validated | CMDB inventory source, DCIM operations |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/arista/eos/">arista.eos</a> | Certified | Arista cEOS switch configuration, VLAN management |
 | <a target="_blank" href="https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/">ansible.controller</a> | Certified | Automation Controller configuration as code |

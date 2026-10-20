@@ -16,8 +16,8 @@
   <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
   <span class="guide-hero-partner__plus" aria-hidden="true">+</span>
   <span class="guide-hero-partner__partner card-partner-logo-set">
-    <img src="assets/images/logos/cloud-native.png" alt="Red Hat OpenShift" class="card-partner-logo card-partner-logo--light">
-    <img src="assets/images/logos/cloud-native-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+    <img src="assets/images/logos/cloud-native.png" alt="Red Hat OpenShift" class="card-partner-logo card-partner-logo--light" width="27" height="32">
+    <img src="assets/images/logos/cloud-native-dark.png" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true" width="27" height="32">
   </span>
 </div>
 
@@ -30,6 +30,10 @@
 When Ansible Automation Platform runs on OpenShift as mission-critical infrastructure, a single-cluster outage can halt automation across the enterprise. Recovering AAP after a site loss without a rehearsed active-passive design often means hours of manual database rebuild, secret reconciliation, and DNS cutover -- with unclear RPO.
 
 This implementation guide shows how to deploy **AAP 2.7 (operator-based) on two OpenShift clusters** with **CloudNativePG** cross-cluster streaming replication, replicated S3-compatible storage, shared secrets via External Secrets Operator, and controlled switchover / emergency failover procedures.
+
+## Reference Implementation
+
+For a specific implementation and example playbooks that drive these operations, see the [AAP HA/DR GitOps example](https://github.com/ansible/aap-ha-dr-gitops). It uses OpenShift GitOps (Argo CD), although the manifests can equivalently be rendered with `oc kustomize` and applied through other workflows; the operations playbooks assume the GitOps workflow. The repository is intentionally specific to its documented infrastructure and presumes OpenShift clusters provisioned through ROSA, which has implications for storage classes, networking, identity, and other platform services. It requires adaptation to your environment; S3, DNS, storage classes, and related services have many valid implementation options, and the example's assumptions and caveats should be reviewed before reuse.
 
 **DR model:** Two-site active-passive. The standby cluster runs the AAP CR with `idle_aap: true` so operators stay installed while component replicas remain at zero until promotion.
 
@@ -1571,6 +1575,7 @@ The following scenarios were executed against this architecture and **passed** f
 
 - [High-Availability AAP with EDB PostgreSQL DR](README-EDB.md) -- VM-based Active-Passive DR with EDB Postgres Advanced Server and EFM
 - [Consuming OpenShift API Resources with EDA and Kafka](README-OpenShift-EDA-Kafka.md) -- OpenShift event capture patterns complementary to platform HA
+- [`aap-ha-dr-gitops`](https://gitlab.cee.redhat.com/ansible/aap-ha-dr-gitops/-/tree/devel) (**internal Red Hat GitLab**) -- example GitOps deployment on ROSA using CNPG for the database, ODF for S3-compatible storage, and ESO for AWS Secrets Manager secrets
 
 ## Appendix A: ODF RGW Multisite Storage
 
@@ -1737,3 +1742,4 @@ When a bucket replicates from the master zone to the replica via RGW multisite s
 **Workaround:** Read the bucket metadata with `radosgw-admin metadata get bucket:<name>`, patch `creation_time` from `0.000000` to the current UTC timestamp, and write it back with `radosgw-admin metadata put`. This runs on both clusters during multisite bootstrap and is automated in the `rgw_multisite_setup` role.
 
 Both workarounds are idempotent and safe to re-run. They must be applied on every fresh cluster bootstrap.
+

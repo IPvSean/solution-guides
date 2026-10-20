@@ -6,23 +6,19 @@ permalink: /opus-review-solution/
 
 # Review: Published Solution Guides
 
-*Reviewed: October 8, 2026* (Satellite WIP added; published ranking unchanged from September 25, 2026)
+*Reviewed: October 15, 2026* (Satellite promoted from WIP to published #2; all other rankings unchanged)
 
 ## Scorecard
 
 | Rank | Solution Guide | Score | Verdict |
 |------|---------------|-------|---------|
 | 1 | [Windows Certificate Rotation with AI Risk Analysis](#1-windows-certificate-rotation-with-ai-risk-analysis) | 9.8/10 | Elite AIOps guide: three decision paths, three test scenarios with syntax-highlighted output, arcade demo, video, observability callout, graceful fallback, and success metrics |
-| 2 | [AIOps with Splunk and EDA](#2-aiops-with-splunk-and-event-driven-ansible) | 8.9/10 | Deepest multi-use-case guide; three integration patterns with strong validation and troubleshooting |
-| 3 | [Automated Incident Remediation with IBM Instana](#3-automated-incident-remediation-with-ibm-instana) | 8.9/10 | Dual-path architecture (EDA vs native); per-use-case operational impact and unusually complete validation |
-| 4 | [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](#4-unlock-aiops-with-servicenow-leap-and-ansible-mcp-server) | 8.7/10 | Strong LEAP/MCP governance story with MTTR focus, customer evidence, multi-agent visibility |
-| 5 | [AIOps automation with Ansible](#5-aiops-automation-with-ansible) | 8.6/10 | Strongest foundational reference architecture; curated-path framing, MCP workflow clarity, structured validation, and comprehensive event/tool catalog |
-
-### WIP / Incoming (not ranked against published)
-
-| Guide | Score | Status | Verdict |
-|-------|-------|--------|---------|
-| [Proactive Vulnerability Remediation with Satellite](#wip-satellite-cve-remediation) | 9.0/10 | WIP | Publish-quality walkthrough and validation; needs catalog polish, Summary order, and maturity/approval framing before leaving WIP |
+| 2 | [Proactive Vulnerability Remediation with Satellite](#2-proactive-vulnerability-remediation-with-satellite) | 9.5/10 | Deepest closed-loop remediation guide: 8-step walkthrough, credential injection pattern, fleet-wide CVE scan, elite validation with before/after evidence, companion public repo |
+| 3 | [AIOps with Splunk and EDA](#3-aiops-with-splunk-and-event-driven-ansible) | 8.9/10 | Deepest multi-use-case guide; three integration patterns with strong validation and troubleshooting |
+| 4 | [Automated Incident Remediation with IBM Instana](#4-automated-incident-remediation-with-ibm-instana) | 8.9/10 | Dual-path architecture (EDA vs native); per-use-case operational impact and unusually complete validation |
+| 5 | [Unlock AIOps with ServiceNow LEAP and Ansible MCP server](#5-unlock-aiops-with-servicenow-leap-and-ansible-mcp-server) | 8.7/10 | Strong LEAP/MCP governance story with MTTR focus, customer evidence, multi-agent visibility |
+| 6 | [AIOps automation with Ansible](#6-aiops-automation-with-ansible) | 8.6/10 | Strongest foundational reference architecture; curated-path framing, MCP workflow clarity, structured validation, and comprehensive event/tool catalog |
+| 7 | [Automated runtime mitigation for Linux OT hosts](#7-automated-runtime-mitigation-for-linux-ot-hosts) | 9.3/10 | Excellent closed-loop enforcement guide with clear MITRE ATT&CK mapping, strong validation, and end-to-end event-driven architecture. |
 
 ---
 
@@ -85,7 +81,49 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 ---
 
-### 2. AIOps with Splunk and Event-Driven Ansible
+### 2. Proactive Vulnerability Remediation with Satellite
+
+**File:** [README-Satellite-CVE-Remediation.md](README-Satellite-CVE-Remediation.md)
+**Score: 9.5 / 10**
+**Author:** [myee111](https://github.com/myee111) via [PR #63](https://github.com/ansible-tmm/solution-guides/pull/63), publish-polished via [PR #64](https://github.com/ansible-tmm/solution-guides/pull/64)
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (20%) | 5 |
+| Architecture Clarity (20%) | 4.5 |
+| Technical Executability (25%) | 5 |
+| Validation/Testability (15%) | 5 |
+| Production Readiness (10%) | 4.5 |
+| Business Framing (10%) | 4 |
+
+**Stats:** ~4,700 words | 661 lines | 8 walkthrough steps | 19 code blocks (YAML, ERB, Dockerfile, bash, output) | 2 Mermaid diagrams | 3 Satellite UI screenshots | Companion public repo [`rhel-labs/satellite-vulnerability-remediation`](https://github.com/rhel-labs/satellite-vulnerability-remediation) | 6-row troubleshooting table
+
+**Score change from WIP review:** 9.0 → 9.5. Summary section order fixed, maturity framing sharpened with Walk approval-gate guidance, Related Guides now cross-links Patching-RHEL and AIOps, catalog chrome complete (badge, hero callout, partner logos, catalog card).
+
+**Strengths:**
+- Deepest closed-loop automation in the repo: Satellite webhook → EDA Event Stream → AAP Job Template → fleet-wide CVE scan and install. The pipeline is concrete end-to-end with no hand-waving
+- 8 walkthrough steps with 19 code blocks covering ERB webhook templates, Satellite API registration, EDA rulebooks, the full remediation playbook, custom Execution Environment (Dockerfile + registration), Controller Project, and credential injection -- the most technically complete guide after Windows Cert
+- Credential injection pattern is a standout: custom credential type with `!unsafe` injectors, `no_log: true` on every sensitive task, password injected as environment variable (never on command line or in YAML). The `!unsafe` callout explains *why*, not just *how*
+- Validation is elite: concrete `hammer` trigger command, `rpm -q` before/after with exact package versions, four-row package table proving the severity policy works (OpenSSL upgraded, gnutls/tar left alone as Moderate), `PLAY RECAP` output, before/after Satellite UI screenshots, `insights-client` cache-refresh step, and a 6-row troubleshooting table
+- On-prem Lightspeed Vulnerability distinction is carefully handled: a dedicated callout explains the two services that share the "Lightspeed Vulnerability" name, and the guide never conflates Satellite's local service with console.redhat.com
+- "Why one rule instead of two" callout in the rulebook step educates readers on `ansible-rulebook` engine semantics -- the kind of insight that prevents real production bugs
+- Companion public repo linked prominently, solving the "source repo" gap most other guides have
+- Machine credential warning callout prevents the single most common failure mode for this pattern
+- Per-stage operational impact table clearly separates the read-only scan stages from the high-impact install stage
+- Maturity path now clearly distinguishes Walk (approval gate or pilot org) from Run (fully automated), with a blockquote explaining how to downshift to Walk
+
+**Weaknesses:**
+- No measurable success metrics table or ROI recap -- guides like Windows Cert and Instana quantify outcomes (MTTR reduction, cost per call, etc.); this guide describes value qualitatively in the Business Value Drivers but doesn't provide a "Measuring Success" reference
+- No demo or lab embed (Arcade, video, or Instruqt) -- the guide is executable enough that this is not critical, but an interactive demo would put it on par with Windows Cert
+- Mermaid diagrams show the two-stage pipeline flow but not a component topology diagram -- a top-down diagram showing Satellite, AAP Controller, EDA Controller, and the managed fleet with credential/network flows would strengthen Architecture Clarity
+**Suggestions:**
+1. Add a "Measuring Success" table with 3-4 quantifiable metrics (time-to-remediate, percentage of fleet patched within SLA, number of manual triage hours eliminated) and where to find them in AAP/Satellite
+3. Optional: add a component topology Mermaid diagram (Satellite ↔ EDA ↔ Controller ↔ Fleet) alongside the existing pipeline diagrams
+4. Optional: add a demo (Arcade embed or short video walkthrough) showing the webhook → scan → install loop in action
+
+---
+
+### 3. AIOps with Splunk and Event-Driven Ansible
 
 **File:** [README-AIOps-Splunk-ITSI.md](README-AIOps-Splunk-ITSI.md)
 **Score: 8.9 / 10**
@@ -121,7 +159,7 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 ---
 
-### 3. Automated Incident Remediation with IBM Instana
+### 4. Automated Incident Remediation with IBM Instana
 
 **File:** [README-Instana-AIOps.md](README-Instana-AIOps.md)
 **Score: 8.9 / 10**
@@ -157,7 +195,7 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 ---
 
-### 4. Unlock AIOps with ServiceNow LEAP and Ansible MCP server
+### 5. Unlock AIOps with ServiceNow LEAP and Ansible MCP server
 
 **File:** [README-AIOps-ServiceNow.md](README-AIOps-ServiceNow.md)
 **Score: 8.7 / 10**
@@ -190,7 +228,7 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 ---
 
-### 5. AIOps automation with Ansible
+### 6. AIOps automation with Ansible
 
 **File:** [README-AIOps.md](README-AIOps.md)
 **Score: 8.6 / 10**
@@ -229,41 +267,41 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 ---
 
-### WIP. Proactive Vulnerability Remediation with Satellite <a id="wip-satellite-cve-remediation"></a>
+## Cross-Cutting Observations
 
-**File:** [README-Satellite-CVE-Remediation.md](README-Satellite-CVE-Remediation.md)
-**Score: 9.0 / 10** (WIP -- not ranked against published guides)
-**Author:** [myee111](https://github.com/myee111) via [PR #63](https://github.com/ansible-tmm/solution-guides/pull/63)
+---
+
+### 7. Automated runtime mitigation for Linux OT hosts
+
+**File:** [README-Falco-runtime-mitigation.md](README-Falco-runtime-mitigation.md)
+**Score: 9.3 / 10**
 
 | Category | Score |
 |----------|-------|
-| Outcome Clarity (20%) | 4.5 |
+| Outcome Clarity (20%) | 5 |
 | Architecture Clarity (20%) | 4.5 |
 | Technical Executability (25%) | 4.5 |
 | Validation/Testability (15%) | 5 |
 | Production Readiness (10%) | 4 |
-| Business Framing (10%) | 4 |
+| Business Framing (10%) | 5 |
 
-**Stats:** ~625 lines | 8 walkthrough steps | ~9 YAML blocks | 2 Mermaid diagrams | 3 Satellite UI screenshots | Companion public repo [`rhel-labs/satellite-vulnerability-remediation`](https://github.com/rhel-labs/satellite-vulnerability-remediation)
+**Stats:** ~900 words | 2 YAML logic blocks | 1 bash block | 1 Mermaid diagram | 3 walkthrough steps | 1 validation test path
+
+**Verdict:** Ready for publishing.
 
 **Strengths:**
-- Real closed-loop pattern: Satellite webhook → EDA → AAP Job Template → fleet-wide CVE scan/install, including air-gap / on-prem Lightspeed Vulnerability distinction
-- Validation is near the top of the bar: concrete `hammer` trigger, before/after `rpm -q`, severity policy shown in results, `PLAY RECAP`, dashboard before/after screenshots, strong troubleshooting table
-- Production instincts: credential injectors + `!unsafe`, Machine credential callout, severity filter, RBAC note, custom EE/`uv` requirement called out honestly
-- Author iteration is visible across the PR (lab hostnames removed, EE and Project gaps closed, public companion repo linked)
+- Outcome-oriented title and clear problem statement focusing on OT environments and response time.
+- Solid validation section with a concrete test command (`ssh root@rhel01.example.com "sudo -u nobody bash -c 'echo test'"`), expected output, and a troubleshooting table.
+- Good business framing with a "Who Benefits" table that maps personas to specific OT and SecOps challenges.
+- Clear maturity path progressing from manual review to automated ITSM ticketing to fully automated remediation.
+- Featured code blocks clearly demonstrate the EDA rulebook logic and the dynamic dispatcher playbook that maps MITRE ATT&CK technique IDs to mitigation roles.
+- The Mermaid diagram explicitly shows the closed loop starting and ending at the Target Host.
 
-**Weaknesses / improvements before publish:**
-- Catalog and chrome were incomplete on first merge (fixed as WIP: badge, hero, catalog card, Satellite filter) -- still needs a Satellite partner wordmark when available
-- Closing section still uses combined Maturity Path and Related Guides with ROI Recap after Related Guides; needs Summary before Related Guides per current rubric
-- Auto-remediate Critical/Important with no approval gate is framed as Walk; for field use that reads closer to aggressive Run -- sharpen Walk vs Run and add change-window / approval guidance
-- Related Guides could also point at Patching-RHEL / Lightspeed CVE patterns where relevant
+**Weaknesses:**
+- Could benefit from a "Measuring Success" table with quantifiable metrics (e.g., MTTR reduction) to match the elite guides.
 
-**Suggestions (publish checklist):**
-1. Split **Summary** before **Related Guides**; rename section 9 to match the rubric
-2. Clarify maturity: Walk = severity-scoped with human approval or pilot org; Run = policy-driven auto-install
-3. Add a Satellite partner logo pair and `guide-hero-partner` callout when assets are ready
-4. Optional: short Lightspeed terminology callout (Satellite on-prem Vulnerability vs console.redhat.com)
-5. Keep companion repo link prominent -- it already solves the common "source repo" gap other guides have
+**Suggestions:**
+1. Optional: Add a short video or interactive demo showing the Falco alert triggering the mitigation in real-time.
 
 ---
 
@@ -271,11 +309,11 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 **What changed since the July 2026 review:**
 
+- **Satellite CVE Remediation** (WIP 9.0 → published 9.5, now #2) completed its publish polish: Summary section reordered, maturity framing sharpened with Walk approval-gate guidance, Related Guides cross-linked to Patching-RHEL and AIOps, catalog chrome finalized (badge, hero callout, partner logos, catalog card). It is the deepest closed-loop remediation guide in the repo and the only guide with a fully linked companion public repo
 - **AIOps foundational guide** (8.5 → 8.6) was significantly restructured: curated-path default is now the opening thesis, four-phase workflow with MCP, structured validation checklist and troubleshooting table, Key Terms glossary, UC04 cross-link, and light/dark tool-logo catalog. YAML depth was deliberately delegated to partner and use-case pages
 - **Windows Cert Rotation** remains the standard for AIOps validation (three decision paths, three test scenarios with syntax-highlighted output)
 - **MCP coverage is growing** -- the ServiceNow guide documents MCP server integration alongside governed template-as-code; the foundational AIOps guide now has a dedicated MCP search phase with a read-path table
-- **Closed-loop incident narratives** are now the baseline -- Splunk and Instana both demonstrate detect-through-remediate completeness with per-stage validation
-- **Satellite CVE Remediation** (WIP, 9.0) lands as a high-quality air-gapped closed-loop contribution with elite validation; parked as WIP for chrome/maturity polish before published ranking
+- **Closed-loop incident narratives** are now the baseline -- Splunk, Instana, and now Satellite all demonstrate detect-through-remediate completeness with per-stage validation
 
 **Patterns that work well across solution guides:**
 - Per-stage operational impact tables (Windows, Instana)
@@ -295,6 +333,7 @@ Score each category 1-5. Multiply by weight. Final score out of 10. Any category
 
 **Ranking rationale:**
 - Windows Cert Rotation (9.8) is the reference standard for AIOps guides: event-driven detection, AI judgment, governed execution, ITSM audit trail, and custom syntax highlighting
+- Satellite CVE Remediation (9.5) is the deepest closed-loop remediation guide: 8 steps, 19 code blocks, credential injection pattern, fleet-wide scan, elite before/after validation with severity-policy proof, and a public companion repo. Trails Windows Cert only on demo/video assets and measurable success metrics
 - Splunk and Instana tie at 8.9 -- Splunk wins on multi-use-case depth and Splunk-specific operational detail; Instana wins on dual-path architecture clarity and per-use-case validation
 - ServiceNow (8.7) is the strongest MCP governance story with customer evidence and multi-agent visibility
 - AIOps automation with Ansible (8.6) gains from curated-path clarity, structured validation, MCP workflow detail, and the Key Terms glossary -- but trails on executable depth (one YAML block) and lacks verbatim expected output

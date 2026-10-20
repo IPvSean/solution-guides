@@ -35,6 +35,9 @@ patternfly: true
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
         <input type="checkbox" value="network"> Network automation
       </label>
+      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--track">
+        <input type="checkbox" value="security"> Security automation
+      </label>
     </div>
     <div class="cards-sidebar__section">
       <h4 class="cards-sidebar__title">Partners</h4>
@@ -404,30 +407,49 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="satellite,aiops,solution,wip">
+      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-orange">
+            <span class="pf-v6-c-label pf-m-green">
               <span class="pf-v6-c-label__content">
-                <i class="fas fa-exclamation-triangle pf-v6-c-label__icon"></i>
-                Work in Progress
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-AO-driven-CVE-routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
               </span>
             </span>
             <span class="pf-v6-c-label card-label-track card-label-track--aiops">
               <span class="pf-v6-c-label__content">AIOps</span>
             </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
           </div>
           <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Proactive Vulnerability Remediation with Satellite and Event-Driven Ansible</h3>
+            <h3 class="pf-v6-c-card__title-text">AI-Driven CVE Routing and Remediation with Automation orchestrator</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Closed-loop CVE detection and remediation: a Satellite webhook triggers Event-Driven Ansible, which launches an AAP job to scan on-premises Lightspeed Vulnerability data and install Critical/Important fixes across the fleet -- fully air-gap capable.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--satellite">
-              <img src="{{ '/assets/images/logos/satellite-logo.png' | relative_url }}" alt="Red Hat Satellite" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/satellite-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
+            One Automation orchestrator workflow handles every CVE type -- an AI triage step reads SBOM correlation results and routes to OS patch, app container rebuild, compensating controls, or log-only, with human approval before any production change.
           </div>
         </div>
       </a>
@@ -561,6 +583,219 @@ patternfly: true
       </a>
       </div>
       </div>
+      
+      <div id="security-automation" class="cards-track-section">
+        <div class="cards-track-section__heading">
+          <h3 class="cards-track-section__title">Security automation</h3>
+          <a href="{{ '/guide-types' | relative_url }}#security-automation" class="guide-section__info" data-tooltip="Partner integrations for security response, compliance, and threat mitigation." aria-label="Learn about Security automation">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </a>
+        </div>
+        <p class="cards-track-section__intro">Automated security response, compliance enforcement, and threat mitigation using Ansible Automation Platform.</p>
+        <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="security-gallery">
+
+      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="satellite,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Proactive Vulnerability Remediation with Satellite and Event-Driven Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop CVE detection and remediation: a Satellite webhook triggers Event-Driven Ansible, which launches an AAP job to scan on-premises Lightspeed Vulnerability data and install Critical/Important fixes across the fleet -- fully air-gap capable.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--satellite">
+              <img src="{{ '/assets/images/logos/satellite-logo.png' | relative_url }}" alt="Red Hat Satellite" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/satellite-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-BruteForce-AAP' | relative_url }}" class="card-link" data-tags="splunk,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated Brute-Force Remediation with Event-Driven Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Closed-loop brute-force containment -- Splunk detects SSH authentication failures, EDA routes the alert to AAP, which revokes HashiCorp Vault database credentials and stops the compromised service in seconds.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/splunk-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-CVE-defend-contain-comply' | relative_url }}" class="card-link" data-tags="splunk,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated CVE Response with Policy-Gated Patching and Compliance Evidence</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Three-phase automated CVE response -- EDA contains the threat in seconds from a Splunk alert, OPA gates the patch with policy checks and human approval, then a compliance pipeline generates before/after evidence and a scanned container image.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/splunk-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Compliance-Governance-with-policy' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Enforcing Compliance and Network Governance</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Continuous compliance monitoring with EDA drift remediation, OPA contextual change-control gates (blast radius, change windows, ITSM tickets), and SPIFFE/SPIRE workload identity -- with a full audit trail in AAP Controller.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-ZTA-with-AAP' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture Infrastructure with Ansible Automation Platform</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            AAP 2.6 as the NIST SP 800-207 Policy Enforcement Point -- identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) wired into one auditable automation fabric.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-AAP-LightWell-AO' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated Vulnerability Remediation with Lightwell and Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Event-driven CVE-to-patch pipeline -- Lightwell events trigger EDA, which correlates CVEs against RHTPA SBOMs and automatically patches OS packages or triggers application container rebuilds.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Lightwell-Neuromancer-CVE-Routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,cve,lightwell,automation-orchestrator,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AI-driven CVE routing and remediation with Automation Orchestrator</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            One Automation Orchestrator workflow -- agentic triage, switch routing, approval gates, and a Python CI-polling script -- handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
+          </div>
+        </div>
+      </a>
+      </div>
+      </div>
+      
     </section>
 
     <section id="implementation-guides" class="cards-guide-section">
@@ -572,6 +807,27 @@ patternfly: true
       </div>
       <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,security,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">PQC Discovery</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Assess Post-Quantum Cryptography (PQC) readiness across RHEL 8/9/10 and provide automated remediation for system crypto-policies, SSH, and nginx.
+          </div>
+          <div class="pf-v6-c-card__footer">
+          </div>
+        </div>
+      </a>
+
       <a href="{{ '/README-EDB' | relative_url }}" class="card-link" data-tags="edb,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
@@ -597,7 +853,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,netbox,published">
+      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,security,netbox,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -765,6 +1021,44 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="security,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated CVE Response and Compliance Verification with CME</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Automate the full CVE response lifecycle with 118 compliance-as-code controls -- CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="security,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">RHEL 9 STIG and CIS Compliance Scanning with Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
+          </div>
+        </div>
+      </a>
       </div>
       </div>
     </section>
@@ -855,6 +1149,7 @@ patternfly: true
   var sectionConfigs = [
     { section: document.getElementById('aiops-solutions'), gallery: document.getElementById('aiops-gallery'), hero: aiopsFoundationalHero },
     { section: document.getElementById('network-automation'), gallery: document.getElementById('network-gallery') },
+    { section: document.getElementById('security-automation'), gallery: document.getElementById('security-gallery') },
     { section: document.getElementById('implementation-guides'), gallery: document.getElementById('implementation-gallery') }
   ];
 
@@ -946,8 +1241,10 @@ patternfly: true
     if (solutionGuidesSection) {
       var aiopsSection = document.getElementById('aiops-solutions');
       var networkSection = document.getElementById('network-automation');
+      var securitySection = document.getElementById('security-automation');
       var solutionVisible = (aiopsSection && aiopsSection.style.display !== 'none')
-        || (networkSection && networkSection.style.display !== 'none');
+        || (networkSection && networkSection.style.display !== 'none')
+        || (securitySection && securitySection.style.display !== 'none');
       solutionGuidesSection.style.display = solutionVisible ? '' : 'none';
     }
   }

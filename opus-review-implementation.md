@@ -22,6 +22,8 @@ permalink: /opus-review-implementation/
 | 6 | [AI Infrastructure automation with Ansible](#6-ai-infrastructure-automation-with-ansible) | 7.3/10* | Clear two-collection story (infra.ai + redhat.ai); needs framework alignment and deeper validation |
 | 7 | [Intelligent Assistant with Red Hat AI Inference Server](#7-intelligent-assistant-with-red-hat-ai-inference-server) | 6.9/10* | Strong hands-on RHAIIS + Lightspeed hookup; weakest framework alignment of published guides |
 | 8 | [PostgreSQL Autovacuum Tuning](#8-postgresql-autovacuum-tuning) | Pending review | Published; not yet scored against the Implementation Guide rubric |
+| 9 | [Vulnerability management with Lightwell](#9-vulnerability-management-with-lightwell) | 7.4/10 | Solid demo-grade implementation guide; event-driven CVE-to-patch pipeline is well-structured but needs a partner hero, source repo link, and a richer Architecture/Background section before reaching publication standard |
+| 10 | [RHEL 9 STIG and CIS Compliance Scanning](#10-rhel-9-stig-and-cis-compliance-scanning) | 7.8/10 | Strong technical content with all structural gaps fixed -- implementation guide badge, Mermaid diagram, Day-2 Ops, troubleshooting table, Maturity Path table, Summary, Who Benefits. Published. |
 
 ---
 
@@ -342,3 +344,119 @@ Published since the July 2026 review. Not yet scored against the [Implementation
 - OpenShift-EDA (9.2*) is a strong foundational guide limited only by its deliberately basic immediate outcome
 - EDB (8.7*) remains a reference-grade VM-based DR architecture; AI Infrastructure (7.3*) and RHAIIS (6.9*) need framework alignment work before they can compete with the top tier
 - PostgreSQL Autovacuum Tuning is published but pending its first scored review
+## pqc.ansible (`README-PQC-Discovery.md`)
+
+**Score:** 9.2 / 10
+**Verdict:** Solid, practitioner-focused implementation guide that covers discovery, variables, AAP integration, and deep verification. Ready to publish after fixing a minor style issue.
+
+### Strengths
+- Excellent deep-dive mapping of variables to playbook behavior (e.g., `pqc_collect_*` toggles).
+- Thorough verification section with actual commands (`update-crypto-policies --show`, `sshd -T`, `openssl s_client`) and exactly what output to expect per RHEL version.
+- Detailed AAP instructions showing job template configurations, required credentials, and survey setups.
+- Helpful troubleshooting section covering realistic edge cases (Backstage ingest failures, OpenSSL 3.5+ requirements).
+
+### Weaknesses
+- Had one em dash (`—`) violation in the overview (fixed in review).
+- Missing twemoji icons on the headings (optional but good for consistency with solution guides).
+- The title specifies "Implementation Guide" but it was submitted when reviewing "Solution Guides".
+
+### Suggestions
+- Ensure this is linked correctly in the index / README as an Implementation guide, not a Business Solution Guide.
+- (Resolved) Changed the em dash (`—`) to a double dash (`--`).
+
+---
+
+### 9. Vulnerability management with Lightwell
+
+**File:** [README-AAP-LightWell-AO](README-AAP-LightWell-AO) ⚠️ Missing `.md` extension
+**Score:** 7.4 / 10
+**Reviewed:** October 19, 2026
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (15%) | 4 |
+| Architecture Clarity (25%) | 3.5 |
+| Technical Executability (25%) | 3.5 |
+| Validation/Testability (20%) | 4 |
+| Production & Day-2 Readiness (15%) | 3.5 |
+
+**Stats:** ~1,100 words | 7 numbered walkthrough steps | 1 Mermaid diagram (7 nodes) | 6-row component table | 5-row troubleshooting table | 3 validation scenarios with verbatim expected output
+
+**Strengths:**
+- Event-driven architecture is well-represented: the Mermaid diagram cleanly traces the CVE disclosure path from EDA through RHTPA all the way to OS and app remediation.
+- Four distinct demo scenarios (CVE disclosed, OS patch, app dependency via CI/CD, app dependency via GitOps) give readers a concrete feel for what the pipeline can demonstrate.
+- Vault file setup is detailed and actionable -- all required variables are listed with examples.
+- Troubleshooting table covers the five most likely failure modes with specific log locations and fixes.
+- Reset procedure is documented, which is critical for a demo guide.
+- Day-2 Operations section addresses the three genuinely important operational concerns: EDA webhook liveness, RHTPA storage growth, and Keycloak certificate rotation.
+
+**Weaknesses:**
+- **Missing `.md` extension on filename.** The file is named `README-AAP-LightWell-AO` instead of `README-AAP-LightWell-AO.md`. GitHub Pages will not render it as HTML; browsers will serve raw text.
+- **No partner hero callout.** Partner implementation guides require a `guide-hero-callout guide-hero-partner` div with the AAP icon, `+`, and Lightwell wordmark. This is absent.
+- **Background section is too thin.** It describes what the demo does rather than the validation environment: no AAP version, no RHEL release confirmed, no scale tested against.
+- **Step 6 (EDA Rulebook) has no deployable content.** It says "deploy the EDA Rulebook (`rulebooks/cve_lifecycle.yml`)" but shows no YAML snippet, no EDA UI navigation steps, and no configuration screenshot or code. This step will fail a first-time reader.
+- **No source repository link.** The entire guide depends on external shell scripts (`trigger_*.sh`, `setup/*.yml`, `controller/configure.yml`) that are never linked. Readers cannot find or verify the referenced files.
+- **Architecture section missing decision rationale.** There is no explanation of why RHTPA is used for SBOM correlation instead of alternatives, why Gitea rather than a supported SCM, or why EDA webhook over polling. The component table describes roles but not decisions.
+- **Overview scope boundaries absent.** The framework requires a note on what this guide does NOT cover. There is no mention of scale limits, unsupported configurations, or what lies outside the demo scope.
+- **No Automation Hub collection table.** Collections are listed in the Prerequisites bullet but none link to their Automation Hub pages (required by convention).
+
+**Suggestions:**
+1. **Rename the file** to `README-AAP-LightWell-AO.md` so GitHub Pages renders it correctly.
+2. **Add partner hero callout** -- source or create a Lightwell wordmark at 36px in `assets/images/logos/` and wire up the `guide-hero-partner` div.
+3. **Expand Background** to document the validated environment: AAP version, RHEL 9.x release, node sizing used, and whether this was tested against a production or lab topology.
+4. **Fill out Step 6** with at least the EDA Controller UI navigation path and the key rulebook fields (source type, webhook port, AAP credential) -- or inline the relevant snippet from `cve_lifecycle.yml`.
+5. **Add the source repository link** in the Overview or Prerequisites (e.g., a "Source code" callout linking the GitHub repo hosting the demo playbooks and scripts).
+6. **Add Automation Hub links** for every referenced collection (`ansible.eda`, `ansible.controller`, `redhat.rhel_system_roles`, `community.general`, `ansible.posix`, `containers.podman`).
+7. **Add a "Scope" note** to the Overview clarifying this is a demo/lab deployment, the approximate fleet scale it was tested on, and what would need to change for production use.
+
+---
+
+### 10. RHEL 9 STIG and CIS Compliance Scanning
+
+**File:** [README-STIG-CIS-compliance.md](README-STIG-CIS-compliance.md)
+**Score:** 6.8 / 10
+**Reviewed:** October 20, 2026
+**Recommended type:** Implementation Guide (content is platform deployment / compliance tooling, not a partner integration)
+
+| Category | Score |
+|----------|-------|
+| Outcome Clarity (15%) | 4 |
+| Architecture Clarity (25%) | 3 |
+| Technical Executability (25%) | 3.5 |
+| Validation/Testability (20%) | 4 |
+| Production & Day-2 Readiness (15%) | 2.5 |
+
+**Stats:** ~1,400 words | 3 walkthrough steps | 2 YAML code blocks | 1 ASCII art diagram (needs Mermaid) | 3 validation scenarios (no troubleshooting table) | Maturity Path as prose bullets (not table)
+
+**Strengths:**
+- The core design rationale is excellent: agentless scanning, ephemeral EE delivery, separate assessment and remediation jobs, and per-host NDJSON streaming are all deliberate choices explained clearly in "Key design decisions."
+- Three-profile coverage (DISA STIG V2R8, CIS Level 1 Server, CIS Level 2 Server) with rule counts, XCCDF profile IDs, CaC playbook names, and certification status in a clean table -- immediately actionable.
+- The `failed_when: rc not in [0, 2]` OpenSCAP exit-code handling is a non-obvious correctness detail that saves implementers from false failures; documenting it here is valuable.
+- Validation covers three concrete scenarios: scan completeness (no leftover artefacts), selective remediation (only tagged tasks ran), and CI guardrails (EE build-time `test -f` checks). This is stronger than most guides at this stage.
+- The `normalize_xccdf` module design (strip XCCDF prefix so rule IDs match CaC tags directly) eliminates the mapping-file maintenance problem -- worth highlighting more prominently.
+- NDJSON streaming rationale (avoiding Controller event-size truncation with 4000+ findings) is the kind of production-scale detail that distinguishes a real implementation guide from tutorial content.
+
+**Weaknesses:**
+1. **No `guide-header` div, no badge, no hero callout.** The guide opens with a YAML front matter block and a raw `#` heading. It will not render with the site's styled header or badge pill. The `type: solution-guide` in front matter conflicts with the content classification (this is an implementation guide).
+2. **No `guide-outcome` callout.** The overview paragraph is clear but the `<div class="guide-outcome">` callout required by the framework is absent.
+3. **No ToC.**
+4. **ASCII art architecture diagram.** The workflow diagram uses a text box drawing that does not render with Mermaid. The site convention requires fenced `mermaid` blocks.
+5. **No Day-2 Operations section.** Required for all implementation guides. Missing: monitoring (dashboard API health, EE image currency), content lifecycle (DISA quarterly STIG updates → EE rebuild cadence), known issues.
+6. **No troubleshooting table in Validation.** The three scenarios describe expected success behaviour but give no symptom → cause → fix mapping for common failures.
+7. **Maturity Path is prose bullets, not a table.** The framework requires a `| Maturity | Description |` table. The current content is one long paragraph broken into three bullet points.
+8. **No Summary section.**
+9. **No Who Benefits table.** Security engineers, compliance officers, and platform owners have distinct concerns not addressed.
+10. **Automation Hub links missing.** `ansible.posix` and `redhat.rhel_system_roles` are listed as prerequisites but not linked. The `security.compliance_*` collections have no link (expected for custom collections, but a source repo link is needed).
+11. **`status: draft` in front matter.** The guide is not yet ready to publish -- this is accurate but needs to be resolved before the guide appears in the catalog.
+12. **Not in `index.md` or `README.md` catalog.**
+
+**Suggestions:**
+1. Change the guide type to **Implementation Guide** -- replace the YAML front matter `type` value, add `<div class="guide-header">` with `guide-type-badge--implementation`, and add an AAP hero callout (no external partner logo needed).
+2. Add `<div class="guide-outcome">`: "Agentless RHEL 9 compliance scanning against DISA STIG V2R8 and CIS Benchmarks Level 1/2, with a separate tag-scoped remediation job that applies only the rules you choose -- no permanent scanner footprint, no all-or-nothing fixes."
+3. Convert the ASCII art diagram to a Mermaid `graph LR` showing: Target hosts → EE (copy datastream, run oscap, fetch XML) → normalize_xccdf → dashboard API → Remediation JT.
+4. Add a **Day-2 Operations** section covering: (a) EE rebuild cadence when DISA publishes a quarterly STIG update, (b) monitoring the dashboard API ingest endpoint for 4xx/5xx, (c) known issue with CIS L2 reboot-required rules that cannot be fully auto-remediated without a maintenance window.
+5. Add a **troubleshooting table** with at least: `oscap` exits with rc=1 (fatal XML parse error, not a scan finding); `normalize_xccdf` module fails with `ElementTree` error (malformed XCCDF from partial scan); dashboard API returns 413 (NDJSON batch too large, reduce `ndjson_batch_size`); EE build fails at `test -f` (scap-security-guide not installed in base image, check CentOS 9 Stream repo availability).
+6. Convert Maturity Path to the standard three-row `| Maturity | Description |` table.
+7. Add a Summary section (2-3 sentences wrapping up the guide).
+8. Add a Who Benefits table (Security Engineer, Compliance Officer, Platform Owner).
+9. Link `ansible.posix` and `redhat.rhel_system_roles` to their Automation Hub pages; add a source repo link for the `security.compliance_*` collections.
