@@ -123,7 +123,7 @@ patternfly: true
             <i class="fas fa-info-circle" aria-hidden="true"></i>
           </a>
         </div>
-        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. Start with the foundational guide below (Crawl/Walk/Run and six use cases live there), then explore partner integrations.</p>
+        <p class="cards-track-section__intro">Closed-loop automation with AI-assisted diagnosis and remediation across observability, ITSM, and cloud event sources. Start with the foundational guide below (Crawl/Walk/Run and six use cases live there), then explore the guides in this category.</p>
         <a href="{{ '/README-AIOps' | relative_url }}" id="aiops-foundational-hero" class="card-link card-link--foundational-hero" data-tags="aiops,solution,published">
           <div class="pf-v6-c-card card-foundational card-foundational--hero">
             <div class="pf-v6-c-card__header card-header--labels">
@@ -142,12 +142,11 @@ patternfly: true
                 <h3 class="pf-v6-c-card__title-text">AIOps automation with Ansible</h3>
               </div>
               <div class="pf-v6-c-card__body">
-                Foundational reference for Crawl/Walk/Run, six operational use cases, and governed automation with EDA and partner observability or ITSM. Start here before partner integrations below.
+                Foundational reference for Crawl/Walk/Run, six operational use cases, and governed automation with EDA and observability or ITSM. Start here before the guides below.
               </div>
             </div>
           </div>
         </a>
-        <h4 class="cards-track-subsection__title">Partner integrations</h4>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="aiops-gallery">
       <a href="{{ '/README-Instana-AIOps' | relative_url }}" class="card-link" data-tags="instana,aiops,solution,published">
         <div class="pf-v6-c-card">
@@ -399,34 +398,6 @@ patternfly: true
             <span class="card-partner-logo-set card-partner-logo-set--logicmonitor">
               <img src="{{ '/assets/images/logos/logic-monitor-light-mode.png' | relative_url }}" alt="LogicMonitor" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/logic-monitor-dark-mode.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-Falco-runtime-mitigation' | relative_url }}" class="card-link" data-tags="security,solution,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-green">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--security">
-              <span class="pf-v6-c-label__content">Security</span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Automated runtime mitigation for Linux OT hosts</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Closed-loop automated enforcement architecture using Falco for runtime syscall monitoring and Event-Driven Ansible to dynamically apply MITRE ATT&CK mitigation policies.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--falco">
-              <img src="{{ '/assets/images/logos/falco-horizontal-color.svg' | relative_url }}" alt="Falco" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/falco-horizontal-color-dark.svg' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
             </span>
           </div>
         </div>
