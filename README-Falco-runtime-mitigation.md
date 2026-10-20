@@ -67,9 +67,6 @@ graph LR
 3. **Enforcement:** The EDA rulebook interprets the severity. If it is a "Critical" or "Error" severity, it triggers the `FALCO_MITRE -- Enforce` Job Template.
 4. **Execution:** The dispatcher playbook evaluates the technique ID against a mapping file and executes the designated mitigation roles on the compromised host.
 
-## Solution Walkthrough
-
-**Source Code:** The complete playbooks, rulebooks, and roles for this guide are available in the [FALCO_MITRE repository](https://github.com/redhat-cop/FALCO_MITRE).
 
 ### Configuration Variables
 
