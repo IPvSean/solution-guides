@@ -557,13 +557,8 @@ table.guide-table-event-sources {
   max-width: 36px;
 }
 
-// OPA: light = helmet icon; dark = "Open Policy Agent" wordmark
-.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light {
-  height: 36px;
-  max-height: 36px;
-  max-width: 36px;
-}
-
+// OPA: light and dark are "Open Policy Agent" wordmarks
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light,
 .guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--dark {
   height: auto;
   max-height: 32px;
@@ -3336,14 +3331,8 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   max-width: 36px;
 }
 
-// OPA: light = helmet icon; dark = "Open Policy Agent" wordmark
-.card-partner-logo-set--opa .card-partner-logo--light {
-  height: 36px;
-  max-height: 36px;
-  max-width: 36px;
-  width: auto;
-}
-
+// OPA: light and dark are "Open Policy Agent" wordmarks
+.card-partner-logo-set--opa .card-partner-logo--light,
 .card-partner-logo-set--opa .card-partner-logo--dark {
   height: auto;
   max-height: 32px;
