@@ -543,11 +543,17 @@ table.guide-table-event-sources {
   max-width: 36px;
 }
 
-// Wide OPA wordmark (5459x1809)
-.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+// OPA: light = helmet icon; dark = "Open Policy Agent" wordmark
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--light {
+  height: 36px;
+  max-height: 36px;
+  max-width: 36px;
+}
+
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo--dark {
   height: auto;
-  max-height: 28px;
-  max-width: 120px;
+  max-height: 32px;
+  max-width: 180px;
 }
 
 .guide-hero-callout__icon {
@@ -3302,11 +3308,18 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   max-width: 36px;
 }
 
-// Wide OPA wordmark (5459x1809)
-.card-partner-logo-set--opa .card-partner-logo {
+// OPA: light = helmet icon; dark = "Open Policy Agent" wordmark
+.card-partner-logo-set--opa .card-partner-logo--light {
+  height: 36px;
+  max-height: 36px;
+  max-width: 36px;
+  width: auto;
+}
+
+.card-partner-logo-set--opa .card-partner-logo--dark {
   height: auto;
-  max-height: 24px;
-  max-width: 100px;
+  max-height: 32px;
+  max-width: 160px;
   width: auto;
 }
 
