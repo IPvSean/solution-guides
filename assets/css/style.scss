@@ -80,8 +80,9 @@ h1, h3 {
 }
 
 h2 {
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
 }
 
 h1, h1 * {
