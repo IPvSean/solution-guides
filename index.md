@@ -452,7 +452,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">AI-Driven CVE Routing and Remediation with Automation orchestrator</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            One Automation orchestrator workflow handles every CVE type -- an AI triage step reads SBOM correlation results and routes to OS patch, app container rebuild, compensating controls, or log-only, with human approval before any production change.
+            One Automation orchestrator workflow handles every CVE type. An AI triage step reads SBOM correlation results and routes to OS patch, app container rebuild, compensating controls, or log-only, with human approval before any production change.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--automation-orchestrator">
@@ -473,7 +473,7 @@ patternfly: true
             <i class="fas fa-info-circle" aria-hidden="true"></i>
           </a>
         </div>
-        <p class="cards-track-section__intro">Network source of truth, configuration, and failover patterns -- NetBox as inventory and intent, with Event-Driven Ansible where state changes should trigger governed execution.</p>
+        <p class="cards-track-section__intro">Network source of truth, configuration, and failover patterns. NetBox acts as inventory and intent, with Event-Driven Ansible where state changes should trigger governed execution.</p>
         <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="network-gallery">
 
       <a href="{{ '/README-NetBox-SoT-EDA-Config' | relative_url }}" class="card-link" data-tags="netbox,network,solution,published">
@@ -549,7 +549,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Intelligent Network Automation with Gluware and Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Configuration compliance with closed-loop remediation, multi-vendor OS upgrades, and complex NAC deployments -- AAP as the orchestration plane, Gluware as the network intelligence layer.
+            Configuration compliance with closed-loop remediation, multi-vendor OS upgrades, and complex NAC deployments. AAP is the orchestration plane and Gluware is the network intelligence layer.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set">
@@ -648,7 +648,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Proactive Vulnerability Remediation with Satellite and Event-Driven Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Closed-loop CVE detection and remediation: a Satellite webhook triggers Event-Driven Ansible, which launches an AAP job to scan on-premises Lightspeed Vulnerability data and install Critical/Important fixes across the fleet -- fully air-gap capable.
+            Closed-loop CVE detection and remediation: a Satellite webhook triggers Event-Driven Ansible, which launches an AAP job to scan on-premises Lightspeed Vulnerability data and install Critical/Important fixes across the fleet. The pattern is fully air-gap capable.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--satellite">
@@ -676,7 +676,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Automated Brute-Force Remediation with Event-Driven Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Closed-loop brute-force containment -- Splunk detects SSH authentication failures, EDA routes the alert to AAP, which revokes HashiCorp Vault database credentials and stops the compromised service in seconds.
+            Closed-loop brute-force containment: Splunk detects SSH authentication failures, EDA routes the alert to AAP, which revokes HashiCorp Vault database credentials and stops the compromised service in seconds.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set">
@@ -704,7 +704,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Automated CVE Response with Policy-Gated Patching and Compliance Evidence</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Three-phase automated CVE response -- EDA contains the threat in seconds from a Splunk alert, OPA gates the patch with policy checks and human approval, then a compliance pipeline generates before/after evidence and a scanned container image.
+            Three-phase automated CVE response. EDA contains the threat in seconds from a Splunk alert, OPA gates the patch with policy checks and human approval, then a compliance pipeline generates before/after evidence and a scanned container image.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set">
@@ -732,7 +732,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Enforcing Compliance and Network Governance</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Continuous compliance monitoring with EDA drift remediation, OPA contextual change-control gates (blast radius, change windows, ITSM tickets), and SPIFFE/SPIRE workload identity -- with a full audit trail in AAP Controller.
+            Continuous compliance monitoring with EDA drift remediation, OPA contextual change-control gates (blast radius, change windows, ITSM tickets), and SPIFFE/SPIRE workload identity, with a full audit trail in AAP Controller.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--opa">
@@ -760,7 +760,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture Infrastructure with Ansible Automation Platform</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            AAP 2.6 as the NIST SP 800-207 Policy Enforcement Point -- identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) wired into one auditable automation fabric.
+            AAP 2.6 as the NIST SP 800-207 Policy Enforcement Point. Identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) wire into one auditable automation fabric.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
@@ -788,7 +788,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Automated Vulnerability Remediation with Lightwell and Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Event-driven CVE-to-patch pipeline -- Lightwell events trigger EDA, which correlates CVEs against RHTPA SBOMs and automatically patches OS packages or triggers application container rebuilds.
+            Event-driven CVE-to-patch pipeline. Lightwell events trigger EDA, which correlates CVEs against RHTPA SBOMs and automatically patches OS packages or triggers application container rebuilds.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--lightwell">
@@ -816,7 +816,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">AI-driven CVE routing and remediation with Automation Orchestrator</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            One Automation Orchestrator workflow -- agentic triage, switch routing, approval gates, and a Python CI-polling script -- handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
+            One Automation orchestrator workflow (agentic triage, switch routing, approval gates, and a Python CI-polling script) handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--lightwell">
@@ -844,7 +844,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Automated CVE Response and Compliance Verification with CME</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Automate the full CVE response lifecycle with 118 compliance-as-code controls -- CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
+            Automate the full CVE response lifecycle with 118 compliance-as-code controls. CME maps CVEs to defensive controls, verifies fleet posture, remediates automatically, and calculates CVSS score attenuation.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--rhel">
@@ -872,7 +872,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">RHEL 9 STIG and CIS Compliance Scanning with Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
+            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2. No permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--rhel9">
@@ -960,7 +960,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture with Ansible Automation Platform</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Orchestrate identity, secrets, policy, and network controls with AAP as the central layer -- dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
+            Orchestrate identity, secrets, policy, and network controls with AAP as the central layer: dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
@@ -985,7 +985,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">AI Infrastructure automation with Ansible</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Provision and configure Red Hat AI infrastructure -- from GPU instances to serving models -- using the infra.ai and redhat.ai collections.
+            Provision and configure Red Hat AI infrastructure, from GPU instances to serving models, using the infra.ai and redhat.ai collections.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--redhat-ai">
@@ -1066,7 +1066,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">Ansible Development Workspaces</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Tiered image layering strategy for Ansible Dev Spaces on OpenShift -- deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
+            Tiered image layering strategy for Ansible Dev Spaces on OpenShift. Deliver governed, customizable development environments across multiple automation domains using standard BuildConfigs and ImageStreams.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--devspaces">
@@ -1116,7 +1116,7 @@ patternfly: true
             <h3 class="pf-v6-c-card__title-text">PostgreSQL Autovacuum Tuning for AAP</h3>
           </div>
           <div class="pf-v6-c-card__body">
-            Three targeted autovacuum parameter changes -- tested in order of impact -- to keep large AAP tables continuously clean at enterprise scale.
+            Three targeted autovacuum parameter changes, tested in order of impact, keep large AAP tables continuously clean at enterprise scale.
           </div>
           <div class="pf-v6-c-card__footer">
             <span class="card-partner-logo-set card-partner-logo-set--postgresql">
@@ -1133,7 +1133,7 @@ patternfly: true
 
     <div class="cards-contributing">
       <h2>Contributing</h2>
-      <p>Writing a new guide? Start with the <a href="{{ '/best-practices/' | relative_url }}">Best Practices hub</a> -- choose the Solution Guide or Implementation Guide framework, scoring rubric, and starter template for your content type.</p>
+      <p>Writing a new guide? Start with the <a href="{{ '/best-practices/' | relative_url }}">Best Practices hub</a>. Choose the Solution Guide or Implementation Guide framework, scoring rubric, and starter template for your content type.</p>
     </div>
 
     <details class="legacy-guides">
@@ -1163,7 +1163,7 @@ patternfly: true
               <h3 class="pf-v6-c-card__title-text">Get started with EDA (Ansible Rulebook)</h3>
             </div>
             <div class="pf-v6-c-card__body">
-              Fundamentals of Event-Driven Ansible -- rulebooks, event sources, conditions, and actions.
+              Fundamentals of Event-Driven Ansible: rulebooks, event sources, conditions, and actions.
             </div>
           </div>
         </a>
