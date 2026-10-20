@@ -23,7 +23,7 @@ permalink: /opus-review-implementation/
 | 7 | [Intelligent Assistant with Red Hat AI Inference Server](#7-intelligent-assistant-with-red-hat-ai-inference-server) | 6.9/10* | Strong hands-on RHAIIS + Lightspeed hookup; weakest framework alignment of published guides |
 | 8 | [PostgreSQL Autovacuum Tuning](#8-postgresql-autovacuum-tuning) | Pending review | Published; not yet scored against the Implementation Guide rubric |
 | 9 | [Vulnerability management with Lightwell](#9-vulnerability-management-with-lightwell) | 7.4/10 | Solid demo-grade implementation guide; event-driven CVE-to-patch pipeline is well-structured but needs a partner hero, source repo link, and a richer Architecture/Background section before reaching publication standard |
-| 10 | [RHEL 9 STIG and CIS Compliance Scanning](#10-rhel-9-stig-and-cis-compliance-scanning) | 6.8/10 | Strong technical content and solid three-scenario validation; blocked from publication by missing guide-header/badge, no Day-2 Operations section, ASCII art diagram, and no troubleshooting table |
+| 10 | [RHEL 9 STIG and CIS Compliance Scanning](#10-rhel-9-stig-and-cis-compliance-scanning) | 7.8/10 | Strong technical content with all structural gaps fixed -- implementation guide badge, Mermaid diagram, Day-2 Ops, troubleshooting table, Maturity Path table, Summary, Who Benefits. Published. |
 
 ---
 

@@ -1018,6 +1018,25 @@ patternfly: true
           </div>
         </div>
       </a>
+
+      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="security,implementation,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header">
+            <span class="pf-v6-c-label pf-m-blue">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
+                Implementation Guide
+              </span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">RHEL 9 STIG and CIS Compliance Scanning with Ansible</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Agentless OpenSCAP scanning against DISA STIG V2R8 and CIS Benchmarks Level 1 and Level 2 -- no permanent scanner footprint, per-host NDJSON findings to a dashboard, and tag-scoped remediation that applies only the rules you choose.
+          </div>
+        </div>
+      </a>
       </div>
       </div>
     </section>
