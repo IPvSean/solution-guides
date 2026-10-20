@@ -3520,7 +3520,63 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   }
 
   .code-block-wrapper pre code {
-    color: var(--text-secondary) !important;
+    color: #e6edf3 !important;
+  }
+
+  // Light-theme token colors use !important; override for dark readability
+  .code-block-wrapper .token.comment,
+  .code-block-wrapper .token.prolog,
+  .code-block-wrapper .token.doctype,
+  .code-block-wrapper .token.cdata {
+    color: #8b949e !important;
+  }
+
+  .code-block-wrapper .token.punctuation {
+    color: #c9d1d9 !important;
+  }
+
+  .code-block-wrapper .token.property,
+  .code-block-wrapper .token.tag,
+  .code-block-wrapper .token.boolean,
+  .code-block-wrapper .token.number,
+  .code-block-wrapper .token.constant,
+  .code-block-wrapper .token.symbol,
+  .code-block-wrapper .token.deleted {
+    color: #79c0ff !important;
+  }
+
+  .code-block-wrapper .token.selector,
+  .code-block-wrapper .token.attr-name,
+  .code-block-wrapper .token.string,
+  .code-block-wrapper .token.char,
+  .code-block-wrapper .token.builtin,
+  .code-block-wrapper .token.inserted {
+    color: #7ee787 !important;
+  }
+
+  // YAML keys often tokenize as atrule/important; keep them bright like properties
+  .code-block-wrapper .token.atrule,
+  .code-block-wrapper .token.keyword {
+    color: #ff7b72 !important;
+  }
+
+  .code-block-wrapper .token.function,
+  .code-block-wrapper .token.class-name {
+    color: #d2a8ff !important;
+  }
+
+  .code-block-wrapper .token.operator,
+  .code-block-wrapper .token.entity,
+  .code-block-wrapper .token.url,
+  .code-block-wrapper .language-css .token.string,
+  .code-block-wrapper .style .token.string {
+    color: #ff7b72 !important;
+  }
+
+  .code-block-wrapper .token.regex,
+  .code-block-wrapper .token.important,
+  .code-block-wrapper .token.variable {
+    color: #ffa657 !important;
   }
 
   .code-block-lang,
