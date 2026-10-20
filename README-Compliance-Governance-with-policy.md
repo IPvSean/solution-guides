@@ -55,8 +55,6 @@ This solution creates a robust, automated governance pipeline that ensures only 
 | Automation Architect | Integrating disparate security tools into a cohesive pipeline | A clear reference architecture connecting AAP, OPA, EDA, and workload identity |
 | IT Manager / Director | Inability to prove compliance and access controls during an audit | Continuous, queryable audit trails and automated remediation of drifted configurations |
 
-**Recommended Demos and Self-Paced Labs:**
-- <a target="_blank" href="https://github.com/redhat-cop/compliance-flow">Compliance Flow Demo Repository</a>
 
 ## Prerequisites
 
