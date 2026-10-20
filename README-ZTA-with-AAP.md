@@ -67,12 +67,6 @@ The ZTA infrastructure stack maps directly onto the three NIST components:
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f5fa.png" width="20" style="vertical-align:text-bottom;"> **Automation Architect** | Maintaining parallel access controls in each tool (Ansible, Vault, LDAP, network) that drift out of sync | A single IdM group change cascades to AAP team membership, OPA policy context, and Vault access -- no separate updates in each system |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4bc.png" width="20" style="vertical-align:text-bottom;"> **CISO / Compliance Manager** | Proving that operational changes were authorized and auditable against NIST 800-207 or CISA ZT Maturity Model | Policy-as-code in Git, OPA decisions logged, Vault leases tracked, and EDA response times measurable -- all the evidence a compliance audit requires |
 
-**Recommended Demos and Self-Paced Labs:**
-
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3d7.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://catalog.demo.redhat.com">ZTA and AAP Showroom Workshop</a> -- hands-on lab covering all four ZTA configuration layers
-
-<h2 id="prerequisites"></h2>
-
 ## Prerequisites
 
 ### Ansible Automation Platform
