@@ -1,34 +1,37 @@
 {% raw %}
-# Zero Trust Architecture Infrastructure with Ansible Automation Platform - Solution Guide <!-- omit in toc -->
+<div class="guide-header">
+<h1>Zero Trust Architecture infrastructure with Ansible Automation Platform</h1>
+<span class="guide-type-badge guide-type-badge--solution"><i class="fas fa-check-circle" aria-hidden="true"></i> Solution Guide</span>
+</div>
 
 <style>
-  div#toc {
-    display: none;
-  }
+  div#toc { display: none; }
 </style>
 
-<h2 id="overview"></h2>
+<div class="guide-hero-callout" role="img" aria-label="Ansible Automation Platform">
+  <img src="assets/images/logos/aap-ansible-icon.png" alt="" class="guide-hero-callout__icon" width="36" height="36">
+  <span class="guide-hero-callout__text"><strong>Ansible unlocks Zero Trust</strong></span>
+</div>
+
+<!-- tags: ansible, aap, opa, vault, spiffe, spire, idm, netbox, arista, splunk, zta, security, nist -->
 
 ## Overview
 
 Modern infrastructure automation creates a paradox: the tools that make operations faster also create new attack surfaces. When automation platforms hold long-lived credentials, run without identity verification, and make changes without policy gates, a single compromised account can pivot across every layer of the stack. This guide shows how to integrate Ansible Automation Platform 2.6 as the **Policy Enforcement Point (PEP)** in a NIST SP 800-207 Zero Trust Architecture -- wiring identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) into a single, auditable automation fabric where every job proves it is authorized before a single task runs.
 
-- [Overview](#overview)
+<div class="guide-outcome">
+<strong>Outcome:</strong> AAP 2.6 configured as the central Zero Trust Policy Enforcement Point -- every infrastructure change passes five independent trust gates (IdM identity, OPA platform policy, OPA in-playbook check, SPIFFE workload identity, and Arista ACL) before executing, with short-lived Vault credentials and a full audit trail.
+</div>
+
 - [Background](#background)
 - [Solution](#solution)
-  - [Who Benefits](#who-benefits)
 - [Prerequisites](#prerequisites)
-  - [Ansible Automation Platform](#ansible-automation-platform)
-  - [Featured Ansible Content Collections](#featured-ansible-content-collections)
-  - [External Systems](#external-systems)
 - [ZTA Infrastructure Workflow](#zta-infrastructure-workflow)
-  - [Operational Impact per Stage](#operational-impact-per-stage)
 - [Solution Walkthrough](#solution-walkthrough)
 - [Validation](#validation)
-  - [Troubleshooting](#troubleshooting)
 - [Maturity Path](#maturity-path)
-- [Related Guides](#related-guides)
 - [Summary](#summary)
+- [Related Guides](#related-guides)
 
 <h2 id="background"></h2>
 
@@ -66,7 +69,7 @@ The ZTA infrastructure stack maps directly onto the three NIST components:
 
 **Recommended Demos and Self-Paced Labs:**
 
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3d7.png" width="20" style="vertical-align:text-bottom;"> [ZTA and AAP Showroom Workshop](https://catalog.demo.redhat.com) -- hands-on lab covering all four ZTA configuration layers
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3d7.png" width="20" style="vertical-align:text-bottom;"> <a target="_blank" href="https://catalog.demo.redhat.com">ZTA and AAP Showroom Workshop</a> -- hands-on lab covering all four ZTA configuration layers
 
 <h2 id="prerequisites"></h2>
 
@@ -74,7 +77,7 @@ The ZTA infrastructure stack maps directly onto the three NIST components:
 
 ### Ansible Automation Platform
 
-- **Ansible Automation Platform 2.6+** -- required for the native **Policy as Code** gateway (OPA integration built into the platform controller), which allows the controller to query OPA before enqueuing any job. Earlier versions can implement playbook-level OPA checks but lack the platform-level gateway.
+- **Ansible Automation Platform 2.6+** -- required for the native **Policy as Code** gateway (OPA integration built into the platform controller). Earlier versions can implement playbook-level OPA checks but lack the platform-level gateway.
 
 ### Featured Ansible Content Collections
 
@@ -88,8 +91,8 @@ The ZTA infrastructure stack maps directly onto the three NIST components:
 
 ### External Systems
 
-| System | Required | Examples |
-|--------|----------|----------|
+| System | Required | Notes |
+|--------|----------|-------|
 | Identity Provider (LDAP/LDAPS) | Yes | Red Hat IdM (FreeIPA), Active Directory |
 | Policy Decision Point | Yes | Open Policy Agent (OPA) with Rego policies |
 | Secrets Manager | Yes | HashiCorp Vault (KV v2, database secrets engine, SSH CA) |
@@ -99,56 +102,39 @@ The ZTA infrastructure stack maps directly onto the three NIST components:
 | SIEM | Optional (required for EDA incident response) | Splunk, Wazuh |
 | Git server | Yes | Gitea, GitHub, GitLab |
 
-**Operational Impact:** Medium -- initial configuration requires access to LDAP, Vault, and OPA. Day 2 operations (job launches, credential rotations) are non-disruptive.
+**Operational Impact:** Medium -- initial configuration requires access to LDAP, Vault, and OPA. Day-2 operations (job launches, credential rotations) are non-disruptive.
 
 ## ZTA Infrastructure Workflow
 
-Zero Trust infrastructure configuration with AAP follows a **layered trust establishment** pattern. The outer rings (identity and policy) are configured first; the inner rings (secrets, workload identity, segmentation) depend on them. An attacker who compromises one layer still faces enforcement at every other layer.
+Zero Trust infrastructure configuration with AAP follows a **layered trust establishment** pattern. The outer rings (identity and policy) are configured first; the inner rings (secrets, workload identity, segmentation) depend on them.
 
 The pipeline enforces five independent trust decisions on every sensitive operation: (1) Is the user in the right IdM group? (2) Does AAP Policy as Code permit this job template for this team? (3) Does OPA's in-playbook check confirm the operation context is valid? (4) Does SPIFFE confirm the request originates from the attested automation platform? (5) Does the network fabric permit the traffic path? Each decision is evaluated independently -- passing one does not grant implicit trust at any other layer.
+
+```mermaid
+graph TD
+    A([User / IdM Identity]) --> B(AAP Controller)
+    B --> C{OPA Policy as Code Gateway}
+    C -- DENY --> X([Job blocked -- never starts])
+    C -- ALLOW --> D(Job Launch)
+    D --> E[Playbook: Fetch SPIFFE SVID]
+    E --> F{OPA Inner-Ring Check}
+    F -- DENY --> Y([Fail closed -- no secrets, full audit log])
+    F -- ALLOW --> G(Vault: Issue Short-Lived Credential)
+    G --> H(Arista: Enforce ACL / Micro-Segment)
+    G --> I(NetBox: Update CMDB)
+    H --> J([Splunk / EDA: Monitor + Auto-Remediate])
+```
 
 ### Operational Impact per Stage
 
 | Stage | Impact | Description |
 |-------|--------|-------------|
-| 1. Vault credential integration | None | AAP credential objects store Vault paths; actual secrets resolved at job time -- no production traffic touched |
-| 2. LDAP authentication and team mapping | Low | Existing users gain new login path; local admin account remains as fallback during cutover |
-| 3. OPA policy gateway (Policy as Code) | Low | Read-only audit mode available before enforcement; policy violations log before blocking |
+| 1. Vault credential integration | None | AAP credential objects store Vault paths; secrets resolved at job time |
+| 2. LDAP authentication and team mapping | Low | Existing users gain new login path; local admin remains as fallback during cutover |
+| 3. OPA policy gateway (Policy as Code) | Low | Audit mode available before enforcement; violations log before blocking |
 | 4. In-playbook OPA checks | Low | Added to new templates first; existing templates unchanged during rollout |
-| 5. SPIFFE workload identity | Medium | SPIRE agent must be deployed to execution nodes; verification tasks added to high-risk playbooks |
+| 5. SPIFFE workload identity | Medium | SPIRE agent must be deployed to execution nodes |
 | 6. Arista micro-segmentation | High | ACL changes affect live network paths -- test in staging with shadow rules before production |
-
-### Workflow Architecture Diagram
-
-```
-[IdM (User Identity)]
-        │
-        ▼
-[AAP Controller] ──► [OPA Policy as Code Gateway] ──► DENY (platform blocks job)
-        │                        │
-        │                     ALLOW
-        │                        │
-        ▼                        ▼
-[Job Launch] ──► [Playbook: Fetch SPIFFE SVID] ──► [OPA Inner-Ring Check]
-                                                           │
-                       ┌───────────────────────────────────┤
-                       │                                   │
-                    ALLOW                                DENY
-                       │                                   │
-                       ▼                                   ▼
-            [Vault: Issue Short-Lived          [Fail closed -- no secrets,
-             Credential or SSH Cert]            no changes, full audit log]
-                       │
-                       ▼
-            [Arista: Enforce ACL /     [NetBox: Update CMDB as
-             Network Micro-Segment]  ◄─ source of truth]
-                       │
-                       ▼
-            [Splunk/EDA: Continuous
-             Monitoring + Auto-Remediation]
-```
-
-<h2 id="solution-walkthrough"></h2>
 
 ## Solution Walkthrough
 
@@ -163,7 +149,6 @@ Three credential types cover the full ZTA stack: machine credentials (SSH to RHE
 **Featured Tasks:**
 
 ```yaml
-# Verify Vault KV paths before configuring AAP credential objects
 - name: Read machine credential from Vault
   community.hashi_vault.vault_kv2_get:
     path: machine/rhel
@@ -173,10 +158,6 @@ Three credential types cover the full ZTA stack: machine credentials (SSH to RHE
 - name: Read Vault SSH CA configuration
   ansible.builtin.command: vault read ssh/config/ca
   register: ssh_ca_output
-
-- name: Validate SSH signer role allows target principals
-  ansible.builtin.command: vault read ssh/roles/ssh-signer
-  register: ssh_signer_role
 ```
 
 > **RBAC:** Restrict Vault lookup credentials to platform admins only.
@@ -192,17 +173,13 @@ Three credential types cover the full ZTA stack: machine credentials (SSH to RHE
 | `ZTA Arista Credential` | Network | KV `secret/data/network/arista` resolved at job time |
 | `ZTA Vault SSH Credential` | Vault Signed SSH | AppRole + `ssh/roles/ssh-signer` CA |
 
-**Validation -- test the Vault lookup before relying on it:**
-
-In the AAP UI: **Credentials** → edit `ZTA Machine Credential` → click **Test** → supply path `machine/rhel` and key `password`. A successful response confirms end-to-end Vault connectivity without running a full job.
-
 ---
 
 ### 2. Configure LDAP Authentication and Team Mapping
 
 **Operational Impact:** Low
 
-IdM is the single source of truth for user identity. Configuring AAP to authenticate via LDAP and map group memberships to AAP teams means that revoking an IdM group membership immediately removes the associated AAP team access on next login -- no local account changes, no CSV imports, no stale permissions sitting in a separate system.
+IdM is the single source of truth for user identity. Configuring AAP to authenticate via LDAP and map group memberships to AAP teams means that revoking an IdM group membership immediately removes the associated AAP team access on next login -- no local account changes, no CSV imports, no stale permissions.
 
 **AAP LDAP Authentication Settings:**
 
@@ -211,44 +188,27 @@ IdM is the single source of truth for user identity. Configuring AAP to authenti
 LDAP Server URI: "ldaps://central.zta.lab"
 LDAP Bind DN: "uid=admin,cn=users,cn=accounts,dc=zta,dc=lab"
 LDAP Group Type: "MemberDNGroupType"
-LDAP User DN Template: ""  # leave empty -- use User Search instead
-LDAP Start TLS: false       # LDAPS already encrypts
-
-LDAP Connection Options:
-  OPT_REFERRALS: 0
-  OPT_NETWORK_TIMEOUT: 30
-
-LDAP Group Type Parameters:
-  name_attr: cn
-  member_attr: member
-
+LDAP Start TLS: false
 LDAP Group Search:
   - "cn=groups,cn=accounts,dc=zta,dc=lab"
   - SCOPE_SUBTREE
   - "(objectClass=groupOfNames)"
-
-LDAP User Attribute Map:
-  first_name: givenName
-  last_name: sn
-  email: mail
-
 LDAP User Search:
   - "cn=users,cn=accounts,dc=zta,dc=lab"
   - SCOPE_SUBTREE
   - "(uid=%(user)s)"
 ```
 
-**Required Authenticator Mappings** (create in this order):
+**Required Authenticator Mappings:**
 
 | Mapping | Trigger | IdM Group DN | AAP Role |
 |---------|---------|-------------|----------|
 | ZTA-ORG | Always | -- | Organization Member (Default org) |
-| ZTA-Admins | Groups | `cn=zta-admins,cn=groups,cn=accounts,dc=zta,dc=lab` | Organization Admin |
-| ZTA-SuperUser | Groups | `cn=zta-admins,cn=groups,cn=accounts,dc=zta,dc=lab` | Superuser |
-| Infrastructure team | Groups | `cn=team-infrastructure,cn=groups,cn=accounts,dc=zta,dc=lab` | Team Member (Infrastructure) |
-| DevOps team | Groups | `cn=team-devops,cn=groups,cn=accounts,dc=zta,dc=lab` | Team Member (DevOps) |
-| Security team | Groups | `cn=team-security,cn=groups,cn=accounts,dc=zta,dc=lab` | Team Member (Security) |
-| Applications team | Groups | `cn=team-applications,cn=groups,cn=accounts,dc=zta,dc=lab` | Team Member (Applications) |
+| ZTA-Admins | Groups | `cn=zta-admins,...` | Organization Admin |
+| Infrastructure team | Groups | `cn=team-infrastructure,...` | Team Member (Infrastructure) |
+| DevOps team | Groups | `cn=team-devops,...` | Team Member (DevOps) |
+| Security team | Groups | `cn=team-security,...` | Team Member (Security) |
+| Applications team | Groups | `cn=team-applications,...` | Team Member (Applications) |
 
 > **Zero Trust principle:** Authentication alone is insufficient.
 >
@@ -260,23 +220,18 @@ LDAP User Search:
 
 **Operational Impact:** Low (audit mode available before enforcement)
 
-AAP 2.6 introduces a native OPA gateway: the controller sends full job context (template name, launching user, their AAP team memberships) to OPA before enqueuing the job. If OPA returns a deny, the job never starts -- not "it fails partway through," but never begins. This is enforcement at the **platform level**, not the playbook level, so even a user who calls the AAP API directly is blocked.
+AAP 2.6 introduces a native OPA gateway: the controller sends full job context (template name, launching user, their AAP team memberships) to OPA before enqueuing the job. If OPA returns a deny, the job never starts -- not "it fails partway through," but never begins.
 
-**AAP Policy as Code Configuration:**
-
-In the AAP UI: **Settings** → **Automation Execution** → **Policy** → Edit:
+**AAP Policy as Code Configuration** (Settings → Automation Execution → Policy):
 
 | Field | Value |
 |-------|-------|
-| OPA Hostname | `192.168.1.11` (or OPA FQDN -- use IP if DNS is unavailable) |
+| OPA Hostname | `192.168.1.11` (or OPA FQDN) |
 | Port | `8181` |
-| OPA Authentication Type | None (add token or mTLS for production) |
 | OPA Request Timeout | `5` |
 | OPA Request Retry Count | `2` |
 
-Then: **Access Management** → **Organizations** → **Default** → Edit → set **Policy enforcement** to `aap/gateway/decision`.
-
-**Sample OPA Rego policy (aap/gateway/decision):**
+**Sample OPA Rego policy (`aap/gateway/decision`):**
 
 ```rego
 package aap.gateway
@@ -285,10 +240,6 @@ default decision = {"allow": false, "violations": {}}
 
 decision = {"allow": true} {
     not has_violations
-}
-
-has_violations {
-    count(violations) > 0
 }
 
 violations["patch_team"] {
@@ -304,11 +255,6 @@ user_in_patch_team {
     team := input.created_by.teams[_]
     team == "Infrastructure"
 }
-
-user_in_patch_team {
-    team := input.created_by.teams[_]
-    team == "Security"
-}
 ```
 
 **Template classification and required teams:**
@@ -317,7 +263,7 @@ user_in_patch_team {
 |----------------------|------------------|
 | Contains "patch" | Infrastructure or Security |
 | Contains "vlan" or "network" | Infrastructure |
-| Contains "deploy", "credential", or "application" | Applications or DevOps |
+| Contains "deploy" or "credential" | Applications or DevOps |
 | All others | Any authenticated user |
 
 ---
@@ -326,9 +272,9 @@ user_in_patch_team {
 
 **Operational Impact:** Low
 
-Platform-level Policy as Code catches "wrong user for this template type." In-playbook OPA checks add **context-specific authorization** -- validating the exact operation against the exact user, with the full input context available to Rego (user, groups, target, requested permissions). Together they form two independent enforcement rings.
+Platform-level Policy as Code catches "wrong user for this template type." In-playbook OPA checks add **context-specific authorization** -- validating the exact operation against the exact user, with the full input context available to Rego. Together they form two independent enforcement rings.
 
-**Featured Tasks -- querying OPA from a playbook:**
+**Featured Tasks:**
 
 ```yaml
 - name: Query OPA for database access decision
@@ -342,17 +288,7 @@ Platform-level Policy as Code catches "wrong user for this template type." In-pl
         user_groups: "{{ user_idm_groups }}"
         target_database: "{{ db_name }}"
         requested_permissions: ["SELECT", "INSERT", "UPDATE"]
-    return_content: true
   register: opa_decision
-
-- name: Display OPA decision
-  ansible.builtin.debug:
-    msg: >
-      OPA Database Access Decision:
-       User: {{ awx_user_name }}
-       Groups: {{ user_idm_groups }}
-       Database: {{ db_name }}
-       Decision: {{ 'ALLOWED' if opa_decision.json.result.allow else 'DENIED' }}
 
 - name: Enforce OPA decision -- fail closed on deny
   ansible.builtin.assert:
@@ -362,21 +298,13 @@ Platform-level Policy as Code catches "wrong user for this template type." In-pl
       User '{{ awx_user_name }}' is not authorised to request database credentials.
 ```
 
-**Deploy application workflow using the inner-ring pattern:**
-
+```mermaid
+graph LR
+    A{OPA DB Policy Check} -- ALLOW --> B(Vault: Create DB Credential)
+    A -- DENY --> X([Workflow stops])
+    B --> C(Arista: Configure DB ACL)
+    C --> D([Deploy Application])
 ```
-[Check DB Access Policy (OPA)] ──SUCCESS──► [Create DB Credential (Vault)]
-        │                                            │
-      FAIL                                           ▼
-        │                              [Configure DB ACL (Arista)]
-        ▼                                            │
-  [Workflow stops]                                   ▼
-                                         [Deploy Application]
-```
-
-> **RBAC:** Grant `WorkflowJobTemplate Execute` to the Applications team only.
->
-> The outer ring (Policy as Code) enforces this at the platform level. The inner ring (OPA check in the first job) adds a second confirmation that the specific user holds the `app-deployers` IdM group.
 
 ---
 
@@ -384,23 +312,20 @@ Platform-level Policy as Code catches "wrong user for this template type." In-pl
 
 **Operational Impact:** Medium
 
-User identity proves *who is asking*. Workload identity proves *what is asking*. A stolen AAP token replayed from an attacker's laptop passes every user identity check -- SPIFFE closes that gap. The playbook fetches a short-lived X.509 SVID from the SPIRE agent (which only runs on attested AAP nodes), and OPA validates it against an explicit allowlist before any network change proceeds.
+User identity proves *who is asking*. Workload identity proves *what is asking*. A stolen AAP token replayed from an attacker's laptop passes every user identity check -- SPIFFE closes that gap. The playbook fetches a short-lived X.509 SVID from the SPIRE agent (which only runs on attested AAP nodes), and OPA validates it before any network change proceeds.
 
-**SPIRE Agent deployment (on AAP execution node):**
+**SPIRE Agent registration (on AAP execution node):**
 
 ```bash
-# The SPIRE server runs on the central host (trust domain: zta.lab)
-# Register the network-automation workload for the AAP execution node
 spire-server entry create \
   -spiffeID spiffe://zta.lab/workload/network-automation \
   -parentID spiffe://zta.lab/agent/control \
   -selector unix:uid:0
 ```
 
-**Featured Tasks -- fetching and passing the SVID:**
+**Featured Tasks:**
 
 ```yaml
-# Play 1: runs on the AAP execution node (automation host)
 - name: Fetch X.509 SVID from SPIRE Agent
   ansible.builtin.command: >
     /opt/spire/bin/spire-agent api fetch x509
@@ -413,7 +338,6 @@ spire-server entry create \
       | regex_search('SPIFFE ID:\\s+(spiffe://\\S+)', '\\1')
       | first }}"
 
-# Play 2: runs on central -- passes SVID to OPA inner-ring check
 - name: Query OPA with user identity + workload SVID
   ansible.builtin.uri:
     url: "{{ opa_url }}/v1/data/zta/network/decision"
@@ -431,72 +355,38 @@ spire-server entry create \
 - name: Enforce combined identity decision -- fail closed
   ansible.builtin.assert:
     that: opa_network_decision.json.result.allow == true
-    fail_msg: "VLAN CONFIGURATION DENIED by OPA policy. Reason: {{ opa_network_decision.json.result.reason }}"
-```
-
-**OPA policy checking both user and workload identity:**
-
-```rego
-package zta.network
-
-default allow = false
-default reason = "DENIED: default deny"
-
-allow {
-    trusted_workload
-    user_is_network_admin
-    vlan_in_range
-}
-
-trusted_workload {
-    input.spiffe_id == "spiffe://zta.lab/workload/network-automation"
-}
-
-user_is_network_admin {
-    input.user_groups[_] == "network-admins"
-}
-
-vlan_in_range {
-    input.vlan_id >= 100
-    input.vlan_id <= 999
-}
+    fail_msg: "VLAN CONFIGURATION DENIED. Reason: {{ opa_network_decision.json.result.reason }}"
 ```
 
 <h2 id="validation"></h2>
 
 ## Validation
 
-### Test -- Verify the full ZTA chain with the built-in verification job
+### Test -- Verify the full ZTA chain
 
-Launch the **Verify ZTA Services** job template from the AAP UI or via API. This single job checks IdM reachability, OPA policy responses, Vault KV reads, Vault dynamic database credentials, and Vault SSH CA -- confirming every integration in the chain before relying on it.
+Launch the **Verify ZTA Services** job template from the AAP UI or via API. This single job checks IdM reachability, OPA policy responses, Vault KV reads, Vault dynamic database credentials, and Vault SSH CA -- confirming every integration before relying on it.
 
 ```bash
-# Via AAP API -- launch the verification job and poll for completion
 TOKEN="your-aap-token"
 CONTROLLER="https://control.zta.lab"
 
 JOB_ID=$(curl -sk -X POST "${CONTROLLER}/api/v2/job_templates/Verify%20ZTA%20Services/launch/" \
   -H "Authorization: Bearer ${TOKEN}" \
-  -H "Content-Type: application/json" \
-  | jq -r '.id')
+  -H "Content-Type: application/json" | jq -r '.id')
 
-# Poll until complete
 until curl -sk "${CONTROLLER}/api/v2/jobs/${JOB_ID}/" \
   -H "Authorization: Bearer ${TOKEN}" \
-  | jq -e '.status == "successful"' > /dev/null 2>&1; do
-  sleep 5
-done
+  | jq -e '.status == "successful"' > /dev/null 2>&1; do sleep 5; done
 
 echo "ZTA verification complete -- job ${JOB_ID}"
 ```
 
-### Expected Result
+**Expected Result:**
 
 ```
 TASK [Display Vault integration results] *************************************
 ok: [vault] => {
     "msg": [
-        "Vault integration test — results",
         "KV secret read: PASS (secret/network/arista)",
         "Dynamic DB username: v-userpass-ztaapp-s-anmlwAfJij4NVbUPFDjj-1776239621",
         "Dynamic DB TTL: 300s",
@@ -507,12 +397,11 @@ ok: [vault] => {
 TASK [OPA policy test summary] ***********************************************
 ok: [central] => {
     "msg": [
-        "OPA policy test — summary",
-        "Test 1 — Patch (authorised): ALLOW",
-        "Test 2 — Patch (wrong group): DENY",
-        "Test 3 — VLAN (network-admin): DENY",
-        "Test 4 — VLAN (no group): DENY",
-        "Test 5 — DB (app-deployer): ALLOW",
+        "Test 1 -- Patch (authorised): ALLOW",
+        "Test 2 -- Patch (wrong group): DENY",
+        "Test 3 -- VLAN (network-admin): DENY",
+        "Test 4 -- VLAN (no group): DENY",
+        "Test 5 -- DB (app-deployer): ALLOW",
         "Zero Trust: deny-by-default, policy-driven access."
     ]
 }
@@ -521,8 +410,6 @@ ok: [central] => {
 ### Test -- Validate deny-by-default for unauthorized user
 
 ```bash
-# Log in to AAP as a user without the required team membership
-# and attempt to launch a gated template
 curl -sk -X POST "${CONTROLLER}/api/v2/job_templates/Apply%20Security%20Patch/launch/" \
   -H "Authorization: Bearer ${TOKEN_FOR_APPDEV}" \
   -H "Content-Type: application/json" | jq '.detail'
@@ -531,9 +418,7 @@ curl -sk -X POST "${CONTROLLER}/api/v2/job_templates/Apply%20Security%20Patch/la
 **Expected:** Policy violation message -- job never enqueued.
 
 ```json
-"This job cannot be executed due to a policy violation or error. See the following details:
-{'Violations': {'Organization': [\"user 'appdev' is not in an authorised team
-for patching templates (requires: {'Infrastructure', 'Security'}, has: {'Applications'})\"]}}"
+"This job cannot be executed due to a policy violation or error. {'Violations': {'Organization': [\"user 'appdev' is not in an authorised team for patching templates (requires: {'Infrastructure', 'Security'}, has: {'Applications'})\"]}}"
 ```
 
 ### Troubleshooting
@@ -542,10 +427,10 @@ for patching templates (requires: {'Infrastructure', 'Security'}, has: {'Applica
 |---------|-------------|-----|
 | LDAP users log in but see an empty platform | Missing `ZTA-ORG` authenticator map (Always → Organization Member) | Add the Always trigger map for the Default org first; it is a prerequisite for all other maps |
 | Vault credential test fails with 403 | Vault policy does not allow the bootstrap auth path to read the target KV path | Check `vault policy read admin-policy` and confirm `secret/data/*` is included with `read` capability |
-| OPA Policy as Code gateway returns 500 | Incorrect OPA hostname or port in AAP settings; OPA not running | Verify OPA is reachable from the AAP controller host: `curl http://<opa-host>:8181/health` |
-| SPIFFE SVID fetch fails in playbook | SPIRE agent not running on execution node, or workload not registered | Check `systemctl status spire-agent` on the execution node; verify workload registration with `spire-server entry show` |
-| Dynamic DB credentials expire before application restarts | TTL is shorter than restart window | Increase Vault role TTL or implement credential rotation with EDA before expiry; intentional expiry proves the ZTA boundary |
-| Arista ACL does not take effect | `eos_vlans` or `eos_config` task succeeded but switch did not save config | Add `arista.eos.eos_command: commands: [write memory]` after config tasks |
+| OPA Policy as Code gateway returns 500 | Incorrect OPA hostname or port in AAP settings | Verify OPA is reachable from the AAP controller: `curl http://<opa-host>:8181/health` |
+| SPIFFE SVID fetch fails in playbook | SPIRE agent not running or workload not registered | Check `systemctl status spire-agent`; verify registration with `spire-server entry show` |
+| Dynamic DB credentials expire before application restarts | TTL shorter than restart window | Increase Vault role TTL or implement credential rotation with EDA before expiry |
+| Arista ACL does not take effect | Switch did not save config | Add `arista.eos.eos_command: commands: [write memory]` after config tasks |
 
 <h2 id="maturity-path"></h2>
 
@@ -555,20 +440,21 @@ for patching templates (requires: {'Infrastructure', 'Security'}, has: {'Applica
 |----------|-------------|
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f6b6.png" width="20" style="vertical-align:text-bottom;"> **Crawl** | Connect AAP to IdM LDAP, Vault KV, and OPA in audit-only mode. Log every policy decision without blocking. Verify Vault credential lookups replace the first set of static passwords. Confirm IdM groups flow into AAP team memberships. |
 | <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3c3.png" width="20" style="vertical-align:text-bottom;"> **Walk** | Enable OPA Policy as Code enforcement for high-risk template categories (patching, network changes). Add in-playbook OPA checks for secret issuance. Replace all machine credentials with Vault dynamic secrets. Deploy SPIFFE/SPIRE to execution nodes for network automation. Configure Arista ACLs through AAP-gated automation. |
-| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Event-Driven Ansible watches Splunk and Wazuh for security events and triggers automated remediation (credential revocation, host isolation) in under 30 seconds. OPA policies include time-based controls (NetBox maintenance windows), risk scoring, and break-glass approval workflows. SPIFFE attestation covers the full supply chain -- container image hash, Git commit, and CI/CD pipeline. Every policy change is a Git commit, reviewed, tested, and deployed like application code. |
-
-<h2 id="related-guides"></h2>
-
-## Related Guides
-
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d8.png" width="20" style="vertical-align:text-bottom;"> **[AIOps automation with Ansible](README-AIOps.md)** -- extend ZTA into AI-driven anomaly detection and intelligent remediation decisions
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4e1.png" width="20" style="vertical-align:text-bottom;"> **[Event-Driven Ansible for Security Response](README-EDA-Security.md)** -- deep dive into EDA rulebooks for SIEM-triggered remediation (the automated incident response layer of this ZTA stack)
-- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f517.png" width="20" style="vertical-align:text-bottom;"> **[Network Automation with Policy Gates](README-Network-ZTA.md)** -- extends SPIFFE-verified VLAN management to multi-vendor network fabrics
+| <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" width="20" style="vertical-align:text-bottom;"> **Run** | Event-Driven Ansible watches Splunk and Wazuh for security events and triggers automated remediation (credential revocation, host isolation) in under 30 seconds. OPA policies include time-based controls, risk scoring, and break-glass approval workflows. SPIFFE attestation covers the full supply chain -- container image hash, Git commit, and CI/CD pipeline. Every policy change is a Git commit, reviewed, tested, and deployed like application code. |
 
 <h2 id="summary"></h2>
 
 ## Summary
 
-This solution guide shows how to configure Ansible Automation Platform 2.6 as the central Policy Enforcement Point in a NIST SP 800-207-aligned Zero Trust Architecture. By integrating IdM for user identity, OPA for policy decisions, Vault for short-lived secrets, SPIFFE/SPIRE for workload identity, and Arista for network micro-segmentation, every infrastructure change -- from a database deployment to a VLAN creation to a security patch -- passes through independent, auditable trust gates before a single task executes. The result is a measurable reduction in blast radius: stolen credentials expire within minutes, unauthorized users are blocked before secrets are issued, and rogue workloads are rejected even when they carry valid user tokens. The maturity path from audit-only LDAP integration to fully automated incident response is incremental -- each stage delivers real security value while building toward complete ZTA coverage.
+This solution guide shows how to configure Ansible Automation Platform 2.6 as the central Policy Enforcement Point in a NIST SP 800-207-aligned Zero Trust Architecture. By integrating IdM for user identity, OPA for policy decisions, Vault for short-lived secrets, SPIFFE/SPIRE for workload identity, and Arista for network micro-segmentation, every infrastructure change passes through independent, auditable trust gates before a single task executes. The result is a measurable reduction in blast radius: stolen credentials expire within minutes, unauthorized users are blocked before secrets are issued, and rogue workloads are rejected even when they carry valid user tokens. The maturity path from audit-only LDAP integration to fully automated incident response is incremental -- each stage delivers real security value while building toward complete ZTA coverage.
+
+<h2 id="related-guides"></h2>
+
+## Related Guides
+
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d8.png" width="20" style="vertical-align:text-bottom;"> **[Automated CVE response with policy-gated patching and compliance evidence](README-CVE-defend-contain-comply.md)** -- operational ZTA pattern using OPA gates in a Splunk-triggered CVE response pipeline
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d8.png" width="20" style="vertical-align:text-bottom;"> **[Automated Brute-Force Remediation with Event-Driven Ansible](README-BruteForce-AAP.md)** -- EDA-driven credential revocation as the automated incident response layer of this ZTA stack
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d8.png" width="20" style="vertical-align:text-bottom;"> **[Event-Driven Network Source of Truth with NetBox and AAP](README-NetBox-SoT-EDA-Config.md)** -- extends SPIFFE-verified VLAN management to network source-of-truth driven configuration
+- <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4d8.png" width="20" style="vertical-align:text-bottom;"> **[AIOps automation with Ansible](README-AIOps.md)** -- extend ZTA into AI-driven anomaly detection and intelligent remediation decisions
 
 {% endraw %}

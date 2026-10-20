@@ -429,6 +429,31 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-AO-driven-CVE-routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AI-Driven CVE Routing and Remediation with Automation orchestrator</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            One Automation orchestrator workflow handles every CVE type -- an AI triage step reads SBOM correlation results and routes to OS patch, app container rebuild, compensating controls, or log-only, with human approval before any production change.
+          </div>
+        </div>
+      </a>
+
       </div>
       </div>
 
@@ -647,6 +672,56 @@ patternfly: true
         </div>
       </a>
 
+      <a href="{{ '/README-CVE-defend-contain-comply' | relative_url }}" class="card-link" data-tags="splunk,security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Automated CVE Response with Policy-Gated Patching and Compliance Evidence</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            Three-phase automated CVE response -- EDA contains the threat in seconds from a Splunk alert, OPA gates the patch with policy checks and human approval, then a compliance pipeline generates before/after evidence and a scanned container image.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set">
+              <img src="{{ '/assets/images/logos/splunk-logo.png' | relative_url }}" alt="Splunk" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/splunk-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-ZTA-with-AAP' | relative_url }}" class="card-link" data-tags="security,solution,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--security">
+              <span class="pf-v6-c-label__content">Security</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture Infrastructure with Ansible Automation Platform</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            AAP 2.6 as the NIST SP 800-207 Policy Enforcement Point -- identity (IdM), policy (OPA), secrets (Vault), workload identity (SPIFFE/SPIRE), and network enforcement (Arista) wired into one auditable automation fabric.
+          </div>
+        </div>
+      </a>
+
       <a href="{{ '/README-AAP-LightWell-AO' | relative_url }}" class="card-link" data-tags="security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
@@ -665,6 +740,31 @@ patternfly: true
           </div>
           <div class="pf-v6-c-card__body">
             Event-driven CVE-to-patch pipeline -- Lightwell events trigger EDA, which correlates CVEs against RHTPA SBOMs and automatically patches OS packages or triggers application container rebuilds.
+          </div>
+          <div class="pf-v6-c-card__footer">
+            <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="{{ '/README-Lightwell-Neuromancer-CVE-Routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,cve,lightwell,automation-orchestrator,published">
+        <div class="pf-v6-c-card">
+          <div class="pf-v6-c-card__header card-header--labels">
+            <span class="pf-v6-c-label pf-m-green">
+              <span class="pf-v6-c-label__content">
+                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
+                Solution Guide
+              </span>
+            </span>
+            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
+              <span class="pf-v6-c-label__content">AIOps</span>
+            </span>
+          </div>
+          <div class="pf-v6-c-card__title">
+            <h3 class="pf-v6-c-card__title-text">AI-driven CVE routing and remediation with Automation Orchestrator</h3>
+          </div>
+          <div class="pf-v6-c-card__body">
+            One Automation Orchestrator workflow -- agentic triage, switch routing, approval gates, and a Python CI-polling script -- handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
           </div>
           <div class="pf-v6-c-card__footer">
             <span style="font-size:0.9rem;font-weight:700;color:var(--pf-v6-global--Color--100);">Lightwell</span>
