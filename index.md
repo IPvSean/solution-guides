@@ -731,6 +731,12 @@ patternfly: true
           <div class="pf-v6-c-card__body">
             Continuous compliance monitoring with EDA drift remediation, OPA contextual change-control gates (blast radius, change windows, ITSM tickets), and SPIFFE/SPIRE workload identity -- with a full audit trail in AAP Controller.
           </div>
+          <div class="pf-v6-c-card__footer">
+            <span class="card-partner-logo-set card-partner-logo-set--opa">
+              <img src="{{ '/assets/images/logos/opa.png' | relative_url }}" alt="Open Policy Agent" class="card-partner-logo card-partner-logo--light">
+              <img src="{{ '/assets/images/logos/opa-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
+            </span>
+          </div>
         </div>
       </a>
 

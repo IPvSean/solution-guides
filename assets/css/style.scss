@@ -543,6 +543,13 @@ table.guide-table-event-sources {
   max-width: 36px;
 }
 
+// Wide OPA wordmark (5459x1809)
+.guide-hero-partner--opa .guide-hero-partner__partner.card-partner-logo-set .card-partner-logo {
+  height: auto;
+  max-height: 28px;
+  max-width: 120px;
+}
+
 .guide-hero-callout__icon {
   flex-shrink: 0;
   width: 36px;
@@ -3293,6 +3300,14 @@ details.legacy-guides > *:not(summary):not(.legacy-guides__body) {
   height: 36px;
   width: auto;
   max-width: 36px;
+}
+
+// Wide OPA wordmark (5459x1809)
+.card-partner-logo-set--opa .card-partner-logo {
+  height: auto;
+  max-height: 24px;
+  max-width: 100px;
+  width: auto;
 }
 
 // Wide PostgreSQL wordmark (5200x800 canvas)
