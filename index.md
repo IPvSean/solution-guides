@@ -69,10 +69,7 @@ patternfly: true
         <input type="checkbox" value="netbox"> NetBox
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="redhat-ai"> Red Hat AI
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="satellite"> Red Hat Satellite
+        <input type="checkbox" value="redhat"> Red Hat
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="servicenow"> ServiceNow
@@ -320,7 +317,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,solution,wip">
+      <a href="{{ '/README-Patching-RHEL' | relative_url }}" class="card-link" data-tags="redhat,aiops,solution,wip">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-orange">
@@ -435,7 +432,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-AO-driven-CVE-routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,published">
+      <a href="{{ '/README-AO-driven-CVE-routing' | relative_url }}" class="card-link" data-tags="redhat,aiops,security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
@@ -634,7 +631,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="satellite,security,solution,published">
+      <a href="{{ '/README-Satellite-CVE-Remediation' | relative_url }}" class="card-link" data-tags="redhat,security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
@@ -830,7 +827,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="security,solution,published">
+      <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="redhat,security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
@@ -858,7 +855,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="security,solution,published">
+      <a href="{{ '/README-STIG-CIS-compliance' | relative_url }}" class="card-link" data-tags="redhat,security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-green">
@@ -899,7 +896,7 @@ patternfly: true
       </div>
       <div class="cards-track-section cards-track-section--flat">
       <div class="pf-v6-l-gallery pf-m-gutter cards-gallery" id="implementation-gallery">
-      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="pqc,security,implementation,published">
+      <a href="{{ '/README-PQC-Discovery' | relative_url }}" class="card-link" data-tags="redhat,pqc,security,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -974,7 +971,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,implementation,published">
+      <a href="{{ '/README-IA' | relative_url }}" class="card-link" data-tags="redhat,aiops,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -999,7 +996,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-tags="redhat-ai,aiops,implementation,published">
+      <a href="{{ '/README-Intelligent-Assistant-RHAIIS' | relative_url }}" class="card-link" data-tags="redhat,aiops,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -1024,7 +1021,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-tags="implementation,published">
+      <a href="{{ '/README-Ansible-DevTools' | relative_url }}" class="card-link" data-tags="redhat,implementation,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header">
             <span class="pf-v6-c-label pf-m-blue">
@@ -1049,7 +1046,7 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-tags="implementation,wip">
+      <a href="{{ '/README-Ansible-DevSpaces' | relative_url }}" class="card-link" data-tags="redhat,implementation,wip">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
             <span class="pf-v6-c-label pf-m-orange">
