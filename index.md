@@ -741,37 +741,6 @@ patternfly: true
         </div>
       </a>
 
-      <a href="{{ '/README-Lightwell-Neuromancer-CVE-Routing' | relative_url }}" class="card-link" data-tags="aiops,security,solution,cve,lightwell,automation-orchestrator,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header card-header--labels">
-            <span class="pf-v6-c-label pf-m-green">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-check-circle pf-v6-c-label__icon"></i>
-                Solution Guide
-              </span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--aiops">
-              <span class="pf-v6-c-label__content">AIOps</span>
-            </span>
-            <span class="pf-v6-c-label card-label-track card-label-track--security">
-              <span class="pf-v6-c-label__content">Security</span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">AI-driven CVE routing and remediation with Automation orchestrator</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            One Automation orchestrator workflow (agentic triage, switch routing, approval gates, and a Python CI-polling script) handles four CVE paths: OS patch, CME compensate, GitOps rebuild, and log-only.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--lightwell">
-              <img src="{{ '/assets/images/logos/lightwell-logo.png' | relative_url }}" alt="IBM Lightwell" class="card-partner-logo card-partner-logo--light">
-              <img src="{{ '/assets/images/logos/lightwell-logo-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
       <a href="{{ '/README-CME' | relative_url }}" class="card-link" data-tags="redhat,security,solution,published">
         <div class="pf-v6-c-card">
           <div class="pf-v6-c-card__header card-header--labels">
@@ -889,32 +858,6 @@ patternfly: true
             <span class="card-partner-logo-set">
               <img src="{{ '/assets/images/logos/edb.png' | relative_url }}" alt="EDB" class="card-partner-logo card-partner-logo--light">
               <img src="{{ '/assets/images/logos/edb-dark.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-            </span>
-          </div>
-        </div>
-      </a>
-
-      <a href="{{ '/README-ZTA' | relative_url }}" class="card-link" data-tags="implementation,security,netbox,published">
-        <div class="pf-v6-c-card">
-          <div class="pf-v6-c-card__header">
-            <span class="pf-v6-c-label pf-m-blue">
-              <span class="pf-v6-c-label__content">
-                <i class="fas fa-cogs pf-v6-c-label__icon"></i>
-                Implementation Guide
-              </span>
-            </span>
-          </div>
-          <div class="pf-v6-c-card__title">
-            <h3 class="pf-v6-c-card__title-text">Zero Trust Architecture with Ansible Automation Platform</h3>
-          </div>
-          <div class="pf-v6-c-card__body">
-            Orchestrate identity, secrets, policy, and network controls with AAP as the central layer: dynamic credentials, policy-as-code, SPIFFE workload identity, and event-driven security response.
-          </div>
-          <div class="pf-v6-c-card__footer">
-            <span class="card-partner-logo-set card-partner-logo-set--zero-trust">
-              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--light" aria-hidden="true">
-              <img src="{{ '/assets/images/logos/zero-trust.png' | relative_url }}" alt="" class="card-partner-logo card-partner-logo--dark" aria-hidden="true">
-              <span class="card-partner-logo-label">Zero Trust</span>
             </span>
           </div>
         </div>
