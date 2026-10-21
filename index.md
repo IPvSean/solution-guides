@@ -51,16 +51,7 @@ patternfly: true
         <input type="checkbox" value="cisco"> Cisco
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="cloudnativepg"> CloudNativePG
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="edb"> EDB PostgreSQL
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="instana"> IBM Instana
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="kafka"> Kafka
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="logicmonitor"> LogicMonitor
