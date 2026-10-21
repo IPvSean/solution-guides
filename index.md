@@ -57,9 +57,6 @@ patternfly: true
         <input type="checkbox" value="logicmonitor"> LogicMonitor
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="netbox"> NetBox
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="redhat"> Red Hat
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
@@ -70,9 +67,6 @@ patternfly: true
       </label>
       <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
         <input type="checkbox" value="windows"> Windows
-      </label>
-      <label class="cards-sidebar__checkbox cards-sidebar__checkbox--partner">
-        <input type="checkbox" value="gluware"> Gluware
       </label>
     </div>
     </div>
