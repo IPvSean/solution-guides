@@ -5,7 +5,7 @@ permalink: /updates/
 ---
 
 <div class="hub-intro-row">
-  <p class="guide-types-lead">Automated release notes for this site -- new solution guides, notable guide updates, and site changes from the last 30 days. Regenerated weekly from git history.</p>
+  <p class="guide-types-lead">Automated release notes for this site -- new solution guides, notable guide updates, and site changes from the last 30 days. Regenerated weekly from git history. For durable decisions (for example catalog retirements), see <a href="{{ '/release-notes/' | relative_url }}">Release notes</a>.</p>
 </div>
 
 <!-- BEGIN:AUTO-UPDATES -->

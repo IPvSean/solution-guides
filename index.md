@@ -1036,42 +1036,6 @@ patternfly: true
             </div>
           </div>
         </a>
-        <a href="https://access.redhat.com/articles/7136720" class="card-link" target="_blank" data-tags="published">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Get started with EDA (Ansible Rulebook)</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Fundamentals of Event-Driven Ansible: rulebooks, event sources, conditions, and actions.
-            </div>
-          </div>
-        </a>
-        <a href="https://access.redhat.com/articles/7123366" class="card-link" target="_blank" data-tags="cisco,network,published">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Network Back Up and Configuration</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Backup, configure, and restore network devices using the network.backup validated content collection.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-tag">Cisco</span>
-            </div>
-          </div>
-        </a>
-        <a href="https://access.redhat.com/articles/7123361" class="card-link" target="_blank" data-tags="cisco,network,published">
-          <div class="pf-v6-c-card">
-            <div class="pf-v6-c-card__title">
-              <h3 class="pf-v6-c-card__title-text">Network Fact Gathering & Reporting</h3>
-            </div>
-            <div class="pf-v6-c-card__body">
-              Collect network device facts and export structured data for compliance reporting.
-            </div>
-            <div class="pf-v6-c-card__footer">
-              <span class="card-partner-tag">Cisco</span>
-            </div>
-          </div>
-        </a>
       </div>
       </div>
     </details>
