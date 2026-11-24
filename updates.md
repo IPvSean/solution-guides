@@ -9,17 +9,10 @@ permalink: /updates/
 </div>
 
 <!-- BEGIN:AUTO-UPDATES -->
-*Rolling window: 2026-10-17 to 2026-11-16. Regenerated weekly from git history.*
+*Rolling window: 2026-10-25 to 2026-11-24. Regenerated weekly from git history.*
 
 ### New guides
 
-- [Automated vulnerability remediation with Lightwell and Ansible]({{ "/README-AAP-LightWell-AO" | relative_url }}) -- Publish LightWell as solution guide, BruteForce + CME fixes, add .md extensions
-- [AI-driven CVE routing and remediation with Automation orchestrator]({{ "/README-AO-driven-CVE-routing" | relative_url }}) -- Rename README-AO-driven-CVE-routing to README-AO-driven-CVE-routing.md
-- [BruteForce AAP]({{ "/README-BruteForce-AAP" | relative_url }}) -- Publish LightWell as solution guide, BruteForce + CME fixes, add .md extensions
-- [Automated CVE response and compliance verification with CME]({{ "/README-CME" | relative_url }}) -- Publish LightWell as solution guide, BruteForce + CME fixes, add .md extensions
-- [CVE defend contain comply]({{ "/README-CVE-defend-contain-comply" | relative_url }}) -- Create README-CVE-defend-contain-comply.md
-- [Enforcing Compliance and Network Governance]({{ "/README-Compliance-Governance-with-policy" | relative_url }}) -- Publish README-Compliance-Governance-with-policy as solution guide
-- [Lightwell Neuromancer CVE Routing]({{ "/README-Lightwell-Neuromancer-CVE-Routing" | relative_url }}) -- Review and publish CVE-defend-contain-comply, AO-driven-CVE-routing, ZTA-with-AAP
 - [Event-Driven Network Automation with NetBox and Ansible Automation Platform]({{ "/README-NetBox-EDA" | relative_url }}) -- Merge NetBox SoT and WAN guides into one multi-use-case Solution Guide
 - [Network automation with Ansible]({{ "/README-Network-Automation" | relative_url }}) -- Scaffold foundational Network, Security, and Virtualization guides
 - [Configuration backup and restore]({{ "/README-Network-Use-Case-01-Config-Backup-Restore" | relative_url }}) -- Align Network foundational guide with 301 NetOps use cases
@@ -31,7 +24,6 @@ permalink: /updates/
 - [Network OS upgrades]({{ "/README-Network-Use-Case-07-Network-OS-Upgrades" | relative_url }}) -- Align Network foundational guide with 301 NetOps use cases
 - [Event-driven troubleshooting]({{ "/README-Network-Use-Case-08-Event-Driven-Troubleshooting" | relative_url }}) -- Align Network foundational guide with 301 NetOps use cases
 - [Provisioning, retirement, and migration]({{ "/README-Network-Use-Case-09-Provisioning-Retirement-Migration" | relative_url }}) -- Align Network foundational guide with 301 NetOps use cases
-- [RHEL 9 STIG and CIS compliance scanning with Ansible]({{ "/README-STIG-CIS-compliance" | relative_url }}) -- Publish README-STIG-CIS-compliance.md as implementation guide
 - [Security automation with Ansible]({{ "/README-Security-Automation" | relative_url }}) -- Scaffold foundational Network, Security, and Virtualization guides
 - [Compliance]({{ "/README-Security-Use-Case-01-Compliance" | relative_url }}) -- Align Security foundational guide with 301 Crawl/Walk/Run use cases
 - [Exposure reporting]({{ "/README-Security-Use-Case-02-Exposure-Reporting" | relative_url }}) -- Align Security foundational guide with 301 Crawl/Walk/Run use cases
@@ -53,11 +45,11 @@ permalink: /updates/
 - [Lifecycle management]({{ "/README-Virtualization-Use-Case-08-Lifecycle-Management" | relative_url }}) -- Align Virtualization foundational guide with AVA 301 use cases
 - [Event-driven remediation]({{ "/README-Virtualization-Use-Case-09-Event-Driven-Remediation" | relative_url }}) -- Align Virtualization foundational guide with AVA 301 use cases
 - [Virtualization automation with Ansible]({{ "/README-Virtualization" | relative_url }}) -- Scaffold foundational Network, Security, and Virtualization guides
-- [Zero Trust Architecture infrastructure with Ansible Automation Platform]({{ "/README-ZTA-with-AAP" | relative_url }}) -- Review and publish CVE-defend-contain-comply, AO-driven-CVE-routing, ZTA-with-AAP
 
 ### Guide updates
 
 - [High Availability and Disaster Recovery for AAP 2.7 on OpenShift]({{ "/README-AAP-HA-DR-OpenShift" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
+- [Automated vulnerability remediation with Lightwell and Ansible]({{ "/README-AAP-LightWell-AO" | relative_url }}): Add Lightwell CI/CD Arcade demo to vulnerability remediation guide
 - [PostgreSQL Autovacuum Tuning Guide for Ansible Automation Platform]({{ "/README-AAP-PostgreSQL-Autovacuum-Tuning" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [Event-Driven Remediation with Azure Service Bus and Ansible]({{ "/README-AIOps-Azure-Service-Bus" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [LogicMonitor + Ansible Automation Platform: AIOps Solution Guide]({{ "/README-AIOps-LogicMonitor" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
@@ -70,8 +62,13 @@ permalink: /updates/
 - [System-Level Drift and Policy Enforcement: From EDA to Orchestrated Automation]({{ "/README-AIOps-Use-Case-05-System-Drift-Policy-Enforcement" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [Self-healing infrastructure: From EDA to Orchestrated Automation]({{ "/README-AIOps-Use-Case-06-Self-Healing-Infrastructure" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [Windows Certificate Rotation with AI Risk Analysis]({{ "/README-AIOps-Windows-Cert-Rotation" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
+- [AI-driven CVE routing and remediation with Automation orchestrator]({{ "/README-AO-driven-CVE-routing" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [Ansible Development Workspaces]({{ "/README-Ansible-DevSpaces" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [AI-Assisted Ansible Developer Experience]({{ "/README-Ansible-DevTools" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
+- [BruteForce AAP]({{ "/README-BruteForce-AAP" | relative_url }}): Merge Splunk Security brute-force and CVE guides into one Solution Guide
+- [Automated CVE response and compliance verification with CME]({{ "/README-CME" | relative_url }}): Retag Falco, ZTA, OPA, and CME as Implementation on the catalog
+- [CVE defend contain comply]({{ "/README-CVE-defend-contain-comply" | relative_url }}): Merge Splunk Security brute-force and CVE guides into one Solution Guide
+- [Enforcing Compliance and Network Governance]({{ "/README-Compliance-Governance-with-policy" | relative_url }}): Retag Falco, ZTA, OPA, and CME as Implementation on the catalog
 - [High-Availability Ansible Automation Platform with EDB PostgreSQL Active-Passive DR]({{ "/README-EDB" | relative_url }}): Enhance service management instructions for AAP deployment across DC1 and DC2 nodes
 - [Automated runtime mitigation for Linux OT hosts]({{ "/README-Falco-runtime-mitigation" | relative_url }}): Retag Falco, ZTA, OPA, and CME as Implementation on the catalog
 - [Intelligent Network Automation with Gluware and Ansible]({{ "/README-Gluware-Network-Automation" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
@@ -79,12 +76,12 @@ permalink: /updates/
 - [NetBox SoT EDA Config]({{ "/README-NetBox-SoT-EDA-Config" | relative_url }}): Merge NetBox SoT and WAN guides into one multi-use-case Solution Guide
 - [NetBox WAN EDA Failover]({{ "/README-NetBox-WAN-EDA-Failover" | relative_url }}): Merge NetBox SoT and WAN guides into one multi-use-case Solution Guide
 - [Using Event-Driven Ansible to Consume OpenShift API Resources With Kafka]({{ "/README-OpenShift-EDA-Kafka" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
-- [PQC Discovery and Scoped Remediation]({{ "/README-PQC-Discovery" | relative_url }}): Retag PQC Discovery as a Security solution guide
 - [RHEL Patching with Red Hat Lightspeed and Ansible MCP Server]({{ "/README-Patching-RHEL" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [AIOps with AWS SQS and Event-Driven Ansible]({{ "/README-SQS" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
+- [RHEL 9 STIG and CIS compliance scanning with Ansible]({{ "/README-STIG-CIS-compliance" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [Proactive Vulnerability Remediation with Satellite, Event-Driven Ansible, and Lightspeed On-Premises]({{ "/README-Satellite-CVE-Remediation" | relative_url }}): Drop Related Guides from Solution and Implementation Guides
 - [ServiceNow ITSM]({{ "/README-ServiceNow-ITSM" | relative_url }}): Merge ServiceNow ITSM enrichment and LEAP+MCP into one Solution Guide
-- [ZTA]({{ "/README-ZTA" | relative_url }}): Remove redundant section dividers on guide pages
+- [Zero Trust Architecture infrastructure with Ansible Automation Platform]({{ "/README-ZTA-with-AAP" | relative_url }}): Retag Falco, ZTA, OPA, and CME as Implementation on the catalog
 
 ### Site and tooling
 
@@ -104,7 +101,7 @@ permalink: /updates/
 - Align Network foundational guide with 301 NetOps use cases
 - Retire three legacy KB catalog cards; add GitHub tracking notes
 
-_…and 39 more site commits in this window._
+_…and 5 more site commits in this window._
 
 <!-- END:AUTO-UPDATES -->
 
